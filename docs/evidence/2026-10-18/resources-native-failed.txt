@@ -1,0 +1,77 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+PASS machine rate thresholds use integer ramp
+PASS dynamo rate thresholds and full-buffer minimum
+PASS no water preserves unconsumed coal
+PASS no fuel preserves unconverted water
+PASS coal and water become separate persistent credits
+PASS one coal drains to 24000 RF and carries water credit
+PASS charcoal uses 16000 RF
+PASS signed overshoot is carried into both next batches
+PASS full storage dissipates minimum generation and debits credits
+PASS copying persisted credits preserves exact continuation
+PASS invalid resource bounds fail before mutation
+THERMAL MODEL UNIT PASS: 11 tests
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.051s
+
+OK
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:17:18: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 11:17:24: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 11:17:33: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 11:17:38: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-18 11:17:43: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-18 11:17:48: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+2026-10-18 11:18:07: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-18 11:18:12: ACTION[Server]: ERA INTEGRATION CORRUPT_SEED PASS: 49 malformed job/state cases paused without mutation; healthy neighbors continued; corrupt job saved
+2026-10-18 11:18:28: ACTION[Server]: ERA INTEGRATION CORRUPT_RESUME PASS: normal scheduler preserved corrupt job, healthy neighbor ran, explicit repair resumed exactly once
+2026-10-18 11:18:33: ACTION[Server]: ERA INTEGRATION CORRUPT_VERIFY PASS: repaired balances and outputs persisted without duplication
+2026-10-18 11:18:38: ACTION[Server]: ERA INTEGRATION NATIVE_SEED PASS: native water/fuel job saved; blocked bucket preserves inputs; schema-1 burn/job preserved; protected/busy upgrades denied; idle upgrade retains RF/items
+2026-10-18 11:18:41: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:18:43: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-fgojsjvh/world]
+2026-10-18 11:18:43: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:18:45: ERROR[Server]: ERA INTEGRATION FAIL: ...era/golden-era-luanti/tests/integration/mod/init.lua:12: native iron primary output: 0 ~= 4
+stack traceback:
+	[C]: in function 'assert'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:12: in function 'eq'
+	...a/golden-era-luanti/tests/integration/mod/native.lua:104: in function 'native'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:36: in function <...era/golden-era-luanti/tests/integration/mod/init.lua:33>
+	[C]: in function 'xpcall'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:127: in function 'func'
+	...anti/upstream/luanti/bin/../builtin/common/after.lua:140: in function '?'
+	...i/upstream/luanti/bin/../builtin/common/register.lua:27: in function <...i/upstream/luanti/bin/../builtin/common/register.lua:13>
+2026-10-18 11:18:45: WARNING[Server]: Server: Maximum lag peaked at 1.89722 (steplen=0.05)
+2026-10-18 11:18:45: ACTION[Main]: Server: Shutting down
+
+ENGINE INTEGRATION FAILED: native_resume

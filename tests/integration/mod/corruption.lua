@@ -81,7 +81,7 @@ return function(phase,storage,place,eq)
    fields("bad output "..output,{output=output})
   end
   metadata("stale job at zero work","work","0")
-  metadata("future schema","schema","2")
+  metadata("future schema","schema","3")
   metadata("missing schema","schema","")
   metadata("negative RF","energy","-1")
   metadata("over-capacity RF","energy","8001")

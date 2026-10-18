@@ -16,7 +16,7 @@ function era.move_one(source,src_list,target,dst_list,actor)
  local one=stack:peek_item(1)
  local targetname=core.get_node(target).name
  if era.machines[targetname] then
-  if not (era.recipes[targetname] or {})[one:get_name()] then return false end
+  if not era.recipe_for(target,targetname,one:get_name()) then return false end
   local input=b:get_stack(dst_list,1)
   if core.get_meta(target):get_int("work")>0 and input:get_name()~=one:get_name() then return false end
  end

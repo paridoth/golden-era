@@ -1,0 +1,42 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.014s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.054s
+
+OK
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:14:17: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 11:14:23: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 11:14:32: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 11:14:37: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-18 11:14:42: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-18 11:14:47: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+2026-10-18 11:15:06: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-18 11:15:11: ACTION[Server]: ERA INTEGRATION CORRUPT_SEED PASS: 49 malformed job/state cases paused without mutation; healthy neighbors continued; corrupt job saved
+2026-10-18 11:15:26: ACTION[Server]: ERA INTEGRATION CORRUPT_RESUME PASS: normal scheduler preserved corrupt job, healthy neighbor ran, explicit repair resumed exactly once
+2026-10-18 11:15:31: ACTION[Server]: ERA INTEGRATION CORRUPT_VERIFY PASS: repaired balances and outputs persisted without duplication
+ENGINE INTEGRATION PASS: ten real server processes, crafting, SQLite persistence, automatic scheduler, recipe settings, block lifecycle and corrupt-state recovery

@@ -29,28 +29,62 @@ function era.step()
   for _,key in ipairs(net) do
    local pos=nodes[key]; local def=era.machines[core.get_node(pos).name]
    if def and era.machine_ready(pos,core.get_node(pos).name) then
-    local s=era.state(pos); s.capacity=def.capacity; states[key]=s; defs[key]=def
+    local s=era.state(pos); s.capacity=era.capacity(pos,def,s); states[key]=s; defs[key]=def
     if def.producer then
      local inv=core.get_meta(pos):get_inventory(); local fuel=inv:get_stack("fuel",1)
-     local used=era.ledger.generate(s,era.rates.generator_rate,era.rates.coal_ticks,fuel:get_name()==era.mcl.coal)
+     local used
+     if s.profile=="legacy" then
+      used=era.ledger.generate(s,era.rates.generator_rate,era.rates.coal_ticks,fuel:get_name()==era.mcl.coal)
+     else
+      era.load_water(pos,s)
+      local value=fuel:get_name()==era.mcl.coal and era.reference.generator.coal_rf or fuel:get_name()==era.mcl.charcoal and era.reference.generator.charcoal_rf or 0
+      used=era.model.generate(s,era.reference.generator,value)
+     end
      if used then fuel:take_item(1); inv:set_stack("fuel",1,fuel) end
     end
    end
   end
-  -- Generators first fill buffers. Consumers then draw from producers/buffers.
+  -- Graph topology/order remain native. Shared source budgets prevent repeated donor sends.
+  local budgets={}
+  for key,s in pairs(states) do
+   if s.profile=="revelation" then budgets[key]=defs[key].buffer and era.reference.buffer.send_rf or 80 end
+  end
+  local function transfer(source,target,limit)
+   local n=era.ledger.transfer(states[source],states[target],math.min(limit,budgets[source] or limit))
+   if budgets[source] then budgets[source]=budgets[source]-n end
+   return n
+  end
   for _,target in ipairs(net) do
    if defs[target] and defs[target].buffer then
+    local budget=states[target].profile=="revelation" and era.reference.buffer.receive_rf or era.rates.cable_rate
     for _,source in ipairs(net) do
-     if defs[source] and defs[source].producer then era.ledger.transfer(states[source],states[target],era.rates.cable_rate) end
+     if defs[source] and defs[source].producer then
+      local limit=states[target].profile=="legacy" and era.rates.cable_rate or budget
+      if states[source].profile=="legacy" then limit=math.min(limit,era.rates.cable_rate) end
+      local n=transfer(source,target,limit); budget=budget-n
+     end
     end
    end
   end
+  local remaining=0
+  for key,s in pairs(states) do
+   if defs[key].processor and s.profile=="revelation" and s.energy<s.capacity then remaining=remaining+1 end
+  end
   for _,target in ipairs(net) do
    if defs[target] and defs[target].processor then
+    local native=states[target].profile=="revelation"
     local budget=era.rates.machine_input
+    if native then
+     local available=0
+     for source,s in pairs(states) do
+      if defs[source].producer or defs[source].buffer then available=available+math.min(s.energy,budgets[source] or s.energy) end
+     end
+     budget=remaining>0 and math.min(80,math.ceil(available/remaining)) or 0
+     if states[target].energy<states[target].capacity then remaining=remaining-1 else budget=0 end
+    end
     for _,source in ipairs(net) do
      if defs[source] and (defs[source].producer or defs[source].buffer) then
-      budget=budget-era.ledger.transfer(states[source],states[target],budget)
+      budget=budget-transfer(source,target,budget)
      end
     end
    end
@@ -59,7 +93,9 @@ function era.step()
    if states[key] then
     if defs[key].processor then era.process(nodes[key],core.get_node(nodes[key]).name,states[key]) end
     local old=era.state(nodes[key]); local s=states[key]
-    if old.energy~=s.energy or old.work~=s.work or old.burn~=s.burn then era.save(nodes[key],s); era.refresh(nodes[key]) end
+    local changed=false
+    for _,field in ipairs(era.state_fields) do if old[field]~=s[field] then changed=true end end
+    if changed then era.save(nodes[key],s); era.refresh(nodes[key]) end
    end
   end
  end

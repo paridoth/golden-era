@@ -248,9 +248,51 @@ regression checks, not effective full-pack parity or survival progression.
 Tin/silver acquisition, resource-model migration and graphical/player callback
 validation remain pending; see [native crafting](native-crafting.md).
 
+## Basic RF/water model and schema migration — 2026-10-18
+
+The latest complete run passed **47 unit tests and all 13 engine processes**.
+Eleven new pure Lua model tests check machine/dynamo ramp boundaries, coal vs
+charcoal, dry/no-fuel preflight, independent water/fuel credits, one-coal balances,
+signed refill debt, full-buffer dissipation, copied-state continuation and invalid
+resource bounds. The normal test entrypoint also regenerates/compares native RF
+parameters against the pinned static specification.
+
+The original ten engine phases now explicitly construct pre-change schema-1
+fixtures and let production validation migrate them into schema-2 legacy profiles.
+Their old RF totals and fixed jobs remain meaningful legacy assertions, not
+claims about the new model. Their restart, scheduler, changed-setting, genuine
+mapblock eviction/LBM and 49 malformed-state checks still pass.
+
+Three new phases construct default native machines. They exercise water buckets
+with blocked return/full tank, player insertion callbacks, dry-fuel preservation,
+partial native-job SQLite restart, exact primary processing balances (24000 RF
+coal = 14000 processing + 10000 stored), water-credit persistence, charcoal
+16000 RF, full-buffer loss and saved negative credits. Schema-1 burn/job migration
+keeps original values/serialized job bytes; protected/busy upgrades reject, and
+idle upgrades preserve RF/unlit fuel/items without granting native credits.
+The native-resume phase deliberately changes legacy cost/rate/yield settings;
+the pinned native behavior remains unchanged. Eleven malformed schema-2 states
+and two malformed native jobs pause without mutating original fields/inventories.
+A mixed legacy/native graph also retains the old donor pair limit.
+
+The first combined native run exposed RF stranded in the first large processor
+buffer under the old greedy allocator. Replaced that native allocation with shared
+available RF while retaining legacy dispatch. A focused three-process run passed,
+then the final full 13-process run passed. Retained the failed and focused
+transcripts. This allocation is an explicit native policy, not Thermal Dynamics
+routing parity. Exact start/post-tick refill delays, sides and random byproducts
+are still outside this supported resource slice.
+
+Source/class integrity, generated catalog/model consistency, Lua 5.1 syntax,
+Python compilation and whitespace checks passed. Evidence uses the `resources-`
+prefix: combined suite, failed/focused attempts, source checks and 13 raw phase
+logs. No original Java code or scripts ran. Real graphical/player interactions,
+new-model mapblock travel at scale, forced-crash recovery and full-pack parity
+remain unestablished.
+
 ## Scope of the suite
 
-The 13 pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
+The 13 original pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
 full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
 connect/disconnect, copied ledger save boundary, invalid RF inputs and non-finite RF/burn/cost rejection.
@@ -259,8 +301,9 @@ more cover the bounded Thermal data import. Six catalog tests cover offline
 regeneration, concrete metadata, missing mappings/pattern keys, explicit override
 conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
-Engine integration creates one temporary SQLite world and runs ten separate
-headless server processes, each with a 120-second timeout on loopback port
+Engine integration creates one temporary SQLite world and runs thirteen separate
+headless server processes (the original ten legacy regression phases plus three
+native model/migration phases), each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
 iron ore into four ingots in a native chest, with 32000 RF generated and 16000 RF
@@ -279,8 +322,9 @@ objects. Resume explicitly re-tracks fixture nodes. Protection testing temporari
 Graphical player placement/UI and crafting callbacks, survival progression,
 v7 terrain play, real multi-client contention, third-party protection,
 player-driven mapblock activation and broader chunk-boundary topologies, very
-large networks, fairness/performance/stress, unknown-schema migrations and
-forced-crash atomicity remain untested. Malformed-state validation does not
+large networks, long-run fairness/performance/stress, unknown-schema migrations and
+forced-crash atomicity remain untested. Known schema-1 preservation/upgrade
+is covered; unknown-schema recovery is not. Malformed-state validation does not
 authenticate privileged edits or provide arbitrary hostile-Lua sandboxing.
 The Mineclonia custom singlenode mapgen remains disabled after an old-machine
 timeout. There is no graphical client build or optional modpack comparison.

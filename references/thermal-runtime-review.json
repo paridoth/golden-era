@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "pack_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+  "evidence": [
+    {
+      "jar": "mods/RedstoneFlux-1.12-2.1.1.1-universal.jar",
+      "entry": "cofh/redstoneflux/impl/EnergyStorage.class",
+      "sha256": "63bd372954cb717a7690ea9e85e8161b0c3573504f7a1f046d63c9aa0b035017",
+      "locations": [
+        "modifyEnergyStored(I)V offsets 0..44: add energy then clamp to [0,capacity]"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/dynamo/TileDynamoBase.class",
+      "sha256": "4573c729a2dc9dcef5418e046495ea9e12cacceb8f594c99558244f85e25c89f",
+      "locations": [
+        "calcEnergy()I: minimum generation at high/full storage",
+        "func_73660_a()V offsets 5..84: active processing, post-tick refill and timeCheck start gating"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/dynamo/TileDynamoSteam.class",
+      "sha256": "25e14cdf01eadcab49c61525d106e855ccf4cfe2c78200a0fff7ca1271f9cada",
+      "locations": [
+        "processTick()I offsets 116..162: generation debits fuel and water credits after modifying storage"
+      ]
+    }
+  ],
+  "interpretation": "At full RF storage an unaugmented active dynamo continues debiting its minimum generation; storage clamps the excess. Fuel/water negative remainders must carry. Native startup/refill timing and graph dispatch are explicitly separate from complete original tick parity."
+}

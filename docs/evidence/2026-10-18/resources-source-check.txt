@@ -1,0 +1,4 @@
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+RF SOURCE PASS: reviewed TE/RedstoneFlux classes match locked original artifacts
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs
+THERMAL REFERENCE PASS: 5 processing/fuel records, 3 crafting records, 21 config facts; static evidence only

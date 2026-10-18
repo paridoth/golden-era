@@ -207,3 +207,37 @@ shortcut/substitution cases. The first engine attempt failed on registration
 and retained the failed transcript. The next full run passed 36 unit tests and
 all ten engine phases. Full source verification, Lua syntax, Python compilation
 and whitespace checks passed. Evidence is under the crafting- prefix.
+
+## 2026-10-18 — native basic RF/water and preserved legacy migration
+
+Compiled basic parameters from the pinned static spec into native Lua. New
+machines now use coal/charcoal 24000/16000 RF, 100 mB -> 25000 RF water-credit
+batches, sourced buffers/rates and 4000/1500 RF ore/dust costs. Added native bucket
+loading with tank/empty-bucket preflight, water/fuel UI and signed credit storage.
+Reviewed exact TE update/debit and RedstoneFlux clamp classes separately; no
+original Java or scripts execute. Startup/refill timing, side/duct behavior and
+probabilistic secondary outputs remain explicit gaps.
+
+Added schema 2 with legacy/revelation profiles. Valid old states migrate only
+after original validation, retain RF/work/burn/job bytes/items and receive zero
+native credits. Old ticks are not guessed into new RF. Legacy rules/settings
+continue until an allowed idle upgrade; busy/protected/invalid machines cannot
+switch, and upgrades preserve RF/items/unlit fuel without granting water/fuel.
+New jobs save the schema-2 buffer mode; old jobs keep their fixed semantics.
+Invalid schema-1 originals still pause without migration or normalization.
+
+The first ten-phase legacy regression run passed. Added three native-world
+phases; the first combined run exposed greedy dispatch stranding all fuel RF in
+the first larger processor buffer. Native donor budgets/shared processor dispatch
+fixed that, while legacy allocation stays preserved. A focused native sequence
+passed, followed by the final complete run: 47 unit tests, 13 real server phases.
+Native processing/restart totals match 24000 = 14000 spent + 10000 stored; water,
+charcoal, negative debt, saturation, bucket preflight, old job/burn upgrades and
+13 new malformed-state/job cases pass. Existing 49 malformed legacy cases,
+settings restarts, natural eviction and scheduler recovery still pass.
+
+Recorded failure/focused/final evidence under resources- and updated operational,
+state, architecture and fidelity documentation. Lua syntax, Python compilation,
+generated data consistency, source hashes and whitespace checks passed. No
+forced-crash journal, native random-output persistence, original tick/duct parity,
+resource acquisition or graphical-client result is claimed.

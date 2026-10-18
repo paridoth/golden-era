@@ -5,6 +5,7 @@ local crafting=dofile(modpath.."/crafting.lua")
 local recipe_restart=dofile(modpath.."/recipe_restart.lua")
 local lifecycle=dofile(modpath.."/lifecycle.lua")
 local corruption=dofile(modpath.."/corruption.lua")
+local native=dofile(modpath.."/native.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -12,6 +13,11 @@ local function eq(a,b,label) assert(a==b,(label or "")..": "..tostring(a).." ~= 
 local function place(pos,name)
  core.set_node(pos,{name=name}); local def=core.registered_nodes[name]; assert(def,name)
  if def.on_construct then def.on_construct(pos) end
+ if era.machines[name] and not core.settings:get("era_test_phase"):find("native_",1,true) then
+  local m=core.get_meta(pos)
+  for _,key in ipairs({"profile","water","fuel_rf","water_rf"}) do m:set_string(key,"") end
+  m:set_int("schema",1) -- reproduce the old world format, then let production validation migrate it
+ end
 end
 local function snapshot()
  local result={}
@@ -26,7 +32,10 @@ local function snapshot()
 end
 local function run()
  local phase=core.settings:get("era_test_phase")
- if phase:sub(1,8)=="corrupt_" then
+ if phase:sub(1,7)=="native_" then
+  native(phase,storage,place,eq)
+  return
+ elseif phase:sub(1,8)=="corrupt_" then
   corruption(phase,storage,place,eq)
   return
  elseif phase:sub(1,7)=="recipe_" then

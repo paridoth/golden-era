@@ -7,14 +7,18 @@ function era.resolve_recipe(pos,name,state)
  local encoded=meta:get_string("job")
  if encoded=="" then
   if state.work>0 then return nil,"Pending work has no saved job" end
-  return (era.recipes[name] or {})[input]
+  return era.recipe_for(pos,name,input)
  end
  if state.work==0 then return nil,"Saved job has no pending work" end
  if #encoded>4096 then return nil,"Saved job exceeds size limit" end
  local job=core.deserialize(encoded,true)
  if type(job)~="table" then return nil,"Saved job is not a table" end
+ local v2=job.schema==2
+ if job.schema~=nil and not v2 then return nil,"Unsupported saved job schema" end
+ if v2 and state.profile~="revelation" then return nil,"Saved job profile mismatch" end
+ if v2 and job.rate_mode~="buffer" then return nil,"Invalid saved rate mode" end
  for key in pairs(job) do
-  if not fields[key] then return nil,"Saved job has unknown fields" end
+  if not fields[key] and not (v2 and (key=="schema" or key=="rate_mode")) then return nil,"Saved job has unknown fields" end
  end
  if type(job.input)~="string" or job.input=="" or job.input~=input then
   return nil,"Saved job input does not match inventory"

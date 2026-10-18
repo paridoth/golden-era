@@ -1,0 +1,10 @@
+2026-10-18 11:32:49: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:32:51: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-zewg9jo0/world]
+2026-10-18 11:32:51: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:32:55: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 11:32:55: ACTION[Main]: Server: Shutting down

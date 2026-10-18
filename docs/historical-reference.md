@@ -68,19 +68,21 @@ default tier factors. The fully resolved recipe registry and native parity
 remain unverified. The item Flux Capacitor and block
 Energy Cell also have different settings; do not conflate them.
 
-## Existing engineering values — still provisional
+## Legacy engineering values and the new basic model
 
-The current fixture uses generator 20 RF/t, coal 1600 ticks, donor/buffer transfer
+The preserved legacy profile uses generator 20 RF/t, coal 1600 ticks, donor/buffer transfer
 80 RF/t, processor input 40 RF/t, pulverizer cost 4000 RF, furnace cost 2000 RF,
-processing limit 40 RF/t, and ore multiplier 2. Capacities remain 32000 generator,
+processing limit 40 RF/t, and ore multiplier 2. Legacy capacities remain 32000 generator,
 100000 buffer and 8000 processors. Three machine crafting patterns and their supported material/component recipes
 now use the [reviewed native catalog](native-crafting.md). Buffer/cable/ejector
 crafting, survival acquisition and remaining progression are still provisional.
 
-These fixture numbers have not been changed merely because a few config fields
-are known. A correct native implementation must first connect the reference's
-recipe costs, dynamo fuel/fluid model, power/scaling rules and side controls.
-Mineclonia's modern survival behavior is not evidence of Minecraft 1.12.2 parity.
+New machines now use the [native basic RF/water model](native-resources.md):
+24000/16000 RF coal/charcoal, water batches, 40000/20000/2000000 RF capacities,
+buffer-dependent rates and 4000/1500 RF ore/dust costs. Valid old states migrate
+to a legacy profile and can be explicitly upgraded without reinterpreting saved
+burn/jobs. Duct/side behavior, byproducts and effective full-pack parity remain
+unverified. Mineclonia survival behavior is not evidence of Minecraft 1.12.2 parity.
 
 ## Evidence policy
 

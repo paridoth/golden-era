@@ -1,0 +1,11 @@
+2026-10-18 11:34:03: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:34:05: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-zewg9jo0/world]
+2026-10-18 11:34:05: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:34:07: ACTION[Server]: ERA INTEGRATION NATIVE_RESUME PASS: native SQLite continuation; four ingots cost 14000 of 24000 RF; charcoal 16000 RF; water credit, full-buffer loss and signed debt saved
+2026-10-18 11:34:07: WARNING[Server]: Server: Maximum lag peaked at 2.23345 (steplen=0.05)
+2026-10-18 11:34:07: ACTION[Main]: Server: Shutting down

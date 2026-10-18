@@ -1,0 +1,58 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+PASS machine rate thresholds use integer ramp
+PASS dynamo rate thresholds and full-buffer minimum
+PASS no water preserves unconsumed coal
+PASS no fuel preserves unconverted water
+PASS coal and water become separate persistent credits
+PASS one coal drains to 24000 RF and carries water credit
+PASS charcoal uses 16000 RF
+PASS signed overshoot is carried into both next batches
+PASS full storage dissipates minimum generation and debits credits
+PASS copying persisted credits preserves exact continuation
+PASS invalid resource bounds fail before mutation
+THERMAL MODEL UNIT PASS: 11 tests
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.052s
+
+OK
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:32:40: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 11:32:46: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 11:32:55: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 11:33:00: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-18 11:33:05: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-18 11:33:10: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+2026-10-18 11:33:29: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-18 11:33:35: ACTION[Server]: ERA INTEGRATION CORRUPT_SEED PASS: 49 malformed job/state cases paused without mutation; healthy neighbors continued; corrupt job saved
+2026-10-18 11:33:50: ACTION[Server]: ERA INTEGRATION CORRUPT_RESUME PASS: normal scheduler preserved corrupt job, healthy neighbor ran, explicit repair resumed exactly once
+2026-10-18 11:33:55: ACTION[Server]: ERA INTEGRATION CORRUPT_VERIFY PASS: repaired balances and outputs persisted without duplication
+2026-10-18 11:34:00: ACTION[Server]: ERA INTEGRATION NATIVE_SEED PASS: native water/fuel job saved; blocked bucket preserves inputs; schema-1 burn/job preserved; protected/busy upgrades denied; idle upgrade retains RF/items
+2026-10-18 11:34:07: ACTION[Server]: ERA INTEGRATION NATIVE_RESUME PASS: native SQLite continuation; four ingots cost 14000 of 24000 RF; charcoal 16000 RF; water credit, full-buffer loss and signed debt saved
+2026-10-18 11:34:13: ACTION[Server]: ERA INTEGRATION NATIVE_VERIFY PASS: second restart preserves outputs and signed credits; next batches carry debt; 11 malformed native states and two malformed native jobs pause without mutation
+ENGINE INTEGRATION PASS: 13 real server processes; seed, resume, automatic, recipe_seed, recipe_resume, recipe_verify, lifecycle, corrupt_seed, corrupt_resume, corrupt_verify, native_seed, native_resume, native_verify

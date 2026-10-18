@@ -6,14 +6,13 @@ project name. This is an independent engineering prototype; it is not an
 accurate or complete recreation, and is not affiliated with Mojang, Microsoft,
 Feed The Beast, or the original mod authors.
 
-The working slice generates integer RF from coal, moves it through adjacent
-machines/cables, pulverizes iron ore or raw iron into dust, smelts dust, and
-routes ingots east into an ordinary native Mineclonia chest. Six custom mods
-provide the implementation. Machine RF values/capacities and transport remain
-**provisional**. The
-[native crafting subset](docs/native-crafting.md) now uses ten reviewed pack/mod
-patterns for materials, coils, frames and three machines. Tin/silver acquisition
-and a complete survival progression remain pending.
+The working slice generates RF from coal or charcoal and water, pulverizes iron
+ore/raw iron into dust, smelts dust, and routes primary ingots into a native
+Mineclonia chest. New machines use sourced basic RF/water values and ten reviewed
+crafting patterns. Existing saves retain a legacy profile until explicitly
+upgraded. Byproducts, side controls, ducts, tin/silver acquisition and a complete
+survival progression remain pending. See [native resources](docs/native-resources.md)
+and [native crafting](docs/native-crafting.md) for the supported boundaries.
 
 The user selected Revelation on October 18, 2026, superseding the earlier
 Direwolf20 1.7.10 target in the preserved migration handoff. The Luanti engine,
@@ -108,8 +107,9 @@ At a common y-level, use these relative coordinates. East is +X.
 | (2,0) | `era_transport:ejector` |
 | (3,0) | ordinary Mineclonia chest |
 
-Put one coal in the generator's fuel slot and two iron ore or raw iron items in
-the pulverizer's input. The intended result is four ingots in the chest. The
+For new machines, put one coal in the generator's fuel slot, a water bucket in
+its Water slot, leave Empty free, and put two iron ore or raw iron items in the
+pulverizer's input. The intended result is four ingots in the chest. The
 integration harness constructs this fixture at y=200 using engine APIs. Manual
 placement, formspec use and survival progression still need graphical testing.
 Machines with invalid saved state pause with a diagnostic and retain their
@@ -121,6 +121,7 @@ no discharge/wrench tool yet. Transport only supports fixed eastward routing.
 
 - [Architecture and invariants](docs/architecture.md)
 - [Native crafting and its current limits](docs/native-crafting.md)
+- [Native RF/water operation and migration](docs/native-resources.md)
 - [Saved-state validation and repair](docs/save-state.md)
 - [Historical reference and provisional values](docs/historical-reference.md)
 - [Compatibility findings](docs/mod-compatibility.md)

@@ -93,3 +93,12 @@ for 14 materials and ten recipes. See [native crafting](../docs/native-crafting.
 for evidence, generation commands and gameplay limitations. `check-generated`
 runs offline; full `check` verifies originals in the ignored cache. The additional
 MCP mapping used to resolve vanilla field names is hash-pinned in the review.
+
+## Native basic resource parameters
+
+`thermal_model.py check` reproduces the native RF/water parameters from the
+committed static specification. `fetch-sources` and `check-sources` additionally
+verify original TE/RedstoneFlux classes anchored by `thermal-runtime-review.json`.
+Those classes establish storage clamping and dynamo update/debit behavior; native
+startup timing and graph policy remain explicit implementation boundaries.
+See [native resources](../docs/native-resources.md) and [save migration](../docs/save-state.md).

@@ -35,11 +35,12 @@ Redstone Furnace, item routing and ordinary storage. Determine exact recipes,
 RF per operation, coal/fluid requirements, capacities, side controls and base
 upgrade behavior from the pinned builds and effective pack scripts.
 
-Produce a reviewed behavior specification and a small supported data mapping,
-then adapt the native modules. Add parity checks against the reference, including
+The first reviewed specification, native crafting catalog, basic RF/water model
+and known-state migration are implemented. Complete secondary outputs and side/
+transport behavior before claiming a full reference-driven loop. Add parity checks against the reference, including
 input/output probabilities and resource balances. Preserve existing saves or
-provide an explicit tested migration when state models change. Current fixture
-rates/recipes stay provisional until their replacements have evidence.
+provide an explicit tested migration when state models change. Legacy fixture
+rates stay preserved; remaining storage/transport recipes are provisional.
 
 ## 3. Graphically playable survival and multiplayer slice
 
@@ -69,9 +70,9 @@ sound and inherited-media provenance before preparing a public distribution.
 Keep reproducible source/config pins, automated checks, native gameplay tests
 and documented limitations together.
 
-The initial Thermal specification and bounded import are recorded. Ten native
-crafting patterns now replace the first three machine shortcuts; their material
-representatives are explicit and still lack tin/silver survival acquisition. The next
-concrete deliverable is the resolved first-loop data/side mapping and a tested
-native state migration, then a graphical factory session. Further
-infrastructure work should address risks exposed by that milestone.
+The initial specification, ten native crafting patterns and basic RF/water model
+are implemented. Schema-1 migration preserves legacy behavior with an explicit
+upgrade path. Next add persisted secondary outputs, complete first-loop sides/
+transport and storage crafting, and provide tin/silver acquisition before a
+graphical survival session. Further infrastructure work should address risks
+exposed by those milestones.

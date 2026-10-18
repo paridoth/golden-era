@@ -4,8 +4,9 @@ The native game now uses ten reviewed crafting patterns: copper/tin/bronze
 gears, bronze ingots, gold/silver coils, a basic machine frame, the coal generator,
 Pulverizer and powered furnace. The former generator/pulverizer/furnace shortcuts
 have been removed. Existing placed machines and their inventories/jobs retain
-the same identifiers and state semantics; this crafting change requires no save
-schema migration.
+the same identifiers and state semantics; the crafting change itself requires no save schema migration. The later
+[RF/water implementation](native-resources.md) now supplies a separate known-state
+migration.
 
 ## Source and generation
 
@@ -89,11 +90,10 @@ mirroring rule. Only the documented orientation is guaranteed for the coils.
 
 ## Current gameplay and validation boundary
 
-This is a crafting implementation. RF, water, processing costs, random byproducts,
-side controls, upgrades and the buffer/cable/ejector recipes still use the older
-engineering fixture model. The coal generator is not yet a complete Steam Dynamo.
-The [factory specification](thermal-factory-spec.md) describes the pending
-resource-model and state-migration work.
+The [basic RF/water model](native-resources.md) now operates new machines, while
+legacy machines retain their old profile until explicitly upgraded. Byproducts,
+side controls, augments and the buffer/cable/ejector recipes are still incomplete.
+These crafting patterns do not establish complete Steam Dynamo or pack parity.
 
 Tin and silver ingots are registered for creative/server-supplied fixtures;
 there is no survival acquisition/world-generation path for them yet. Supplying
@@ -103,7 +103,7 @@ progression. New material/component visuals remain placeholders.
 Engine checks query Luanti's real crafting manager against independent reference
 examples, including exact ingredient counts, shuffled shapeless bronze inputs,
 the tin/copper gear distinction and wrong-coil denial. They also reject all
-three old machine shortcuts and preserve denied inputs. The ten-process restart,
+three old machine shortcuts and preserve denied inputs. The extended thirteen-process restart,
 job, unload/reload and malformed-state suite remains required after runtime edits.
 Actual player inventory/crafting callbacks, graphical usability and effective
 original-pack parity remain separate validation work.

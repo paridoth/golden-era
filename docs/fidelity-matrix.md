@@ -9,12 +9,12 @@ The [reference lock](../references/revelation-3.7.0.lock.json) supplies exact bu
 | --- | --- | --- |
 | Reference inputs | 1000-entry file inventory; 675 configs + four scripts cached | all selected files hash-verified; resolved runtime recipe registry not exported |
 | Foundation | Mineclonia plus six custom mods | functional engine slice; survival/terrain differ from Minecraft 1.12.2 |
-| RF production | integer coal generator, pauses at capacity | TE5 config has Steam Dynamo base 40 RF/t; static water/fuel/rate rules now specified; native model provisional |
-| RF transfer/storage | six-face components, buffers, consumer budget | real unload/reload and conservation tested; TE Energy Cell config known; actual duct/network rules not mapped |
-| Pulverizer | ore/raw iron -> dust | TE5 config base 20 RF/t and default ore multiplier 2; selected recipe costs/byproducts imported; effective groups unresolved |
-| Powered furnace | dust -> ingot | TE5 config base 20 RF/t; default dust-smelting and buffer/rate rules specified; native parity pending |
+| RF production | native coal/charcoal and water credits; full-buffer minimum loss; preserved legacy profile | TE5 config has Steam Dynamo base 40 RF/t; native basic coal/charcoal/water model and rates implemented; startup/side/augment parity pending |
+| RF transfer/storage | six-face components, buffers, consumer budget | native capacities and buffer limits sourced; shared graph allocation is provisional; legacy lifecycle tested |
+| Pulverizer | ore/raw iron -> dust | TE5 config base 20 RF/t and default ore multiplier 2; 4000 RF primary processing implemented; 10% nickel byproduct still pending; effective groups unresolved |
+| Powered furnace | dust -> ingot | TE5 config base 20 RF/t; 1500 RF dust smelting and buffer-dependent rates implemented; effective registry parity pending |
 | Item transport | fixed +X moves and ordinary native chest | protected-transfer checks; reference side modes, ducts, filters and broader storage unsupported |
-| Save/restart | RF/work/burn/job/inventory metadata | restarts, changed recipe settings, eviction and invalid-state pause/repair tested; migrations/crash atomicity unresolved |
+| Save/restart | RF/work/burn/profile/water/credits/jobs/inventories | restarts, changed recipe settings, eviction and invalid-state pause/repair tested; schema-1 -> 2 legacy preservation and explicit upgrade tested; forced-crash atomicity unresolved |
 | Player interaction | formspec, recipes and protected callbacks | engine verifies new crafting and denial of old shortcuts; actual player crafting/UI/multiplayer untested |
 | Progression | ten native material/component/machine crafting patterns | exact class/config/script evidence; explicit native representatives; tin/silver survival acquisition and effective full registry unresolved |
 | Upgrades/redstone | absent | reference config confirms upgrades enabled; detailed behavior not implemented |
@@ -25,8 +25,9 @@ The [reference lock](../references/revelation-3.7.0.lock.json) supplies exact bu
 | Media | four original placeholders, no custom audio | inherited media audit and independently authored final media outstanding |
 
 The [initial sourced specification and supported import](thermal-factory-spec.md)
-are recorded. Next resolve remaining first-loop mappings and migrate the native
-state model, then perform graphical survival/multiplayer validation.
+are recorded. The basic resource model and known-state migration are implemented. Next resolve
+secondary outputs, sides/transport and survival acquisition, then perform graphical
+survival/multiplayer validation.
 Grow performance, migration and crash-recovery checks around those concrete
 systems. Never infer full-mod compatibility or runtime fidelity from config
 extraction alone.

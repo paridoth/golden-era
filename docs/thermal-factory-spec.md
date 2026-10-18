@@ -3,9 +3,10 @@
 Reference: FTB Revelation 3.7.0, Thermal Expansion 5.5.7.1 and CoFH Core 4.6.6.1.
 The generated [intermediate specification](../references/revelation-3.7.0-thermal.json)
 is a **static reference**, not an effective Minecraft registry export. It is
-explicitly marked `runtime_ready: false`. The processing/resource model still uses the older fixtures. The separate
-[native crafting catalog](native-crafting.md) now supplies ten reviewed patterns
-with explicit native material representatives.
+explicitly marked `runtime_ready: false`. A supported subset now feeds the [native RF/water model](native-resources.md),
+with preserved legacy profiles for older saves. The separate
+[native crafting catalog](native-crafting.md) supplies ten reviewed patterns.
+The full intermediate specification remains unresolved and is not installed wholesale.
 
 ## Evidence and reproducibility
 
@@ -112,7 +113,7 @@ unmapped.
 
 ## Native implementation boundary and next work
 
-Before replacing fixture behavior:
+Current implementation boundary:
 
 1. The native crafting subset now has explicit material representatives and
    three first-machine patterns. Resolve effective original registrations,
@@ -120,12 +121,13 @@ Before replacing fixture behavior:
    survival acquisition before claiming a playable progression.
 2. Map side configuration, fuel/water loading, redstone and transfer order. Obtain
    controlled original-runtime observations or exports for uncertain behavior.
-3. Introduce versioned native definitions and an explicit save migration for
-   existing RF/burn/work/job state. Preserve saved in-flight recipe semantics.
-4. Add water tanks/credits, persisted fuel RF, buffer-dependent rates and
-   probabilistic secondary outputs with full-output preflight and saved random
-   results. A blocked output must not reroll or duplicate byproducts on restart.
-5. Exercise the migrated loop in engine tests, then play it graphically.
+3. Basic native definitions and schema-1 -> 2 legacy preservation now exist.
+   Explicit idle upgrades preserve stored RF/items; old jobs keep their semantics.
+4. Basic water tanks/credits, fuel RF, dynamic rates and primary processing are
+   implemented. Persisted probabilistic secondary outputs remain pending. A
+   blocked output must not reroll or duplicate byproducts when that feature lands.
+5. Thirteen engine phases cover native resources, migration and older regressions.
+   Graphical survival/player callbacks and original-runtime parity remain pending.
 
 Static arithmetic for a later parity fixture: one ore to two dust at 4000 RF,
 then two dust-to-ingot operations at 1500 RF each, totals **7000 RF per ore**.
@@ -134,7 +136,7 @@ Three such operations total 21000 RF and six primary ingots, with three independ
 runtime result. Water must be accounted in batches: do not round a per-coal water
 estimate and discard carried credit.
 
-Unresolved behavior is represented explicitly in the generated specification.
-The existing generator, 8000-RF processors, 100000-RF buffer and fixed eastward
-routing remain engineering fixtures until the coupled model and migration pass
-those checks.
+Unresolved behavior remains explicit in the generated specification. The older
+32000/8000/100000-RF capacities persist only in the legacy profile. New machines
+use sourced basic capacities/resource rules; fixed routing, graph dispatch and
+unsupported content do not establish complete reference parity.

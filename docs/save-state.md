@@ -1,64 +1,86 @@
-# Saved-state validation and repair
+# Saved-state validation, migration and repair
 
-Machines use node metadata schema **1**. The running simulation, direct processing
-entrypoint, automated transfers and player inventory/digging callbacks check the
-machine before changing its gameplay state. Invalid machines display
-`Paused: <reason>` in infotext and formspec text. The diagnostic is derived
-state; stored RF, work, burn, schema, job and inventories are retained.
+New machines use node metadata schema **2**. The simulation, direct processing,
+automated transfer and player inventory/digging callbacks validate before changing
+gameplay state. Invalid machines display `Paused: <reason>` and retain original
+metadata and inventories; only diagnostics, infotext and formspec text change.
+Valid neighbors continue running. A paused node remains in graph adjacency, so
+pausing does not provide electrical or ownership isolation.
 
-A paused machine does not generate, donate, receive or process RF, and does not
-send or accept items. Player inventory changes and digging are denied. Its node
-still participates in physical graph adjacency, so valid neighboring machines
-can continue exchanging RF through the component. Pausing is not an electrical
-isolation or ownership feature.
+## Schema 2
 
-## Schema 1 contract
+- `schema` is 2 and `profile` is exactly `legacy` or `revelation`.
+- `energy`, `work`, `burn`, `water`, `fuel_rf`, `water_rf` all exist as finite
+  integers. Raw metadata agrees with engine integer getters; missing, fractional,
+  overflowing and nonnumeric values pause.
+- Energy/work/burn/water are nonnegative. Only producers store burn; only
+  processors store work. Energy cannot exceed the profile-specific capacity.
+- A `revelation` Dynamo has no legacy burn counter. Its water is 0..4000 mB,
+  fuel credit -39..24000 RF and water credit -39..25000 RF. Negative remainders
+  are deliberate debt from integer-tick conversion and survive refills/restarts.
+- Legacy machines and non-producers require all three water/credit fields to be
+  zero. Unknown profiles and future/missing schemas pause.
 
-- `schema` must represent 1. Missing, older and future schemas pause; no automatic
-  migration or downgrade is attempted.
-- `energy`, `work` and `burn` must exist as finite nonnegative integers in
-  0..2147483647. Raw numeric metadata must agree with the engine integer getter;
-  fractional, overflowing or nonnumeric strings are not silently coerced.
-- RF cannot exceed machine capacity. Only generators may store remaining burn;
-  only processors may store pending work.
-- For processors, zero work requires an empty `job`. Positive work requires a saved job whose
-  input matches the reserved input stack. Missing jobs never fall back to the
-  current recipe while work is pending.
-- Saved jobs retain the existing Lua serialization format, decoded with
-  `core.deserialize(encoded, true)`. Records are limited to 4096 bytes and must
-  be a table with exactly the supported keys: `input`, `output`, `cost`, `rate`.
-- Cost and rate must be finite positive integers within the same metadata
-  integer range; accumulated work must remain strictly below total cost.
-- Outputs are plain item names with an optional positive integer count. The
-  item must resolve to a registered item; count must survive engine parsing
-  exactly and fit one native stack. Wear/metadata payloads and unknown extra
-  fields are unsupported by schema 1.
+RF capacities differ by profile. Legacy values remain generator 32000, buffer
+100000 and processors 8000. Revelation basic values are 40000, 2000000 and 20000.
+Only valid completed-state upgrades can switch profiles; current target capacities
+are larger and stored RF/items are retained.
 
-Valid existing schema-1 jobs remain supported, including jobs with old costs,
-rates or yields after a configuration change. Their output is validated as
-saved, rather than replaced with the current recipe. These checks do not
-establish the historical correctness of any mechanic.
+## Known schema-1 migration
+
+Schema 1 contains energy/work/burn and the original fixed-rate job format. Before
+migration, all original numeric bounds, legacy capacities and job/inventory
+relationships are checked. Invalid originals pause without migration or data
+normalization. A valid machine receives profile `legacy`, zero water/credits and
+bucket input/output slots; original energy, work, burn, job bytes and inventory
+contents are unchanged. The schema-2 marker is written last, with no yield.
+Interrupted preparation can repeat the same zero initialization while schema 1
+remains the marker. This is not a forced-crash transaction journal.
+
+Legacy machines keep their prior fixture behavior, including the existing
+operator setting semantics. A burn-tick counter is not guessed into new RF credit:
+its historical generation rate was never stored. The old pending job retains its
+saved cost, rate and output. Unknown schemas are never automatically migrated.
+
+After burn/work reach zero and the job is empty, an allowed player may explicitly
+switch to the Revelation model using its formspec button. Stored RF, unlit fuel
+and items remain; no fuel/water credit is granted. Protection and busy-state
+checks reject the switch. This upgrade control does not repair malformed data.
+
+## Saved jobs
+
+Zero work requires an empty job. Positive work requires a job matching the reserved
+input stack, with work strictly below cost. Missing jobs never substitute today's
+recipe for already-paid work. Jobs use `core.deserialize(encoded, true)`, are at
+most 4096 bytes and reject unknown fields and unsupported schemas.
+
+The original job contains exactly `input`, `output`, `cost`, `rate`. It retains its
+fixed processing rate, even across configuration changes and outer-state migration.
+New jobs add `schema=2` and `rate_mode="buffer"`, and belong to the Revelation
+profile. This mode selects the current pinned basic buffer ramp; cost/output are
+saved at job start. Its version semantics must be preserved during any later
+parameter/schema transition.
+
+Cost and saved rate are finite positive metadata-range integers. Outputs are plain
+registered item names with an optional positive count fitting one native stack;
+parser truncation, wear/NBT payloads and unknown items are rejected. Inputs remain
+reserved until completion. Output-capacity preflight and commit never yield.
+Probabilistic secondary outputs and their persisted random decisions are not yet
+part of this job schema.
 
 ## Repair boundary
 
-The game deliberately does not delete jobs, zero balances or rewrite schemas to
-make a bad machine run. A paused machine needs an explicit trusted repair from
-known-good state. There is no player reset button or automated repair tool yet.
+The game does not delete jobs, reset balances or rewrite unknown schemas to make
+bad data run. A paused machine requires trusted repair from known-good state.
+Stop the server cleanly and back up the entire world directory before repairing
+real persisted data. Recover the schema, numeric balances, saved job and matching
+reserved inventory together; today's recipe cannot reconstruct original paid work.
+If original state cannot be established, keep it paused until an explicit recovery
+decision is made.
 
-For a real world, stop the server cleanly and back up the entire world directory
-before repairing persisted data. Recover the correct schema, integer balances,
-job fields and matching reserved inventory together from a known-good backup
-or other authoritative record. Guessing a job from today's recipe can change
-already-paid work. If its original state cannot be established, keep it paused
-until an explicit recovery decision is made.
-
-After a valid repair, normal validation clears the diagnostic and processing
-resumes; it does not grant free RF or return already-spent work. Integration
-checks this with a job at 200/4000 RF and 3800 stored RF: one input is consumed,
-two dust are added, RF and work become zero, and a further restart cannot repeat
-that output.
-
-This validation addresses malformed records and numeric bounds. It does not
-authenticate metadata, provide arbitrary hostile-Lua sandboxing, migrate unknown
-schemas, or make mapblock/inventory writes atomic across a forced crash. Trusted
-mods or administrative tools can still deliberately write plausible values.
+After a valid repair, diagnostics clear and processing resumes without free RF or
+refunded work. Engine tests cover repair of a legacy job at 200/4000 work with
+3800 RF, plus schema-2 invalid fields/jobs, clean restarts, legacy migration and
+protected/busy upgrades. These checks do not authenticate privileged metadata,
+sandbox hostile Lua, implement unknown-schema recovery or provide forced-crash
+atomicity across inventory/mapblock writes.
