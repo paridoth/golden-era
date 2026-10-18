@@ -86,7 +86,15 @@ checks from remaining validation. Original migration evidence remains under
 ```
 
 Connect a separately installed compatible Luanti graphical client to
-**127.0.0.1:30099**. This build does not provide a graphical client. The server
+**127.0.0.1:30099**. An optional [local graphical build](docs/graphical-client.md)
+and isolated factory demo are available:
+
+```sh
+python3 scripts/build-client.py
+python3 scripts/play-demo.py
+```
+
+The server
 binds only to loopback, does not announce itself, and uses engine v7 terrain.
 Stop with Ctrl-C. Keep network exposure changes deliberate.
 
@@ -120,6 +128,7 @@ no discharge/wrench tool yet. Processor faces and ejectors are configurable; see
 
 ## Development records
 
+- [Graphical client and inspection demo](docs/graphical-client.md)
 - [Architecture and invariants](docs/architecture.md)
 - [Native crafting and its current limits](docs/native-crafting.md)
 - [Survival materials and basic energy cell](docs/survival-materials.md)

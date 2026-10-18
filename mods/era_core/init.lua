@@ -8,6 +8,7 @@
  end
  dofile(core.get_modpath("era_core").."/state.lua")
  dofile(core.get_modpath("era_core").."/ports.lua")
+ dofile(core.get_modpath("era_core").."/forms.lua")
  function era.register_recipe(machine, input, result, cost, rate)
   assert(cost > 0 and rate > 0 and not (era.recipes[machine] or {})[input])
   era.recipes[machine] = era.recipes[machine] or {}
@@ -63,15 +64,10 @@
   local profile=m:get_int("schema")==1 and "legacy" or m:get_string("profile")
   local diagnostic=fault~="" and (" | Paused: "..fault) or ""
   m:set_string("infotext",def.description.." | RF "..m:get_int("energy").." / "..era.capacity(pos,def).." | Work "..m:get_int("work")..diagnostic)
-  m:set_string("formspec", "formspec_version[4]size[10,9]label[0.5,0.3;Golden Era - "..def.description.."]"..
-   "label[0.5,0.8;"..core.formspec_escape(profile=="legacy" and "Legacy model" or "Revelation basic").." | RF "..m:get_int("energy").." | Work "..m:get_int("work").."]"..
-   (fault~="" and "label[0.5,1.1;"..core.formspec_escape("Paused: "..fault).."]" or "")..
-   "label[0.5,1.5;Input]list[context;src;0.5,2;1,1;]label[3,1.5;Output]list[context;dst;3,2;1,1;]"..
-   "label[4.2,1.5;Byproduct]list[context;secondary;4.2,2;1,1;]label[5.5,1.5;Fuel]list[context;fuel;5.5,2;1,1;]"..
-   (def.producer and m:get_string("profile")=="revelation" and "label[7,1.5;Water]list[context;water;7,2;1,1;]label[8.5,1.5;Empty]list[context;empty;8.5,2;1,1;]label[0.5,3.2;Water "..m:get_int("water").." mB | Fuel "..m:get_int("fuel_rf").." RF | Water credit "..m:get_int("water_rf").." RF]" or "")..
-   era.ports_formspec(pos,core.get_node(pos).name).."list[current_player;main;0.5,4;9,3;]"..
-   (m:get_string("profile")=="legacy" and "button[0.5,7.5;7,0.7;upgrade;Use Revelation model after current burn/job finishes]" or "")..
-   "listring[context;src]listring[current_player;main]")
+  m:set_string("formspec",era.machine_form(pos,def,fault,profile))
  end
  core.register_lbm({name="era_core:resume", nodenames={"group:era_machine","group:era_cable","group:era_ejector"},
-  run_at_every_load=true, action=function(pos) era.track(pos) end})
+  run_at_every_load=true, action=function(pos,node)
+   era.track(pos)
+   if era.machines[node.name] then era.refresh(pos) end
+  end})

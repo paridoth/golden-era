@@ -1,0 +1,18 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:10:33: ACTION[ServerStart]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 12:10:35: ACTION[ServerStart]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/worlds/graphical-demo]
+2026-10-18 12:10:35: ACTION[ServerStart]: Server for gameid="golden_era" listening on 127.0.0.1:30198.
+2026-10-18 12:10:36: ACTION[Server]: GoldenEraQA [127.0.0.1] joins game. List of players: GoldenEraQA
+2026-10-18 12:10:37: ACTION[Server]: ERA DEMO READY: isolated factory and player initialized
+2026-10-18 12:10:37: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era (prototype) | uptime: 1s | max lag: 0.17s | clients: GoldenEraQA
+2026-10-18 12:10:37: ACTION[Main]: CHAT: *** GoldenEraQA joined the game.
+2026-10-18 12:10:37: ACTION[Main]: CHAT: Golden Era inspection fixture. Right-click machines. /factory_form generator|pulverizer|furnace|buffer opens a form. /factory_refill adds another batch. Factory starts with coal, water and two raw iron.
+2026-10-18 12:10:41: ACTION[Server]: ERA DEMO FORM: pulverizer
+2026-10-18 12:10:49: ACTION[Server]: ERA DEMO FORM: generator
+2026-10-18 12:10:57: ACTION[Server]: ERA DEMO FORM: furnace
+2026-10-18 12:11:05: ACTION[Server]: ERA DEMO FORM: buffer

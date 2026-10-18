@@ -1,0 +1,51 @@
+-- *** Will build version 5.17.0 ***
+-- BUILD_CLIENT: ON
+-- BUILD_SERVER: OFF
+-- BUILD_UNITTESTS: OFF
+-- BUILD_BENCHMARKS: FALSE
+-- BUILD_DOCUMENTATION: OFF
+-- RUN_IN_PLACE: ON
+-- OpenGL (legacy): ON
+-- OpenGL 3: ON
+-- OpenGL ES 2: OFF
+-- Found SDL2: SDL2::SDL2
+-- Performing Test CHECK_SDL_VERSION
+-- Performing Test CHECK_SDL_VERSION - Success
+-- LTO/IPO is not enabled
+-- Using GMP provided by system.
+-- Using JsonCpp provided by system.
+-- LuaJIT detection disabled! (ENABLE_LUAJIT=0)
+-- LuaJIT not found, using bundled Lua.
+CMake Warning at src/CMakeLists.txt:86 (message):
+  cURL is required to use the server list, content browser or update checker
+
+
+-- GetText disabled.
+-- Found Freetype: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/client-root/usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.13.2") 
+-- Prometheus client disabled.
+-- Looking for ZSTD_initCStream
+-- Looking for ZSTD_initCStream - found
+-- Performing Test HAVE_ATCCALL
+-- Performing Test HAVE_ATCCALL - Success
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/build-client
+[  0%] Built target bitop
+[  7%] Built target lua
+[  8%] Built target lstrpack
+[  9%] Built target sha256
+[  9%] Built target tiniergltf
+[ 10%] Built target GenerateBuiltinFilesCpp
+[ 10%] Built target GenerateVersion
+[ 12%] Built target IRRMESHOBJ
+[ 14%] Built target IRRIOOBJ
+[ 20%] Built target IRRVIDEOOBJ
+[ 22%] Built target IRROTHEROBJ
+[ 25%] Built target IRRGUIOBJ
+[ 27%] Built target IrrlichtMt
+[ 45%] Built target EngineCommon
+[ 45%] Linking CXX executable "/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/bin/luanti"
+[100%] Built target luanti
+[100%] Built target minetest_alias
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+Graphical client ready: run scripts/run-client.sh

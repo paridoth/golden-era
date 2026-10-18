@@ -339,7 +339,8 @@ forced-crash atomicity remain untested. Known schema-1 preservation/upgrade
 is covered; unknown-schema recovery is not. Malformed-state validation does not
 authenticate privileged edits or provide arbitrary hostile-Lua sandboxing.
 The Mineclonia custom singlenode mapgen remains disabled after an old-machine
-timeout. There is no graphical client build or optional modpack comparison.
+timeout. A local graphical client now builds and three forms have visual inspection; actual
+player interaction and optional modpack comparison remain untested.
 
 ## Preserved old-machine evidence
 
@@ -382,3 +383,30 @@ This is an engine fixture, not a v7 survival gathering/playthrough claim. All
 source hashes, regeneration, Lua syntax and whitespace checks passed. Evidence
 uses survival-. [Survival materials](survival-materials.md) details terrain and
 registry limitations. Continuing with the graphical client and inspection demo.
+
+## Graphical client and machine forms — 2026-10-18
+
+Optional local client build succeeded on the pinned engine with six hash-locked
+JPEG/PNG/FreeType packages extracted inside the repo and the existing system
+SDL2/OpenGL stack. No system packages or upstream source were changed. The first
+compile needed multiarch JPEG headers; an initial link selected static FreeType
+without its transitive libraries. The reusable builder quotes workspace paths and
+selects local shared libraries. Audio/download support is disabled. This is a
+local executed bootstrap, not a clean-machine graphics portability claim.
+
+The isolated demo joined on loopback and delivered all four machine forms.
+Captured and inspected Pulverizer, Dynamo and furnace forms. The cell capture
+was occluded and discarded; its visual inspection remains pending. Corrected
+invisible empty slots, crowded labels, irrelevant slots and a player inventory
+that exposed only 27 of 36 slots. New backgrounds are code-drawn, with no bitmap
+assets added. All 36 inventory slots and machine-specific controls now render.
+
+Idle cached forms refresh on actual mapblock activation. The first regression
+attempt incorrectly expected inactive core.load_area to execute LBMs; moved
+the assertion into the existing genuine eviction/reactivation phase, which
+passed. The final full suite passed 50 unit tests and all 20 engine phases.
+Lua syntax, Python compilation, shell syntax, source hashes and whitespace checks
+passed. Evidence uses graphical-. [Client/demo instructions](graphical-client.md)
+record commands, dependencies and validation boundaries. The demo remains open
+for the user's requested hands-on inventory/output check; no mouse/crafting
+actions or survival playthrough have been claimed.

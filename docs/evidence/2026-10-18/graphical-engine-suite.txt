@@ -1,0 +1,71 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+PASS machine rate thresholds use integer ramp
+PASS dynamo rate thresholds and full-buffer minimum
+PASS no water preserves unconsumed coal
+PASS no fuel preserves unconverted water
+PASS coal and water become separate persistent credits
+PASS one coal drains to 24000 RF and carries water credit
+PASS charcoal uses 16000 RF
+PASS signed overshoot is carried into both next batches
+PASS full storage dissipates minimum generation and debits credits
+PASS copying persisted credits preserves exact continuation
+PASS invalid resource bounds fail before mutation
+THERMAL MODEL UNIT PASS: 11 tests
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.053s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.047s
+
+OK
+CRAFTING CATALOG PASS: 23 material declarations and 15 recipes match reviewed source inputs
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+SURVIVAL MODEL PASS: three ores, five scatters, eight dust cooking and six pulverizing records
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:10:33: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 12:10:40: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 12:10:50: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 12:10:55: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-18 12:11:00: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-18 12:11:05: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+2026-10-18 12:11:24: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-18 12:11:30: ACTION[Server]: ERA INTEGRATION CORRUPT_SEED PASS: 49 malformed job/state cases paused without mutation; healthy neighbors continued; corrupt job saved
+2026-10-18 12:11:46: ACTION[Server]: ERA INTEGRATION CORRUPT_RESUME PASS: normal scheduler preserved corrupt job, healthy neighbor ran, explicit repair resumed exactly once
+2026-10-18 12:11:51: ACTION[Server]: ERA INTEGRATION CORRUPT_VERIFY PASS: repaired balances and outputs persisted without duplication
+2026-10-18 12:11:56: ACTION[Server]: ERA INTEGRATION NATIVE_SEED PASS: native water/fuel job saved; blocked bucket preserves inputs; schema-1 burn/job preserved; protected/busy upgrades denied; idle upgrade retains RF/items
+2026-10-18 12:12:06: ACTION[Server]: ERA INTEGRATION NATIVE_RESUME PASS: native SQLite continuation; four ingots cost 14000 of 24000 RF; charcoal 16000 RF; water credit, full-buffer loss and signed debt saved
+2026-10-18 12:12:11: ACTION[Server]: ERA INTEGRATION NATIVE_VERIFY PASS: second restart preserves outputs and signed credits; next batches carry debt; 11 malformed native states and two malformed native jobs pause without mutation
+2026-10-18 12:12:16: ACTION[Server]: ERA INTEGRATION BYPRODUCT_SEED PASS: preflight blocks RF/RNG; winning/losing decisions saved once; old schema-2 job retains primary-only semantics
+2026-10-18 12:12:21: ACTION[Server]: ERA INTEGRATION BYPRODUCT_RESUME PASS: blocked decisions survive restart without reroll; two primary outputs plus exact saved win/loss; no duplicated RF/items
+2026-10-18 12:12:32: ACTION[Server]: ERA INTEGRATION BYPRODUCT_VERIFY PASS: second restart preserves outputs; all 100 percentile outcomes yield ten nickel; eight malformed decisions pause without mutation
+2026-10-18 12:12:37: ACTION[Server]: ERA INTEGRATION SIDES_SEED PASS: seven source mode groups, panel/protection, split primary/byproduct outputs, configured furnace input, disabled auto-output, reserved-input lock and vertical ejector
+2026-10-18 12:12:42: ACTION[Server]: ERA INTEGRATION SIDES_RESUME PASS: side/rotation/toggle/ejector state survives SQLite; older layouts retain routing until explicit opt-in; six malformed port records pause
+2026-10-18 12:12:50: ACTION[Server]: ERA INTEGRATION SURVIVAL_SEED PASS: real scatter generates three ores only in stone/bands; ore drops/cooking; tin/silver components; gold/silver dust -> electrum -> energy cell; exact RF/secondary outputs
+2026-10-18 12:12:56: ACTION[Server]: ERA INTEGRATION SURVIVAL_RESUME PASS: sourced storage representative and RF persist through SQLite restart
+ENGINE INTEGRATION PASS: 20 real server processes; seed, resume, automatic, recipe_seed, recipe_resume, recipe_verify, lifecycle, corrupt_seed, corrupt_resume, corrupt_verify, native_seed, native_resume, native_verify, byproduct_seed, byproduct_resume, byproduct_verify, sides_seed, sides_resume, survival_seed, survival_resume

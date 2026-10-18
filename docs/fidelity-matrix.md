@@ -15,7 +15,7 @@ The [reference lock](../references/revelation-3.7.0.lock.json) supplies exact bu
 | Powered furnace | dust -> ingot | TE5 config base 20 RF/t; 1500 RF dust smelting and buffer-dependent rates implemented; effective registry parity pending |
 | Item transport | configured processor faces, separate primary/byproduct output and directional ejector | protected-transfer checks; normal item-side tables sourced; ducts, filters, RF side controls and broader storage unsupported |
 | Save/restart | RF/work/burn/profile/water/credits/jobs/inventories | restarts, changed recipe settings, eviction and invalid-state pause/repair tested; schema-1 -> 2 legacy preservation and explicit upgrade tested; forced-crash atomicity unresolved |
-| Player interaction | formspec, recipes and protected callbacks | engine verifies new crafting and denial of old shortcuts; actual player crafting/UI/multiplayer untested |
+| Player interaction | formspec, recipes and protected callbacks | engine verifies new crafting and denial of old shortcuts; three graphical machine forms inspected; actual player crafting/dragging/multiplayer untested |
 | Progression | fifteen native material/component/machine/cell patterns | exact class/config/script evidence; explicit native representatives; tin/silver survival acquisition and effective full registry unresolved |
 | Upgrades/redstone | absent | reference config confirms upgrades enabled; detailed behavior not implemented |
 | Tinkers' Construct 2 | absent | exact 2.13.0.183 build pinned; native smeltery/tools are a future branch |

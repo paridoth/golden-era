@@ -2,7 +2,7 @@
 -- Faces use Minecraft's fixed order: down, up, north, south, west, east.
 era.faces={{x=0,y=-1,z=0},{x=0,y=1,z=0},{x=0,y=0,z=-1},{x=0,y=0,z=1},{x=-1,y=0,z=0},{x=1,y=0,z=0}}
 local labels={"Down","Up","North","South","West","East"}
-local short={[0]="Off",[1]="In",[2]="Main",[3]="By",[4]="Out",[7]="All",[8]="I/O"}
+local short={[0]="Off",[1]="Input",[2]="Primary",[3]="Byproduct",[4]="Outputs",[7]="All slots",[8]="I/O"}
 local insertion={[1]=true,[5]=true,[6]=true,[7]=true,[8]=true}
 local slot_ids={src=0,dst=1,secondary=2}
 local function config(name)
@@ -77,14 +77,16 @@ end
 function era.ports_formspec(pos,name)
  local m=core.get_meta(pos); local c=config(name)
  if not c or m:get_string("profile")~="revelation" then return "" end
- if m:get_string("item_ports_version")=="" then return "button[0.5,3.2;7,0.6;enable_ports;Enable item-side rules for this existing layout]" end
+ if m:get_string("item_ports_version")=="" then return "button[0.5,3.5;11,0.7;enable_ports;Enable item-side rules for this existing layout]" end
  local result={}
  for face=0,5 do
   local mode=tonumber(m:get_string("item_ports"):sub(face+1,face+1))
-  local text=labels[face+1]..":"..(face==m:get_int("item_front") and "Panel" or short[c.side_types[(mode or 0)+1]] or "?")
-  result[#result+1]="button["..(0.5+face*1.5)..",3.2;1.4,0.6;side_"..face..";"..core.formspec_escape(text).."]"
+  local text=face==m:get_int("item_front") and "Panel" or short[c.side_types[(mode or 0)+1]] or "?"
+  local x=0.5+face*1.85
+  result[#result+1]="button["..x..",3.5;1.75,0.6;side_"..face..";"..labels[face+1].."]"
+  result[#result+1]="label["..x..",4.25;"..core.formspec_escape(core.colorize("#313131",text)).."]"
  end
- result[#result+1]="button[4.5,7.5;2.5,0.7;auto_output;Auto output: "..(m:get_string("auto_output")=="1" and "On" or "Off").."]"
- result[#result+1]="button[7.2,7.5;2.3,0.7;rotate_panel;Rotate panel]"
+ result[#result+1]="button[5.7,10.6;2.8,0.7;auto_output;Auto output: "..(m:get_string("auto_output")=="1" and "On" or "Off").."]"
+ result[#result+1]="button[8.7,10.6;2.8,0.7;rotate_panel;Rotate panel]"
  return table.concat(result)
 end

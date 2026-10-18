@@ -1,0 +1,38 @@
+[
+  {
+    "name": "libfreetype-dev",
+    "version": "2.13.2+dfsg-1ubuntu0.2",
+    "architecture": "amd64",
+    "sha256": "dd512109d33b182387be40cfe2b68b912b14f0753ba2a0769ca1950de0713a28"
+  },
+  {
+    "name": "libfreetype6",
+    "version": "2.13.2+dfsg-1ubuntu0.2",
+    "architecture": "amd64",
+    "sha256": "8c6d3bac5a6197fa2f48b2d56f04f3ffecaa7082eeab91b0939f97a40adc88a6"
+  },
+  {
+    "name": "libjpeg-turbo8-dev",
+    "version": "2.1.5-2ubuntu2",
+    "architecture": "amd64",
+    "sha256": "839aec481a9f365c5f1a9e444975f4cc9e944843ff54a849b18161f5be9a963d"
+  },
+  {
+    "name": "libjpeg-turbo8",
+    "version": "2.1.5-2ubuntu2",
+    "architecture": "amd64",
+    "sha256": "f68b5b23bc8a1688fb787d2aed7e2cdf895a73022f6a5025e183162dac4500b2"
+  },
+  {
+    "name": "libpng-dev",
+    "version": "1.6.43-5ubuntu0.7",
+    "architecture": "amd64",
+    "sha256": "db0d4bc0054ae0061524d009f75bd4409b10f596274f3a9aa07d5e3212812263"
+  },
+  {
+    "name": "libpng16-16t64",
+    "version": "1.6.43-5ubuntu0.7",
+    "architecture": "amd64",
+    "sha256": "863d6abb089b2820ceba98e6b18f06eaacc55f9b05827001e7b4021a9a7b246c"
+  }
+]
