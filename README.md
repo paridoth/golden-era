@@ -37,7 +37,8 @@ two compiler jobs. It assembles Mineclonia 0.124.0 and the custom mods under
 `runtime/games/golden_era`. Technic, Pipeworks and Mesecons are downloaded for
 inspection but are not installed into this runtime.
 
-The relocated build and 12 unit tests are recorded in
+The relocated build, 12 unit tests, engine crafting checks, and six-process
+restart/configuration suite are recorded in
 [docs/test-results.md](docs/test-results.md). That document distinguishes executed
 checks from remaining validation. Original migration evidence remains under
 `handoff/`; its source manifest describes the original archive, not later edits.

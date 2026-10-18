@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-18",
+  "user_timezone": "America/Chicago",
+  "command": "./scripts/test.sh --integration",
+  "exit_code": 0,
+  "unit_tests": 12,
+  "engine_processes": 6,
+  "crafting": "six shaped recipes, shifted rows, ingredient consumption, dust cooking and incomplete recipe rejection",
+  "recipe_restart": {
+    "initial": {
+      "cost": 4000,
+      "rate": 40,
+      "yield": 2
+    },
+    "changed": {
+      "cost": 900,
+      "rate": 75,
+      "yield": 3
+    },
+    "final_dust": 5,
+    "final_rf": 3100
+  },
+  "production_gameplay_changes": false,
+  "graphical_player_crafting_executed": false
+}

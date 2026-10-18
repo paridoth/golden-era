@@ -44,5 +44,6 @@ this work. A second redstone implementation also needs deliberate review.
 
 Custom Mineclonia singlenode mapgen previously exceeded the test budget under
 bundled Lua. Integration uses engine singlenode with
-`mcl_singlenode_mapgen=false`; play uses engine v7. Graphical terrain, native
-crafting, formspec behavior and survival progression remain unvalidated.
+`mcl_singlenode_mapgen=false`; play uses engine v7. Engine recipe resolution/ingredient consumption is covered by integration.
+Graphical terrain, player crafting callbacks, formspec behavior and survival
+progression remain unvalidated.

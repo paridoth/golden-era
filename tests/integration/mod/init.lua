@@ -1,5 +1,8 @@
 -- Actual engine nodes, metadata, ItemStacks, inventories and SQLite restart.
 local storage=core.get_mod_storage()
+local modpath=core.get_modpath("era_integration")
+local crafting=dofile(modpath.."/crafting.lua")
+local recipe_restart=dofile(modpath.."/recipe_restart.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -21,7 +24,9 @@ local function snapshot()
 end
 local function run()
  local phase=core.settings:get("era_test_phase")
- if phase=="automatic" then
+ if phase:sub(1,7)=="recipe_" then
+  recipe_restart(phase,storage,p(12),place,eq)
+ elseif phase=="automatic" then
   eq(inv("chest"):get_stack("main",1):get_count(),4,"completed outputs survived restart")
   local pos=p(8); place(pos,"era_thermal:furnace")
   local i=core.get_meta(pos):get_inventory(); i:set_stack("src",1,"era_materials:iron_dust")
@@ -37,6 +42,7 @@ local function run()
   end)
   return
  elseif phase=="seed" then
+  crafting(eq)
   for name,pos in pairs(positions) do
    local id=name=="cable" and "era_energy:cable" or name=="ejector" and "era_transport:ejector" or name=="chest" and "mcl_chests:chest_small" or "era_thermal:"..name
    place(pos,id)
@@ -55,11 +61,11 @@ local function run()
   place(positions.cable,"era_energy:cable")
   storage:set_string("snapshot",core.serialize(snapshot()))
   core.log("action","ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved")
- else
+ elseif phase=="resume" then
   local old=assert(core.deserialize(storage:get_string("snapshot")))
   local current=snapshot()
   for name,fields in pairs(old) do for key,value in pairs(fields) do eq(current[name][key],value,"restart "..name.."."..key) end end
-  -- Resume discovery explicitly; this also exercises the public LBM callback.
+  -- Resume discovery explicitly; natural LBM/mapblock reactivation is not tested.
   for _,pos in pairs(positions) do era.track(pos) end
   for i=1,2000 do era.step() end
   eq(inv("chest"):get_stack("main",1):get_name(),era.mcl.ingot,"result item")
@@ -90,14 +96,16 @@ local function run()
   inv("pulverizer"):set_stack("src",1,""); inv("pulverizer"):set_stack("dst",1,"")
   core.get_meta(positions.pulverizer):set_int("work",0)
   core.log("action","ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication")
+ else
+  error("Unknown integration phase: "..tostring(phase))
  end
  core.request_shutdown("Integration passed",false,0)
 end
 core.register_on_mods_loaded(function()
  core.after(0,function()
-  core.emerge_area(p(-1,-1),p(9,3),function(_,_,remaining)
+  core.emerge_area(p(-1,-1),p(13,3),function(_,_,remaining)
    if remaining==0 then core.after(0,function()
-    core.load_area(p(-1,-1),p(9,3))
+    core.load_area(p(-1,-1),p(13,3))
     local ok,err=xpcall(run,debug.traceback)
     if not ok then core.log("error","ERA INTEGRATION FAIL: "..err); core.request_shutdown("Integration failed",false,0) end
    end) end

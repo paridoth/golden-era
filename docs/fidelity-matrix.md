@@ -11,8 +11,8 @@ Functional evidence and historical authenticity are separate requirements.
 | Pulverizer | ore/raw iron -> dust | engine fixture; 2x output and RF values provisional; no byproducts |
 | Powered furnace | dust -> ingot | manual + automatic scheduler tests; RF/crafting provisional |
 | Item transport | fixed +X transfers and ordinary native chest | fixture + protected-transfer denial; no orientation, tubes, filters, locked/double chests |
-| Save/restart | RF/work/burn/job/inventory metadata | three clean processes; crash atomicity/migrations/config changes untested |
-| Player interaction | formspec, recipes, protected inventory callbacks | selected callbacks tested; actual crafting/UI/multiplayer untested |
+| Save/restart | RF/work/burn/job/inventory metadata | six clean processes including changed cost/rate/yield; crash atomicity/migrations untested |
+| Player interaction | formspec, recipes, protected inventory callbacks | engine recipe resolution/consumption and selected inventory callbacks tested; player crafting callbacks/UI/multiplayer untested |
 | Progression | provisional machine recipes | historical gates/survival playthrough absent |
 | Augments/redstone | absent | exact TE build and configs unresolved |
 | Tinkers-inspired tools/smeltery | absent | future milestone |

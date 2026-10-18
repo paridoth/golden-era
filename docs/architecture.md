@@ -42,9 +42,11 @@ properties do not provide crash-atomic transactions across mapblocks.
 
 Node metadata stores `energy`, `work`, `burn`, and `schema` (currently 1).
 An in-flight `job` serializes input name, result, total RF cost and processing
-rate. This intends to preserve a job if future recipe settings change. Clean
-SQLite restart persistence is covered by integration; configuration changes,
-corrupt job metadata, migrations and forced crashes still need dedicated tests.
+rate. A six-process integration suite covers clean SQLite restarts and changing the
+recipe cost/rate/yield across a restart: the saved job retains its old values,
+the next input uses the changed values, and completed results survive another
+restart back to defaults. Corrupt job metadata, schema migrations and forced
+crashes still need dedicated tests.
 
 Loaded positions are tracked; unavailable/ignore nodes are pruned. A load-time
 LBM re-registers machines, cables and ejectors. Offline generation is absent.

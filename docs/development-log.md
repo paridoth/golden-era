@@ -39,3 +39,25 @@ Git author supplied by the user: Josh <paridoth@gmail.com>, scoped to this
 repository. Baseline staging excludes upstream checkouts, tools, runtime,
 worlds and credentials. Original and destination test evidence is intentionally
 tracked through narrow log exceptions.
+
+## 2026-10-18 — crafting and changed-settings restart tests
+
+Expanded the existing integration harness from three to six processes. Added
+engine recipe-manager checks for all six shaped recipes plus dust cooking,
+including shifted rows, exact ingredient consumption, no replacements and
+incomplete-recipe rejection. These are engine API checks, not graphical player
+crafting or player crafting-callback tests.
+
+Added a persisted raw-iron job fixture with independently specified expected
+costs, tick boundaries, yields and balances. A restart changes cost/rate/yield
+from 4000/40/two to 900/75/three. The old job retains its saved semantics, the
+next input uses the new settings, overflow preserves pending work, and a third
+process confirms five dust and 3100 RF persist after defaults are restored.
+Unknown test phases now fail explicitly rather than falling into resume logic.
+
+Executed `./scripts/test.sh --integration`: exit 0, 12/12 unit tests, crafting
+checks and all six engine phases passed. Lua 5.1 syntax and Python compilation
+checks passed. No production gameplay changes were necessary. Destination
+restore evidence was preserved; new logs use the `expanded-` prefix. Historical
+values and recipes remain provisional. Hosted CI and graphical/multiplayer
+validation remain outstanding.

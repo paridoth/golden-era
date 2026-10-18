@@ -1,0 +1,21 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+UNIT PASS: 12 tests
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 09:38:40: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 09:38:46: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 09:38:54: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-18 09:39:00: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-18 09:39:05: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-18 09:39:10: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+ENGINE INTEGRATION PASS: six real server processes, crafting, SQLite persistence, automatic scheduler and changed recipe settings
