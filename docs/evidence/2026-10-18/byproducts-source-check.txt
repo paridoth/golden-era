@@ -1,0 +1,2 @@
+RF SOURCE PASS: reviewed TE/RedstoneFlux classes match locked original artifacts
+RF MODEL PASS: sourced basic RF/water parameters match native definitions

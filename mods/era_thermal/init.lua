@@ -17,7 +17,7 @@ era.register_recipe("era_thermal:pulverizer",era.mcl.raw_iron,"era_materials:iro
 -- Source-backed recipes for new/explicitly upgraded machines; raw iron is a native compatibility choice.
 for _,input in ipairs({era.mcl.ore,era.mcl.raw_iron}) do
  era.native_recipes["era_thermal:pulverizer"]=era.native_recipes["era_thermal:pulverizer"] or {}
- era.native_recipes["era_thermal:pulverizer"][input]={output="era_materials:iron_dust "..era.reference.ore_multiplier,cost=era.reference.pulverizer_cost,rate=era.reference.machine.max_rf_per_tick,schema=2,rate_mode="buffer"}
+ era.native_recipes["era_thermal:pulverizer"][input]={output="era_materials:iron_dust "..era.reference.ore_multiplier,cost=era.reference.pulverizer_cost,rate=era.reference.machine.max_rf_per_tick,schema=3,rate_mode="buffer",secondary_output=era.reference.secondary_output,secondary_chance=era.reference.secondary_chance}
 end
 era.native_recipes["era_thermal:furnace"]={["era_materials:iron_dust"]={output=era.mcl.ingot,cost=era.reference.furnace_cost,rate=era.reference.machine.max_rf_per_tick,schema=2,rate_mode="buffer"}}
 dofile(core.get_modpath("era_thermal").."/jobs.lua")
@@ -27,21 +27,34 @@ function era.process(pos,name,state)
  local recipe=era.resolve_recipe(pos,name,state)
  local pending=meta:get_string("job")~=""
  if not recipe then return end
- local operation=recipe
- if recipe.rate_mode=="buffer" then
-  operation={output=recipe.output,cost=recipe.cost,rate=era.model.rate(state.energy,era.reference.machine,false)}
+ if recipe.secondary_output and inv:get_size("secondary")==0 then inv:set_size("secondary",1) end
+ local room=inv:room_for_item("dst",recipe.output) and (not recipe.secondary_output or inv:room_for_item("secondary",recipe.secondary_output))
+ if not room or state.energy<=0 then return end
+ -- Decide once when paid work starts. This saved decision is never rerolled on block/restart.
+ local job=recipe
+ if not pending then
+  job={input=stack:get_name(),output=recipe.output,cost=recipe.cost,rate=recipe.rate,schema=recipe.schema,rate_mode=recipe.rate_mode}
+  if recipe.secondary_output then
+   job.secondary_output=recipe.secondary_output; job.secondary_chance=recipe.secondary_chance
+   job.secondary_roll=era.random_percent()
+   assert(era.valid_integer(job.secondary_roll,1) and job.secondary_roll<=100,"Invalid random percent")
+  end
  end
- local done,spent=era.ledger.process(state,operation,stack:get_count(),inv:room_for_item("dst",recipe.output))
+ local operation=job
+ if job.rate_mode=="buffer" then
+  operation={output=job.output,cost=job.cost,rate=era.model.rate(state.energy,era.reference.machine,false)}
+ end
+ local done,spent=era.ledger.process(state,operation,stack:get_count(),room)
  if done then
-  local output=inv:get_stack("dst",1); local leftover=output:add_item(recipe.output)
+  local output=inv:get_stack("dst",1); local leftover=output:add_item(job.output)
   assert(leftover:is_empty(),"preflight/commit mismatch")
+  if job.secondary_output and job.secondary_roll<=job.secondary_chance then
+   local secondary=inv:get_stack("secondary",1); local left=secondary:add_item(job.secondary_output)
+   assert(left:is_empty(),"secondary preflight/commit mismatch"); inv:set_stack("secondary",1,secondary)
+  end
   stack:take_item(1); inv:set_stack("src",1,stack); inv:set_stack("dst",1,output)
   meta:set_string("job", "")
- elseif spent>0 and not pending then
-  local job={input=stack:get_name(),output=recipe.output,cost=recipe.cost,rate=recipe.rate}
-  if recipe.schema then job.schema=recipe.schema; job.rate_mode=recipe.rate_mode end
-  meta:set_string("job",core.serialize(job))
- end
+ elseif spent>0 and not pending then meta:set_string("job",core.serialize(job)) end
 end
 
 function era.load_water(pos,state)

@@ -1,0 +1,5 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:43:00: ACTION[Server]: ERA INTEGRATION BYPRODUCT_SEED PASS: preflight blocks RF/RNG; winning/losing decisions saved once; old schema-2 job retains primary-only semantics
+2026-10-18 11:43:05: ACTION[Server]: ERA INTEGRATION BYPRODUCT_RESUME PASS: blocked decisions survive restart without reroll; two primary outputs plus exact saved win/loss; no duplicated RF/items
+2026-10-18 11:43:14: ACTION[Server]: ERA INTEGRATION BYPRODUCT_VERIFY PASS: second restart preserves outputs; all 100 percentile outcomes yield ten nickel; eight malformed decisions pause without mutation
+ENGINE INTEGRATION PASS: 3 real server processes; byproduct_seed, byproduct_resume, byproduct_verify

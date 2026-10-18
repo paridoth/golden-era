@@ -8,9 +8,9 @@ Feed The Beast, or the original mod authors.
 
 The working slice generates RF from coal or charcoal and water, pulverizes iron
 ore/raw iron into dust, smelts dust, and routes primary ingots into a native
-Mineclonia chest. New machines use sourced basic RF/water values and ten reviewed
-crafting patterns. Existing saves retain a legacy profile until explicitly
-upgraded. Byproducts, side controls, ducts, tin/silver acquisition and a complete
+Mineclonia chest. New machines use sourced basic RF/water values, persisted nickel byproducts
+and ten reviewed crafting patterns. Existing saves retain a legacy profile until explicitly
+upgraded. Side controls, ducts, tin/silver acquisition and a complete
 survival progression remain pending. See [native resources](docs/native-resources.md)
 and [native crafting](docs/native-crafting.md) for the supported boundaries.
 

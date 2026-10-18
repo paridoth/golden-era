@@ -56,8 +56,10 @@ most 4096 bytes and reject unknown fields and unsupported schemas.
 
 The original job contains exactly `input`, `output`, `cost`, `rate`. It retains its
 fixed processing rate, even across configuration changes and outer-state migration.
-New jobs add `schema=2` and `rate_mode="buffer"`, and belong to the Revelation
-profile. This mode selects the current pinned basic buffer ramp; cost/output are
+Primary-only dynamic jobs use `schema=2` and `rate_mode="buffer"`, and belong
+to the Revelation profile. New iron jobs use schema 3, adding `secondary_output`,
+`secondary_chance` (1..100) and `secondary_roll` (1..100). They require a secondary
+slot and preserve their saved chance decision across blocking/restarts. This mode selects the current pinned basic buffer ramp; cost/output are
 saved at job start. Its version semantics must be preserved during any later
 parameter/schema transition.
 
@@ -65,8 +67,8 @@ Cost and saved rate are finite positive metadata-range integers. Outputs are pla
 registered item names with an optional positive count fitting one native stack;
 parser truncation, wear/NBT payloads and unknown items are rejected. Inputs remain
 reserved until completion. Output-capacity preflight and commit never yield.
-Probabilistic secondary outputs and their persisted random decisions are not yet
-part of this job schema.
+Schema 3 is a job version; machine metadata remains schema 2. Older jobs retain
+their saved outputs and do not acquire a new secondary result.
 
 ## Repair boundary
 

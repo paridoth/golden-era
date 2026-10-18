@@ -72,7 +72,7 @@ and documented limitations together.
 
 The initial specification, ten native crafting patterns and basic RF/water model
 are implemented. Schema-1 migration preserves legacy behavior with an explicit
-upgrade path. Next add persisted secondary outputs, complete first-loop sides/
+upgrade path. Persisted nickel secondary outputs now have restart/overflow checks. Next complete first-loop sides/
 transport and storage crafting, and provide tin/silver acquisition before a
 graphical survival session. Further infrastructure work should address risks
 exposed by those milestones.

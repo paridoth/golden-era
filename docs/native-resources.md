@@ -24,8 +24,8 @@ persist together across clean restarts. Water credit is not additional fuel RF.
 Basic capacities are 40000 RF for the Dynamo, 20000 for each processor and 2000000
 for the buffer. Default processing costs are 4000 RF for one iron ore to two dust
 and 1500 RF for each dust to one ingot. Mineclonia raw iron remains an explicit
-native compatibility input; it did not exist in Minecraft 1.12.2. Secondary
-byproducts remain unimplemented, so the current loop emits primary iron only.
+native compatibility input; it did not exist in Minecraft 1.12.2. New iron jobs now include the [persisted nickel byproduct](byproducts.md);
+older in-flight jobs retain their primary-only semantics.
 
 Maximum rates are 40 RF/t for generation and 20 RF/t for processing. Rates depend
 on each machine's own stored RF using the sourced integer ramps in the static
@@ -93,7 +93,7 @@ water and 1000 RF water credit after one bucket. It repeats across SQLite
 restarts and checks charcoal, signed debt, full-buffer dissipation, bucket
 preflight, old burn/jobs, upgrades and malformed state.
 
-Remaining work includes persisted probabilistic byproducts, side controls and
+Remaining work includes side controls and
 transport, complete storage crafting, tin/silver survival acquisition, fluid
 pipes, augments, graphical/player inventory tests and original-runtime parity
 observations. Filled machines/credits cannot be dug; there is still no tested

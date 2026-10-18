@@ -290,6 +290,18 @@ logs. No original Java code or scripts ran. Real graphical/player interactions,
 new-model mapblock travel at scale, forced-crash recovery and full-pack parity
 remain unestablished.
 
+## Persisted secondary outputs — 2026-10-18
+
+The full suite passed 47 unit tests and all 16 server phases. Three added phases
+verify blocked preflight consumes no RNG/RF, winning and losing schema-3 jobs
+survive blocked outputs and SQLite restart without reroll, and completed outputs
+survive a second restart without duplication. They enumerate all 100 percentile
+outcomes through real processing (exactly ten nickel outputs), preserve an older
+schema-2 primary-only job, and pause eight malformed secondary records. The prior
+13 phases remain passing. Evidence uses the `byproducts-` prefix. Original TE
+roll timing is deliberately changed to a saved job-start decision; effective
+full-pack RNG sequence or forced-crash atomicity is not claimed.
+
 ## Scope of the suite
 
 The 13 original pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
@@ -301,9 +313,9 @@ more cover the bounded Thermal data import. Six catalog tests cover offline
 regeneration, concrete metadata, missing mappings/pattern keys, explicit override
 conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
-Engine integration creates one temporary SQLite world and runs thirteen separate
+Engine integration creates one temporary SQLite world and runs sixteen separate
 headless server processes (the original ten legacy regression phases plus three
-native model/migration phases), each with a 120-second timeout on loopback port
+native model/migration and three secondary-output phases), each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
 iron ore into four ingots in a native chest, with 32000 RF generated and 16000 RF

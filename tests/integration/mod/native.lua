@@ -63,7 +63,7 @@ return function(phase,storage,place,eq)
   eq(g:get_stack("empty",1):get_count(),1,"bucket consumed exactly once")
   assert(era.state(positions.pulverizer).work>0,"native partial job required")
   local job=assert(core.deserialize(core.get_meta(positions.pulverizer):get_string("job"),true))
-  eq(job.schema,2,"new job schema"); eq(job.rate_mode,"buffer","saved dynamic rate mode")
+  eq(job.schema,3,"new job schema"); eq(job.rate_mode,"buffer","saved dynamic rate mode")
   eq(job.cost,4000,"sourced ore cost")
   -- A started legacy burn is never reinterpreted as native RF or given free water.
   local old=p(10)

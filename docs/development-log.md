@@ -241,3 +241,20 @@ state, architecture and fidelity documentation. Lua syntax, Python compilation,
 generated data consistency, source hashes and whitespace checks passed. No
 forced-crash journal, native random-output persistence, original tick/duct parity,
 resource acquisition or graphical-client result is claimed.
+
+## 2026-10-18 — persisted nickel byproducts
+
+Added job schema 3 with a saved secondary output/chance/percentile, compiled from
+the pinned iron recipe and explicit material map. Both potential slots must fit
+before paid work or RNG. New jobs choose once at paid-work start and preserve the
+result across blocking/restarts; primary/secondary/input commit without yielding.
+Old fixed/schema-2 jobs stay primary-only. Original TE rolls at completion; this
+native timing difference is explicit. Added a secondary slot and deny player
+insertion into it. Malformed decisions pause before mutation.
+
+Focused three-phase tests and then the full 16-phase suite passed with 47 unit
+tests. Coverage includes preflight/no RNG, saved winning/losing jobs, old job
+semantics, exact RF/output/no duplication, all 100 percentile values (ten wins)
+and eight malformed decision cases. Source class hashes, regeneration, syntax
+and whitespace checks pass. Evidence uses byproducts-. Continuing with sides,
+transport and survival acquisition under the user's instruction to keep working.

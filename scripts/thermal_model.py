@@ -36,13 +36,20 @@ def compile_model(spec):
             and r['input']['id'] == 'oreIron']
     if len(iron) != 1 or iron[0]['output']['id'] != 'dustIron':
         raise ValueError('Unsupported iron processing record')
+    mapping = json.loads(thermal_catalog.REVIEW.read_text())
+    secondary = iron[0]['secondary']
+    if secondary['stack']['kind'] != 'ore_group' or secondary['stack']['count'] != 1:
+        raise ValueError('Unsupported secondary output')
+    secondary_output = thermal_catalog.mapped('ore:' + secondary['stack']['id'], mapping['mappings'])
     return {'schema': 1, 'pack_sha256': spec['lock_content_sha256'],
             'spec_sha256': reference.sha256(reference.canonical(spec)),
             'generator': generator, 'machine': energy('machine_energy'),
             'buffer': {'capacity_rf': config['Storage.Cell.BaseCapacity'],
                        'receive_rf': config['Storage.Cell.BaseReceive'], 'send_rf': config['Storage.Cell.BaseSend']},
             'pulverizer_cost': iron[0]['energy_rf'], 'furnace_cost': rules['dust_smelting']['energy_rf'],
-            'ore_multiplier': iron[0]['output']['count']}
+            'ore_multiplier': iron[0]['output']['count'],
+            'secondary_output': secondary_output, 'secondary_chance': secondary['chance_percent'],
+            'mapping_sha256': reference.sha256(reference.canonical(mapping))}
 
 
 def render(value):
