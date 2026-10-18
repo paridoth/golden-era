@@ -84,6 +84,7 @@ exposed Mineclonia's global creative inventory callback: external puts become a
 full stack (normally 64). That invalidated the quantity check. The new survival
 demo avoids that callback; a missing number on a singleton is normal engine
 rendering. A callback-level engine regression reproduces creative expansion and
-verifies that survival withdrawals preserve exactly one/four items. A real
-mouse withdrawal in the corrected demo still needs the user's confirmation.
+verifies that survival withdrawals preserve exactly one/four items. The user subsequently confirmed four ingots in the corrected demo after
+collecting them. This confirms that output/withdrawal check; machine input drags,
+crafting and a full survival playthrough remain separate.
 Filled machines still require a tested relocation/drain path.

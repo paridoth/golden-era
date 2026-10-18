@@ -439,3 +439,10 @@ Evidence uses player-counts-.
 The complete suite passed **50 unit tests and all 21 engine processes** after
 the correction. Lua syntax, Python compilation and whitespace checks passed.
 The corrected demo remains open for a real survival-mode withdrawal check.
+
+## User-confirmed output withdrawal — 2026-10-18
+
+The user confirmed **four ingots** after collecting the corrected demo output.
+This establishes the observed completed-batch/chest-to-player count check. It does
+not claim machine-input drags, actual crafting, multiplayer or survival gathering.
+Continuing with safe relocation for filled machines.
