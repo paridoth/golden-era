@@ -93,8 +93,8 @@ water and 1000 RF water credit after one bucket. It repeats across SQLite
 restarts and checks charcoal, signed debt, full-buffer dissipation, bucket
 preflight, old burn/jobs, upgrades and malformed state.
 
-Remaining work includes side controls and
-transport, complete storage crafting, tin/silver survival acquisition, fluid
-pipes, augments, graphical/player inventory tests and original-runtime parity
+Item-side controls, directional ejection, basic cell crafting and tin/silver/lead
+acquisition are implemented. Remaining work includes ducts, fluid pipes, augments,
+graphical/player inventory tests and original-runtime parity
 observations. Filled machines/credits cannot be dug; there is still no tested
 wrench/discharge/drain tool. The state code does not supply forced-crash atomicity.

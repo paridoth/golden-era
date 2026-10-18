@@ -216,6 +216,62 @@
       }
     },
     {
+      "machine": "pulverizer",
+      "input": {
+        "kind": "ore_group",
+        "id": "oreSilver",
+        "count": 1
+      },
+      "energy_rf": 4000,
+      "output": {
+        "kind": "ore_group",
+        "id": "dustSilver",
+        "count": 2
+      },
+      "secondary": {
+        "stack": {
+          "kind": "ore_group",
+          "id": "dustLead",
+          "count": 1
+        },
+        "chance_percent": 10
+      },
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/machine/pulverizer/pulverizer_tf.json",
+        "sha256": "4c51ccbe272a5485041a4f9e9b8fcceedf2976b881d86cc27183ea53f05aad76",
+        "pointer": "/pulverizer/2"
+      }
+    },
+    {
+      "machine": "pulverizer",
+      "input": {
+        "kind": "ore_group",
+        "id": "oreLead",
+        "count": 1
+      },
+      "energy_rf": 4000,
+      "output": {
+        "kind": "ore_group",
+        "id": "dustLead",
+        "count": 2
+      },
+      "secondary": {
+        "stack": {
+          "kind": "ore_group",
+          "id": "dustSilver",
+          "count": 1
+        },
+        "chance_percent": 10
+      },
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/machine/pulverizer/pulverizer_tf.json",
+        "sha256": "4c51ccbe272a5485041a4f9e9b8fcceedf2976b881d86cc27183ea53f05aad76",
+        "pointer": "/pulverizer/3"
+      }
+    },
+    {
       "machine": "steam_dynamo",
       "input": {
         "kind": "item",

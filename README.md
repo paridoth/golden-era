@@ -9,9 +9,10 @@ Feed The Beast, or the original mod authors.
 The working slice generates RF from coal or charcoal and water, pulverizes iron
 ore/raw iron into dust, smelts dust, and routes primary ingots into a native
 Mineclonia chest. New machines use sourced basic RF/water values, persisted nickel byproducts
-and ten reviewed crafting patterns. Existing saves retain a legacy profile until explicitly
-upgraded. Side controls, ducts, tin/silver acquisition and a complete
-survival progression remain pending. See [native resources](docs/native-resources.md)
+item-side controls and fifteen reviewed crafting patterns. Existing saves retain a legacy profile until explicitly
+upgraded. Tin, silver and lead generate in new terrain and support the first
+factory/storage crafting path. Ducts and a complete survival playthrough remain
+pending. See [native resources](docs/native-resources.md)
 and [native crafting](docs/native-crafting.md) for the supported boundaries.
 
 The user selected Revelation on October 18, 2026, superseding the earlier
@@ -109,18 +110,19 @@ At a common y-level, use these relative coordinates. East is +X.
 
 For new machines, put one coal in the generator's fuel slot, a water bucket in
 its Water slot, leave Empty free, and put two iron ore or raw iron items in the
-pulverizer's input. The intended result is four ingots in the chest. The
+pulverizer's input. Configure the furnace's west face as In. The intended result is four ingots in the chest. The
 integration harness constructs this fixture at y=200 using engine APIs. Manual
 placement, formspec use and survival progression still need graphical testing.
 Machines with invalid saved state pause with a diagnostic and retain their
 contents; see the saved-state repair notes. Machines containing RF, work,
 remaining burn or items cannot be dug; there is
-no discharge/wrench tool yet. Transport only supports fixed eastward routing.
+no discharge/wrench tool yet. Processor faces and ejectors are configurable; see [item sides](docs/item-sides.md).
 
 ## Development records
 
 - [Architecture and invariants](docs/architecture.md)
 - [Native crafting and its current limits](docs/native-crafting.md)
+- [Survival materials and basic energy cell](docs/survival-materials.md)
 - [Native RF/water operation and migration](docs/native-resources.md)
 - [Saved-state validation and repair](docs/save-state.md)
 - [Historical reference and provisional values](docs/historical-reference.md)

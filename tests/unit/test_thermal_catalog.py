@@ -19,8 +19,8 @@ class CatalogTests(unittest.TestCase):
     def test_committed_catalog_reproduces_without_original_downloads(self):
         result = catalog.compile_catalog(self.review, self.spec)
         self.assertEqual(catalog.render(result), catalog.OUTPUT.read_text())
-        self.assertEqual(len(result['recipes']), 10)
-        self.assertEqual(len(result['items']), 14)
+        self.assertEqual(len(result['recipes']), 15)
+        self.assertEqual(len(result['items']), 23)
 
     def test_concrete_metadata_identity_is_preserved(self):
         for meta, expected in [(0, 'era_materials:iron_dust'), (69, 'era_materials:nickel_dust')]:

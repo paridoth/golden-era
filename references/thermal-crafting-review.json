@@ -12,7 +12,11 @@
         "preInit()Z: material metadata and ore-group registration",
         "initialize()Z offsets 955..970: copper/tin gear selection",
         "addConfigurableGearRecipe(ItemStack,String)V: AlternateGears conditional",
-        "initialize()Z offsets 1166..1279: gold/silver coil patterns"
+        "initialize()Z offsets 1166..1279: gold/silver coil patterns",
+        "initialize()Z offsets 273..294: gold dust + silver dust -> two electrum dust",
+        "initialize()Z offsets 982..988: default lead gear",
+        "initialize()Z offsets 1282..1337: electrum coil",
+        "initialize()Z offsets 0..132: dust smelting"
       ]
     },
     {
@@ -31,7 +35,9 @@
       "sha256": "a51a02f86bb5e44e4b9bfd210222774389911b17a0810d461e5209c351b22949",
       "locations": [
         "preInit()Z offsets 22..29: frameMachine metadata 0",
-        "initialize()Z offsets 0..65: iron/glass/tin-gear frame"
+        "initialize()Z offsets 0..65: iron/glass/tin-gear frame",
+        "preInit()Z offsets 43..52: frameCell0 metadata 128",
+        "initialize()Z offsets 136..201: iron/glass/lead-gear frame"
       ]
     },
     {
@@ -70,6 +76,34 @@
       "locations": [
         "initialize()V offsets 14..168: normal slot groups, side types and default sides"
       ]
+    },
+    {
+      "id": "cell",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/storage/BlockCell.class",
+      "sha256": "9642d127846f20a7411f33b4ecfb926da939a6d52fdfa415d04c620d995e312a",
+      "locations": [
+        "addRecipes()V offsets 0..95: basic cell frame/lead/electrum-coil/redstone-block pattern"
+      ]
+    },
+    {
+      "id": "ore_smelting",
+      "jar": "mods/ThermalFoundation-1.12.2-2.6.7.1-universal.jar",
+      "entry": "cofh/thermalfoundation/block/BlockOre.class",
+      "sha256": "69777614cdf76041e45cf10f89f952f3e08f4f4a77c8801668f43f0c97c43aa8",
+      "locations": [
+        "preInit()Z: ore identities/groups",
+        "initialize()Z offsets 12..45: tin/silver/lead ore smelting"
+      ]
+    },
+    {
+      "id": "metal_pulverizing",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/util/managers/machine/PulverizerManager.class",
+      "sha256": "1fe42daf71c8bbd4df13bed8d964b8bd3568797e5b4593602f0d8d31a68e84e3",
+      "locations": [
+        "addDefaultRecipes(String,String)V offsets 437..449: ingot -> one dust, DEFAULT_ENERGY / 2 = 2000 RF"
+      ]
     }
   ],
   "config_evidence": [
@@ -96,7 +130,8 @@
     "fields": {
       "field_150331_J": "PISTON",
       "field_150336_V": "BRICK_BLOCK",
-      "field_151145_ak": "FLINT"
+      "field_151145_ak": "FLINT",
+      "field_150451_bX": "REDSTONE_BLOCK"
     }
   },
   "native_foundation": {
@@ -178,6 +213,51 @@
       "source": "item:thermalexpansion:frame:0",
       "native": "era_materials:machine_frame",
       "description": "Basic Machine Frame"
+    },
+    {
+      "source": "item:thermalfoundation:material:66",
+      "native": "era_materials:silver_dust",
+      "description": "Silver Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:67",
+      "native": "era_materials:lead_dust",
+      "description": "Lead Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:97",
+      "native": "era_materials:electrum_dust",
+      "description": "Electrum Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:131",
+      "native": "era_materials:lead_ingot",
+      "description": "Lead Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:133",
+      "native": "era_materials:nickel_ingot",
+      "description": "Nickel Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:161",
+      "native": "era_materials:electrum_ingot",
+      "description": "Electrum Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:259",
+      "native": "era_materials:lead_gear",
+      "description": "Lead Gear"
+    },
+    {
+      "source": "item:thermalfoundation:material:515",
+      "native": "era_materials:electrum_coil",
+      "description": "Redstone Conductance Coil"
+    },
+    {
+      "source": "item:thermalexpansion:frame:128",
+      "native": "era_materials:cell_frame",
+      "description": "Basic Energy Cell Frame"
     }
   ],
   "mappings": {
@@ -218,7 +298,25 @@
     "item:minecraft:flint:0": "mcl_core:flint",
     "symbol:machineFurnace": "era_thermal:furnace",
     "symbol:machinePulverizer": "era_thermal:pulverizer",
-    "symbol:dynamoSteam": "era_thermal:generator"
+    "symbol:dynamoSteam": "era_thermal:generator",
+    "item:thermalfoundation:material:66": "era_materials:silver_dust",
+    "ore:dustSilver": "era_materials:silver_dust",
+    "item:thermalfoundation:material:67": "era_materials:lead_dust",
+    "ore:dustLead": "era_materials:lead_dust",
+    "item:thermalfoundation:material:97": "era_materials:electrum_dust",
+    "ore:dustElectrum": "era_materials:electrum_dust",
+    "item:thermalfoundation:material:131": "era_materials:lead_ingot",
+    "ore:ingotLead": "era_materials:lead_ingot",
+    "item:thermalfoundation:material:133": "era_materials:nickel_ingot",
+    "ore:ingotNickel": "era_materials:nickel_ingot",
+    "item:thermalfoundation:material:161": "era_materials:electrum_ingot",
+    "ore:ingotElectrum": "era_materials:electrum_ingot",
+    "item:thermalfoundation:material:259": "era_materials:lead_gear",
+    "ore:gearLead": "era_materials:lead_gear",
+    "item:thermalfoundation:material:515": "era_materials:electrum_coil",
+    "item:thermalexpansion:frame:128": "era_materials:cell_frame",
+    "symbol:cellBasic": "era_thermal:buffer",
+    "item:minecraft:redstone_block:0": "mcl_redstone_torch:redstoneblock"
   },
   "recipes": [
     {
@@ -341,6 +439,86 @@
       },
       "evidence": [
         "machines"
+      ]
+    },
+    {
+      "id": "lead_gear",
+      "output": "ore:gearLead",
+      "pattern": [
+        " L ",
+        "L L",
+        " L "
+      ],
+      "key": {
+        "L": "ore:ingotLead"
+      },
+      "evidence": [
+        "materials",
+        "gear_helper"
+      ]
+    },
+    {
+      "id": "electrum_coil",
+      "output": "item:thermalfoundation:material:515",
+      "pattern": [
+        "R  ",
+        " E ",
+        "  R"
+      ],
+      "key": {
+        "R": "ore:dustRedstone",
+        "E": "ore:ingotElectrum"
+      },
+      "evidence": [
+        "materials"
+      ]
+    },
+    {
+      "id": "cell_frame",
+      "output": "item:thermalexpansion:frame:128",
+      "pattern": [
+        "IGI",
+        "GCG",
+        "IGI"
+      ],
+      "key": {
+        "I": "ore:ingotIron",
+        "G": "ore:blockGlass",
+        "C": "ore:gearLead"
+      },
+      "evidence": [
+        "frame"
+      ]
+    },
+    {
+      "id": "cell_basic",
+      "output": "symbol:cellBasic",
+      "pattern": [
+        " X ",
+        "ICI",
+        " P "
+      ],
+      "key": {
+        "X": "item:minecraft:redstone_block:0",
+        "I": "ore:ingotLead",
+        "C": "item:thermalexpansion:frame:128",
+        "P": "item:thermalfoundation:material:515"
+      },
+      "evidence": [
+        "cell"
+      ]
+    },
+    {
+      "id": "electrum_dust",
+      "output": "ore:dustElectrum",
+      "kind": "shapeless",
+      "count": 2,
+      "ingredients": [
+        "ore:dustGold",
+        "ore:dustSilver"
+      ],
+      "evidence": [
+        "materials"
       ]
     }
   ],

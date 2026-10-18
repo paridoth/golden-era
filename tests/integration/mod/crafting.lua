@@ -41,11 +41,20 @@ return function(eq)
  craft({"",sc,"",m.ingot,cg,m.ingot,copper,m.redstone,copper},"era_thermal:generator")
  craft({"","mcl_pistons:piston_off","","mcl_core:flint",frame,"mcl_core:flint",cg,gc,cg},"era_thermal:pulverizer")
  craft({"",m.redstone,"","mcl_core:brick_block",frame,"mcl_core:brick_block",cg,gc,cg},"era_thermal:furnace")
- -- Keep the still-provisional storage/transport fixture checks.
+ local lead="era_materials:lead_ingot"
+ local lg="era_materials:lead_gear"
+ local cf="era_materials:cell_frame"
+ local ec="era_materials:electrum_coil"
+ craft({"",lead,"",lead,"",lead,"",lead,""},lg)
+ craft({m.ingot,"mcl_core:glass",m.ingot,"mcl_core:glass",lg,"mcl_core:glass",m.ingot,"mcl_core:glass",m.ingot},cf)
+ craft({m.redstone,"","","","era_materials:electrum_ingot","","","",m.redstone},ec)
+ craft({"","mcl_redstone_torch:redstoneblock","",lead,cf,lead,"",ec,""},"era_thermal:buffer")
+ craft({"era_materials:silver_dust","era_materials:gold_dust"},"era_materials:electrum_dust 2")
+ -- Cable/ejector patterns remain native engineering fixtures.
  local function old_machine(center)
   return {m.ingot,m.ingot,m.ingot,m.stone,center,m.stone,m.ingot,m.redstone,m.ingot}
  end
- craft(old_machine(m.redstone),"era_thermal:buffer")
+ deny(old_machine(m.redstone),"old buffer shortcut removed")
  craft({"","","","","","",m.ingot,m.redstone,m.ingot},"era_energy:cable 8")
  craft({"","","",m.ingot,m.chest,m.redstone,"","",""},"era_transport:ejector")
  craft({"era_materials:iron_dust"},m.ingot,"cooking",10)
@@ -55,5 +64,5 @@ return function(eq)
  deny(old_machine(m.raw_iron),"old pulverizer shortcut removed")
  deny(old_machine("era_materials:iron_dust"),"old furnace shortcut removed")
  deny({"","mcl_pistons:piston_off","","mcl_core:flint",frame,"mcl_core:flint",cg,sc,cg},"wrong coil cannot craft pulverizer")
- core.log("action","ERA CRAFTING PASS: ten reference catalog recipes, exact consumption, pack overrides, six denied shortcuts/substitutions, provisional storage/transport and dust cooking")
+ core.log("action","ERA CRAFTING PASS: fifteen reference catalog recipes, exact consumption, pack overrides, seven denied shortcuts/substitutions, provisional transport and dust cooking")
 end

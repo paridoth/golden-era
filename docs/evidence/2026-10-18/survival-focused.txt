@@ -1,0 +1,6 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:01:49: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 12:01:55: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 12:02:01: ACTION[Server]: ERA INTEGRATION SURVIVAL_SEED PASS: real scatter generates three ores only in stone/bands; ore drops/cooking; tin/silver components; gold/silver dust -> electrum -> energy cell; exact RF/secondary outputs
+2026-10-18 12:02:07: ACTION[Server]: ERA INTEGRATION SURVIVAL_RESUME PASS: sourced storage representative and RF persist through SQLite restart
+ENGINE INTEGRATION PASS: 4 real server processes; seed, resume, survival_seed, survival_resume

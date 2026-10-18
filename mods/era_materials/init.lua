@@ -13,8 +13,12 @@ function era.register_catalog_crafts(phase)
  end
 end
 era.register_catalog_crafts("materials")
--- Retain the existing engineering cooking recipe until the processing model is migrated.
-core.register_craft({type="cooking",output=era.mcl.ingot,recipe="era_materials:iron_dust",cooktime=10})
+era.survival=dofile(core.get_modpath("era_materials").."/survival.lua")
+assert(era.survival.schema==1,"Unsupported survival catalog")
+for _,recipe in ipairs(era.survival.cooking) do
+ core.register_craft({type="cooking",output=recipe.output,recipe=recipe.input,cooktime=recipe.seconds})
+end
+dofile(core.get_modpath("era_materials").."/ores.lua")
 core.register_on_mods_loaded(function()
  for _,recipe in ipairs(era.catalog.recipes) do
   assert(core.registered_items[ItemStack(recipe.output):get_name()],"Missing catalog output "..recipe.id)

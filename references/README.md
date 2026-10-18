@@ -89,7 +89,7 @@ for the scoped native implementation and parity workflow.
 identities, chosen native representatives and reviewed default patterns. Three
 pack overrides are taken from the Thermal intermediate specification. The
 compiler produces `mods/era_materials/catalog.lua`, which the native game uses
-for 14 materials and ten recipes. See [native crafting](../docs/native-crafting.md)
+for 23 materials and fifteen recipes. See [native crafting](../docs/native-crafting.md)
 for evidence, generation commands and gameplay limitations. `check-generated`
 runs offline; full `check` verifies originals in the ignored cache. The additional
 MCP mapping used to resolve vanilla field names is hash-pinned in the review.
@@ -98,7 +98,14 @@ MCP mapping used to resolve vanilla field names is hash-pinned in the review.
 
 `thermal_model.py check` reproduces the native RF/water parameters from the
 committed static specification. `fetch-sources` and `check-sources` additionally
-verify original TE/RedstoneFlux classes anchored by `thermal-runtime-review.json`.
+verify original TE/CoFHCore/RedstoneFlux classes anchored by `thermal-runtime-review.json`.
 Those classes establish storage clamping and dynamo update/debit behavior; native
 startup timing and graph policy remain explicit implementation boundaries.
 See [native resources](../docs/native-resources.md) and [save migration](../docs/save-state.md).
+
+## Native survival materials
+
+`thermal_survival.py check-sources` checks the locked ore config and reviewed
+classes. `check` reproduces native ore/dust/processing definitions offline.
+Tin/silver/lead bands and weights come from the actual pack; Luanti scatter is
+an explicitly approximate terrain adapter. See [survival materials](../docs/survival-materials.md).

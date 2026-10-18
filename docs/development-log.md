@@ -273,3 +273,23 @@ send dust into another fixture's chest. Separated the native fixture and reran
 the complete suite successfully. Transfer cadence/default auto-output, RF faces
 and Thermal Dynamics ducts remain native gaps; see [item sides](item-sides.md).
 Continuing with survival materials and storage crafting.
+
+## Survival materials and basic cell — 2026-10-18
+
+Passed 50 unit tests and all 20 engine phases. Three compiler tests reject
+unsupported dimension/distribution/band/vein rules, unresolved secondary outputs,
+missing selected recipes and a stale pack. The native catalog now has 23 materials
+and 15 patterns. Added tin/silver/lead ores, stone-only scatter from locked bands
+and approximate weighted densities, ore/dust cooking, six Pulverizer recipes,
+electrum mixing and the reviewed basic cell recipe. Old cell shortcuts reject;
+existing node IDs/saves are retained. The first startup caught a wrong native
+redstone-block ID; corrected the map and declared the actual supplying mod.
+
+The focused four-phase run and then full 20-phase suite passed. Actual engine
+scatter in a solid-stone VoxelManip produces all three ores within native bands
+and none in air. Checks cover drops/cooking, tin/silver components, ingot dust,
+electrum-to-cell crafting, exact RF/secondary outputs and cell SQLite persistence.
+This is an engine fixture, not a v7 survival gathering/playthrough claim. All
+source hashes, regeneration, Lua syntax and whitespace checks passed. Evidence
+uses survival-. [Survival materials](survival-materials.md) details terrain and
+registry limitations. Continuing with the graphical client and inspection demo.

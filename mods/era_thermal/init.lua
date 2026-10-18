@@ -8,7 +8,7 @@ for key,value in pairs(era.rates) do
  if setting then assert(era.valid_integer(setting,1),"Invalid setting era_"..key); era.rates[key]=setting end
 end
 era.register_machine("era_thermal:generator",{description="Steam Dynamo",capacity=era.reference.generator.capacity_rf,legacy_capacity=32000,producer=true})
-era.register_machine("era_thermal:buffer",{description="RF Buffer",capacity=era.reference.buffer.capacity_rf,legacy_capacity=100000,buffer=true})
+era.register_machine("era_thermal:buffer",{description="Basic Energy Cell",capacity=era.reference.buffer.capacity_rf,legacy_capacity=100000,buffer=true})
 era.register_machine("era_thermal:pulverizer",{description="Pulverizer",capacity=era.reference.machine.capacity_rf,legacy_capacity=8000,processor=true})
 era.register_machine("era_thermal:furnace",{description="Redstone Furnace",capacity=era.reference.machine.capacity_rf,legacy_capacity=8000,processor=true})
 era.register_recipe("era_thermal:pulverizer",era.mcl.ore,"era_materials:iron_dust "..era.rates.ore_multiplier,era.rates.pulverizer_cost,era.rates.process_rate)
@@ -20,6 +20,17 @@ for _,input in ipairs({era.mcl.ore,era.mcl.raw_iron}) do
  era.native_recipes["era_thermal:pulverizer"][input]={output="era_materials:iron_dust "..era.reference.ore_multiplier,cost=era.reference.pulverizer_cost,rate=era.reference.machine.max_rf_per_tick,schema=3,rate_mode="buffer",secondary_output=era.reference.secondary_output,secondary_chance=era.reference.secondary_chance}
 end
 era.native_recipes["era_thermal:furnace"]={["era_materials:iron_dust"]={output=era.mcl.ingot,cost=era.reference.furnace_cost,rate=era.reference.machine.max_rf_per_tick,schema=2,rate_mode="buffer"}}
+-- The supported survival subset extends native profiles; old jobs/legacy registries stay intact.
+for _,recipe in ipairs(era.survival.pulverizing) do
+ local job={output=recipe.output,cost=recipe.cost,rate=era.reference.machine.max_rf_per_tick,schema=2,rate_mode="buffer"}
+ if recipe.secondary_output then
+  job.schema=3; job.secondary_output=recipe.secondary_output; job.secondary_chance=recipe.secondary_chance
+ end
+ era.native_recipes["era_thermal:pulverizer"][recipe.input]=job
+end
+for _,recipe in ipairs(era.survival.cooking) do
+ era.native_recipes["era_thermal:furnace"][recipe.input]={output=recipe.output,cost=era.reference.furnace_cost,rate=era.reference.machine.max_rf_per_tick,schema=2,rate_mode="buffer"}
+end
 dofile(core.get_modpath("era_thermal").."/jobs.lua")
 function era.process(pos,name,state)
  if not era.machine_ready(pos,name,state) then return end
@@ -65,8 +76,7 @@ function era.load_water(pos,state)
  bucket:take_item(1); inv:set_stack("water",1,bucket); state.water=state.water+1000
  return true
 end
--- Three reviewed machine crafting patterns. Side controls and ducts remain native fixtures.
+-- Reviewed machines and basic energy cell; transport crafting remains native.
 era.register_catalog_crafts("thermal")
--- Storage and cable progression are still engineering fixtures.
-core.register_craft({output="era_thermal:buffer",recipe={{era.mcl.ingot,era.mcl.ingot,era.mcl.ingot},{era.mcl.stone,era.mcl.redstone,era.mcl.stone},{era.mcl.ingot,era.mcl.redstone,era.mcl.ingot}}})
+-- Cable progression is still an engineering fixture.
 core.register_craft({output="era_energy:cable 8",recipe={{era.mcl.ingot,era.mcl.redstone,era.mcl.ingot}}})

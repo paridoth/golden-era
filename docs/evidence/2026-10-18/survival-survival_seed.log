@@ -1,0 +1,10 @@
+2026-10-18 12:04:42: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 12:04:43: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-a9h0npjt/world]
+2026-10-18 12:04:43: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 12:04:45: ACTION[Server]: ERA INTEGRATION SURVIVAL_SEED PASS: real scatter generates three ores only in stone/bands; ore drops/cooking; tin/silver components; gold/silver dust -> electrum -> energy cell; exact RF/secondary outputs
+2026-10-18 12:04:45: ACTION[Main]: Server: Shutting down

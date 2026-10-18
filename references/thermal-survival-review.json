@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "pack_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+  "config": {
+    "path": "config/cofh/world/01_thermalfoundation_ores.json",
+    "sha256": "4ef641d7f391101fcb76a9d85550226663915ccf529a285b3f0095f2a9ddcd5f"
+  },
+  "ore_features": {
+    "tin": {
+      "distribution": "uniform",
+      "generator": {
+        "block": {
+          "name": "thermalfoundation:ore",
+          "metadata": 1
+        },
+        "material": "minecraft:stone",
+        "cluster-size": 8
+      },
+      "cluster-count": 7,
+      "min-height": 20,
+      "max-height": 55,
+      "retrogen": "true",
+      "biome": "all",
+      "dimension": {
+        "restriction": "blacklist",
+        "value": [
+          -1,
+          1
+        ]
+      }
+    },
+    "silver": {
+      "distribution": "uniform",
+      "generator": {
+        "block": [
+          {
+            "name": "thermalfoundation:ore",
+            "metadata": 2,
+            "weight": 80
+          },
+          {
+            "name": "thermalfoundation:ore",
+            "metadata": 3,
+            "weight": 20
+          }
+        ],
+        "material": "minecraft:stone",
+        "cluster-size": 8
+      },
+      "cluster-count": 4,
+      "min-height": 5,
+      "max-height": 30,
+      "retrogen": "true",
+      "biome": "all",
+      "dimension": {
+        "restriction": "blacklist",
+        "value": [
+          -1,
+          1
+        ]
+      }
+    },
+    "lead": {
+      "distribution": "uniform",
+      "generator": {
+        "block": [
+          {
+            "name": "thermalfoundation:ore",
+            "metadata": 3,
+            "weight": 90
+          },
+          {
+            "name": "thermalfoundation:ore",
+            "metadata": 2,
+            "weight": 10
+          }
+        ],
+        "material": "minecraft:stone",
+        "cluster-size": 8
+      },
+      "cluster-count": 4,
+      "min-height": 10,
+      "max-height": 35,
+      "retrogen": "true",
+      "biome": "all",
+      "dimension": {
+        "restriction": "blacklist",
+        "value": [
+          -1,
+          1
+        ]
+      }
+    }
+  },
+  "policy": "Native scatter approximates configured densities/bands; weighted mixtures use independent scatters. No retrogen or cross-engine vein/seed parity. Mineclonia supplies copper/iron/gold.",
+  "ore_identities": {
+    "1": "tin",
+    "2": "silver",
+    "3": "lead"
+  },
+  "pulverizer_ingots": {
+    "gold": "mcl_core:gold_ingot",
+    "silver": "era_materials:silver_ingot"
+  },
+  "cooking": {
+    "iron": "mcl_core:iron_ingot",
+    "gold": "mcl_core:gold_ingot",
+    "copper": "mcl_copper:copper_ingot",
+    "tin": "era_materials:tin_ingot",
+    "silver": "era_materials:silver_ingot",
+    "lead": "era_materials:lead_ingot",
+    "nickel": "era_materials:nickel_ingot",
+    "electrum": "era_materials:electrum_ingot"
+  },
+  "evidence_ids": [
+    "ore_smelting",
+    "metal_pulverizing",
+    "materials"
+  ],
+  "native_cooking_seconds": 10
+}

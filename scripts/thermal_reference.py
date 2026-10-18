@@ -168,7 +168,7 @@ def build(content, review):
             raise ValueError('Reviewed class changed: ' + source['entry'])
     recipes = []
     selections = [('machine/pulverizer/pulverizer_ores.json', {'oreIron'}),
-                  ('machine/pulverizer/pulverizer_tf.json', {'oreCopper', 'oreTin'})]
+                  ('machine/pulverizer/pulverizer_tf.json', {'oreCopper', 'oreTin', 'oreSilver', 'oreLead'})]
     with zipfile.ZipFile(reference.destination(entries[TE])) as zipped:
         for name, wanted in selections:
             values, evidence = rows(zipped, name, 'pulverizer')
@@ -223,7 +223,7 @@ def main():
     elif OUTPUT.read_text() != rendered:
         raise ValueError('Thermal specification is stale; regenerate and review the diff')
     else:
-        print('THERMAL REFERENCE PASS: 5 processing/fuel records, 3 crafting records, 21 config facts; static evidence only')
+        print('THERMAL REFERENCE PASS: 7 processing/fuel records, 3 crafting records, 21 config facts; static evidence only')
 
 
 if __name__ == '__main__':

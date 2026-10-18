@@ -1,6 +1,6 @@
 # Native Thermal crafting subset
 
-The native game now uses ten reviewed crafting patterns: copper/tin/bronze
+The native game now uses fifteen reviewed crafting patterns: copper/tin/bronze
 gears, bronze ingots, gold/silver coils, a basic machine frame, the coal generator,
 Pulverizer and powered furnace. The former generator/pulverizer/furnace shortcuts
 have been removed. Existing placed machines and their inventories/jobs retain
@@ -11,7 +11,7 @@ migration.
 ## Source and generation
 
 [thermal-crafting-review.json](../references/thermal-crafting-review.json) records
-seven exact class hashes and method/offset anchors from Thermal Expansion
+ten exact class hashes and method/offset anchors from Thermal Expansion
 5.5.7.1, Thermal Foundation 2.6.7.1 and CoFH Core 4.6.6.1. It records the relevant
 Foundation and UniDict config hashes/locations, plus explicit source-to-native
 identity mappings and reviewed patterns. Three pack crafting overrides come from
@@ -40,7 +40,7 @@ Mineclonia foundation pin, missing identity, ambiguous override or unsupported
 counted ingredient requires a deliberate review rather than silent conversion.
 
 [The generated catalog](../mods/era_materials/catalog.lua) is native Lua 5.1,
-containing 14 material declarations and ten recipes. Runtime startup registers
+containing 23 material declarations and fifteen recipes. Runtime startup registers
 those definitions and confirms every ingredient/output is registered. Material
 recipes load in era_materials; machine recipes load in era_thermal. The runtime
 never reads a JAR, ZenScript or ignored reference cache.
@@ -92,18 +92,23 @@ mirroring rule. Only the documented orientation is guaranteed for the coils.
 
 The [basic RF/water model](native-resources.md) now operates new machines, while
 legacy machines retain their old profile until explicitly upgraded. Persisted nickel byproducts and [item-side controls](item-sides.md) are implemented;
-augments and the buffer/cable/ejector recipes are still incomplete.
+the basic cell recipe is implemented; augments and cable/ejector recipe parity
+remain incomplete.
 These crafting patterns do not establish complete Steam Dynamo or pack parity.
 
-Tin and silver ingots are registered for creative/server-supplied fixtures;
-there is no survival acquisition/world-generation path for them yet. Supplying
-these ingredients verifies crafting but does not establish a playable survival
-progression. New material/component visuals remain placeholders.
+Tin, silver and lead now have [native survival acquisition](survival-materials.md),
+and the cell has a reviewed lead frame/electrum coil path. Ore placement is a
+native approximation; gathering/crafting through a real player remains untested.
+New material/component visuals remain placeholders.
 
 Engine checks query Luanti's real crafting manager against independent reference
 examples, including exact ingredient counts, shuffled shapeless bronze inputs,
 the tin/copper gear distinction and wrong-coil denial. They also reject all
-three old machine shortcuts and preserve denied inputs. The extended eighteen-process restart,
+three old machine shortcuts and preserve denied inputs. The extended twenty-process restart,
 job, unload/reload and malformed-state suite remains required after runtime edits.
 Actual player inventory/crafting callbacks, graphical usability and effective
 original-pack parity remain separate validation work.
+
+The later [survival materials](survival-materials.md) milestone adds lead gear,
+cell frame, electrum dust/coil and the basic cell pattern, replacing the old cell
+shortcut. Electrum coil uses the opposite diagonal from gold/silver coils.

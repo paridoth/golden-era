@@ -58,12 +58,22 @@ def compile_catalog(review, spec):
         if output in outputs:
             raise ValueError('Duplicate selected crafting output')
         outputs.add(output)
-        pattern, keys = recipe['pattern'], recipe['key']
-        if (len(pattern) != 3 or any(len(row) != 3 for row in pattern)
-                or set(''.join(pattern)) - {' '} != set(keys)):
-            raise ValueError('Invalid reviewed crafting pattern')
-        grid = [[mapped(keys[c], mappings) if c != ' ' else '' for c in row] for row in pattern]
-        recipes.append({'id': recipe['id'], 'type': 'shaped', 'output': output,
+        kind = recipe.get('kind', 'shaped')
+        count = thermal.positive(recipe.get('count', 1))
+        if kind == 'shaped':
+            pattern, keys = recipe['pattern'], recipe['key']
+            if (len(pattern) != 3 or any(len(row) != 3 for row in pattern)
+                    or set(''.join(pattern)) - {' '} != set(keys)):
+                raise ValueError('Invalid reviewed crafting pattern')
+            grid = [[mapped(keys[c], mappings) if c != ' ' else '' for c in row] for row in pattern]
+        elif kind == 'shapeless':
+            if not 1 <= len(recipe['ingredients']) <= 9:
+                raise ValueError('Invalid reviewed shapeless ingredients')
+            grid = [mapped(key, mappings) for key in recipe['ingredients']]
+        else:
+            raise ValueError('Unsupported reviewed crafting kind')
+        recipes.append({'id': recipe['id'], 'type': kind,
+                        'output': output + (' ' + str(count) if count != 1 else ''),
                         'recipe': grid, 'phase': 'thermal' if output.startswith('era_thermal:') else 'materials'})
     for source in spec['crafting']:
         output = mapped(identity(source['output']), mappings)
@@ -180,7 +190,7 @@ def main():
     elif OUTPUT.read_text() != result:
         raise ValueError('Native catalog is stale; regenerate and review the diff')
     else:
-        print('CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs')
+        print('CRAFTING CATALOG PASS: 23 material declarations and 15 recipes match reviewed source inputs')
 
 
 if __name__ == '__main__':
