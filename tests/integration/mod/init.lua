@@ -4,6 +4,7 @@ local modpath=core.get_modpath("era_integration")
 local crafting=dofile(modpath.."/crafting.lua")
 local recipe_restart=dofile(modpath.."/recipe_restart.lua")
 local lifecycle=dofile(modpath.."/lifecycle.lua")
+local corruption=dofile(modpath.."/corruption.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -25,7 +26,10 @@ local function snapshot()
 end
 local function run()
  local phase=core.settings:get("era_test_phase")
- if phase:sub(1,7)=="recipe_" then
+ if phase:sub(1,8)=="corrupt_" then
+  corruption(phase,storage,place,eq)
+  return
+ elseif phase:sub(1,7)=="recipe_" then
   recipe_restart(phase,storage,p(12),place,eq)
  elseif phase=="automatic" then
   eq(inv("chest"):get_stack("main",1):get_count(),4,"completed outputs survived restart")
@@ -108,9 +112,9 @@ core.register_on_mods_loaded(function()
   return
  end
  core.after(0,function()
-  core.emerge_area(p(-1,-1),p(13,3),function(_,_,remaining)
+  core.emerge_area(p(-1,-1),p(26,3),function(_,_,remaining)
    if remaining==0 then core.after(0,function()
-    core.load_area(p(-1,-1),p(13,3))
+    core.load_area(p(-1,-1),p(26,3))
     local ok,err=xpcall(run,debug.traceback)
     if not ok then core.log("error","ERA INTEGRATION FAIL: "..err); core.request_shutdown("Integration failed",false,0) end
    end) end

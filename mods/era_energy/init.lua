@@ -28,7 +28,7 @@ function era.step()
   local states, defs = {}, {}
   for _,key in ipairs(net) do
    local pos=nodes[key]; local def=era.machines[core.get_node(pos).name]
-   if def then
+   if def and era.machine_ready(pos,core.get_node(pos).name) then
     local s=era.state(pos); s.capacity=def.capacity; states[key]=s; defs[key]=def
     if def.producer then
      local inv=core.get_meta(pos):get_inventory(); local fuel=inv:get_stack("fuel",1)

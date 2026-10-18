@@ -85,3 +85,30 @@ No production gameplay changes were needed. Evidence uses the `chunks-`
 prefix. This covers engine eviction/activation and one real cross-block
 factory topology; player-driven travel, other layouts, default-timing stress,
 multiplayer, corrupt state and crash recovery remain unverified.
+
+## 2026-10-18 — malformed saved state, pause and explicit repair
+
+Found that saved jobs were decoded and trusted before validating their shape,
+cost/rate, output or relationship to pending work. Scalars/missing fields could
+raise errors, and a missing job could reuse current recipe settings for old
+work. Added shared machine-state validation and a schema-1 job resolver. Invalid
+machines pause before RF generation/transfer/processing and before automated or
+player inventory/digging mutations. Only diagnostics/display fields change;
+original gameplay metadata and inventories remain available for trusted repair.
+Healthy neighbors remain active. Existing valid jobs keep their saved semantics.
+Non-finite ledger inputs are rejected, and numeric setting overrides now respect
+the metadata integer range.
+
+Added 49 engine corruption cases plus SQLite restart, normal-scheduler pause,
+explicit repair, restored item routing and another restart without duplication.
+The first new fixture run failed because its snapshot contained unserializable
+ItemStack userdata. The next failed because repair assertions omitted ordinary
+neighbor transfers. Corrected item-string snapshots and inventory accounting;
+retained both failure transcripts. The final complete run passed: 13/13 unit
+tests and all ten engine phases, exit 0. Lua syntax and Python compilation checks
+passed. Evidence uses the `validation-` prefix and does not replace prior logs.
+
+Documented schema 1 and its repair boundary in `docs/save-state.md`. No reset
+button, implicit schema migration, privileged-metadata authentication or forced-
+crash transaction journal was added. Graphical/multiplayer tests, historical
+reference recovery and scale/fairness measurements remain outstanding.

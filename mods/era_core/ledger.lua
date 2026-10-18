@@ -1,7 +1,7 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- Pure integer ledger shared by the engine and unit tests.
 local M = {}
-local function integer(n) assert(type(n) == "number" and n >= 0 and n == math.floor(n), "nonnegative integer required"); return n end
+local function integer(n) assert(type(n) == "number" and n >= 0 and n < math.huge and n == math.floor(n), "nonnegative integer required"); return n end
 function M.transfer(a, b, limit)
  integer(a.energy); integer(b.energy); integer(b.capacity); integer(limit)
  assert(b.energy <= b.capacity)

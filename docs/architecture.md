@@ -14,7 +14,8 @@
 No global `default` shim is provided. The adapter uses Mineclonia APIs and item
 IDs directly. Public shared functions are `era.register_machine`,
 `era.register_recipe`, `era.track`, `era.invalidate`, `era.state`, `era.save`,
-`era.networks`, `era.step`, `era.process`, and `era.move_one`; pure arithmetic
+`era.networks`, `era.step`, `era.process`, `era.move_one`, `era.machine_ready`,
+`era.resolve_recipe`, and `era.valid_integer`; pure arithmetic
 and connected-component helpers live in `era.ledger`.
 
 ## Simulation
@@ -45,8 +46,14 @@ An in-flight `job` serializes input name, result, total RF cost and processing
 rate. Integration covers clean SQLite restarts and changing the
 recipe cost/rate/yield across a restart: the saved job retains its old values,
 the next input uses the changed values, and completed results survive another
-restart back to defaults. Corrupt job metadata, schema migrations and forced
-crashes still need dedicated tests.
+restart back to defaults. Validation now pauses malformed jobs, invalid integer
+balances and unsupported schemas before gameplay mutations. RF transfers,
+processing, automated item moves, player inventory callbacks and digging honor
+that pause. Healthy neighboring machines remain usable. No corrupt balance,
+job or schema is silently reset; only diagnostic `fault`, infotext and formspec
+fields are updated. See [saved-state validation and repair](save-state.md) for
+the precise schema-1 contract and recovery boundary. Unknown-schema migration
+and forced-crash recovery remain unimplemented.
 
 Loaded positions are tracked; unavailable/ignore nodes are pruned. A load-time
 LBM re-registers machines, cables and ejectors. Offline generation is absent.
@@ -77,7 +84,7 @@ machines currently show input/output/fuel slots even where a slot is unused.
 
 ## Extension order
 
-Resolve historical references, save-schema validation, natural chunk loading,
-multiplayer contention, crash recovery and scale/fairness behavior before
+Resolve historical references, extend schema migration and chunk-lifecycle
+coverage, and test multiplayer contention, crash recovery and scale/fairness before
 expanding content. Smelteries, storage/crafting networks and research/magic are
 future milestones in the handoff, not implemented subsystems.

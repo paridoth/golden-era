@@ -11,7 +11,7 @@ Functional evidence and historical authenticity are separate requirements.
 | Pulverizer | ore/raw iron -> dust | engine fixture; 2x output and RF values provisional; no byproducts |
 | Powered furnace | dust -> ingot | manual + automatic scheduler tests; RF/crafting provisional |
 | Item transport | fixed +X transfers and ordinary native chest | fixture + protected-transfer denial; no orientation, tubes, filters, locked/double chests |
-| Save/restart | RF/work/burn/job/inventory metadata | clean restarts, changed cost/rate/yield, and real mapblock eviction; crash atomicity/migrations untested |
+| Save/restart | RF/work/burn/job/inventory metadata | clean restarts, changed cost/rate/yield, mapblock eviction, and invalid-state pause/repair; crash atomicity/migrations untested |
 | Player interaction | formspec, recipes, protected inventory callbacks | engine recipe resolution/consumption and selected inventory callbacks tested; player crafting callbacks/UI/multiplayer untested |
 | Progression | provisional machine recipes | historical gates/survival playthrough absent |
 | Augments/redstone | absent | exact TE build and configs unresolved |
@@ -23,6 +23,6 @@ Functional evidence and historical authenticity are separate requirements.
 
 Before content expansion: pin the launch-era manifest/configs; extend
 chunk-lifecycle checks to player travel/broader topologies, actual player
-crafting and inventory contention; validate
-state schema/corrupt jobs; measure large networks and starvation; define crash
+crafting and inventory contention; extend
+state validation to migrations; measure large networks and starvation; define crash
 recovery. Replace provisional numbers only with version-specific evidence.

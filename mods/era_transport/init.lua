@@ -6,6 +6,10 @@ core.register_node("era_transport:ejector",{description="Eastward Item Ejector (
  on_destruct=function(pos) era.active[core.pos_to_string(pos)]=nil; era.invalidate() end})
 function era.move_one(source,src_list,target,dst_list,actor)
  if core.is_protected(source,actor) or core.is_protected(target,actor) then return false end
+ for _,pos in ipairs({source,target}) do
+  local name=core.get_node(pos).name
+  if era.machines[name] and not era.machine_ready(pos,name) then return false end
+ end
  local a,b=core.get_meta(source):get_inventory(),core.get_meta(target):get_inventory()
  if a:get_size(src_list)==0 or b:get_size(dst_list)==0 then return false end
  local stack=a:get_stack(src_list,1); if stack:is_empty() then return false end

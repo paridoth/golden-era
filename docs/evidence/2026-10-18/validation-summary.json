@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-18",
+  "user_timezone": "America/Chicago",
+  "command": "./scripts/test.sh --integration",
+  "exit_code": 0,
+  "unit_tests": 13,
+  "engine_phases": [
+    "seed",
+    "resume",
+    "automatic",
+    "recipe_seed",
+    "recipe_resume",
+    "recipe_verify",
+    "lifecycle",
+    "corrupt_seed",
+    "corrupt_resume",
+    "corrupt_verify"
+  ],
+  "corrupt_state_cases": 49,
+  "checks": [
+    "no gameplay-field or inventory mutation while paused",
+    "healthy generator and furnace continue",
+    "automatic transfer and player inventory/digging denied while paused",
+    "paused state survives SQLite restart under normal scheduler",
+    "explicit repair spends exactly remaining 3800 RF",
+    "normal input/output routing resumes after repair",
+    "repaired state and all neighboring inventories survive another restart"
+  ],
+  "earlier_fixture_failures": [
+    "snapshot serialization used ItemStack userdata before conversion to strings",
+    "repair assertions initially omitted normal neighbor transfers"
+  ],
+  "production_changes": true,
+  "unknown_schema_migrations": false,
+  "forced_crash_atomicity": false
+}

@@ -78,7 +78,8 @@ SQLite world was removed after all phases completed.
 ## Natural mapblock lifecycle checks — 2026-10-18
 
 `./scripts/test.sh --integration` returned **0** with all **12 unit tests** and
-**seven engine phases** passing. This is the current suite. The additional
+**seven engine phases** passing. This result is preserved as an earlier
+baseline. The additional
 `lifecycle` phase uses a factory spanning x=14..20 at y=200, z=40. The generator
 and cable are in one mapblock; buffer, processors, ejector and chest are in the
 neighboring mapblock across x=15/16.
@@ -116,14 +117,62 @@ real-player travel/proximity, arbitrary chunk-bridge layouts, or long-duration
 behavior under default timing. The automatic scheduler remains covered by its
 separate phase.
 
+## Malformed-state validation and repair — 2026-10-18
+
+The final `./scripts/test.sh --integration` returned **0**: all **13 unit tests**
+and **10 engine phases** passed. This is the current suite. Runtime guards now
+pause malformed processor jobs, invalid saved integers and unsupported schemas
+before RF or item mutations; valid neighboring machines continue operating.
+The pure ledger also rejects non-finite RF, burn and recipe-cost values.
+
+The new `corrupt_seed` phase checks **49** malformed job/state cases, including
+missing/non-table/oversized records, missing/unknown fields, invalid or
+non-finite costs/rates, work at/above cost, mismatched or missing reserved input,
+unknown/oversized/malformed output counts, stale jobs, missing/future schema,
+negative/fractional/nonnumeric/overflowing RF, negative work/burn, and burn stored
+on a processor. Every case checks gameplay metadata and every inventory slot
+before/after 60 real simulation steps, direct processing, automated transfers,
+player inventory callbacks and digging. Only derived diagnostic/display fields
+may change. Each case also requires a valid neighboring generator and furnace
+to keep operating. The fault message is asserted in metadata, infotext and
+formspec text; graphical presentation remains untested.
+
+`corrupt_resume` loads an invalid serialized boolean job from SQLite, re-tracks
+the fixture, and runs the normal scheduler for four seconds. The paused machine
+remains unchanged while a valid furnace completes. An explicit test-operator
+repair restores the known saved job at 200/4000 work with 3800 RF. Normal ticks
+finish exactly once, clear the fault and resume item routing. Across the source,
+repaired processor and furnace, exactly one raw iron is consumed and two dust
+are added: two raw iron remain, five dust are routed to the furnace input, and
+the already completed healthy ingot remains. Stored RF and work on the repaired
+processor become zero. `corrupt_verify` starts another process and compares all
+three machines' gameplay metadata/inventories before and after 100 more steps;
+no repaired output is duplicated.
+
+The previous seven phases also passed, including old saved jobs across changed
+recipe settings and natural mapblock eviction/reactivation. New evidence uses
+the `validation-` prefix under `evidence/2026-10-18/`, with a final run transcript,
+ten phase logs and JSON summary. Temporary worlds were cleaned up.
+
+Two earlier runs failed in the new test fixture: its snapshot initially tried
+to serialize ItemStack userdata, then its repair assertions omitted automatic
+neighbor input/output transfers. The snapshot conversion and assertions were
+corrected; both failure transcripts are retained as
+`validation-initial-failure.txt` and `validation-repair-fixture-failure.txt`.
+Neither failed run is counted as a successful full-suite run.
+
+See [saved-state validation and repair](save-state.md) for supported schema
+bounds, pause behavior and recovery limits. Unknown-schema migration, arbitrary
+hostile-Lua sandboxing and forced-crash transactions remain separate work.
+
 ## Scope of the suite
 
-The 12 pure Lua tests cover integer conservation/capacity, fuel exhaustion and
+The 13 pure Lua tests cover integer conservation/capacity, fuel exhaustion and
 full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
-connect/disconnect, copied ledger save boundary and invalid RF inputs.
+connect/disconnect, copied ledger save boundary, invalid RF inputs and non-finite RF/burn/cost rejection.
 
-Engine integration creates one temporary SQLite world and runs seven separate
+Engine integration creates one temporary SQLite world and runs ten separate
 headless server processes, each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
@@ -134,7 +183,7 @@ survive another restart and an isolated precharged furnace processes dust
 through normal globalstep. Worlds are removed automatically; phase logs remain
 in `runtime/tests`.
 
-Seed/resume, recipe and lifecycle phases manually invoke `era.step()` against real engine
+Seed/resume, recipe, lifecycle and corruption matrix phases manually invoke `era.step()` against real engine
 objects. Resume explicitly re-tracks fixture nodes. Protection testing temporarily overrides
 `core.is_protected`. These boundaries matter when interpreting a passing suite.
 
@@ -143,7 +192,9 @@ objects. Resume explicitly re-tracks fixture nodes. Protection testing temporari
 Graphical player placement/UI and crafting callbacks, survival progression,
 v7 terrain play, real multi-client contention, third-party protection,
 player-driven mapblock activation and broader chunk-boundary topologies, very
-large networks, fairness/performance/stress, corrupt job metadata, save migrations and forced-crash atomicity remain untested.
+large networks, fairness/performance/stress, unknown-schema migrations and
+forced-crash atomicity remain untested. Malformed-state validation does not
+authenticate privileged edits or provide arbitrary hostile-Lua sandboxing.
 The Mineclonia custom singlenode mapgen remains disabled after an old-machine
 timeout. There is no graphical client build or optional modpack comparison.
 

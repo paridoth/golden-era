@@ -8,9 +8,19 @@ with tempfile.TemporaryDirectory(prefix='integration-',dir=base) as temp:
  work=pathlib.Path(temp); world=work/'world'; (world/'worldmods').mkdir(parents=True)
  (world/'worldmods/era_integration').symlink_to(ROOT/'tests/integration/mod',target_is_directory=True)
  (world/'world.mt').write_text('gameid = golden_era\nbackend = sqlite3\nplayer_backend = sqlite3\nauth_backend = sqlite3\nmod_storage_backend = sqlite3\n')
- phases = ['seed','resume','automatic','recipe_seed','recipe_resume','recipe_verify','lifecycle']
+ phases = ['seed','resume','automatic','recipe_seed','recipe_resume','recipe_verify','lifecycle','corrupt_seed','corrupt_resume','corrupt_verify']
  for phase in phases:
-  config=work/'test.conf'; config.write_text('bind_address = 127.0.0.1\nport = 30199\nserver_announce = false\nmg_name = singlenode\nmcl_singlenode_mapgen = false\nera_test_manual = '+('false' if phase=='automatic' else 'true')+'\nera_test_phase = '+phase+'\n'+('era_pulverizer_cost = 900\nera_process_rate = 75\nera_ore_multiplier = 3\n' if phase=='recipe_resume' else '')+('server_unload_unused_data_timeout = 5\nactive_block_mgmt_interval = 0.1\n' if phase=='lifecycle' else ''))
+  settings = [
+   'bind_address = 127.0.0.1', 'port = 30199', 'server_announce = false',
+   'mg_name = singlenode', 'mcl_singlenode_mapgen = false',
+   'era_test_manual = '+('false' if phase in ('automatic','corrupt_resume') else 'true'),
+   'era_test_phase = '+phase,
+  ]
+  if phase=='recipe_resume':
+   settings += ['era_pulverizer_cost = 900','era_process_rate = 75','era_ore_multiplier = 3']
+  if phase=='lifecycle':
+   settings += ['server_unload_unused_data_timeout = 5','active_block_mgmt_interval = 0.1']
+  config=work/'test.conf'; config.write_text('\n'.join(settings)+'\n')
   try:
    result=subprocess.run([str(ROOT/'upstream/luanti/bin/luantiserver'),'--gameid','golden_era','--world',str(world),'--config',str(config),'--logfile',str(work/(phase+'.log'))],env=env,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=120)
   except subprocess.TimeoutExpired as error:
@@ -22,5 +32,5 @@ with tempfile.TemporaryDirectory(prefix='integration-',dir=base) as temp:
   marker='ERA INTEGRATION '+phase.upper()+' PASS'
   if result.returncode or marker not in log or 'ERA INTEGRATION FAIL' in log:
    print(log); raise SystemExit('ENGINE INTEGRATION FAILED: '+phase)
-  print(next(line for line in log.splitlines() if marker in line))
- print('ENGINE INTEGRATION PASS: seven real server processes, crafting, SQLite persistence, automatic scheduler, changed recipe settings and natural block lifecycle')
+  print(next(line for line in log.splitlines() if marker in line),flush=True)
+ print('ENGINE INTEGRATION PASS: ten real server processes, crafting, SQLite persistence, automatic scheduler, recipe settings, block lifecycle and corrupt-state recovery')

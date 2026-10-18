@@ -37,7 +37,7 @@ two compiler jobs. It assembles Mineclonia 0.124.0 and the custom mods under
 `runtime/games/golden_era`. Technic, Pipeworks and Mesecons are downloaded for
 inspection but are not installed into this runtime.
 
-The relocated build, 12 unit tests, engine crafting checks, and seven-process
+The relocated build, unit tests, engine crafting checks, and
 restart/configuration/chunk-lifecycle suite are recorded in
 [docs/test-results.md](docs/test-results.md). That document distinguishes executed
 checks from remaining validation. Original migration evidence remains under
@@ -76,12 +76,15 @@ Put one coal in the generator's fuel slot and two iron ore or raw iron items in
 the pulverizer's input. The intended result is four ingots in the chest. The
 integration harness constructs this fixture at y=200 using engine APIs. Manual
 placement, formspec use and survival progression still need graphical testing.
-Machines containing RF, work, remaining burn or items cannot be dug; there is
+Machines with invalid saved state pause with a diagnostic and retain their
+contents; see the saved-state repair notes. Machines containing RF, work,
+remaining burn or items cannot be dug; there is
 no discharge/wrench tool yet. Transport only supports fixed eastward routing.
 
 ## Development records
 
 - [Architecture and invariants](docs/architecture.md)
+- [Saved-state validation and repair](docs/save-state.md)
 - [Historical reference and provisional values](docs/historical-reference.md)
 - [Compatibility findings](docs/mod-compatibility.md)
 - [Fidelity matrix](docs/fidelity-matrix.md)
