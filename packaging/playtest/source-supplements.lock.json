@@ -1,0 +1,18 @@
+{
+  "overlay": "references/cache/release/source-overlay",
+  "fetch_command": "python3 scripts/package-playtest.py --fetch-supplements",
+  "files": [
+    {
+      "path": "source/upstream/22i-model-sources.provenance.json",
+      "sha256": "a79943df542b5cf62ee41a8bf27fad2f37b0d58a3530ab153090957191b22865",
+      "size": 1329,
+      "project_source": "packaging/playtest/source-supplements/22i-model-sources.provenance.json"
+    },
+    {
+      "path": "source/upstream/22i-model-sources.zip",
+      "sha256": "88ac1ef9f54a7957897e8470e64d69ea0c59c07af683bac848f0b15c5e3e4df1",
+      "size": 29882410,
+      "url": "https://codeload.github.com/22i/minecraft-voxel-blender-models/zip/51527b4b5bceeb7a6de7e1f89edcccc87d904662"
+    }
+  ]
+}

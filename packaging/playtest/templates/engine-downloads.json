@@ -1,0 +1,10 @@
+{
+  "windows_x86_64": {
+    "version": "5.17.0",
+    "url": "https://github.com/luanti-org/luanti/releases/download/5.17.0/luanti-5.17.0-win64.zip",
+    "sha256": "3ce20c77f5c206a988d7a6b883439e2759e3cf67428c9dbcf99ecd2936da631c",
+    "archive_root": "luanti-5.17.0-win64",
+    "source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+    "release_page": "https://github.com/luanti-org/luanti/releases/tag/5.17.0"
+  }
+}

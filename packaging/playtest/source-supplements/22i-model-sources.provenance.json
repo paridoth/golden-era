@@ -1,0 +1,21 @@
+{
+  "project": "22i/minecraft-voxel-blender-models",
+  "purpose": "Supplemental preferred-form Blender model source linked by the pinned Mineclonia mobs_mc media notice.",
+  "repository": "https://github.com/22i/minecraft-voxel-blender-models",
+  "commit": "51527b4b5bceeb7a6de7e1f89edcccc87d904662",
+  "download_url": "https://codeload.github.com/22i/minecraft-voxel-blender-models/zip/51527b4b5bceeb7a6de7e1f89edcccc87d904662",
+  "filename": "22i-model-sources.zip",
+  "sha256": "88ac1ef9f54a7957897e8470e64d69ea0c59c07af683bac848f0b15c5e3e4df1",
+  "size_bytes": 29882410,
+  "blend_file_count": 222,
+  "license": "GPL-3.0; retain the archive LICENSE and per-file notices.",
+  "downloaded_on": "2026-10-18",
+  "relationship_evidence": "Mineclonia 20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1 mods/ENTITIES/mobs_mc/LICENSE-media.md lines 16-22 explicitly names 22i, GPLv3 and this source repository.",
+  "scope": "Supplemental authoring sources only. Exact correspondence to every exported B3D and any later downstream modifications has not been established. The game also includes its shipped editable B3D files and original media notices.",
+  "archive_validation": {
+    "zip_crc_test": "passed",
+    "required_project_license": [
+      "minecraft-voxel-blender-models-51527b4b5bceeb7a6de7e1f89edcccc87d904662/LICENSE"
+    ]
+  }
+}

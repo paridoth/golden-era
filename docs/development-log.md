@@ -468,3 +468,29 @@ follows play feedback instead of further custom framework expansion.
 The final patched-assembly workshop smoke passed at 13:40:03 in roughly 114
 seconds with zero warnings/errors. Captured evidence is in
 [playtest-smoke.log](evidence/2026-10-18/playtest-smoke.log).
+
+## Shareable Windows tester package — 2026-10-18
+
+The user requested an itch.io-shareable package and confirmed the tester uses
+Windows. Added a deterministic source/game ZIP builder that assembles a fresh
+game, dereferences all links, excludes developer worlds/auth/Git/Java/build
+files, and records per-file provenance, SHA-256, modes and retained notices.
+Two fresh builds matched byte-for-byte. The versioned artifact/checksum are
+recorded in [release metadata](releases/0.1.0.json).
+
+The Windows batch launcher creates external tester data and downloads the
+official Luanti5.17.0 portable engine only on first use, checking its release
+SHA-256 before extraction/launch. Engine binaries/DLLs are not redistributed.
+Unix launchers use an installed engine. The package includes instructions, itch
+launch actions, source/patch/build inputs, all upstream notices and supplemental
+license texts. A hash-pinned original Blender source archive supplements the
+exported Mineclonia models; its exact downstream correspondence limit is noted.
+
+The final ZIP passed actual entry/CRC/hash/manifest checks, case/path/privacy
+checks and a clean-extraction runtime test through its launcher. The stock
+workshop again produced all four ingots using normal timers/power/tube routing.
+Fresh external world creation and loading every game module from the extracted
+package were asserted. Existing unit/source checks and syntax/whitespace checks
+passed. Native Windows/PowerShell and itch app execution remain for the tester;
+only the game runtime was executed on Linux. No itch project/upload/publication
+was performed. [Upload guide and page text](itch-release.md) are ready.

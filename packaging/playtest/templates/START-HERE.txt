@@ -1,0 +1,65 @@
+GOLDEN ERA — FACTORY PLAYTEST 0.1.0
+
+An early voxel survival and automation playtest built from existing Luanti mods.
+This is an independent community game pack, not Minecraft or the FTB Revelation
+modpack. The first workshop is ready to operate and expand.
+
+START
+
+Extract the whole ZIP before launching. Do not run files inside the ZIP viewer.
+
+Windows 10/11 (64 bit): double-click start.bat. The first launch downloads the
+official Luanti 5.17.0 portable engine (~18 MB) from GitHub and verifies SHA-256
+before launching. Internet is needed for that first engine download. Later
+launches use the cached engine. No admin installation or Java is needed.
+The Windows launcher still needs its first native Windows tester run.
+
+Linux: install Luanti 5.17.0, then run ./start.sh from this folder. The launcher
+finds the native luanti command or the official Flatpak. If your extractor drops
+executable permissions, run: chmod +x start.sh
+
+macOS: install Luanti 5.17.0, then open start.command. This launcher is provided
+for testing and has not been verified on a Mac.
+
+Official engine downloads: https://www.luanti.org/en/downloads/
+
+PLAY
+
+The first launch generates a fresh survival world and starter workshop. Allow
+around a minute for initial world generation. Close the welcome panel to play.
+
+W/A/S/D move, mouse looks, Space jumps, I opens inventory.
+Right-click machines to open them. Left-click digs or takes items from drawers.
+K toggles flight. J toggles fast movement; E activates fast movement.
+
+/packhelp   Workshop instructions
+/workshop   Return to the workshop
+/explore    Return to your original survival spawn
+/gamemode creative   Full item catalog for building experiments
+/gamemode survival   Ordinary item quantities again
+
+The supplied coal generator powers a cell, Pulverizer and furnace. Two raw iron
+become four ingots, delivered through tubes into the output barrel. The first
+batch takes about two minutes. The front-left barrel holds spare materials and
+parts. Use the Elepower Tome and inventory recipe guide to learn more.
+
+Damage is disabled. The extra alloy furnaces can be wired with the supplied
+conduits. Explore, build and report anything broken or confusing.
+
+SAVES AND FEEDBACK
+
+Windows saves/logs: %LOCALAPPDATA%\GoldenEraPlaytest
+Linux saves/logs:   ~/.local/share/golden-era-playtest
+macOS saves/logs:   ~/Library/Application Support/GoldenEraPlaytest
+
+Close the game normally to save. Keep that data folder when replacing the game
+ZIP with a later build. The game package contains no existing player world.
+
+For a bug report, send the build number, what you did, what you expected, what
+happened, and a screenshot if useful. The client log is logs/client.log inside
+the save-data folder. Review logs before sharing them.
+
+This is an early single-player playtest, not a complete Revelation recreation.
+Exact Revelation recipes, AE2, Tinkers and Thaumcraft remain future additions.
+Credits and license notices are in docs/THIRD-PARTY-NOTICES.md and the game mods.
+Source/provenance information is included under docs/ and source/.

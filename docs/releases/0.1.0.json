@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "artifact": "dist/golden-era-playtest-0.1.0-windows-test.zip",
+  "size_bytes": 69842303,
+  "sha256": "0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db",
+  "files": 11837,
+  "platform_intent": "Windows 10/11 x86_64; official engine fetched and hash checked on first launch",
+  "engine_bundled": false,
+  "game_runtime_test": "Passed from clean extracted ZIP through Unix launcher and Luanti5.17.0 headless engine",
+  "windows_runtime_test": "Pending first native Windows tester run; bootstrap structure and official artifact SHA256 verified",
+  "itch_published": false
+}

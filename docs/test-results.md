@@ -542,3 +542,28 @@ Focused patched-upstream Lua checks cover recipe-guide single/multiple outputs
 and fluid partial/full/mixed/multiple-buffer conservation. Existing unit/source
 model checks (50 tests), Python/Lua syntax and whitespace checks pass. All selected
 upstream checkouts match their enforced source pins and remain clean.
+
+## Packaged tester release — 2026-10-18
+
+The final `golden-era-playtest-0.1.0-windows-test.zip` contains 11,837 regular
+files and is 69,842,303 bytes. Two fresh builds produced SHA-256
+`0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db`.
+Actual ZIP CRC, normalized modes/timestamps, internal and external file hashes,
+required source supplements, Windows-safe paths, no symlinks and no developer
+paths/private worlds/Git/Java content were checked. Missing/mismatched/extra
+source-supplement inputs fail; explicit restoration verifies locked hashes.
+
+`python3 tests/package/run.py` passed from the extracted ZIP in a directory with
+spaces. It invoked the shipped Unix launcher with the installed development
+Luanti engine in server mode, an external fresh data directory and a deliberately
+incorrect inherited game path. Module loading from the extracted game was
+asserted. The full stock workshop processed two raw iron into four collected
+ingots through normal timers/ABMs and routing, with zero warnings/errors.
+[Captured package smoke](evidence/2026-10-18/package-smoke.log).
+
+The itch manifest parses and all targets exist. The Windows bootstrap references
+the verified official engine ZIP and checks SHA-256 before launch; the official
+PE/DLL layout was inspected. No Windows runtime is available here, so native
+batch/PowerShell, graphical Windows play and itch app launch remain unverified.
+The earlier Linux graphical readiness check does not establish those results.
+All 50 existing unit tests, Lua/Python/shell syntax and whitespace checks passed.

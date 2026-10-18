@@ -53,17 +53,25 @@ Minecraft modpack media. The inherited file-by-file release audit remains separa
 
 ## Distribution status and next audit
 
+The 0.1.0 tester game pack now has a concrete distribution inventory: every
+packaged file has a source/provenance record, SHA-256 and retained notice
+references. The package retains upstream notices, adds full license texts and
+identifies inherited Elepower/fluid_lib exceptions instead of labeling their
+entire trees MIT. It includes the pinned 22i Blender source archive linked by
+Mineclonia's model license. Exact correspondence to every downstream B3D/export
+modification remains unverified and is stated in the package notices.
+Engine binaries and DLLs are excluded; the Windows launcher fetches the official
+hash-pinned engine separately. See [the release guide](itch-release.md).
+
 No proprietary Minecraft/mod code, textures, sounds, models or jars were
 incorporated into the custom slice according to the handoff and inspected
 project inventory. The migration archive is a development handoff retaining
 upstream notices. It is not a public release package.
 
-A file-by-file inventory of inherited media, exceptions, authors and required
-notices remains incomplete. Before preparing public binaries/game bundles,
-record every shipped file's source/revision/license/attribution, retain
-corresponding source and license texts as applicable, audit bundled libraries
-and Debian-package contents, and review the final assembled distribution.
-No claim of completed redistribution clearance is made here.
+The package inventory preserves file/mod-specific attributions and documents
+the source limits above. Future binary bundles need their own engine/dependency
+source and notice work. Cached Debian packages and development tools are excluded
+from this game-pack distribution.
 
 ## Revelation reference cache
 

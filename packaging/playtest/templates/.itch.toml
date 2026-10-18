@@ -1,0 +1,14 @@
+[[actions]]
+name = "play"
+path = "start.bat"
+platform = "windows"
+
+[[actions]]
+name = "play"
+path = "start.sh"
+platform = "linux"
+
+[[actions]]
+name = "play"
+path = "start.command"
+platform = "osx"

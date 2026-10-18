@@ -15,6 +15,10 @@ the persistent world location and current coverage. This uses native equivalents
 and stock progression; exact Revelation recipes/systems will be added as play
 reveals the priorities. The earlier custom factory remains available separately.
 
+For sharing with a tester, see [the itch.io release guide](docs/itch-release.md).
+The Windows test ZIP has a fresh-save launcher and includes source, credits and
+license notices.
+
 ## Earlier native factory and reference work
 
 A native Luanti/Mineclonia game prototype using **FTB Revelation 3.7.0 for
