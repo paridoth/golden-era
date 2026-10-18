@@ -32,15 +32,22 @@ bootstrap remain untested. The normal headless setup/CI path is unchanged.
 ## Isolated demo
 
 `play-demo.py` launches a dedicated single-node inspection world under
-`runtime/worlds/graphical-demo`, using player GoldenEraQA and loopback port
+`runtime/worlds/factory-check`, using player GoldenEraQA and loopback port
 30198. It does not load or modify `runtime/worlds/play`. The QA mod is installed
 only in that demo world's `worldmods`; it is not part of the normal game.
 A stone platform and first-factory fixture initialize once. The factory starts
 with one coal, one water bucket and two raw iron, with the furnace's west face
 configured for input. It should deposit four iron ingots in its ordinary chest.
+The check uses survival inventory rules with damage disabled; the QA join verifies
+the effective player mode. The earlier creative inspection world remains at
+`runtime/worlds/graphical-demo` and is no longer the default.
 
 - Right-click machines to use their native forms.
-- `/factory_refill` supplies another batch without resetting RF/jobs/inventories.
+- `/factory_status` reports actual iron counts in the chest and player inventory,
+  the effective mode, and whether processing remains.
+- `/factory_refill` starts another batch only after the previous batch finishes;
+  it prints the starting and expected chest count and rejects creative mode.
+  Processing can take a few minutes. Leave outputs in the chest to compare counts.
 - `/factory_form generator` (or pulverizer/furnace/buffer) opens an inspection form.
 - `python3 scripts/play-demo.py --form generator` opens that form on join.
 - `--cycle` renders all four forms in sequence for visual inspection.
@@ -48,7 +55,8 @@ configured for input. It should deposit four iron ingots in its ordinary chest.
 Normal GUI quit shuts down this local game. Stop any server using the same
 world before opening it through another process. To inspect a fresh survival
 world, use the ordinary client/play world, which retains v7 terrain and survival
-settings; the QA platform is creative and does not establish a gathering playthrough.
+settings; the QA platform supplies its inputs and does not establish a gathering
+playthrough.
 
 ## Executed visual checks and remaining input
 
@@ -71,4 +79,11 @@ Mineclonia foundation and our native form. Inherited game textures retain their
 upstream licenses/credits described in [licenses](licenses.md); these evidence
 images are not new game assets. Manual placement, inventory drags, craft actions,
 full survival gathering, multiplayer contention, audio and v7 gameplay still need
-hands-on validation. Filled machines still require a tested relocation/drain path.
+hands-on validation. A user chest-withdrawal check in the earlier creative demo
+exposed Mineclonia's global creative inventory callback: external puts become a
+full stack (normally 64). That invalidated the quantity check. The new survival
+demo avoids that callback; a missing number on a singleton is normal engine
+rendering. A callback-level engine regression reproduces creative expansion and
+verifies that survival withdrawals preserve exactly one/four items. A real
+mouse withdrawal in the corrected demo still needs the user's confirmation.
+Filled machines still require a tested relocation/drain path.

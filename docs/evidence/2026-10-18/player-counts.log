@@ -1,0 +1,10 @@
+2026-10-18 12:28:38: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 12:28:39: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-2ih3puw_/world]
+2026-10-18 12:28:39: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 12:28:40: ACTION[Server]: ERA INTEGRATION PLAYER_COUNTS PASS: real ordinary chest withdraws 1/4; registered Mineclonia callbacks reproduce creative expansion to 64 and preserve survival counts (callback-level fixture)
+2026-10-18 12:28:40: ACTION[Main]: Server: Shutting down

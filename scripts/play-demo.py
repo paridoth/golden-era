@@ -11,7 +11,7 @@ parser.add_argument('--form',choices=('generator','pulverizer','furnace','buffer
 parser.add_argument("--cycle",action="store_true",help="Render each machine form for visual inspection")
 args=parser.parse_args()
 subprocess.run(['python3',ROOT/'scripts/setup.py','--assemble-only'],cwd=ROOT,check=True)
-world=ROOT/'runtime/worlds/graphical-demo';(world/'worldmods').mkdir(parents=True,exist_ok=True)
+world=ROOT/'runtime/worlds/factory-check';(world/'worldmods').mkdir(parents=True,exist_ok=True)
 link=world/'worldmods/era_demo'
 if not link.exists(): link.symlink_to(ROOT/'tests/manual/mod',target_is_directory=True)
 (world/'world.mt').write_text('gameid = golden_era\nbackend = sqlite3\nplayer_backend = sqlite3\nauth_backend = sqlite3\nmod_storage_backend = sqlite3\n')
@@ -21,7 +21,7 @@ port = 30198
 server_announce = false
 mg_name = singlenode
 mcl_singlenode_mapgen = false
-creative_mode = true
+creative_mode = false
 enable_damage = false
 screen_w = 1200
 screen_h = 800

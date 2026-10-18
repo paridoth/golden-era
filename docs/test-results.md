@@ -313,9 +313,9 @@ more cover the bounded Thermal data import. Six catalog tests cover offline
 regeneration, concrete metadata, missing mappings/pattern keys, explicit override
 conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
-Engine integration creates one temporary SQLite world and runs twenty separate
+Engine integration creates one temporary SQLite world and runs twenty-one separate
 headless server processes (the original ten legacy regression phases plus three
-native model/migration and three secondary-output phases plus two item-side and two survival phases), each with a 120-second timeout on loopback port
+native model/migration and three secondary-output phases plus two item-side, two survival and one player-inventory callback phase), each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
 iron ore into four ingots in a native chest, with 32000 RF generated and 16000 RF
@@ -410,3 +410,32 @@ passed. Evidence uses graphical-. [Client/demo instructions](graphical-client.md
 record commands, dependencies and validation boundaries. The demo remains open
 for the user's requested hands-on inventory/output check; no mouse/crafting
 actions or survival playthrough have been claimed.
+
+## Corrected graphical quantity check — 2026-10-18
+
+The user reported a chest item with no number that became 64 when dragged into
+the player inventory. The inspection demo had incorrectly enabled creative mode.
+The pinned Mineclonia creative inventory callback expands every player-main put
+to its item maximum when the creative stack selector is 64, including genuine
+ordinary-chest withdrawals. Engine drawing normally omits a number for a singleton;
+that display alone was not evidence of four completed ingots.
+
+The demo now defaults to a separate factory-check world with global creative off
+and an explicit verified survival player mode, while retaining disabled damage.
+The earlier creative world/inventory is preserved. Added /factory_status for exact
+chest/player quantities and processing status. Refill rejects overlapping batches,
+creative mode, invalid/missing fixtures and blocked input/capacity preflight, and
+prints the current/expected output count before adding inputs without yielding.
+No upstream creative behavior or production item definitions were changed.
+
+A new real-engine callback regression withdraws one/four ingots from an ordinary
+chest, reproduces the creative expansion to 64 through all registered inventory
+action callbacks, and confirms exact one/four counts in survival. It uses a fake
+player backed by real inventories/ItemStacks; it is not a mouse/network test.
+The focused phase passed and the corrected graphical demo joined with verified
+survival mode. Real mouse withdrawal in the corrected demo remains for the user.
+Evidence uses player-counts-.
+
+The complete suite passed **50 unit tests and all 21 engine processes** after
+the correction. Lua syntax, Python compilation and whitespace checks passed.
+The corrected demo remains open for a real survival-mode withdrawal check.

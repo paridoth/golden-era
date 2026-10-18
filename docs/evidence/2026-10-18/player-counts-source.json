@@ -1,0 +1,32 @@
+{
+  "foundation": {
+    "url": "https://codeberg.org/mineclonia/mineclonia.git",
+    "commit": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+    "release": "0.124.0"
+  },
+  "cause": "Creative player inventory put callback expands an external received stack to its item stack maximum when switch_stack is 64. Factory quantity verification must use effective survival mode.",
+  "files": [
+    {
+      "path": "mods/HUD/mcl_inventory/creative.lua",
+      "sha256": "850376739cadf52885323eb8d13eb84e9f1d3f11e6081bb690709294979062de"
+    },
+    {
+      "path": "mods/PLAYER/mcl_gamemode/init.lua",
+      "sha256": "52ec9f2a8b65883c9274510d72c1c69bf893f220695341460aa153d7ad664fbd"
+    },
+    {
+      "path": "mods/ITEMS/mcl_chests/init.lua",
+      "sha256": "20e98f08ba3600295d40e75d9c31a3871657c029361979ae7b263917374c1d46"
+    }
+  ],
+  "anchors": {
+    "mods/HUD/mcl_inventory/creative.lua": [
+      "394..397: default stack setting 64",
+      "832..839: all player-main puts expanded in creative mode"
+    ],
+    "mods/ITEMS/mcl_chests/init.lua": [
+      "287..294: ordinary chest allows actual count"
+    ]
+  },
+  "regression": "player_counts: one/four ordinary chest withdrawals and all registered player inventory callbacks; creative expands to64, survival preserves1/4; fake player and real InvRefs, not actual mouse/network events"
+}

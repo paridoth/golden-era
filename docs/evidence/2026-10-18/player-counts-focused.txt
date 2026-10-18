@@ -1,0 +1,3 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:28:40: ACTION[Server]: ERA INTEGRATION PLAYER_COUNTS PASS: real ordinary chest withdraws 1/4; registered Mineclonia callbacks reproduce creative expansion to 64 and preserve survival counts (callback-level fixture)
+ENGINE INTEGRATION PASS: 1 real server processes; player_counts

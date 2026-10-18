@@ -1,0 +1,18 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:25:38: ACTION[ServerStart]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 12:25:40: ACTION[ServerStart]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/worlds/factory-check]
+2026-10-18 12:25:40: ACTION[ServerStart]: Server for gameid="golden_era" listening on 127.0.0.1:30198.
+2026-10-18 12:25:41: ACTION[Server]: GoldenEraQA [127.0.0.1] joins game. List of players: GoldenEraQA
+2026-10-18 12:25:41: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era (prototype) | uptime: 0s | max lag: 0.104s | clients: GoldenEraQA
+2026-10-18 12:25:41: ACTION[Main]: CHAT: *** GoldenEraQA joined the game.
+2026-10-18 12:25:41: WARNING[Server]: [mcl_inventory] craft width for player GoldenEraQA is 0
+2026-10-18 12:25:41: ACTION[Server]: ERA DEMO READY: survival inventory verified; isolated factory and player initialized
+2026-10-18 12:25:41: ACTION[Main]: CHAT: Survival inventory check (damage off). Factory starts with two raw iron: expect four ingots. /factory_status reports exact chest/player counts. /factory_refill starts another batch after completion. Right-click machines or use /factory_form generator
+2026-10-18 12:25:41: ACTION[Main]: |pulverizer|furnace|buffer.
+2026-10-18 12:25:42: WARNING[Server]: [mcl_inventory] craft width for player GoldenEraQA is 0
+2026-10-18 12:27:46: ACTION[Server]: GoldenEraQA takes stuff from chest at (3,200,0)

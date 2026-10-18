@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse, os, pathlib, subprocess, tempfile
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-ALL_PHASES=['seed','resume','automatic','recipe_seed','recipe_resume','recipe_verify','lifecycle','corrupt_seed','corrupt_resume','corrupt_verify','native_seed','native_resume','native_verify','byproduct_seed','byproduct_resume','byproduct_verify','sides_seed','sides_resume','survival_seed','survival_resume']
+ALL_PHASES=['seed','resume','automatic','recipe_seed','recipe_resume','recipe_verify','lifecycle','corrupt_seed','corrupt_resume','corrupt_verify','native_seed','native_resume','native_verify','byproduct_seed','byproduct_resume','byproduct_verify','sides_seed','sides_resume','survival_seed','survival_resume','player_counts']
 parser=argparse.ArgumentParser()
 parser.add_argument('--phases',nargs='+',choices=ALL_PHASES,help='Run a focused fresh-world sequence during development')
 args=parser.parse_args()
@@ -16,7 +16,7 @@ with tempfile.TemporaryDirectory(prefix='integration-',dir=base) as temp:
  for phase in phases:
   settings = [
    'bind_address = 127.0.0.1', 'port = 30199', 'server_announce = false',
-   'mg_name = singlenode', 'mcl_singlenode_mapgen = false',
+   'mg_name = singlenode', 'mcl_singlenode_mapgen = false', 'creative_mode = false',
    'era_test_manual = '+('false' if phase in ('automatic','corrupt_resume') else 'true'),
    'era_test_phase = '+phase,
   ]
