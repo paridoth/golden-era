@@ -1,0 +1,610 @@
+{
+  "schema": 1,
+  "pack": "FTB Revelation",
+  "version": "3.7.0",
+  "lock_content_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+  "status": "static reference specification; unresolved registries; not a runtime export",
+  "runtime_ready": false,
+  "artifacts": [
+    {
+      "path": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "sha256": "f1cc8aeefcda2c00235bfb5ee7f76d731325aa324e90e84d7d232d88c1e6f472"
+    },
+    {
+      "path": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "sha256": "e07b0c48def9ce8cfaa4cf7a7c656bf7f7d6815f74fbcc2957dd43efa78486a9"
+    }
+  ],
+  "config": {
+    "pack": "FTB Revelation",
+    "version": "3.7.0",
+    "source_path": "config/cofh/thermalexpansion/common.cfg",
+    "source_url": "https://files.feed-the-beast.com/blob/a3/a3e99d8f5ef067fe5089f11333f0bd3cef078f8c1332ebb05f84715e1ab3a553.cfg",
+    "source_sha256": "6232ee2e04483ae16872553f4af33c92a3cfcb6851b2cbc7fd718468650e3a8a",
+    "evidence_kind": "configured values; effective runtime behavior not yet verified",
+    "facts": [
+      {
+        "key": "Dynamo.CustomAugmentScaling",
+        "value": false,
+        "line": 108
+      },
+      {
+        "key": "Dynamo.CustomPowerScaling",
+        "value": false,
+        "line": 111
+      },
+      {
+        "key": "Dynamo.CustomScaling",
+        "value": false,
+        "line": 112
+      },
+      {
+        "key": "Dynamo.SmallStorage",
+        "value": false,
+        "line": 118
+      },
+      {
+        "key": "Dynamo.Steam.BasePower",
+        "value": 40,
+        "line": 128
+      },
+      {
+        "key": "Dynamo.Upgradable",
+        "value": true,
+        "line": 121
+      },
+      {
+        "key": "Item.Capacitor.BaseSend",
+        "value": 500,
+        "line": 228
+      },
+      {
+        "key": "Machine.CustomAugmentScaling",
+        "value": false,
+        "line": 279
+      },
+      {
+        "key": "Machine.CustomEnergyScaling",
+        "value": false,
+        "line": 282
+      },
+      {
+        "key": "Machine.CustomPowerScaling",
+        "value": false,
+        "line": 285
+      },
+      {
+        "key": "Machine.CustomScaling",
+        "value": false,
+        "line": 286
+      },
+      {
+        "key": "Machine.DisableAutoInput",
+        "value": false,
+        "line": 289
+      },
+      {
+        "key": "Machine.DisableAutoOutput",
+        "value": false,
+        "line": 292
+      },
+      {
+        "key": "Machine.Furnace.BasePower",
+        "value": 20,
+        "line": 308
+      },
+      {
+        "key": "Machine.Pulverizer.BasePower",
+        "value": 20,
+        "line": 314
+      },
+      {
+        "key": "Machine.Pulverizer.Ore -> Dust Multiplier",
+        "value": 2,
+        "line": 318
+      },
+      {
+        "key": "Machine.SmallStorage",
+        "value": false,
+        "line": 298
+      },
+      {
+        "key": "Machine.Upgradable",
+        "value": true,
+        "line": 301
+      },
+      {
+        "key": "Storage.Cell.BaseCapacity",
+        "value": 2000000,
+        "line": 648
+      },
+      {
+        "key": "Storage.Cell.BaseReceive",
+        "value": 1000,
+        "line": 651
+      },
+      {
+        "key": "Storage.Cell.BaseSend",
+        "value": 1000,
+        "line": 654
+      }
+    ]
+  },
+  "processing_and_fuel": [
+    {
+      "machine": "pulverizer",
+      "input": {
+        "kind": "ore_group",
+        "id": "oreIron",
+        "count": 1
+      },
+      "energy_rf": 4000,
+      "output": {
+        "kind": "ore_group",
+        "id": "dustIron",
+        "count": 2
+      },
+      "secondary": {
+        "stack": {
+          "kind": "ore_group",
+          "id": "dustNickel",
+          "count": 1
+        },
+        "chance_percent": 10
+      },
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/machine/pulverizer/pulverizer_ores.json",
+        "sha256": "d52e481ed75285fd993f136844525e5445bc840c18004f19320b5116c4c60d32",
+        "pointer": "/pulverizer/2"
+      }
+    },
+    {
+      "machine": "pulverizer",
+      "input": {
+        "kind": "ore_group",
+        "id": "oreCopper",
+        "count": 1
+      },
+      "energy_rf": 4000,
+      "output": {
+        "kind": "ore_group",
+        "id": "dustCopper",
+        "count": 2
+      },
+      "secondary": {
+        "stack": {
+          "kind": "ore_group",
+          "id": "dustGold",
+          "count": 1
+        },
+        "chance_percent": 10
+      },
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/machine/pulverizer/pulverizer_tf.json",
+        "sha256": "4c51ccbe272a5485041a4f9e9b8fcceedf2976b881d86cc27183ea53f05aad76",
+        "pointer": "/pulverizer/0"
+      }
+    },
+    {
+      "machine": "pulverizer",
+      "input": {
+        "kind": "ore_group",
+        "id": "oreTin",
+        "count": 1
+      },
+      "energy_rf": 4000,
+      "output": {
+        "kind": "ore_group",
+        "id": "dustTin",
+        "count": 2
+      },
+      "secondary": {
+        "stack": {
+          "kind": "ore_group",
+          "id": "dustIron",
+          "count": 1
+        },
+        "chance_percent": 10
+      },
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/machine/pulverizer/pulverizer_tf.json",
+        "sha256": "4c51ccbe272a5485041a4f9e9b8fcceedf2976b881d86cc27183ea53f05aad76",
+        "pointer": "/pulverizer/1"
+      }
+    },
+    {
+      "machine": "steam_dynamo",
+      "input": {
+        "kind": "item",
+        "id": "minecraft:coal",
+        "count": 1,
+        "metadata": 0
+      },
+      "energy_rf": 24000,
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/dynamo/steam.json",
+        "sha256": "c1c1b91e7c815414d5be1285aac549df5f600a7f2df03f655323faa781f925ea",
+        "pointer": "/dynamo_steam/0"
+      }
+    },
+    {
+      "machine": "steam_dynamo",
+      "input": {
+        "kind": "item",
+        "id": "minecraft:coal",
+        "count": 1,
+        "metadata": 1
+      },
+      "energy_rf": 16000,
+      "evidence": {
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "assets/thermalexpansion/content/dynamo/steam.json",
+        "sha256": "c1c1b91e7c815414d5be1285aac549df5f600a7f2df03f655323faa781f925ea",
+        "pointer": "/dynamo_steam/1"
+      }
+    }
+  ],
+  "crafting": [
+    {
+      "kind": "shapeless",
+      "output": {
+        "kind": "item",
+        "id": "thermalfoundation:material",
+        "count": 2,
+        "metadata": 163
+      },
+      "ingredients": [
+        {
+          "kind": "ore_group",
+          "id": "ingotCopper",
+          "count": 1
+        },
+        {
+          "kind": "ore_group",
+          "id": "ingotCopper",
+          "count": 1
+        },
+        {
+          "kind": "ore_group",
+          "id": "ingotCopper",
+          "count": 1
+        },
+        {
+          "kind": "ore_group",
+          "id": "ingotTin",
+          "count": 1
+        }
+      ],
+      "evidence": {
+        "path": "scripts/00_recipe_changes.zs",
+        "sha256": "4c60f419a1b54035544cf4c86c1ab65d69b1c98e92b86c9d2fc5eef55d61a9f9",
+        "line": 127
+      }
+    },
+    {
+      "kind": "shaped",
+      "output": {
+        "kind": "item",
+        "id": "thermalfoundation:material",
+        "count": 1,
+        "metadata": 291
+      },
+      "ingredients": [
+        [
+          null,
+          {
+            "kind": "ore_group",
+            "id": "ingotBronze",
+            "count": 1
+          },
+          null
+        ],
+        [
+          {
+            "kind": "ore_group",
+            "id": "ingotBronze",
+            "count": 1
+          },
+          {
+            "kind": "item",
+            "id": "minecraft:iron_ingot",
+            "count": 1,
+            "metadata": 0
+          },
+          {
+            "kind": "ore_group",
+            "id": "ingotBronze",
+            "count": 1
+          }
+        ],
+        [
+          null,
+          {
+            "kind": "ore_group",
+            "id": "ingotBronze",
+            "count": 1
+          },
+          null
+        ]
+      ],
+      "evidence": {
+        "path": "scripts/00_recipe_changes.zs",
+        "sha256": "4c60f419a1b54035544cf4c86c1ab65d69b1c98e92b86c9d2fc5eef55d61a9f9",
+        "line": 132
+      }
+    },
+    {
+      "kind": "shaped",
+      "output": {
+        "kind": "item",
+        "id": "thermalfoundation:material",
+        "count": 1,
+        "metadata": 257
+      },
+      "ingredients": [
+        [
+          null,
+          {
+            "kind": "ore_group",
+            "id": "ingotTin",
+            "count": 1
+          },
+          null
+        ],
+        [
+          {
+            "kind": "ore_group",
+            "id": "ingotTin",
+            "count": 1
+          },
+          {
+            "kind": "ore_group",
+            "id": "ingotIron",
+            "count": 1
+          },
+          {
+            "kind": "ore_group",
+            "id": "ingotTin",
+            "count": 1
+          }
+        ],
+        [
+          null,
+          {
+            "kind": "ore_group",
+            "id": "ingotTin",
+            "count": 1
+          },
+          null
+        ]
+      ],
+      "evidence": {
+        "path": "scripts/01_unification.zs",
+        "sha256": "c3649ca252f3e57eff5b4a3dcce6bd73aeda27e99a9db782334eae539f805151",
+        "line": 12
+      }
+    }
+  ],
+  "review": {
+    "schema": 1,
+    "review_kind": "Authored factual interpretation of the exact compiled classes; checksums bind review to inspected bytes. Not an automatic Java translator or effective runtime export.",
+    "lock_content_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+    "parser_defaults": {
+      "pulverizer_rf": 4000,
+      "steam_rf": 16000
+    },
+    "binary_evidence": [
+      {
+        "id": "pulverizer_parser",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/util/parsers/machine/PulverizerParser.class",
+        "sha256": "1b4b3fb24f0e433452d66e040ff3b4fbde87e83c3c11fae7c3763f3a05d9e908",
+        "locations": [
+          "<init>()V offsets 5..8: defaultEnergy=4000",
+          "parseArray(JsonArray)V offsets 153..206: energy overrides energy_mod overrides default"
+        ]
+      },
+      {
+        "id": "steam_parser",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/util/parsers/dynamo/SteamParser.class",
+        "sha256": "db0ec641df0da68f7563af6d0cd03ba98fd17e88a1889f0fb02328d64d09c43c",
+        "locations": [
+          "<init>()V offsets 5..8: default from SteamManager",
+          "parseArray(JsonArray)V offsets 99..152: energy overrides energy_mod overrides default"
+        ]
+      },
+      {
+        "id": "steam_fuels",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/util/managers/dynamo/SteamManager.class",
+        "sha256": "854a6b2638addc019d04270e8d8cf7371c6f44b786e4ab1c925efb7d5c487bdd",
+        "locations": [
+          "<clinit>()V offsets 10..13: default energy=16000",
+          "getFuelEnergy(ItemStack)I offsets 22..59: explicit map before furnace burn-time fallback; fallback multiplier 10, minimum 3000 RF"
+        ]
+      },
+      {
+        "id": "steam_machine",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/block/dynamo/TileDynamoSteam.class",
+        "sha256": "25e14cdf01eadcab49c61525d106e855ccf4cfe2c78200a0fff7ca1271f9cada",
+        "locations": [
+          "ConstantValue field STEAM_RF=25000",
+          "<clinit>()V offsets 29..31: fluidAmount=100",
+          "<init>()V offsets 9..15: tank capacity=4000; offsets 37..43: water lock",
+          "processStart()V offsets 64..91: waterRF credit, drain one fluidAmount batch",
+          "processTick()I offsets 116..162: debit both fuelRF and waterRF by generated RF"
+        ]
+      },
+      {
+        "id": "energy_config",
+        "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+        "entry": "cofh/core/util/core/EnergyConfig.class",
+        "sha256": "b9e4b8129f1feb781e80516be0c1b6b4580888c36d1033b4210b53cfee70f7ac",
+        "locations": [
+          "setDefaultParams(I)Z offsets 7..54: minPower=P/10, maxEnergy=1000*P, thresholds=10%/90%, energyRamp=maxPowerLevel/P",
+          "setDefaultParams(IZ)Z offsets 0..9: false selects ordinary storage"
+        ]
+      },
+      {
+        "id": "machine_base",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/block/machine/TileMachineBase.class",
+        "sha256": "fb4510656f726d135bea5ee935b94a28aabc3830f5f769a69ad7922f1d90d95e",
+        "locations": [
+          "<clinit>()V offsets 59..122: power scaling 100/150/200/250/300; energy scaling all 100",
+          "calcEnergy()I offsets 0..75: high threshold then low threshold then stored/ramp"
+        ]
+      },
+      {
+        "id": "dynamo_base",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/block/dynamo/TileDynamoBase.class",
+        "sha256": "4573c729a2dc9dcef5418e046495ea9e12cacceb8f594c99558244f85e25c89f",
+        "locations": [
+          "<clinit>()V offsets 0..32: power scaling 100/150/200/250/300",
+          "calcEnergy()I offsets 0..73: low threshold then high threshold then (capacity-stored)/ramp"
+        ]
+      },
+      {
+        "id": "furnace_recipes",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/util/managers/machine/FurnaceManager.class",
+        "sha256": "48ac218c70242f0a6fb6110e26461bca5f8bf1c6f36edf512ab82f56cf90c9d7",
+        "locations": [
+          "ConstantValue field DEFAULT_ENERGY=2000",
+          "initialize()V offsets 96..151: dust input / ingot output uses default energy * 3 / 4; existing recipe is checked first"
+        ]
+      },
+      {
+        "id": "cell",
+        "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+        "entry": "cofh/thermalexpansion/block/storage/TileCell.class",
+        "sha256": "93abcc2807da5bb04e0851f1068a57e3072242ee71ac46f739c93f99e7350d84",
+        "locations": [
+          "ConstantValue fields CAPACITY_BASE=2000000, XFER_BASE=1000",
+          "<clinit>()V: capacity/receive/send factors 1/4/9/16/25",
+          "config()V: each factor multiplied by configured base"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "steam_water",
+        "evidence": [
+          "steam_machine"
+        ],
+        "scope": "Unaugmented solid-fuel mode",
+        "water_tank_mb": 4000,
+        "water_batch_mb": 100,
+        "water_credit_rf": 25000,
+        "accounting": "Refill water credit when nonpositive; add credit rather than reset. Generated RF debits both independent fuel and water credits. Persist both credits and tank contents; batch count is not a per-tick water rate."
+      },
+      {
+        "id": "steam_fuel_lookup",
+        "evidence": [
+          "steam_fuels",
+          "steam_parser"
+        ],
+        "scope": "Static registration/lookup rule, prior to inter-mod changes",
+        "lookup": "Reject empty stacks and container items. Positive explicit fuel-map entry takes precedence. Otherwise furnace burn ticks * 10, accepted only at >=3000 RF. Coal JSON overrides default; charcoal uses parser default."
+      },
+      {
+        "id": "machine_energy",
+        "evidence": [
+          "energy_config",
+          "machine_base"
+        ],
+        "scope": "Basic unaugmented furnace/pulverizer with SmallStorage=false and configured P=20",
+        "max_rf_per_tick": 20,
+        "min_rf_per_tick": 2,
+        "capacity_rf": 20000,
+        "high_threshold_rf": 18000,
+        "low_threshold_rf": 2000,
+        "ramp": 900,
+        "rate": "E>=18000:20; E<2000:min(2,E); otherwise floor(E/900). Final-operation and scheduler ordering need separate parity checks."
+      },
+      {
+        "id": "dynamo_energy",
+        "evidence": [
+          "energy_config",
+          "dynamo_base"
+        ],
+        "scope": "Basic unaugmented steam dynamo with SmallStorage=false and configured P=40",
+        "max_rf_per_tick": 40,
+        "min_rf_per_tick": 4,
+        "capacity_rf": 40000,
+        "high_threshold_rf": 36000,
+        "low_threshold_rf": 4000,
+        "ramp": 900,
+        "rate": "E<=4000:40; E>36000:4; otherwise floor((40000-E)/900). Generation and accepted transfer are separate; verify saturation behavior before implementation."
+      },
+      {
+        "id": "dust_smelting",
+        "evidence": [
+          "furnace_recipes"
+        ],
+        "scope": "Default scan of registered furnace recipes; non-food dust input to ingot output; absent an earlier recipe",
+        "energy_rf": 1500,
+        "registry_condition": "An actual dust-to-ingot smelting registration must exist. Stack counts come from that registration. This is a cost-rule template, not a resolved iron recipe."
+      },
+      {
+        "id": "tiers",
+        "evidence": [
+          "machine_base",
+          "dynamo_base",
+          "cell"
+        ],
+        "scope": "No augments/enchantments; default scaling selected by pack configs",
+        "levels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "power_percent": [
+          100,
+          150,
+          200,
+          250,
+          300
+        ],
+        "machine_energy_percent": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "cell_capacity_multiplier": [
+          1,
+          4,
+          9,
+          16,
+          25
+        ],
+        "cell_transfer_multiplier": [
+          1,
+          4,
+          9,
+          16,
+          25
+        ],
+        "notes": "Tier names, augment validity, upgrade crafting and in-world transitions still require mapping; these arrays alone do not implement upgrades."
+      }
+    ]
+  },
+  "unresolved": [
+    "Effective recipe/load order and inter-mod overrides",
+    "Ore dictionary membership and preferred concrete outputs",
+    "Complete machine crafting, side controls and transport behavior",
+    "Save migration, fractional water/fuel accounting and random output persistence",
+    "Native mappings and original-runtime parity observations"
+  ]
+}

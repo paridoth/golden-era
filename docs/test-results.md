@@ -191,13 +191,40 @@ Evidence is in `evidence/2026-10-18/revelation-reference-fetch.txt`,
 `revelation-reference-check.txt`, `revelation-unit-tests.txt` and
 `revelation-reference-summary.json`. Downloaded originals stay ignored.
 
+## Thermal static specification and bounded import — 2026-10-18
+
+Inspected the exact TE 5.5.7.1, CoFH Core 4.6.6.1, Thermal Foundation 2.6.7.1
+and Redstone Flux 2.1.1.1 JARs as inert ZIPs. The reproducible importer needs only
+TE/Core and verifies both against the pack lock. No original classes or scripts
+were executed. Reviewed behavioral records bind to nine exact class hashes;
+JSON records include entry hashes/pointers and script records include hashes/lines.
+
+The generated specification contains 21 config facts, three pulverizer recipes,
+coal/charcoal fuel records and three literal crafting statements. It is explicitly
+not a resolved registry export or native runtime definition. Source inspection
+established defaults/rules, not complete effective pack behavior or parity.
+
+`./scripts/test.sh` passed **13 Lua + 8 reference + 9 Thermal importer tests**
+(30 total). The new tests cover coal/charcoal identity, unresolved groups,
+metadata/count preservation, unsupported NBT/wildcards/constants/expressions,
+probabilities, explicit/default/percentage RF, repeated crafting ingredients,
+grid holes, missing/duplicate selected statements, ambiguous ZIP entries and
+rejection of a review for a different pack lock.
+
+Full config/script cache verification and Thermal regeneration comparison passed;
+Python compilation and Git whitespace checks passed. Evidence is in
+`evidence/2026-10-18/thermal-reference-check.txt` and `thermal-unit-tests.txt`.
+There were no Lua runtime/state changes, so engine integration was not rerun;
+the earlier ten-phase validation run remains the latest engine evidence.
+
 ## Scope of the suite
 
 The 13 pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
 full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
 connect/disconnect, copied ledger save boundary, invalid RF inputs and non-finite RF/burn/cost rejection.
-Eight additional Python tests cover reference acquisition/provenance/cache integrity.
+Eight Python tests cover reference acquisition/provenance/cache integrity; nine
+more cover the bounded Thermal data import.
 
 Engine integration creates one temporary SQLite world and runs ten separate
 headless server processes, each with a 120-second timeout on loopback port

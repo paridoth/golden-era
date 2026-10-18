@@ -54,10 +54,31 @@ replace an existing lock. A future repin/version change needs an explicit review
 of identity, content changes and affected behavior; fetching never follows an
 unversioned "latest" target.
 
+## Thermal factory specification
+
+`revelation-3.7.0-thermal.json` combines 21 config facts, five selected
+processing/fuel records, three normalized pack crafting statements and reviewed
+binary rules. `thermal-review.json` records authored interpretations with exact
+class hashes and method/offset anchors. Read [the specification](../docs/thermal-factory-spec.md)
+for the supported subset, unknowns and migration boundary.
+
+```sh
+python3 scripts/thermal_reference.py fetch
+python3 scripts/thermal_reference.py check
+python3 scripts/thermal_reference.py export
+```
+
+This separate fetch obtains two hash-verified, inert JARs (TE and CoFH Core). It
+never loads their classes. The importer reads selected JSON resources directly;
+class interpretations remain reviewed records, not automatic Java translation.
+All originals stay in ignored cache storage. The generated data has unresolved
+ore groups and is explicitly not ready for native runtime use.
+
 ## What remains to extract
 
-The current tool inventories every file and imports original config/script
-inputs, then extracts a small config-only fact sheet. It does not interpret
-ZenScript, resolve ore dictionary groups/NBT, run mod registration code, export
-machine recipes, or translate arbitrary Java logic. Follow `docs/roadmap.md`
+The reference tool inventories every file and imports original config/script
+inputs. The scoped Thermal importer additionally normalizes selected embedded
+recipes and three literal ZenScript statements. It does not evaluate general
+ZenScript, resolve ore dictionary groups/NBT, run registration code, export the
+effective recipe registry, or translate arbitrary Java logic. Follow `docs/roadmap.md`
 for the scoped native implementation and parity workflow.

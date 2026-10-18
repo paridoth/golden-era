@@ -41,7 +41,9 @@ factual extracts and authored documentation are tracked. See
 The four scripts are `00_recipe_changes.zs`, `01_unification.zs`,
 `02_akashic_tome.zs`, and `03_tooltip.zs`. Inspection confirms pack-specific
 recipe changes and material unification. They must be considered alongside
-mod defaults. They have not been executed or semantically imported.
+mod defaults. They have not been executed. Three selected literal crafting statements are
+now normalized by the bounded Thermal importer; the full scripts remain
+uninterpreted.
 
 ## First sourced configuration facts
 
@@ -59,9 +61,11 @@ and line numbers for all 15 extracted values. Examples:
 | Basic Energy Cell capacity | 2000000 RF | 648 |
 | Basic Energy Cell receive/send rate | 1000 / 1000 RF/t | 651 / 654 |
 
-These establish configured base values. They do not establish per-recipe RF
-costs, coal energy, water consumption, tier/augment behavior, buffer-dependent
-speed or the fully resolved recipe registry. The item Flux Capacitor and block
+These establish configured base values. The separate
+[Thermal specification](thermal-factory-spec.md) adds selected embedded recipe
+records and reviewed binary rules for fuel, water, buffer-dependent speed and
+default tier factors. The fully resolved recipe registry and native parity
+remain unverified. The item Flux Capacitor and block
 Energy Cell also have different settings; do not conflate them.
 
 ## Existing engineering values — still provisional

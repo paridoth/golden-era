@@ -19,8 +19,11 @@ The 1000-entry manifest is pinned; all 675 selected configs and four pack script
 are cached and hash-verified. The first 15 Thermal config facts have source
 hashes and line numbers. Exact mod builds are available in the lock/inventory.
 
-Next: map recipe scripts, metadata/NBT-sensitive ingredients, item groups and
-mod defaults to a versioned intermediate specification. Do not treat config
+The first [Thermal intermediate specification](thermal-factory-spec.md) now
+imports selected embedded recipes/fuels and three literal crafting statements,
+preserving metadata, groups and chances. Reviewed class hashes anchor water,
+buffer/rate, furnace and tier rules. Next: resolve effective item groups/outputs,
+complete crafting and side behavior, and validate the remaining semantics. Do not treat config
 extraction as complete behavior extraction. Unknown fields/behaviors must be
 reported rather than invented. Inspection tools should not execute pack code.
 Any original-runtime export is a separate controlled operation.
@@ -66,6 +69,7 @@ sound and inherited-media provenance before preparing a public distribution.
 Keep reproducible source/config pins, automated checks, native gameplay tests
 and documented limitations together.
 
-The next concrete deliverable is the Thermal factory behavior specification and
-its supported data import, followed by a graphical factory session. Further
+The initial Thermal specification and bounded import are recorded. The next
+concrete deliverable is the resolved first-loop data/side mapping and a tested
+native state migration, then a graphical factory session. Further
 infrastructure work should address risks exposed by that milestone.

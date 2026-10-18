@@ -178,7 +178,7 @@ def report(content):
                       'reference_config_script_bytes': sum(entry['size'] for entry in selected(content))}, indent=2))
 
 
-def thermal_facts(content):
+def thermal_facts(content, additional_keys=()):
     path = 'config/cofh/thermalexpansion/common.cfg'
     entry = next(entry for entry in content['files'] if entry['path'] == path)
     raw = destination(entry).read_bytes()
@@ -192,6 +192,7 @@ def thermal_facts(content):
         'Storage.Cell.BaseCapacity', 'Storage.Cell.BaseReceive', 'Storage.Cell.BaseSend',
         'Item.Capacitor.BaseSend',
     }
+    wanted.update(additional_keys)
     scopes, facts = [], {}
     for number, original in enumerate(raw.decode('utf-8').splitlines(), 1):
         line = original.strip()

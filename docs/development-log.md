@@ -145,3 +145,35 @@ alongside the 13 Lua tests. Final verification evidence is recorded separately.
 Runtime behavior was unchanged, so the earlier ten engine phases remain the
 latest engine run rather than being reported as a new run for this reference
 selection. Hosted CI remains unexecuted.
+
+## 2026-10-18 — first Thermal static contract and supported import
+
+Downloaded/hash-verified the exact TE, Thermal Foundation, CoFH Core and Redstone
+Flux JARs to ignored reference storage and inspected them without loading Java
+classes. Found recipe resources under assets/thermalexpansion/content, alongside
+code-defined defaults. Reviewed nine class hashes with method/offset/field
+anchors; public legacy source was only a reading aid, not an exact-build pin.
+
+Added a bounded importer for iron/copper/tin pulverizer records, coal/charcoal
+fuel records and three literal pack crafting statements. It preserves metadata,
+material-group identities, repeated ingredients, grid holes and secondary output
+chances. Unknown selected stack/recipe fields fail. No general ZenScript engine,
+NBT translation or effective ore-dictionary/recipe registry is claimed. Class
+interpretations are authored review data whose byte provenance is checked, not
+an automatic bytecode translator. Twenty-one config facts include relevant
+storage/scaling flags. The generated contract is explicitly runtime_ready=false.
+
+Important findings: coal has an explicit 24000-RF registration while charcoal
+uses the 16000-RF parser default; iron pulverizing specifies two dust and a 10%
+nickel secondary; the default non-food dust-to-ingot furnace scan uses 1500 RF;
+Steam Dynamo water is batch-credit accounting (100 mB adds 25000 RF of credit).
+Machine and dynamo rates depend on their buffers. Recorded the full supported
+boundary, provisional native differences, conditional parity arithmetic and
+migration requirements in docs/thermal-factory-spec.md. Existing gameplay remains
+unchanged pending effective mapping and a coupled resource/state migration.
+
+All 30 unit tests, cached config/script integrity, Thermal regeneration comparison,
+Python compilation and whitespace checks passed. Original code/scripts were never
+executed; downloaded originals remain untracked. Runtime was unchanged and the
+prior ten engine phases were not rerun for this acquisition/import/specification
+change. Graphical play and effective original-runtime observations remain pending.

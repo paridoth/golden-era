@@ -35,8 +35,14 @@ python3 scripts/reference.py report
 python3 scripts/reference.py facts
 ```
 
-Reference import downloads inert config/script files only; it never runs an
-installer, Java, Forge, mod code or recipe scripts. See the
+The [first Thermal behavior specification](docs/thermal-factory-spec.md) now
+includes selected recipes, fuel values, water/buffer rules and upgrade factors
+from the exact JARs. Its bounded importer preserves metadata and unresolved
+material groups. Run `python3 scripts/thermal_reference.py fetch` followed by
+`python3 scripts/thermal_reference.py check` to verify it locally.
+
+Reference import downloads inert config/script files and selected JARs; it never
+runs an installer, Java, Forge, mod code or recipe scripts. See the
 [reference workflow](references/README.md) and [roadmap](docs/roadmap.md).
 
 ## Build and test

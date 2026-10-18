@@ -1,0 +1,3 @@
+Verified two inert Thermal/Core JARs; no Java or pack code executed
+REFERENCE PASS: 679 config/script files match locked size, SHA-256 and SHA-1
+THERMAL REFERENCE PASS: 5 processing/fuel records, 3 crafting records, 21 config facts; static evidence only
