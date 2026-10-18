@@ -36,8 +36,8 @@ RF per operation, coal/fluid requirements, capacities, side controls and base
 upgrade behavior from the pinned builds and effective pack scripts.
 
 The first reviewed specification, native crafting catalog, basic RF/water model
-and known-state migration are implemented. Complete secondary outputs and side/
-transport behavior before claiming a full reference-driven loop. Add parity checks against the reference, including
+and known-state migration are implemented. Persisted secondary outputs and native item-side controls are implemented.
+Complete survival acquisition and storage crafting before graphical play. Add parity checks against the reference, including
 input/output probabilities and resource balances. Preserve existing saves or
 provide an explicit tested migration when state models change. Legacy fixture
 rates stay preserved; remaining storage/transport recipes are provisional.
@@ -72,7 +72,7 @@ and documented limitations together.
 
 The initial specification, ten native crafting patterns and basic RF/water model
 are implemented. Schema-1 migration preserves legacy behavior with an explicit
-upgrade path. Persisted nickel secondary outputs now have restart/overflow checks. Next complete first-loop sides/
-transport and storage crafting, and provide tin/silver acquisition before a
+upgrade path. Persisted nickel secondary outputs now have restart/overflow checks. Native item-side controls and directional ejection are implemented. Next complete
+storage crafting and tin/silver acquisition before a
 graphical survival session. Further infrastructure work should address risks
 exposed by those milestones.

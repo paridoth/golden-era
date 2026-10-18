@@ -313,9 +313,9 @@ more cover the bounded Thermal data import. Six catalog tests cover offline
 regeneration, concrete metadata, missing mappings/pattern keys, explicit override
 conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
-Engine integration creates one temporary SQLite world and runs sixteen separate
+Engine integration creates one temporary SQLite world and runs eighteen separate
 headless server processes (the original ten legacy regression phases plus three
-native model/migration and three secondary-output phases), each with a 120-second timeout on loopback port
+native model/migration and three secondary-output phases plus two item-side phases), each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
 iron ore into four ingots in a native chest, with 32000 RF generated and 16000 RF
@@ -347,3 +347,18 @@ timeout. There is no graphical client build or optional modpack comparison.
 logs from the previous machine. They support the historical handoff only.
 The original source manifest remains an immutable archive record; it is not a
 manifest for new documentation or future code edits.
+
+## Native item sides and ejection — 2026-10-18
+
+The full suite passed 47 unit tests and all 18 engine processes. Two new phases
+check source-backed processor mode groups, protected settings, split output,
+destination input denial, automatic-output toggle, panel rotation, reserved-input
+locks, directional byproduct ejection, SQLite persistence, old-layout opt-in and
+six malformed configurations. Source class integrity, catalog/model regeneration,
+Lua 5.1 syntax and whitespace checks passed. Evidence uses sides-.
+
+The first full run found test factories close enough for new all-face output to
+send dust into another fixture's chest. Separated the native fixture and reran
+the complete suite successfully. Transfer cadence/default auto-output, RF faces
+and Thermal Dynamics ducts remain native gaps; see [item sides](item-sides.md).
+Continuing with survival materials and storage crafting.

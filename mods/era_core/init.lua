@@ -7,6 +7,7 @@
   era.active[core.pos_to_string(pos)] = vector.new(pos); era.invalidate()
  end
  dofile(core.get_modpath("era_core").."/state.lua")
+ dofile(core.get_modpath("era_core").."/ports.lua")
  function era.register_recipe(machine, input, result, cost, rate)
   assert(cost > 0 and rate > 0 and not (era.recipes[machine] or {})[input])
   era.recipes[machine] = era.recipes[machine] or {}
@@ -18,13 +19,13 @@
  function era.register_machine(name, def)
   assert(not era.machines[name]); def.legacy_capacity=def.legacy_capacity or def.capacity; era.machines[name] = def
   core.register_node(name, {
-   description=def.description, tiles={def.texture or "era_machine.png"},
+   description=def.description, paramtype2="facedir", tiles={def.texture or "era_machine.png"},
    groups={cracky=2, pickaxey=1, era_machine=1, unmovable_by_piston=1}, _mcl_hardness=3, _mcl_blast_resistance=6,
    on_construct=function(pos)
     local m=core.get_meta(pos); local inv=m:get_inventory()
     for _, list in ipairs({"src","dst","secondary","fuel","water","empty"}) do inv:set_size(list, 1) end
     era.save(pos, {energy=0,work=0,burn=0,water=0,fuel_rf=0,water_rf=0,profile="revelation"}); era.track(pos)
-    era.refresh(pos)
+    era.init_ports(pos,name); era.refresh(pos)
    end,
    after_place_node=function(pos, player) core.get_meta(pos):set_string("owner",player:get_player_name()); era.track(pos) end,
    on_destruct=function(pos) era.active[core.pos_to_string(pos)]=nil; era.invalidate() end,
@@ -51,6 +52,7 @@
    allow_metadata_inventory_move=function() return 0 end,
    on_receive_fields=function(pos,formname,fields,player)
     if fields.upgrade then era.upgrade(pos,name,player) end
+    era.ports_fields(pos,fields,player)
    end,
   })
  end
@@ -67,7 +69,7 @@
    "label[0.5,1.5;Input]list[context;src;0.5,2;1,1;]label[3,1.5;Output]list[context;dst;3,2;1,1;]"..
    "label[4.2,1.5;Byproduct]list[context;secondary;4.2,2;1,1;]label[5.5,1.5;Fuel]list[context;fuel;5.5,2;1,1;]"..
    (def.producer and m:get_string("profile")=="revelation" and "label[7,1.5;Water]list[context;water;7,2;1,1;]label[8.5,1.5;Empty]list[context;empty;8.5,2;1,1;]label[0.5,3.2;Water "..m:get_int("water").." mB | Fuel "..m:get_int("fuel_rf").." RF | Water credit "..m:get_int("water_rf").." RF]" or "")..
-   "list[current_player;main;0.5,4;9,3;]"..
+   era.ports_formspec(pos,core.get_node(pos).name).."list[current_player;main;0.5,4;9,3;]"..
    (m:get_string("profile")=="legacy" and "button[0.5,7.5;7,0.7;upgrade;Use Revelation model after current burn/job finishes]" or "")..
    "listring[context;src]listring[current_player;main]")
  end

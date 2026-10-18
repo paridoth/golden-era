@@ -7,6 +7,7 @@ local lifecycle=dofile(modpath.."/lifecycle.lua")
 local corruption=dofile(modpath.."/corruption.lua")
 local native=dofile(modpath.."/native.lua")
 local byproduct=dofile(modpath.."/byproduct.lua")
+local sides=dofile(modpath.."/sides.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -17,7 +18,7 @@ local function place(pos,name)
  local legacy={seed=true,resume=true,automatic=true,recipe_seed=true,recipe_resume=true,recipe_verify=true,lifecycle=true,corrupt_seed=true,corrupt_resume=true,corrupt_verify=true}
  if era.machines[name] and legacy[core.settings:get("era_test_phase")] then
   local m=core.get_meta(pos)
-  for _,key in ipairs({"profile","water","fuel_rf","water_rf"}) do m:set_string(key,"") end
+  for _,key in ipairs({"profile","water","fuel_rf","water_rf","item_ports","item_ports_version","item_front"}) do m:set_string(key,"") end
   m:set_int("schema",1) -- reproduce the old world format, then let production validation migrate it
  end
 end
@@ -34,7 +35,10 @@ local function snapshot()
 end
 local function run()
  local phase=core.settings:get("era_test_phase")
- if phase:sub(1,10)=="byproduct_" then
+ if phase:sub(1,6)=="sides_" then
+  sides(phase,storage,place,eq)
+  return
+ elseif phase:sub(1,10)=="byproduct_" then
   byproduct(phase,storage,place,eq)
   return
  elseif phase:sub(1,7)=="native_" then
@@ -126,9 +130,9 @@ core.register_on_mods_loaded(function()
   return
  end
  core.after(0,function()
-  core.emerge_area(p(-1,-1),p(26,10),function(_,_,remaining)
+  core.emerge_area(p(-1,-1),p(26,26),function(_,_,remaining)
    if remaining==0 then core.after(0,function()
-    core.load_area(p(-1,-1),p(26,10))
+    core.load_area(p(-1,-1),p(26,26))
     local ok,err=xpcall(run,debug.traceback)
     if not ok then core.log("error","ERA INTEGRATION FAIL: "..err); core.request_shutdown("Integration failed",false,0) end
    end) end

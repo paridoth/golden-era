@@ -1,0 +1,4 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:51:31: ACTION[Server]: ERA INTEGRATION SIDES_SEED PASS: seven source mode groups, panel/protection, split primary/byproduct outputs, configured furnace input, disabled auto-output, reserved-input lock and vertical ejector
+2026-10-18 11:51:36: ACTION[Server]: ERA INTEGRATION SIDES_RESUME PASS: side/rotation/toggle/ejector state survives SQLite; older layouts retain routing until explicit opt-in; six malformed port records pause
+ENGINE INTEGRATION PASS: 2 real server processes; sides_seed, sides_resume

@@ -4,7 +4,7 @@
 return {
  ["schema"]=1,
  ["pack_content_sha256"]="afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
- ["review_sha256"]="7c8537a43ae2422f03d6d7ba0d8d889a1298b1092c9c2a68f5c4de8f398d63f0",
+ ["review_sha256"]="ec6971678f0bd95d4aa49efff270fda0a2ec1c6d7f150d71b2ab91697c3ef61f",
  ["spec_sha256"]="db1ade2f874f37488a30e7b1630970ca7302ea6b7743e2862e9b7325070d85b1",
  ["items"]={
   {["name"]="era_materials:iron_dust",["description"]="Iron Dust"},

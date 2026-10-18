@@ -31,6 +31,7 @@ function era.machine_ready(pos,name,state)
    fault="Fluid/fuel credit exceeds capacity"
   end
  end
+ if not fault then fault=era.validate_ports(pos,name) end
  if not fault and def.processor then local _,reason=era.resolve_recipe(pos,name,state); fault=reason end
  if not fault and schema==1 then era.migrate(pos,state) end
  local message=fault or ""

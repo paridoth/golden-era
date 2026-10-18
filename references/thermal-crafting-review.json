@@ -345,7 +345,7 @@
     }
   ],
   "side_review": {
-    "status": "Static index tables only; orientation and access semantics still need tracing. Not used by the native runtime.",
+    "status": "Normal processor item-side tables now feed native item controls; RF sides, augments and exact transfer timing remain separate.",
     "pulverizer": {
       "slot_groups": [
         [],

@@ -258,3 +258,18 @@ semantics, exact RF/output/no duplication, all 100 percentile values (ten wins)
 and eight malformed decision cases. Source class hashes, regeneration, syntax
 and whitespace checks pass. Evidence uses byproducts-. Continuing with sides,
 transport and survival acquisition under the user's instruction to keep working.
+
+## Native item sides and ejection — 2026-10-18
+
+The full suite passed 47 unit tests and all 18 engine processes. Two new phases
+check source-backed processor mode groups, protected settings, split output,
+destination input denial, automatic-output toggle, panel rotation, reserved-input
+locks, directional byproduct ejection, SQLite persistence, old-layout opt-in and
+six malformed configurations. Source class integrity, catalog/model regeneration,
+Lua 5.1 syntax and whitespace checks passed. Evidence uses sides-.
+
+The first full run found test factories close enough for new all-face output to
+send dust into another fixture's chest. Separated the native fixture and reran
+the complete suite successfully. Transfer cadence/default auto-output, RF faces
+and Thermal Dynamics ducts remain native gaps; see [item sides](item-sides.md).
+Continuing with survival materials and storage crafting.

@@ -35,8 +35,44 @@
         "canStart()Z: checks complete potential primary/secondary output capacity",
         "processFinish()V: baseline nextInt(100) < recipeChance; recipe chance 10 in pinned iron resource"
       ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/util/core/SideConfig.class",
+      "sha256": "b0000df8e1fa5e07a0ca1e9548c6df30142f8b7e5af5fb748797b25935cb3cab",
+      "locations": [
+        "<clinit>()V: type insertion/extraction tables; type 7/8 allow insertion and extraction"
+      ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/block/TileReconfigurable.class",
+      "sha256": "123a623b2e90949b3f92cb253569a4859432e257459773f19b10487fffcfb0b5",
+      "locations": [
+        "getAccessibleSlotsFromSide: slotGroups[sideCache[face]]",
+        "canInsertItem: side type + slot insertion rules",
+        "canExtractItem: type 7 permits all slots; other types honor per-slot extraction",
+        "setSide: facing side cannot be configured"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/TileMachineBase.class",
+      "sha256": "fb4510656f726d135bea5ee935b94a28aabc3830f5f769a69ad7922f1d90d95e",
+      "locations": [
+        "setFacing(IZ)Z: only horizontal faces 2..5; new front cache mode becomes 0"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/TileFurnace.class",
+      "sha256": "ae11d282ab1f2b8b7d0839ffa3306677ab8ac7a23d6b09e7e34b107cf5406fbc",
+      "locations": [
+        "initialize()V: five modes/groups, insertion input only, primary extraction"
+      ]
     }
   ],
   "interpretation": "At full RF storage an unaugmented active dynamo continues debiting its minimum generation; storage clamps the excess. Fuel/water negative remainders must carry. Native startup/refill timing and graph dispatch are explicitly separate from complete original tick parity.",
-  "secondary_policy": "Native jobs save one percentile at paid-work start for restart stability; original baseline rolls at completion. Distribution and potential-output preflight are preserved, RNG timing/sequence is a deliberate native difference."
+  "secondary_policy": "Native jobs save one percentile at paid-work start for restart stability; original baseline rolls at completion. Distribution and potential-output preflight are preserved, RNG timing/sequence is a deliberate native difference.",
+  "item_side_policy": "Native processor item-side groups/front exclusion follow inspected tables. RF faces, original transfer timing and special augments are not implemented; native automatic push defaults on. Older layouts opt in explicitly."
 }

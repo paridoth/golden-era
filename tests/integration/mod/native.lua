@@ -1,7 +1,7 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- New-world schema 2 plus genuine schema-1 migration and SQLite restart.
 return function(phase,storage,place,eq)
- local function p(x,z) return vector.new(x,200,z or 2) end
+ local function p(x,z) return vector.new(x,200,16+(z or 2)) end
  local positions={generator=p(4),buffer=p(5),cable=p(4,1),pulverizer=p(4,0),furnace=p(5,0),ejector=p(6,0),chest=p(7,0)}
  local player={get_player_name=function() return "integration" end}
  local function inv(pos) return core.get_meta(pos):get_inventory() end
@@ -26,7 +26,7 @@ return function(phase,storage,place,eq)
  local function legacy(pos,name,s,job)
   place(pos,name)
   local m=core.get_meta(pos)
-  for _,key in ipairs({"profile","water","fuel_rf","water_rf"}) do m:set_string(key,"") end
+  for _,key in ipairs({"profile","water","fuel_rf","water_rf","item_ports","item_ports_version","item_front"}) do m:set_string(key,"") end
   m:set_int("schema",1)
   for _,key in ipairs({"energy","work","burn"}) do m:set_int(key,s[key]) end
   for _,list in ipairs({"water","empty"}) do inv(pos):set_size(list,0) end
@@ -37,6 +37,7 @@ return function(phase,storage,place,eq)
    local id=name=="cable" and "era_energy:cable" or name=="ejector" and "era_transport:ejector" or name=="chest" and "mcl_chests:chest_small" or "era_thermal:"..name
    place(pos,id)
   end
+  assert(era.configure_side(positions.furnace,4,1,player))
   local gen=positions.generator; local g=inv(gen)
   eq(era.state(gen).profile,"revelation","new machine profile")
   eq(era.state(gen).schema,2,"new state schema")

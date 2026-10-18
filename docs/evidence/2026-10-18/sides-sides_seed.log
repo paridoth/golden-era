@@ -1,0 +1,10 @@
+2026-10-18 11:57:51: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:57:52: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-vvs7kpuw/world]
+2026-10-18 11:57:52: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:57:53: ACTION[Server]: ERA INTEGRATION SIDES_SEED PASS: seven source mode groups, panel/protection, split primary/byproduct outputs, configured furnace input, disabled auto-output, reserved-input lock and vertical ejector
+2026-10-18 11:57:53: ACTION[Main]: Server: Shutting down

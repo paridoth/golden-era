@@ -86,3 +86,11 @@ refunded work. Engine tests cover repair of a legacy job at 200/4000 work with
 protected/busy upgrades. These checks do not authenticate privileged metadata,
 sandbox hostile Lua, implement unknown-schema recovery or provide forced-crash
 atomicity across inventory/mapblock writes.
+
+## Item-side configuration
+
+[Item-side controls](item-sides.md) use an optional version-1 port record alongside
+metadata schema 2. Missing records preserve existing routing until explicit
+opt-in. Present records require six valid modes, a disabled horizontal panel face
+and a valid output toggle. Invalid records pause without inventory/RF changes.
+Panel rotation and mode changes preserve saved jobs and paid work.

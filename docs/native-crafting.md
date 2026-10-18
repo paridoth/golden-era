@@ -91,8 +91,8 @@ mirroring rule. Only the documented orientation is guaranteed for the coils.
 ## Current gameplay and validation boundary
 
 The [basic RF/water model](native-resources.md) now operates new machines, while
-legacy machines retain their old profile until explicitly upgraded. Byproducts,
-side controls, augments and the buffer/cable/ejector recipes are still incomplete.
+legacy machines retain their old profile until explicitly upgraded. Persisted nickel byproducts and [item-side controls](item-sides.md) are implemented;
+augments and the buffer/cable/ejector recipes are still incomplete.
 These crafting patterns do not establish complete Steam Dynamo or pack parity.
 
 Tin and silver ingots are registered for creative/server-supplied fixtures;
@@ -103,7 +103,7 @@ progression. New material/component visuals remain placeholders.
 Engine checks query Luanti's real crafting manager against independent reference
 examples, including exact ingredient counts, shuffled shapeless bronze inputs,
 the tin/copper gear distinction and wrong-coil denial. They also reject all
-three old machine shortcuts and preserve denied inputs. The extended thirteen-process restart,
+three old machine shortcuts and preserve denied inputs. The extended eighteen-process restart,
 job, unload/reload and malformed-state suite remains required after runtime edits.
 Actual player inventory/crafting callbacks, graphical usability and effective
 original-pack parity remain separate validation work.

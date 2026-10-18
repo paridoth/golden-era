@@ -1,0 +1,8 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:49:17: ACTION[Server]: ERA INTEGRATION NATIVE_SEED PASS: native water/fuel job saved; blocked bucket preserves inputs; schema-1 burn/job preserved; protected/busy upgrades denied; idle upgrade retains RF/items
+2026-10-18 11:49:26: ACTION[Server]: ERA INTEGRATION NATIVE_RESUME PASS: native SQLite continuation; four ingots cost 14000 of 24000 RF; charcoal 16000 RF; water credit, full-buffer loss and signed debt saved
+2026-10-18 11:49:32: ACTION[Server]: ERA INTEGRATION NATIVE_VERIFY PASS: second restart preserves outputs and signed credits; next batches carry debt; 11 malformed native states and two malformed native jobs pause without mutation
+2026-10-18 11:49:36: ACTION[Server]: ERA INTEGRATION BYPRODUCT_SEED PASS: preflight blocks RF/RNG; winning/losing decisions saved once; old schema-2 job retains primary-only semantics
+2026-10-18 11:49:42: ACTION[Server]: ERA INTEGRATION BYPRODUCT_RESUME PASS: blocked decisions survive restart without reroll; two primary outputs plus exact saved win/loss; no duplicated RF/items
+2026-10-18 11:49:52: ACTION[Server]: ERA INTEGRATION BYPRODUCT_VERIFY PASS: second restart preserves outputs; all 100 percentile outcomes yield ten nickel; eight malformed decisions pause without mutation
+ENGINE INTEGRATION PASS: 6 real server processes; native_seed, native_resume, native_verify, byproduct_seed, byproduct_resume, byproduct_verify

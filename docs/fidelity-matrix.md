@@ -11,9 +11,9 @@ The [reference lock](../references/revelation-3.7.0.lock.json) supplies exact bu
 | Foundation | Mineclonia plus six custom mods | functional engine slice; survival/terrain differ from Minecraft 1.12.2 |
 | RF production | native coal/charcoal and water credits; full-buffer minimum loss; preserved legacy profile | TE5 config has Steam Dynamo base 40 RF/t; native basic coal/charcoal/water model and rates implemented; startup/side/augment parity pending |
 | RF transfer/storage | six-face components, buffers, consumer budget | native capacities and buffer limits sourced; shared graph allocation is provisional; legacy lifecycle tested |
-| Pulverizer | ore/raw iron -> dust | TE5 config base 20 RF/t and default ore multiplier 2; 4000 RF primary processing implemented; 10% nickel byproduct still pending; effective groups unresolved |
+| Pulverizer | ore/raw iron -> dust | TE5 config base 20 RF/t and default ore multiplier 2; 4000 RF primary processing implemented; persisted 10% nickel byproduct implemented; effective groups unresolved |
 | Powered furnace | dust -> ingot | TE5 config base 20 RF/t; 1500 RF dust smelting and buffer-dependent rates implemented; effective registry parity pending |
-| Item transport | fixed +X moves and ordinary native chest | protected-transfer checks; reference side modes, ducts, filters and broader storage unsupported |
+| Item transport | configured processor faces, separate primary/byproduct output and directional ejector | protected-transfer checks; normal item-side tables sourced; ducts, filters, RF side controls and broader storage unsupported |
 | Save/restart | RF/work/burn/profile/water/credits/jobs/inventories | restarts, changed recipe settings, eviction and invalid-state pause/repair tested; schema-1 -> 2 legacy preservation and explicit upgrade tested; forced-crash atomicity unresolved |
 | Player interaction | formspec, recipes and protected callbacks | engine verifies new crafting and denial of old shortcuts; actual player crafting/UI/multiplayer untested |
 | Progression | ten native material/component/machine crafting patterns | exact class/config/script evidence; explicit native representatives; tin/silver survival acquisition and effective full registry unresolved |

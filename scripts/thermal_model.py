@@ -49,7 +49,8 @@ def compile_model(spec):
             'pulverizer_cost': iron[0]['energy_rf'], 'furnace_cost': rules['dust_smelting']['energy_rf'],
             'ore_multiplier': iron[0]['output']['count'],
             'secondary_output': secondary_output, 'secondary_chance': secondary['chance_percent'],
-            'mapping_sha256': reference.sha256(reference.canonical(mapping))}
+            'mapping_sha256': reference.sha256(reference.canonical(mapping)),
+            'ports': mapping['side_review']}
 
 
 def render(value):
@@ -71,7 +72,7 @@ def verify_sources(fetch=False):
             raw, _ = thermal_catalog.thermal.resource(z, source['entry'], source['jar'])
         if reference.sha256(raw) != source['sha256']:
             raise ValueError('Runtime class review is stale: ' + source['entry'])
-    print('RF SOURCE PASS: reviewed TE/RedstoneFlux classes match locked original artifacts')
+    print('RF SOURCE PASS: reviewed TE/CoFHCore/RedstoneFlux classes match locked original artifacts')
 
 
 def main():
