@@ -20,5 +20,17 @@
   "mesecons": {
     "url": "https://github.com/minetest-mods/mesecons.git",
     "commit": "aca87dbd448637d2dc80e59e909425932acd6c84"
+  },
+  "basic_materials": {
+    "url": "https://github.com/mt-mods/basic_materials.git",
+    "commit": "f626da067a39206b7d60c1122843cd951ffb7081"
+  },
+  "xcompat": {
+    "url": "https://github.com/mt-mods/xcompat.git",
+    "commit": "758684dac8875d06d8c1565e323ee52c9d4daf7f"
+  },
+  "fakelib": {
+    "url": "https://github.com/OgelGames/fakelib.git",
+    "commit": "562dc359f00227daf0ee56dbba9c36a240c59d4c"
   }
 }

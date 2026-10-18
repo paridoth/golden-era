@@ -411,3 +411,26 @@ The roadmap now puts an isolated compatibility trial before further custom
 infrastructure. No runtime dependency or existing world changed in this review.
 The existing unit/source-model checks passed (50 tests), and `git diff --check`
 passed. Engine integration was not repeated for these documentation-only changes.
+
+## First real Pipeworks reuse probe — 2026-10-18
+
+Added an isolated temporary Mineclonia/Golden Era assembly with pinned Pipeworks
+and dependencies, plus a test-only machine adapter. Promoted basic_materials,
+xcompat and fakelib's existing observed revisions to the enforced upstream lock.
+The runner verifies clean source pins and patches the game-ID alias only in a
+temporary xcompat copy. It does not edit the normal game or existing worlds.
+
+The headless engine passed real Pipeworks item routing into the Pulverizer and
+furnace. Guards reject invalid recipes, changed sides/protection at arrival and
+reserved-input extraction. An active job's stored output/chance, work and RF stay
+unchanged when another ore arrives. Routed dust produces one ingot for 1500 RF.
+The native scheduler is disabled and processing is explicitly stepped; graphical
+attachments, actual extraction and persistence in transit remain future checks.
+
+The first assembly lacked Mineclonia's required root README and was corrected.
+The first routing pass also revealed unsupported late node overrides; adapter
+registration moved to mod loading before the final run. See the captured
+[probe evidence](evidence/2026-10-18/reuse-probe.log). Unit/source-model checks,
+Lua/Python syntax and whitespace checks passed. The next adoption milestone is
+the filtered factory line, restart/lifecycle and relocation coverage documented
+in [mod compatibility](mod-compatibility.md).

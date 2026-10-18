@@ -16,13 +16,17 @@ of this native implementation pathway; see `docs/roadmap.md`.
 | Luanti 5.17.0 | `c0e6812b1a4260bb25a1f606f70f55f4962bb97d` | headless engine |
 | Mineclonia 0.124.0 | `20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1` | active game foundation |
 | Technic | `b00a5653012c21ba1f73f02820440e7d5e0fefad` | inspection only |
-| Pipeworks | `5dfd572eacee4c3c1ed8b827f4a67c46b022b242` | inspection only |
+| Pipeworks | `5dfd572eacee4c3c1ed8b827f4a67c46b022b242` | isolated item-routing probe; not normal play |
 | Mesecons | `aca87dbd448637d2dc80e59e909425932acd6c84` | inspection only |
+| basic_materials | `f626da067a39206b7d60c1122843cd951ffb7081` | Pipeworks comparison dependency |
+| xcompat | `758684dac8875d06d8c1565e323ee52c9d4daf7f` | Pipeworks comparison dependency |
+| fakelib | `562dc359f00227daf0ee56dbba9c36a240c59d4c` | Pipeworks comparison dependency |
 
-URLs and enforced revisions live in `upstream.lock.json`. Four extra cached
-checkouts (minetest_game, basic_materials, xcompat, fakelib) are recorded in
-`handoff/observed-upstreams.json`; setup does not enforce or assemble them.
-There is no `compare.py` or completed optional-mod comparison harness.
+URLs and enforced revisions live in `upstream.lock.json`. The three Pipeworks
+dependencies were promoted from the handoff's observed pins for the isolated
+reuse probe. The cached Minetest Game checkout remains recorded only in
+`handoff/observed-upstreams.json`. Normal setup assembles the Mineclonia/custom
+game without these comparison mods.
 
 Mineclonia is feasible for the independent factory slice based on real engine
 startup/processing/persistence. This does not prove optional modpacks work or
@@ -54,7 +58,7 @@ saved-state rules and regression tests define the behavior an adapter must keep.
 
 | Candidate | Reuse opportunity | Decision and evidence |
 | --- | --- | --- |
-| [Pipeworks](https://github.com/mt-mods/pipeworks) | Item tubes, filtering, routing, injectors and autocrafting | First item-network integration candidate. Pinned source has suitable machine hooks; no Golden Era runtime test yet. |
+| [Pipeworks](https://github.com/mt-mods/pipeworks) | Item tubes, filtering, routing, injectors and autocrafting | First item-network candidate. Isolated startup, input routing and guarded machine adapter probe passed; adoption checks remain. |
 | [Elepower](https://github.com/LunaSquee/elepower) / [fluid_lib](https://github.com/LunaSquee/fluid_lib) | Standalone buffered energy API and named fluid buffers | First power/fluid API comparison, ahead of Technic. Source inspected at `c37fe7bc3fc52a05e03507ca35cba2c8e5b3e330` / `9b52f6eb7b6fd7fa81f2e923e1d3bd5950ec9762`; not assembled here. |
 | [Technic](https://github.com/mt-mods/technic) | Machine utilities, inventory helpers, network discovery, recipe-guide integration and future powered tools | Selective reuse candidate. Tiered EU and switching-station timing differ from Thermal RF; default machines/worldgen would change progression. |
 | [Storage Drawers](https://github.com/minetest-mods/drawers) | Bulk storage, item locks, controllers and Pipeworks integration | Evaluate before writing bulk storage. Current upstream documents Mineclonia support; not pinned or tested here. |
@@ -106,13 +110,33 @@ These are source findings, not interoperability results:
   rollback are not provided. Evaluate an adapter against our existing tests
   before replacing the working path. Preservation itself is not unique to ours.
 
-### Next compatibility milestone
+### Executed first feasibility probe
 
-1. Lock additional dependencies and assemble a separate Mineclonia-derived test
-   game using our actual `golden_era` game ID, with Pipeworks first.
-2. Add the smallest machine/chest adapter and exercise a filtered chest →
-   Pulverizer → furnace → chest line, including secondary outputs, full outputs,
-   reserved inputs, protection, restart, chunk eviction and wrench relocation.
+`python3 tests/reuse/run.py` builds a disposable game with the actual
+`golden_era` ID and pinned Mineclonia, our mods, Pipeworks and its dependencies.
+It verifies source revisions and clean checkouts, patches only the disposable
+xcompat copy with the explicit Mineclonia alias, and uses a new temporary world.
+The normal game and player worlds do not receive the probe adapter.
+
+The real headless server passed: two Pipeworks packets travelled through tubes
+into a Pulverizer and furnace. Arrival rechecks reject changed sides/protection
+and invalid recipes; reserved-input extraction callbacks refuse access. Adding
+ore preserves an existing paid job, its chance decision, RF and work. Delivered
+dust smelts into one ingot using exactly 1500 RF through our native processor.
+The native scheduler is disabled for this probe and processing is stepped
+explicitly. With no connected players, Pipeworks routes its item state without
+visual entity attachments. This establishes a feasible API integration, not
+complete player, extraction, network persistence or progression compatibility.
+See [probe instructions](../tests/reuse/README.md) and
+[captured evidence](evidence/2026-10-18/reuse-probe.log).
+
+### Remaining adoption checks
+
+1. Extend the isolated adapter with ordinary chests, actual filter extraction and
+   machine auto-output. Exercise a filtered chest → Pulverizer → furnace → chest
+   line with secondary outputs, full outputs and reserved inputs.
+2. Test protection, in-flight items across restart/chunk eviction, rotation and
+   wrench relocation, then real player visuals/interactions.
 3. Compare standalone Elepower/fluid_lib APIs and selected Technic utilities
    against our existing RF/job tests before expanding a custom framework.
 4. Adopt passing components with reviewed recipes/features and license notices.

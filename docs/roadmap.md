@@ -4,7 +4,8 @@
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0
 experience: interconnected technology, tools, automation, storage, magic and
-exploration. Use the actual pack's versioned inputs and observed behavior as
+exploration. Prefer assembling compatible existing Luanti mods with a focused
+Revelation integration layer. Use the actual pack's versioned inputs and observed behavior as
 primary evidence. The user's 2026-10-18 choice supersedes the earlier Direwolf20
 1.7.10/TE4/Thaumcraft4 plan. Mineclonia remains the survival foundation, with
 its differences from Minecraft 1.12.2 reviewed deliberately.

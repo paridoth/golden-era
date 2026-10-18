@@ -71,7 +71,15 @@ Unavailable versions fail the build; do not silently replace them.
 The build creates a headless Luanti 5.17.0 server with bundled Lua 5.1.5, using
 two compiler jobs. It assembles Mineclonia 0.124.0 and the custom mods under
 `runtime/games/golden_era`. Technic, Pipeworks and Mesecons are downloaded for
-inspection but are not installed into this runtime.
+comparison but are not installed into this runtime. Pipeworks' three dependencies
+are also pinned. The next development milestone is to reuse existing transport,
+power/fluid, storage and tooling APIs where they satisfy our reference behavior;
+see [compatibility findings](docs/mod-compatibility.md).
+
+An isolated Pipeworks feasibility probe already routes items into our native
+machines with guarded callbacks. Run `python3 tests/reuse/run.py` after setup;
+see [its scope and instructions](tests/reuse/README.md). It uses a disposable
+game/world and does not enable Pipeworks in normal play.
 
 The relocated build, unit tests, engine crafting checks, and
 restart/configuration/chunk-lifecycle suite are recorded in

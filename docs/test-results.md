@@ -489,3 +489,27 @@ preserved contents and RF. This records user-reported hands-on evidence alongsid
 the automated relocation checks above. Actual crafting, survival gathering and
 multiplayer remain separate validation targets. The subsequent reuse review is
 source inspection only; no optional-mod runtime compatibility is claimed.
+
+## First isolated Pipeworks routing probe — 2026-10-18
+
+`python3 tests/reuse/run.py` passed in a real headless server with the pinned
+Mineclonia, Pipeworks, basic_materials, xcompat and fakelib revisions. The runner
+verifies source pins, uses a temporary `golden_era` game/world and adds an explicit
+Mineclonia game alias only to its copied xcompat. A test-only adapter registers
+during mod loading; production modules are unchanged.
+
+Two packets travel through Pipeworks tubes into native Pulverizer/furnace input
+inventories. Changed side/protection checks at arrival and invalid recipes return
+their stacks without changing RF/work/job/input. Reserved-input extraction is
+denied at the callback. Routed ore preserves the existing job/chance decision;
+routed dust becomes one ingot for exactly 1500 RF. These assertions use actual
+metadata/inventories and the engine-driven Pipeworks globalstep.
+
+The native scheduler is disabled; furnace processing is explicitly stepped.
+There are no connected players or visual entity attachments. Full extraction,
+auto-output, ordinary chest adapters, protection plugins, restart while items
+travel, eviction, rotation and wrench/tube reconnection remain adoption checks.
+The normal game and demo world are not modified by this probe. Captured evidence:
+[reuse-probe.log](evidence/2026-10-18/reuse-probe.log). All 50 existing unit tests
+and generated catalog/model checks also passed; Lua/Python syntax and whitespace
+checks passed.

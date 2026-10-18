@@ -1,0 +1,21 @@
+Golden Era isolated pinned Pipeworks reuse probe
+SOURCE luanti c0e6812b1a4260bb25a1f606f70f55f4962bb97d clean
+SOURCE mineclonia 20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1 clean
+SOURCE pipeworks 5dfd572eacee4c3c1ed8b827f4a67c46b022b242 clean
+SOURCE basic_materials f626da067a39206b7d60c1122843cd951ffb7081 clean
+SOURCE fakelib 562dc359f00227daf0ee56dbba9c36a240c59d4c clean
+SOURCE xcompat 758684dac8875d06d8c1565e323ee52c9d4daf7f clean
+TEMPORARY PATCH xcompat/src/gameid.lua: golden_era = "mineclonia"
+PATCH SCOPE temporary game copy only; upstream and normal runtime game untouched
+CONFIG temporary golden_era game/world; loopback 30201; manual era simulation; 120s timeout
+2026-10-18 13:03:10: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 13:03:12: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/reuse-probe-m8xen56u/world]
+2026-10-18 13:03:12: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30201.
+2026-10-18 13:03:15: ACTION[Server]: ERA REUSE PROBE PASS: temporary Mineclonia alias; real Pipeworks packets reached two native machines; side/protection arrival checks, recipe rejection, reserved-input guard, saved-job preservation and 1500-RF smelting
+2026-10-18 13:03:15: ACTION[Main]: Server: Shutting down
+
