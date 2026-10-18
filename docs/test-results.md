@@ -480,3 +480,12 @@ and an actor within six nodes. The carrier consumes exactly one even in creative
 mode and references world-local server storage. The QA command /factory_wrench
 supplies a tool. The user closed Luanti normally; actual wrench interaction is
 the next hands-on check, and the graphical client has not been reopened.
+
+## User-confirmed relocation — 2026-10-18
+
+After reopening the graphical client for the wrench test, the user confirmed
+all requested interactions worked, including packing/replacing machines with
+preserved contents and RF. This records user-reported hands-on evidence alongside
+the automated relocation checks above. Actual crafting, survival gathering and
+multiplayer remain separate validation targets. The subsequent reuse review is
+source inspection only; no optional-mod runtime compatibility is claimed.

@@ -390,3 +390,24 @@ and an actor within six nodes. The carrier consumes exactly one even in creative
 mode and references world-local server storage. The QA command /factory_wrench
 supplies a tool. The user closed Luanti normally; actual wrench interaction is
 the next hands-on check, and the graphical client has not been reopened.
+
+## User-confirmed relocation and reuse review — 2026-10-18
+
+The graphical client was reopened for the wrench check. The user subsequently
+confirmed all requested interactions worked, including packing/replacing machines
+with preserved contents and RF. This is user-reported hands-on evidence; actual
+crafting, survival gathering and multiplayer remain separate checks.
+
+The user questioned how much generic infrastructure we were recreating. The
+reuse comparison had been deferred too long. Pinned-source inspection identifies
+Pipeworks as the first item-network candidate, with concrete game-ID, chest,
+side/protection, reserved-input and relocation integration work. Elepower's
+standalone power API and fluid_lib are the closer power/fluid candidates;
+Technic offers selected utilities but different EU/progression semantics. Existing
+Storage Drawers and Wrench are additional reuse candidates. See the exact audit
+revisions and limitations in [mod compatibility](mod-compatibility.md).
+
+The roadmap now puts an isolated compatibility trial before further custom
+infrastructure. No runtime dependency or existing world changed in this review.
+The existing unit/source-model checks passed (50 tests), and `git diff --check`
+passed. Engine integration was not repeated for these documentation-only changes.

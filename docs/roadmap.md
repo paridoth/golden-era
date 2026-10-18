@@ -42,7 +42,25 @@ input/output probabilities and resource balances. Preserve existing saves or
 provide an explicit tested migration when state models change. Legacy fixture
 rates stay preserved; remaining storage/transport recipes are provisional.
 
-## 3. Graphically playable survival and multiplayer slice
+## 3. Reuse existing infrastructure before expanding the framework
+
+The optional-mod reuse comparison is now the next engineering milestone, ahead
+of more custom transport, power infrastructure, storage or tooling. Pipeworks
+already supplies item networks, filters and routing; build and test a small
+adapter to our machine contracts in an isolated Mineclonia-derived game first.
+Compare Elepower's standalone buffered energy/fluid APIs and selected Technic
+utilities before expanding our power implementation. Evaluate existing Storage
+Drawers and Wrench implementations before building their equivalents. Use
+Mineclonia's existing recipe guide for machine-recipe discovery.
+
+Keep Revelation reference data, behavior specifications and regression tests
+as the contract. Generic infrastructure may come from upstream projects, with
+our code supplying recipes, RF/job rules and adapters where needed. An existing
+mod's Mineclonia support does not establish compatibility with Golden Era's game
+ID, materials, protection and saved jobs. See the source findings and concrete
+acceptance scenario in [mod compatibility](mod-compatibility.md).
+
+## 4. Graphically playable survival and multiplayer slice
 
 Play from gathering materials through crafting and operating the first factory.
 Check recipes, formspecs, orientation/side configuration, clear status, machine
@@ -51,7 +69,7 @@ callbacks and multiple clients, including contention and protection boundaries.
 Keep targeted automation alongside these real gameplay checks. The existing
 restart, chunk-lifecycle and corrupt-state suite is supporting infrastructure.
 
-## 4. Extend connected systems incrementally
+## 5. Extend connected systems incrementally
 
 Use the exact selected generations: Tinkers' Construct 2 smeltery/casting/tools;
 AE2 rv6 storage and crafting networks; Thaumcraft 6 scanning, knowledge/research,
@@ -61,7 +79,7 @@ Botania, Blood Magic 2 and additional industry/exploration, require explicit
 coverage priorities rather than an assumption that every JAR is already scoped
 for the first release. Witchery is outside the selected manifest.
 
-## 5. Reliability, performance and release readiness
+## 6. Reliability, performance and release readiness
 
 Measure realistic networks and contention as systems grow. Design schema
 migrations and forced-crash recovery before transactional content expands.
@@ -75,6 +93,6 @@ are implemented. Schema-1 migration preserves legacy behavior with an explicit
 upgrade path. Persisted nickel secondary outputs now have restart/overflow checks. Native item-side controls and directional ejection are implemented. Storage crafting and tin/silver/lead acquisition are implemented; next validate
 the graphical survival session. The user confirmed four ingots after withdrawing
 the corrected demo output. Native complete-state wrench relocation is implemented
-with separate registry/restart checks; actual crafting and relocation interactions
-remain the next hands-on checks. Further infrastructure work should address risks
-exposed by those milestones.
+with separate registry/restart checks. The user has now confirmed the wrench
+interaction worked. Actual crafting, survival gathering and multiplayer remain
+hands-on checks. The next development milestone is the reuse comparison above.

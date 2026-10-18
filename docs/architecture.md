@@ -13,7 +13,7 @@ Gameplay reference: FTB Revelation 3.7.0 (Minecraft 1.12.2), selected on
 | `era_materials` | generated native material/component crafting catalog |
 | `era_energy` | six-face graph, cached components and authoritative simulation |
 | `era_thermal` | sourced basic resource model, preserved legacy rates and recipe jobs |
-| `era_transport` | protected one-item transfer, fixed +X routing and chest allowlist |
+| `era_transport` | protected one-item transfer, configurable ejector direction and chest allowlist |
 
 No global `default` shim is provided. The adapter uses Mineclonia APIs and item
 IDs directly. Public shared functions are `era.register_machine`,
@@ -80,14 +80,19 @@ invoked. RF connectivity itself has no ownership isolation. Real concurrent
 players and third-party protection systems have not been tested.
 
 Machines ignore explosions and are piston-immovable to avoid untested state
-loss. Machines with items, energy, work, remaining burn, water or credits cannot be dug. All
-machines currently show input/output/fuel slots even where a slot is unused.
+loss. Machines with items, energy, work, remaining burn, water or credits cannot be dug.
+The Factory Wrench packs validated complete state into a one-use world-local
+package; see [relocation](relocation.md). Forms show relevant machine slots and
+the player's full main inventory.
 
 ## Extension order
 
-The selected reference inventory/configs are now pinned. Next, specify and
-import the supported Thermal factory behavior from those exact inputs, then
-validate it in graphical survival and multiplayer sessions. Extend migrations,
+The selected reference inventory/configs and first Thermal behavior slice are
+implemented. Before adding more generic infrastructure, run the Pipeworks
+compatibility milestone and compare existing energy/fluid/storage/tool APIs in
+[mod compatibility](mod-compatibility.md). Keep reference behavior and saved-state
+tests as the contract for reused components. Continue graphical survival and
+multiplayer validation. Extend migrations,
 crash recovery and performance checks around those systems as they grow.
 Tinkers 2, AE2 rv6 and Thaumcraft 6 are future native branches; the earlier
 handoff's 1.7.10 generation choices are historical. No reference importer
