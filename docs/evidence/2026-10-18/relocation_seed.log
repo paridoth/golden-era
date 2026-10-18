@@ -1,0 +1,26 @@
+2026-10-18 12:45:39: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 12:45:40: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-hgbtptw9/world]
+2026-10-18 12:45:40: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 12:45:40: ERROR[Server]: [Golden Era] Machine packing failed: ...lden-era-luanti/tests/integration/mod/relocation.lua:99: Intentional relocation inventory insertion failure
+stack traceback:
+	[C]: in function 'error'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:99: in function 'set_stack'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:150: in function <...n era/golden-era-luanti/mods/era_core/relocation.lua:146>
+	[C]: in function 'xpcall'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:146: in function 'pack_machine'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:106: in function 'source_tests'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:120: in function <...lden-era-luanti/tests/integration/mod/relocation.lua:117>
+	[C]: in function 'xpcall'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:117: in function 'relocation'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:42: in function <...era/golden-era-luanti/tests/integration/mod/init.lua:39>
+	[C]: in function 'xpcall'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:148: in function 'func'
+	...anti/upstream/luanti/bin/../builtin/common/after.lua:140: in function '?'
+	...i/upstream/luanti/bin/../builtin/common/register.lua:27: in function <...i/upstream/luanti/bin/../builtin/common/register.lua:13>
+2026-10-18 12:45:40: ACTION[Server]: ERA INTEGRATION RELOCATION_SEED PASS: protected/full-inventory/wrong-tool/malformed-source refusals and injected insertion rollback; native saved decision, generator water/debts, genuine schema-1 migration/job preservation and cell RF packed into registry
+2026-10-18 12:45:40: ACTION[Main]: Server: Shutting down

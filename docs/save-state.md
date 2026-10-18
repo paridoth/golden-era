@@ -94,3 +94,11 @@ metadata schema 2. Missing records preserve existing routing until explicit
 opt-in. Present records require six valid modes, a disabled horizontal panel face
 and a valid output toggle. Invalid records pause without inventory/RF changes.
 Panel rotation and mode changes preserve saved jobs and paid work.
+
+## Packed machines
+
+[Relocation](relocation.md) keeps a complete validated snapshot in world mod storage
+under a one-use token. The package item alone does not contain its contents.
+Backups must include all world databases. Clean packed/restored restarts are
+tested; cross-database forced-crash atomicity is not provided. A new placer owns
+the restored machine for subsequent automation/protection checks.

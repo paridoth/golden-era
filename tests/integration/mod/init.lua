@@ -10,6 +10,7 @@ local byproduct=dofile(modpath.."/byproduct.lua")
 local sides=dofile(modpath.."/sides.lua")
 local survival=dofile(modpath.."/survival.lua")
 local player_counts=dofile(modpath.."/player_counts.lua")
+local relocation=dofile(modpath.."/relocation.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -37,7 +38,10 @@ local function snapshot()
 end
 local function run()
  local phase=core.settings:get("era_test_phase")
- if phase=="player_counts" then
+ if phase:sub(1,11)=="relocation_" then
+  relocation(phase,storage,place,eq)
+  return
+ elseif phase=="player_counts" then
   player_counts(storage,place,eq)
   return
  elseif phase:sub(1,9)=="survival_" then
@@ -138,9 +142,9 @@ core.register_on_mods_loaded(function()
   return
  end
  core.after(0,function()
-  core.emerge_area(p(-1,-1),p(50,26),function(_,_,remaining)
+  core.emerge_area(p(-1,-1),p(70,26),function(_,_,remaining)
    if remaining==0 then core.after(0,function()
-    core.load_area(p(-1,-1),p(50,26))
+    core.load_area(p(-1,-1),p(70,26))
     local ok,err=xpcall(run,debug.traceback)
     if not ok then core.log("error","ERA INTEGRATION FAIL: "..err); core.request_shutdown("Integration failed",false,0) end
    end) end

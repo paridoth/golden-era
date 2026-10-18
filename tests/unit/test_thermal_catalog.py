@@ -19,7 +19,7 @@ class CatalogTests(unittest.TestCase):
     def test_committed_catalog_reproduces_without_original_downloads(self):
         result = catalog.compile_catalog(self.review, self.spec)
         self.assertEqual(catalog.render(result), catalog.OUTPUT.read_text())
-        self.assertEqual(len(result['recipes']), 15)
+        self.assertEqual(len(result['recipes']), 16)
         self.assertEqual(len(result['items']), 23)
 
     def test_concrete_metadata_identity_is_preserved(self):

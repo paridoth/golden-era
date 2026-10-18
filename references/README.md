@@ -89,7 +89,7 @@ for the scoped native implementation and parity workflow.
 identities, chosen native representatives and reviewed default patterns. Three
 pack overrides are taken from the Thermal intermediate specification. The
 compiler produces `mods/era_materials/catalog.lua`, which the native game uses
-for 23 materials and fifteen recipes. See [native crafting](../docs/native-crafting.md)
+for 23 materials and sixteen recipes. See [native crafting](../docs/native-crafting.md)
 for evidence, generation commands and gameplay limitations. `check-generated`
 runs offline; full `check` verifies originals in the ignored cache. The additional
 MCP mapping used to resolve vanilla field names is hash-pinned in the review.

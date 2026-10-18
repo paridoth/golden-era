@@ -70,9 +70,78 @@
       "locations": [
         "initialize()V: five modes/groups, insertion input only, primary extraction"
       ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/block/BlockCoreTile.class",
+      "sha256": "4b4949c30456e7a66a0f1d42761e6914f62f5245a242168a49bec10c5c405f9e",
+      "locations": [
+        "dismantleBlock: item tag then delegate",
+        "dismantleDelegate offsets 79..100 and 180..263: removal and machine item drop",
+        "func_180663_b offsets 23..98: inventory spill unless retained",
+        "getItemStackTag: RF/tiers/security/reconfiguration; not full tile state"
+      ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/block/TileCore.class",
+      "sha256": "15ea940dfdfe29b1d7853624396eae6adecd4f4a93853d90973de08b0075f5a2",
+      "locations": [
+        "blockDismantled and dismantle lifecycle"
+      ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/block/TileInventory.class",
+      "sha256": "5c3786db732d7005ef7051321d89967f1d8949d0e7505391991649cdbf8440a8",
+      "locations": [
+        "target inheritance inventory behavior; no inventory retention interface"
+      ]
+    },
+    {
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/util/helpers/ReconfigurableHelper.class",
+      "sha256": "8c567fcd7c2ddfa9783efcab6227dad1c5388fcc73004141053c61b6c13e06db",
+      "locations": [
+        "setItemStackTagReconfig offsets 18..39: Facing and SideCache only"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/BlockTEBase.class",
+      "sha256": "5591e7964e17d6d1383f4ef9e0b5650cb6599fc765dbc9e3802903d13effc51f",
+      "locations": [
+        "func_180639_a offsets 59..115: sneak-wrench dismantle",
+        "canDismantle: access and creative-block restrictions"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/dynamo/BlockDynamo.class",
+      "sha256": "a9302c0f8146fdb294c4ba1df0f54525f273fc886f598dfb72883d8c8e2df590",
+      "locations": [
+        "func_180633_a offsets 50..65: restore Energy from machine item"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/BlockMachine.class",
+      "sha256": "b8c08fcb7e6b939e53f4c9a2054fb1215ede6f0dc8e5b61788991e72b2685e36",
+      "locations": [
+        "func_180633_a offsets 50..65: restore Energy from machine item"
+      ]
+    },
+    {
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/storage/BlockCell.class",
+      "sha256": "9642d127846f20a7411f33b4ecfb926da939a6d52fdfa415d04c620d995e312a",
+      "locations": [
+        "func_180633_a offsets 100..114: restore Energy from machine item"
+      ]
     }
   ],
   "interpretation": "At full RF storage an unaugmented active dynamo continues debiting its minimum generation; storage clamps the excess. Fuel/water negative remainders must carry. Native startup/refill timing and graph dispatch are explicitly separate from complete original tick parity.",
   "secondary_policy": "Native jobs save one percentile at paid-work start for restart stability; original baseline rolls at completion. Distribution and potential-output preflight are preserved, RNG timing/sequence is a deliberate native difference.",
-  "item_side_policy": "Native processor item-side groups/front exclusion follow inspected tables. RF faces, original transfer timing and special augments are not implemented; native automatic push defaults on. Older layouts opt in explicitly."
+  "item_side_policy": "Native processor item-side groups/front exclusion follow inspected tables. RF faces, original transfer timing and special augments are not implemented; native automatic push defaults on. Older layouts opt in explicitly.",
+  "relocation_policy": "Native Factory Wrench uses the inspected three-iron/one-tin pattern but retains validated full state in a world-local one-use package. Original baseline keeps RF in the dropped machine item, spills inventory and does not carry tank/credit/processing-work state. Native complete retention, inventory insertion, unchanged facing and explicit Pack UI are deliberate usability differences, not original dismantling parity."
 }

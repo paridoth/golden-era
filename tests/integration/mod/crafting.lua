@@ -50,6 +50,7 @@ return function(eq)
  craft({m.redstone,"","","","era_materials:electrum_ingot","","","",m.redstone},ec)
  craft({"","mcl_redstone_torch:redstoneblock","",lead,cf,lead,"",ec,""},"era_thermal:buffer")
  craft({"era_materials:silver_dust","era_materials:gold_dust"},"era_materials:electrum_dust 2")
+ craft({m.ingot,"",m.ingot,"",tin,"","",m.ingot,""},"era_core:wrench")
  -- Cable/ejector patterns remain native engineering fixtures.
  local function old_machine(center)
   return {m.ingot,m.ingot,m.ingot,m.stone,center,m.stone,m.ingot,m.redstone,m.ingot}
@@ -64,5 +65,5 @@ return function(eq)
  deny(old_machine(m.raw_iron),"old pulverizer shortcut removed")
  deny(old_machine("era_materials:iron_dust"),"old furnace shortcut removed")
  deny({"","mcl_pistons:piston_off","","mcl_core:flint",frame,"mcl_core:flint",cg,sc,cg},"wrong coil cannot craft pulverizer")
- core.log("action","ERA CRAFTING PASS: fifteen reference catalog recipes, exact consumption, pack overrides, seven denied shortcuts/substitutions, provisional transport and dust cooking")
+ core.log("action","ERA CRAFTING PASS: sixteen reference catalog recipes, exact consumption, pack overrides, seven denied shortcuts/substitutions, provisional transport and dust cooking")
 end

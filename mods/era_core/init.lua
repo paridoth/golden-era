@@ -9,6 +9,8 @@
  dofile(core.get_modpath("era_core").."/state.lua")
  dofile(core.get_modpath("era_core").."/ports.lua")
  dofile(core.get_modpath("era_core").."/forms.lua")
+ dofile(core.get_modpath("era_core").."/relocation.lua")
+ dofile(core.get_modpath("era_core").."/wrench.lua")
  function era.register_recipe(machine, input, result, cost, rate)
   assert(cost > 0 and rate > 0 and not (era.recipes[machine] or {})[input])
   era.recipes[machine] = era.recipes[machine] or {}
@@ -52,6 +54,12 @@
    end,
    allow_metadata_inventory_move=function() return 0 end,
    on_receive_fields=function(pos,formname,fields,player)
+    if fields.pack_machine then
+     local ok,message=era.pack_machine(pos,player)
+     if player and message then core.chat_send_player(player:get_player_name(),message) end
+     if ok then core.close_formspec(player:get_player_name(),"") end
+     return
+    end
     if fields.upgrade then era.upgrade(pos,name,player) end
     era.ports_fields(pos,fields,player)
    end,

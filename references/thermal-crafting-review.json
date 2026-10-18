@@ -104,6 +104,17 @@
       "locations": [
         "addDefaultRecipes(String,String)V offsets 437..449: ingot -> one dust, DEFAULT_ENERGY / 2 = 2000 RF"
       ]
+    },
+    {
+      "id": "wrench",
+      "jar": "mods/ThermalFoundation-1.12.2-2.6.7.1-universal.jar",
+      "entry": "cofh/thermalfoundation/item/ItemWrench.class",
+      "sha256": "0450c5efe2c5ebeb2e7c28532e48509ef0afcfdddb03ec4b5507869e016eb05a",
+      "locations": [
+        "preInit(): wrench registry identity, metadata 0",
+        "initialize()Z offsets 0..55: three iron and one tin recipe",
+        "onItemUseFirst offsets 107..167: sneak dismantle via IDismantleable"
+      ]
     }
   ],
   "config_evidence": [
@@ -316,7 +327,8 @@
     "item:thermalfoundation:material:515": "era_materials:electrum_coil",
     "item:thermalexpansion:frame:128": "era_materials:cell_frame",
     "symbol:cellBasic": "era_thermal:buffer",
-    "item:minecraft:redstone_block:0": "mcl_redstone_torch:redstoneblock"
+    "item:minecraft:redstone_block:0": "mcl_redstone_torch:redstoneblock",
+    "item:thermalfoundation:wrench:0": "era_core:wrench"
   },
   "recipes": [
     {
@@ -519,6 +531,22 @@
       ],
       "evidence": [
         "materials"
+      ]
+    },
+    {
+      "id": "factory_wrench",
+      "output": "item:thermalfoundation:wrench:0",
+      "pattern": [
+        "I I",
+        " T ",
+        " I "
+      ],
+      "key": {
+        "I": "ore:ingotIron",
+        "T": "ore:ingotTin"
+      },
+      "evidence": [
+        "wrench"
       ]
     }
   ],

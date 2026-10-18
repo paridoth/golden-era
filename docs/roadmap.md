@@ -70,8 +70,11 @@ sound and inherited-media provenance before preparing a public distribution.
 Keep reproducible source/config pins, automated checks, native gameplay tests
 and documented limitations together.
 
-The initial specification, ten native crafting patterns and basic RF/water model
+The initial specification, sixteen native crafting patterns and basic RF/water model
 are implemented. Schema-1 migration preserves legacy behavior with an explicit
 upgrade path. Persisted nickel secondary outputs now have restart/overflow checks. Native item-side controls and directional ejection are implemented. Storage crafting and tin/silver/lead acquisition are implemented; next validate
-the graphical survival session. Further infrastructure work should address risks
+the graphical survival session. The user confirmed four ingots after withdrawing
+the corrected demo output. Native complete-state wrench relocation is implemented
+with separate registry/restart checks; actual crafting and relocation interactions
+remain the next hands-on checks. Further infrastructure work should address risks
 exposed by those milestones.

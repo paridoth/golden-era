@@ -1,6 +1,6 @@
 # Native Thermal crafting subset
 
-The native game now uses fifteen reviewed crafting patterns: copper/tin/bronze
+The native game now uses sixteen reviewed crafting patterns: copper/tin/bronze
 gears, bronze ingots, gold/silver coils, a basic machine frame, the coal generator,
 Pulverizer and powered furnace. The former generator/pulverizer/furnace shortcuts
 have been removed. Existing placed machines and their inventories/jobs retain
@@ -11,7 +11,7 @@ migration.
 ## Source and generation
 
 [thermal-crafting-review.json](../references/thermal-crafting-review.json) records
-ten exact class hashes and method/offset anchors from Thermal Expansion
+eleven exact class hashes and method/offset anchors from Thermal Expansion
 5.5.7.1, Thermal Foundation 2.6.7.1 and CoFH Core 4.6.6.1. It records the relevant
 Foundation and UniDict config hashes/locations, plus explicit source-to-native
 identity mappings and reviewed patterns. Three pack crafting overrides come from
@@ -40,7 +40,7 @@ Mineclonia foundation pin, missing identity, ambiguous override or unsupported
 counted ingredient requires a deliberate review rather than silent conversion.
 
 [The generated catalog](../mods/era_materials/catalog.lua) is native Lua 5.1,
-containing 23 material declarations and fifteen recipes. Runtime startup registers
+containing 23 material declarations and sixteen recipes. Runtime startup registers
 those definitions and confirms every ingredient/output is registered. Material
 recipes load in era_materials; machine recipes load in era_thermal. The runtime
 never reads a JAR, ZenScript or ignored reference cache.
@@ -112,3 +112,7 @@ original-pack parity remain separate validation work.
 The later [survival materials](survival-materials.md) milestone adds lead gear,
 cell frame, electrum dust/coil and the basic cell pattern, replacing the old cell
 shortcut. Electrum coil uses the opposite diagonal from gold/silver coils.
+
+The [Factory Wrench](relocation.md) adds the exact three-iron/one-tin pattern from
+Thermal Foundation ItemWrench. It uses a native tool identity and full-state
+package semantics, deliberately differing from original inventory-spilling pickup.

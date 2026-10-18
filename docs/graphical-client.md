@@ -48,6 +48,8 @@ the effective player mode. The earlier creative inspection world remains at
 - `/factory_refill` starts another batch only after the previous batch finishes;
   it prints the starting and expected chest count and rejects creative mode.
   Processing can take a few minutes. Leave outputs in the chest to compare counts.
+- `/factory_wrench` supplies the QA tool for [filled-machine relocation](relocation.md).
+  Select it and sneak-right-click a machine, or use Pack machine while holding it.
 - `/factory_form generator` (or pulverizer/furnace/buffer) opens an inspection form.
 - `python3 scripts/play-demo.py --form generator` opens that form on join.
 - `--cycle` renders all four forms in sequence for visual inspection.
@@ -87,4 +89,5 @@ rendering. A callback-level engine regression reproduces creative expansion and
 verifies that survival withdrawals preserve exactly one/four items. The user subsequently confirmed four ingots in the corrected demo after
 collecting them. This confirms that output/withdrawal check; machine input drags,
 crafting and a full survival playthrough remain separate.
-Filled machines still require a tested relocation/drain path.
+Native filled-machine relocation now has engine registry/restart checks; its
+actual player interaction remains a separate hands-on check.

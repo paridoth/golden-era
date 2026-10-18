@@ -34,12 +34,15 @@ function era.machine_form(pos,def,fault,profile)
   end
  else
   result[#result+1]=label(0.5,2.2,"Stores and transfers RF through the connected network.")
-  result[#result+1]=label(0.5,3,"Empty stored RF before digging.")
+  result[#result+1]=label(0.5,3,"Hold a Factory Wrench and use Pack machine to relocate it.")
  end
  result[#result+1]=label(0.5,4.8,"Inventory")
  result[#result+1]=slots(0.5,5.2,9,3,"current_player","main",9)
  result[#result+1]=slots(0.5,9.1,9,1,"current_player","main",0)
- if profile=="legacy" then result[#result+1]="button[0.5,10.6;11,0.7;upgrade;Use Revelation model after current burn/job finishes]" end
+ if profile=="legacy" then
+  result[#result+1]="button[0.5,10.6;7.2,0.7;upgrade;Use Revelation model after current burn/job finishes]"
+  result[#result+1]="button[8,10.6;3.5,0.7;pack_machine;Pack machine]"
+ else result[#result+1]="button[0.5,10.6;4.8,0.7;pack_machine;Pack machine (wrench)]" end
  if def.processor then result[#result+1]="listring[context;dst]listring[current_player;main]listring[context;src]listring[current_player;main]"
  elseif def.producer then
   result[#result+1]="listring[context;fuel]listring[current_player;main]"

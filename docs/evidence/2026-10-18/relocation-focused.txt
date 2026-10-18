@@ -1,0 +1,7 @@
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 12:38:11: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 12:38:17: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-18 12:38:22: ACTION[Server]: ERA INTEGRATION RELOCATION_SEED PASS: protected/full-inventory/wrong-tool/malformed-source refusals; native saved decision, generator water/debts, legacy paid work and cell RF packed into registry
+2026-10-18 12:38:27: ACTION[Server]: ERA INTEGRATION RELOCATION_RESUME PASS: packed SQLite state restores metadata/facing/items/owner; invalid/occupied/protected/unloaded/replayed packets and invalid restored state denied; unique creative consumption, exact jobs/byproduct and generator debts
+2026-10-18 12:38:33: ACTION[Server]: ERA INTEGRATION RELOCATION_VERIFY PASS: placed resources/items/owner survive second SQLite restart; consumed registry tokens stay spent and completed outputs do not duplicate
+ENGINE INTEGRATION PASS: 5 real server processes; seed, resume, relocation_seed, relocation_resume, relocation_verify

@@ -4,7 +4,7 @@
 return {
  ["schema"]=1,
  ["pack_content_sha256"]="afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
- ["review_sha256"]="0df5e6f9db12fcae30e934eaf2809be1624a521de5e2eb294691e68a4315fe7f",
+ ["review_sha256"]="a85e454335adc3eb4829bf9a28bf44902100af48279e9bcf58a8eca5bd92f238",
  ["spec_sha256"]="a817474f4bc7bdf1be3ae6c714d7f7bdd77d838a0cb552a3046eb4d08ad70808",
  ["items"]={
   {["name"]="era_materials:iron_dust",["description"]="Iron Dust"},
@@ -44,6 +44,7 @@ return {
   {["id"]="cell_frame",["type"]="shaped",["output"]="era_materials:cell_frame",["recipe"]={{"mcl_core:iron_ingot","mcl_core:glass","mcl_core:iron_ingot"},{"mcl_core:glass","era_materials:lead_gear","mcl_core:glass"},{"mcl_core:iron_ingot","mcl_core:glass","mcl_core:iron_ingot"}},["phase"]="materials"},
   {["id"]="cell_basic",["type"]="shaped",["output"]="era_thermal:buffer",["recipe"]={{"","mcl_redstone_torch:redstoneblock",""},{"era_materials:lead_ingot","era_materials:cell_frame","era_materials:lead_ingot"},{"","era_materials:electrum_coil",""}},["phase"]="thermal"},
   {["id"]="electrum_dust",["type"]="shapeless",["output"]="era_materials:electrum_dust 2",["recipe"]={"era_materials:gold_dust","era_materials:silver_dust"},["phase"]="materials"},
+  {["id"]="factory_wrench",["type"]="shaped",["output"]="era_core:wrench",["recipe"]={{"mcl_core:iron_ingot","","mcl_core:iron_ingot"},{"","era_materials:tin_ingot",""},{"","mcl_core:iron_ingot",""}},["phase"]="materials"},
   {["id"]="bronze_ingot",["type"]="shapeless",["output"]="era_materials:bronze_ingot 2",["recipe"]={"mcl_copper:copper_ingot","mcl_copper:copper_ingot","mcl_copper:copper_ingot","era_materials:tin_ingot"},["phase"]="materials"},
   {["id"]="bronze_gear",["type"]="shaped",["output"]="era_materials:bronze_gear",["recipe"]={{"","era_materials:bronze_ingot",""},{"era_materials:bronze_ingot","mcl_core:iron_ingot","era_materials:bronze_ingot"},{"","era_materials:bronze_ingot",""}},["phase"]="materials"},
   {["id"]="tin_gear",["type"]="shaped",["output"]="era_materials:tin_gear",["recipe"]={{"","era_materials:tin_ingot",""},{"era_materials:tin_ingot","mcl_core:iron_ingot","era_materials:tin_ingot"},{"","era_materials:tin_ingot",""}},["phase"]="materials"},

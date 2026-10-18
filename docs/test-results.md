@@ -313,9 +313,9 @@ more cover the bounded Thermal data import. Six catalog tests cover offline
 regeneration, concrete metadata, missing mappings/pattern keys, explicit override
 conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
-Engine integration creates one temporary SQLite world and runs twenty-one separate
+Engine integration creates one temporary SQLite world and runs twenty-four separate
 headless server processes (the original ten legacy regression phases plus three
-native model/migration and three secondary-output phases plus two item-side, two survival and one player-inventory callback phase), each with a 120-second timeout on loopback port
+native model/migration and three secondary-output phases plus two item-side, two survival, one player-inventory callback and three relocation phases), each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
 iron ore into four ingots in a native chest, with 32000 RF generated and 16000 RF
@@ -446,3 +446,37 @@ The user confirmed **four ingots** after collecting the corrected demo output.
 This establishes the observed completed-batch/chest-to-player count check. It does
 not claim machine-input drags, actual crafting, multiplayer or survival gathering.
 Continuing with safe relocation for filled machines.
+
+## Complete-state machine relocation — 2026-10-18
+
+The Factory Wrench uses the exact three-iron/one-tin recipe from the pinned
+Thermal Foundation ItemWrench class. The catalog now has 23 material declarations
+and 16 recipes, with the native tool registered separately. Additional exact
+Core/TE class hashes establish the baseline dismantle behavior. Native packing
+deliberately retains complete state instead of spilling inventory/discarding
+fluid and partial work; see [relocation](relocation.md). No original code ran.
+
+Three added engine phases passed, followed by the complete run: **50 unit tests
+and all 24 engine processes**. Native saved work/RNG, generator water and negative
+credits, genuine schema-1 migration with unchanged job bytes, charged cell RF,
+item metadata, facing/ports and new placer ownership survive packing, SQLite
+restart, replacement and a second restart. Continued jobs spend the exact
+remaining RF and emit only their saved outputs.
+
+Guards cover source protection, wrong wrench, full player inventory, invalid
+state, missing interact privilege and distant actors; future/unknown/foreign/
+overcount/copied/spent packages; occupied/protected/unloaded destinations and
+air with metadata/inventory/timers. Injected inventory-write failure restores the
+source and clears its claim. Invalid restored state rolls back; injected rollback
+failure quarantines its snapshot and disables replay through restart. Expected
+error diagnostics in the raw logs are from those deliberate fault injections.
+The tests use real inventories/metadata/registry with fixture players, not player
+network mouse actions or forced-crash transactions.
+
+Full source/class hashes, catalog/model regeneration, Lua syntax, Python
+compilation and whitespace checks passed. Evidence uses relocation-. Ordinary
+digging remains empty-only; Pack requires a wielded wrench, interact privilege
+and an actor within six nodes. The carrier consumes exactly one even in creative
+mode and references world-local server storage. The QA command /factory_wrench
+supplies a tool. The user closed Luanti normally; actual wrench interaction is
+the next hands-on check, and the graphical client has not been reopened.

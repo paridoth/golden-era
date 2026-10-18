@@ -60,12 +60,22 @@ core.register_chatcommand("factory_refill",{
   for _,job in ipairs(jobs) do assert(core.get_meta(job[1]):get_inventory():add_item(job[2],job[3]):is_empty()) end
   return true,"Batch started. Chest currently has "..before.." iron ingots; expect "..(before+4).." if you leave them there. Processing can take a few minutes. /factory_status shows progress."
  end})
+core.register_chatcommand("factory_wrench",{
+ description="Supply the QA fixture's Factory Wrench",
+ func=function(name)
+  local player=core.get_player_by_name(name);if not player then return false,"Player is not online." end
+  local inv=player:get_inventory()
+  if inv:contains_item("main","era_core:wrench") then return true,"Select your Factory Wrench, then sneak and right-click a machine or use Pack machine." end
+  if not inv:room_for_item("main","era_core:wrench") then return false,"Make an empty inventory slot first." end
+  assert(inv:add_item("main","era_core:wrench"):is_empty())
+  return true,"Factory Wrench supplied. Select it, then sneak and right-click a machine or use Pack machine. Place the resulting package in empty space to restore it."
+ end})
 core.register_on_player_receive_fields(function(player,form,fields)
  local param=form:match("^era_demo:(%a+)$");local pos=locations[param]
  if not pos then return end
  local def=core.registered_nodes[core.get_node(pos).name]
  def.on_receive_fields(pos,"",fields,player)
- if not fields.quit then core.registered_chatcommands.factory_form.func(player:get_player_name(),param) end
+ if not fields.quit and not fields.pack_machine then core.registered_chatcommands.factory_form.func(player:get_player_name(),param) end
  return true
 end)
 core.register_on_joinplayer(function(player)

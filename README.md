@@ -9,7 +9,7 @@ Feed The Beast, or the original mod authors.
 The working slice generates RF from coal or charcoal and water, pulverizes iron
 ore/raw iron into dust, smelts dust, and routes primary ingots into a native
 Mineclonia chest. New machines use sourced basic RF/water values, persisted nickel byproducts
-item-side controls and fifteen reviewed crafting patterns. Existing saves retain a legacy profile until explicitly
+item-side controls and sixteen reviewed crafting patterns. Existing saves retain a legacy profile until explicitly
 upgraded. Tin, silver and lead generate in new terrain and support the first
 factory/storage crafting path. Ducts and a complete survival playthrough remain
 pending. See [native resources](docs/native-resources.md)
@@ -123,8 +123,8 @@ integration harness constructs this fixture at y=200 using engine APIs. Manual
 placement, formspec use and survival progression still need graphical testing.
 Machines with invalid saved state pause with a diagnostic and retain their
 contents; see the saved-state repair notes. Machines containing RF, work,
-remaining burn or items cannot be dug; there is
-no discharge/wrench tool yet. Processor faces and ejectors are configurable; see [item sides](docs/item-sides.md).
+remaining burn or items cannot be dug normally. A Factory Wrench can
+[pack and relocate them](docs/relocation.md) while retaining their state. Processor faces and ejectors are configurable; see [item sides](docs/item-sides.md).
 
 ## Development records
 
@@ -133,6 +133,7 @@ no discharge/wrench tool yet. Processor faces and ejectors are configurable; see
 - [Native crafting and its current limits](docs/native-crafting.md)
 - [Survival materials and basic energy cell](docs/survival-materials.md)
 - [Native RF/water operation and migration](docs/native-resources.md)
+- [Filled-machine relocation](docs/relocation.md)
 - [Saved-state validation and repair](docs/save-state.md)
 - [Historical reference and provisional values](docs/historical-reference.md)
 - [Compatibility findings](docs/mod-compatibility.md)

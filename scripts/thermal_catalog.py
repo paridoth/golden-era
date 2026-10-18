@@ -190,7 +190,7 @@ def main():
     elif OUTPUT.read_text() != result:
         raise ValueError('Native catalog is stale; regenerate and review the diff')
     else:
-        print('CRAFTING CATALOG PASS: 23 material declarations and 15 recipes match reviewed source inputs')
+        print('CRAFTING CATALOG PASS: 23 material declarations and 16 recipes match reviewed source inputs')
 
 
 if __name__ == '__main__':

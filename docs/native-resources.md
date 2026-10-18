@@ -96,5 +96,5 @@ preflight, old burn/jobs, upgrades and malformed state.
 Item-side controls, directional ejection, basic cell crafting and tin/silver/lead
 acquisition are implemented. Remaining work includes ducts, fluid pipes, augments,
 graphical/player inventory tests and original-runtime parity
-observations. Filled machines/credits cannot be dug; there is still no tested
-wrench/discharge/drain tool. The state code does not supply forced-crash atomicity.
+observations. Filled machines/credits cannot be dug normally. [Factory Wrench relocation](relocation.md)
+preserves their resources and jobs without a drain/reset. The state code does not supply forced-crash atomicity.
