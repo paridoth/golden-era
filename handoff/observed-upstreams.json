@@ -1,0 +1,47 @@
+{
+  "basic_materials": {
+    "url": "https://github.com/mt-mods/basic_materials.git",
+    "commit": "f626da067a39206b7d60c1122843cd951ffb7081",
+    "dirty": false
+  },
+  "fakelib": {
+    "url": "https://github.com/OgelGames/fakelib.git",
+    "commit": "562dc359f00227daf0ee56dbba9c36a240c59d4c",
+    "dirty": false
+  },
+  "luanti": {
+    "url": "https://github.com/luanti-org/luanti.git",
+    "commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+    "dirty": false
+  },
+  "mesecons": {
+    "url": "https://github.com/minetest-mods/mesecons.git",
+    "commit": "aca87dbd448637d2dc80e59e909425932acd6c84",
+    "dirty": false
+  },
+  "mineclonia": {
+    "url": "https://codeberg.org/mineclonia/mineclonia.git",
+    "commit": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+    "dirty": false
+  },
+  "minetest_game": {
+    "url": "https://github.com/luanti-org/minetest_game.git",
+    "commit": "c42e4d0c0ff9d27ff7b9b308c3cfc14098dd3a0f",
+    "dirty": false
+  },
+  "pipeworks": {
+    "url": "https://github.com/mt-mods/pipeworks.git",
+    "commit": "5dfd572eacee4c3c1ed8b827f4a67c46b022b242",
+    "dirty": false
+  },
+  "technic": {
+    "url": "https://github.com/mt-mods/technic.git",
+    "commit": "b00a5653012c21ba1f73f02820440e7d5e0fefad",
+    "dirty": false
+  },
+  "xcompat": {
+    "url": "https://github.com/mt-mods/xcompat.git",
+    "commit": "758684dac8875d06d8c1565e323ee52c9d4daf7f",
+    "dirty": false
+  }
+}

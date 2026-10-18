@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cmake-data",
+    "version": "3.28.3-1build7",
+    "architecture": "all",
+    "sha256": "20a3b644211ce82f35c24f1f5052199adeb0ac159978a8740fd6c0959611557f"
+  },
+  {
+    "name": "cmake",
+    "version": "3.28.3-1build7",
+    "architecture": "amd64",
+    "sha256": "4b0a7f8c0daf27b26b46997d994ae5d1ee7a3d11dfcda9f7627bb1462c162295"
+  },
+  {
+    "name": "libgmp-dev",
+    "version": "2:6.3.0+dfsg-2ubuntu6.1",
+    "architecture": "amd64",
+    "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a"
+  },
+  {
+    "name": "libjsoncpp-dev",
+    "version": "1.9.5-6build1",
+    "architecture": "amd64",
+    "sha256": "2f3c78b5685fdb29345f75a3687dcd5558be17676c7d5876c3496db0806a9f4b"
+  },
+  {
+    "name": "libjsoncpp25",
+    "version": "1.9.5-6build1",
+    "architecture": "amd64",
+    "sha256": "8efea5b75952f3ad1c40e6b5b31de687c297ea29f87f8b63efebb55e13467211"
+  },
+  {
+    "name": "librhash0",
+    "version": "1.4.3-3build1",
+    "architecture": "amd64",
+    "sha256": "e9ee69963ff1a56378b9c5ffdd21ea0feaec9647c522349b7612b25103490528"
+  },
+  {
+    "name": "libsqlite3-dev",
+    "version": "3.45.1-1ubuntu2.8",
+    "architecture": "amd64",
+    "sha256": "61e688e7ced1c6f7c0b66721e46fd996f891489654dbf382daa98e17ee3ae192"
+  },
+  {
+    "name": "libzstd-dev",
+    "version": "1.5.5+dfsg2-2build1.1",
+    "architecture": "amd64",
+    "sha256": "6c9d2b5677a4677e9ead62f74723bb919113621a8028ed543a4d78952d54d165"
+  },
+  {
+    "name": "lua5.1",
+    "version": "5.1.5-9build2",
+    "architecture": "amd64",
+    "sha256": "0d4d3678caf1dfa3f201d35203388da5e5aa393b153aec03c1e474f8cf6a476c"
+  },
+  {
+    "name": "zlib1g-dev",
+    "version": "1:1.3.dfsg-3.1ubuntu2.2",
+    "architecture": "amd64",
+    "sha256": "e9152a08af21ab22bc99e8bfa98f1eb83955b2cc3653bcefecab394ecf9d1b63"
+  }
+]

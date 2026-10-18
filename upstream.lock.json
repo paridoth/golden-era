@@ -1,0 +1,24 @@
+{
+  "luanti": {
+    "url": "https://github.com/luanti-org/luanti.git",
+    "commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+    "release": "5.17.0"
+  },
+  "mineclonia": {
+    "url": "https://codeberg.org/mineclonia/mineclonia.git",
+    "commit": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+    "release": "0.124.0"
+  },
+  "technic": {
+    "url": "https://github.com/mt-mods/technic.git",
+    "commit": "b00a5653012c21ba1f73f02820440e7d5e0fefad"
+  },
+  "pipeworks": {
+    "url": "https://github.com/mt-mods/pipeworks.git",
+    "commit": "5dfd572eacee4c3c1ed8b827f4a67c46b022b242"
+  },
+  "mesecons": {
+    "url": "https://github.com/minetest-mods/mesecons.git",
+    "commit": "aca87dbd448637d2dc80e59e909425932acd6c84"
+  }
+}

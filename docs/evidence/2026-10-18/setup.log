@@ -1,0 +1,343 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- *** Will build version 5.17.0 ***
+-- BUILD_CLIENT: OFF
+-- BUILD_SERVER: ON
+-- BUILD_UNITTESTS: OFF
+-- BUILD_BENCHMARKS: FALSE
+-- BUILD_DOCUMENTATION: OFF
+-- RUN_IN_PLACE: ON
+-- LTO/IPO is not enabled
+-- Using GMP provided by system.
+-- Found GMP: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/root/usr/lib/x86_64-linux-gnu/libgmp.a  
+-- Using JsonCpp provided by system.
+-- Found Json: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/root/usr/lib/x86_64-linux-gnu/libjsoncpp.so (Required is at least version "1.0.0") 
+-- LuaJIT detection disabled! (ENABLE_LUAJIT=0)
+-- LuaJIT not found, using bundled Lua.
+-- Looking for include file endian.h
+-- Looking for include file endian.h - found
+-- Check size of int
+-- Check size of int - done
+-- Looking for C++ include sys/types.h
+-- Looking for C++ include sys/types.h - found
+-- Looking for C++ include stdint.h
+-- Looking for C++ include stdint.h - found
+-- Looking for C++ include stddef.h
+-- Looking for C++ include stddef.h - found
+-- Check size of size_t
+-- Check size of size_t - done
+CMake Warning at src/CMakeLists.txt:89 (message):
+  cURL is required to announce to the server list or use the HTTP API
+
+
+-- GetText disabled.
+-- Found SQLite3: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/root/usr/lib/x86_64-linux-gnu/libsqlite3.a  
+-- Prometheus client disabled.
+-- Found ZLIB: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/root/usr/lib/x86_64-linux-gnu/libz.a (found version "1.3")  
+-- Looking for ZSTD_initCStream
+-- Looking for ZSTD_initCStream - found
+-- Found Zstd: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/root/usr/lib/x86_64-linux-gnu/libzstd.a  
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Looking for clock_gettime in rt
+-- Looking for clock_gettime in rt - found
+-- Performing Test HAVE_LINK_ATOMIC
+-- Performing Test HAVE_LINK_ATOMIC - Success
+-- Looking for strlcpy
+-- Looking for strlcpy - found
+-- Looking for malloc_trim
+-- Looking for malloc_trim - found
+-- Performing Test HAVE_ATCCALL
+-- Performing Test HAVE_ATCCALL - Success
+-- Performing Test SUPPORTS_W_MISMATCHED_TAGS
+-- Performing Test SUPPORTS_W_MISMATCHED_TAGS - Success
+-- Configuring done (2.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tools/build
+[  1%] Building CXX object lib/bitop/CMakeFiles/bitop.dir/bit.cpp.o
+[  1%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lapi.c.o
+[  1%] Linking CXX static library libbitop.a
+[  1%] Built target bitop
+[  2%] Building C object lib/lstrpack/CMakeFiles/lstrpack.dir/lstrpack.c.o
+[  2%] Linking C static library liblstrpack.a
+[  2%] Built target lstrpack
+[  2%] Building C object lib/sha256/CMakeFiles/sha256.dir/sha256.c.o
+[  3%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lauxlib.c.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/lauxlib.c: In function ‘int luaL_loadfile(lua_State*, const char*)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/lauxlib.c:577:4: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+  577 |    while ((c = getc(lf.f)) != EOF && c != LUA_SIGNATURE[0]) ;
+      |    ^~~~~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/lauxlib.c:578:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+  578 |     lf.extraline = 0;
+      |     ^~
+[  4%] Linking C static library libsha256.a
+[  4%] Built target sha256
+[  4%] Built target tiniergltf
+[  4%] Generating builtin_files.cpp
+[  4%] Built target GenerateBuiltinFilesCpp
+[  4%] Built target GenerateVersion
+[  4%] Building CXX object src/CMakeFiles/EngineCommon.dir/activeobject.cpp.o
+[  4%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lbaselib.c.o
+[  5%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lcode.c.o
+[  6%] Building CXX object src/CMakeFiles/EngineCommon.dir/chat.cpp.o
+[  6%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ldblib.c.o
+[  7%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ldebug.c.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldebug.c: In function ‘Instruction symbexec(const Proto*, int, int)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldebug.c:267:33: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  267 | #define check(x)                if (!(x)) return 0;
+      |                                 ^~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldebug.c:271:33: note: in expansion of macro ‘check’
+  271 | #define checkreg(pt,reg)        check((reg) < (pt)->maxstacksize)
+      |                                 ^~~~~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldebug.c:413:9: note: in expansion of macro ‘checkreg’
+  413 |         checkreg(pt, a+3);
+      |         ^~~~~~~~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldebug.c:415:7: note: here
+  415 |       case OP_JMP: {
+      |       ^~~~
+[  7%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ldo.c.o
+[  8%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ldump.c.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldump.c: In function ‘void DumpString(const TString*, DumpState*)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ldump.c:63:26: warning: comparing the result of pointer addition ‘(s + 24)’ and NULL [-Waddress]
+   63 |  if (s==NULL || getstr(s)==NULL)
+[  8%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lfunc.c.o
+[  8%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lgc.c.o
+[  9%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/linit.c.o
+[  9%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/liolib.c.o
+[ 10%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/llex.c.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/llex.c: In function ‘int llex(LexState*, SemInfo*)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/llex.c:374:27: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  374 |         else luaX_lexerror(ls, "invalid long string delimiter", TK_STRING);
+      |              ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/llex.c:376:7: note: here
+  376 |       case '=': {
+      |       ^~~~
+[ 10%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lmathlib.c.o
+[ 11%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lmem.c.o
+[ 11%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/loadlib.c.o
+[ 12%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lobject.c.o
+[ 12%] Building CXX object src/CMakeFiles/EngineCommon.dir/content_nodemeta.cpp.o
+[ 12%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lopcodes.c.o
+[ 13%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/loslib.c.o
+[ 13%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lparser.c.o
+[ 13%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lstate.c.o
+[ 14%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lstring.c.o
+[ 15%] Building CXX object src/CMakeFiles/EngineCommon.dir/convert_json.cpp.o
+[ 15%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lstrlib.c.o
+[ 16%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ltable.c.o
+[ 16%] Building CXX object src/CMakeFiles/EngineCommon.dir/craftdef.cpp.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltable.c: In function ‘const TValue* luaH_get(Table*, const TValue*)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltable.c:480:5: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  480 |     }
+      |     ^
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltable.c:481:5: note: here
+  481 |     default: {
+      |     ^~~~~~~
+[ 16%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ltablib.c.o
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltablib.c: In function ‘void addfield(lua_State*, luaL_Buffer*, int)’:
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltablib.c:137:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  137 |   if (!lua_isstring(L, -1))
+      |   ^~
+/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/lib/lua/src/ltablib.c:140:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  140 |     luaL_addvalue(b);
+      |     ^~~~~~~~~~~~~
+[ 17%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/ltm.c.o
+[ 17%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lundump.c.o
+[ 18%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lvm.c.o
+[ 18%] Building CXX object lib/lua/src/CMakeFiles/lua.dir/lzio.c.o
+[ 19%] Linking CXX static library liblua.a
+[ 19%] Built target lua
+[ 20%] Building CXX object src/CMakeFiles/EngineCommon.dir/debug.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/EngineCommon.dir/face_position_cache.cpp.o
+[ 21%] Building CXX object src/CMakeFiles/EngineCommon.dir/gettext_plural_form.cpp.o
+[ 21%] Building CXX object src/CMakeFiles/EngineCommon.dir/httpfetch.cpp.o
+[ 21%] Building CXX object src/CMakeFiles/EngineCommon.dir/hud_element.cpp.o
+[ 22%] Building CXX object src/CMakeFiles/EngineCommon.dir/inventory.cpp.o
+[ 22%] Building CXX object src/CMakeFiles/EngineCommon.dir/itemstackmetadata.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/EngineCommon.dir/log.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/EngineCommon.dir/metadata.cpp.o
+[ 24%] Building CXX object src/CMakeFiles/EngineCommon.dir/modchannels.cpp.o
+[ 24%] Building CXX object src/CMakeFiles/EngineCommon.dir/nameidmapping.cpp.o
+[ 25%] Building CXX object src/CMakeFiles/EngineCommon.dir/nodemetadata.cpp.o
+[ 25%] Building CXX object src/CMakeFiles/EngineCommon.dir/nodetimer.cpp.o
+[ 26%] Building CXX object src/CMakeFiles/EngineCommon.dir/noise.cpp.o
+[ 26%] Building CXX object src/CMakeFiles/EngineCommon.dir/objdef.cpp.o
+[ 26%] Building CXX object src/CMakeFiles/EngineCommon.dir/object_properties.cpp.o
+[ 27%] Building CXX object src/CMakeFiles/EngineCommon.dir/particles.cpp.o
+[ 27%] Building CXX object src/CMakeFiles/EngineCommon.dir/profiler.cpp.o
+[ 28%] Building CXX object src/CMakeFiles/EngineCommon.dir/serialization.cpp.o
+[ 28%] Building CXX object src/CMakeFiles/EngineCommon.dir/settings.cpp.o
+[ 29%] Building CXX object src/CMakeFiles/EngineCommon.dir/sound_spec.cpp.o
+[ 29%] Building CXX object src/CMakeFiles/EngineCommon.dir/staticobject.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/EngineCommon.dir/terminal_chat_console.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/EngineCommon.dir/texture_override.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/EngineCommon.dir/tileanimation.cpp.o
+[ 31%] Building CXX object src/CMakeFiles/EngineCommon.dir/tool.cpp.o
+[ 31%] Building CXX object src/CMakeFiles/EngineCommon.dir/builtin_files.cpp.o
+[ 32%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/address.cpp.o
+[ 32%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/connection.cpp.o
+[ 33%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/mtp/impl.cpp.o
+[ 33%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/mtp/threads.cpp.o
+[ 34%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/networkpacket.cpp.o
+[ 34%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/networkprotocol.cpp.o
+[ 35%] Building CXX object src/CMakeFiles/EngineCommon.dir/network/socket.cpp.o
+[ 35%] Building CXX object src/CMakeFiles/EngineCommon.dir/content/content.cpp.o
+[ 35%] Building CXX object src/CMakeFiles/EngineCommon.dir/content/mod_configuration.cpp.o
+[ 36%] Building CXX object src/CMakeFiles/EngineCommon.dir/content/mods.cpp.o
+[ 36%] Building CXX object src/CMakeFiles/EngineCommon.dir/content/subgames.cpp.o
+[ 37%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database.cpp.o
+[ 37%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-dummy.cpp.o
+[ 38%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-files.cpp.o
+[ 38%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-leveldb.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-postgresql.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-redis.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/EngineCommon.dir/database/database-sqlite3.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/EngineCommon.dir/threading/event.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/EngineCommon.dir/threading/thread.cpp.o
+[ 41%] Building CXX object src/CMakeFiles/EngineCommon.dir/threading/semaphore.cpp.o
+[ 41%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/areastore.cpp.o
+[ 42%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/auth.cpp.o
+[ 42%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/base64.cpp.o
+[ 43%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/colorize.cpp.o
+[ 43%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/directiontables.cpp.o
+[ 44%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/enriched_string.cpp.o
+[ 44%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/guid.cpp.o
+[ 44%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/hashing.cpp.o
+[ 45%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/ieee_float.cpp.o
+[ 45%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/metricsbackend.cpp.o
+[ 46%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/numeric.cpp.o
+[ 46%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/pointedthing.cpp.o
+[ 47%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/pointabilities.cpp.o
+[ 47%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/quicktune.cpp.o
+[ 48%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/serialize.cpp.o
+[ 48%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/screenshot.cpp.o
+[ 48%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/sha1.cpp.o
+[ 49%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/string.cpp.o
+[ 49%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/srp.cpp.o
+[ 50%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/timetaker.cpp.o
+[ 50%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/png.cpp.o
+[ 51%] Building CXX object src/CMakeFiles/EngineCommon.dir/util/enum_string.cpp.o
+[ 51%] Built target EngineCommon
+[ 51%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/cavegen.cpp.o
+[ 51%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/dungeongen.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_carpathian.cpp.o
+[ 53%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_flat.cpp.o
+[ 53%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_fractal.cpp.o
+[ 54%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_singlenode.cpp.o
+[ 54%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_v5.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_v6.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_v7.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mapgen_valleys.cpp.o
+[ 56%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mg_biome.cpp.o
+[ 56%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mg_decoration.cpp.o
+[ 57%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mg_ore.cpp.o
+[ 57%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/mg_schematic.cpp.o
+[ 58%] Building CXX object src/CMakeFiles/luantiserver.dir/mapgen/treegen.cpp.o
+[ 58%] Building CXX object src/CMakeFiles/luantiserver.dir/network/serveropcodes.cpp.o
+[ 59%] Building CXX object src/CMakeFiles/luantiserver.dir/network/serverpackethandler.cpp.o
+[ 59%] Building CXX object src/CMakeFiles/luantiserver.dir/script/common/c_content.cpp.o
+[ 60%] Building CXX object src/CMakeFiles/luantiserver.dir/script/common/c_converter.cpp.o
+[ 60%] Building CXX object src/CMakeFiles/luantiserver.dir/script/common/c_internal.cpp.o
+[ 60%] Building CXX object src/CMakeFiles/luantiserver.dir/script/common/c_packer.cpp.o
+[ 61%] Building CXX object src/CMakeFiles/luantiserver.dir/script/common/helper.cpp.o
+[ 61%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_async.cpp.o
+[ 62%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_base.cpp.o
+[ 62%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_entity.cpp.o
+[ 63%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_env.cpp.o
+[ 63%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_inventory.cpp.o
+[ 64%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_item.cpp.o
+[ 64%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_mapgen.cpp.o
+[ 64%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_modchannels.cpp.o
+[ 65%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_node.cpp.o
+[ 65%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_nodemeta.cpp.o
+[ 66%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_player.cpp.o
+[ 66%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_security.cpp.o
+[ 67%] Building CXX object src/CMakeFiles/luantiserver.dir/script/cpp_api/s_server.cpp.o
+[ 67%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_areastore.cpp.o
+[ 68%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_async.cpp.o
+[ 68%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_auth.cpp.o
+[ 69%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_base.cpp.o
+[ 69%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_craft.cpp.o
+[ 69%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_env.cpp.o
+[ 70%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_http.cpp.o
+[ 70%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_inventory.cpp.o
+[ 71%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_ipc.cpp.o
+[ 71%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_item.cpp.o
+[ 72%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_itemstackmeta.cpp.o
+[ 72%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_mapgen.cpp.o
+[ 73%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_metadata.cpp.o
+[ 73%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_modchannels.cpp.o
+[ 73%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_nodemeta.cpp.o
+[ 74%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_nodetimer.cpp.o
+[ 74%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_noise.cpp.o
+[ 75%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_object.cpp.o
+[ 75%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_particles.cpp.o
+[ 76%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_playermeta.cpp.o
+[ 76%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_rollback.cpp.o
+[ 77%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_server.cpp.o
+[ 77%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_settings.cpp.o
+[ 78%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_storage.cpp.o
+[ 78%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_util.cpp.o
+[ 78%] Building CXX object src/CMakeFiles/luantiserver.dir/script/lua_api/l_vmanip.cpp.o
+[ 79%] Building CXX object src/CMakeFiles/luantiserver.dir/script/scripting_emerge.cpp.o
+[ 79%] Building CXX object src/CMakeFiles/luantiserver.dir/script/scripting_server.cpp.o
+[ 80%] Building CXX object src/CMakeFiles/luantiserver.dir/server/activeobjectmgr.cpp.o
+[ 80%] Building CXX object src/CMakeFiles/luantiserver.dir/server/ban.cpp.o
+[ 81%] Building CXX object src/CMakeFiles/luantiserver.dir/server/blockmodifier.cpp.o
+[ 81%] Building CXX object src/CMakeFiles/luantiserver.dir/server/clientiface.cpp.o
+[ 82%] Building CXX object src/CMakeFiles/luantiserver.dir/server/luaentity_sao.cpp.o
+[ 82%] Building CXX object src/CMakeFiles/luantiserver.dir/server/mods.cpp.o
+[ 82%] Building CXX object src/CMakeFiles/luantiserver.dir/server/player_sao.cpp.o
+[ 83%] Building CXX object src/CMakeFiles/luantiserver.dir/server/rollback.cpp.o
+[ 83%] Building CXX object src/CMakeFiles/luantiserver.dir/server/serveractiveobject.cpp.o
+[ 84%] Building CXX object src/CMakeFiles/luantiserver.dir/server/serverinventorymgr.cpp.o
+[ 84%] Building CXX object src/CMakeFiles/luantiserver.dir/server/serverlist.cpp.o
+[ 85%] Building CXX object src/CMakeFiles/luantiserver.dir/server/unit_sao.cpp.o
+[ 85%] Building CXX object src/CMakeFiles/luantiserver.dir/clientdynamicinfo.cpp.o
+[ 86%] Building CXX object src/CMakeFiles/luantiserver.dir/collision.cpp.o
+[ 86%] Building CXX object src/CMakeFiles/luantiserver.dir/content_mapnode.cpp.o
+[ 87%] Building CXX object src/CMakeFiles/luantiserver.dir/defaultsettings.cpp.o
+[ 87%] Building CXX object src/CMakeFiles/luantiserver.dir/emerge.cpp.o
+[ 87%] Building CXX object src/CMakeFiles/luantiserver.dir/environment.cpp.o
+[ 88%] Building CXX object src/CMakeFiles/luantiserver.dir/filesys.cpp.o
+[ 88%] Building CXX object src/CMakeFiles/luantiserver.dir/gettext.cpp.o
+[ 89%] Building CXX object src/CMakeFiles/luantiserver.dir/inventorymanager.cpp.o
+[ 89%] Building CXX object src/CMakeFiles/luantiserver.dir/itemdef.cpp.o
+[ 90%] Building CXX object src/CMakeFiles/luantiserver.dir/light.cpp.o
+[ 90%] Building CXX object src/CMakeFiles/luantiserver.dir/main.cpp.o
+[ 91%] Building CXX object src/CMakeFiles/luantiserver.dir/map.cpp.o
+[ 91%] Building CXX object src/CMakeFiles/luantiserver.dir/map_settings_manager.cpp.o
+[ 91%] Building CXX object src/CMakeFiles/luantiserver.dir/mapblock.cpp.o
+[ 92%] Building CXX object src/CMakeFiles/luantiserver.dir/mapnode.cpp.o
+[ 92%] Building CXX object src/CMakeFiles/luantiserver.dir/mapsector.cpp.o
+[ 93%] Building CXX object src/CMakeFiles/luantiserver.dir/nodedef.cpp.o
+[ 93%] Building CXX object src/CMakeFiles/luantiserver.dir/pathfinder.cpp.o
+[ 94%] Building CXX object src/CMakeFiles/luantiserver.dir/player.cpp.o
+[ 94%] Building CXX object src/CMakeFiles/luantiserver.dir/porting.cpp.o
+[ 95%] Building CXX object src/CMakeFiles/luantiserver.dir/raycast.cpp.o
+[ 95%] Building CXX object src/CMakeFiles/luantiserver.dir/reflowscan.cpp.o
+[ 96%] Building CXX object src/CMakeFiles/luantiserver.dir/remoteplayer.cpp.o
+[ 96%] Building CXX object src/CMakeFiles/luantiserver.dir/rollback_interface.cpp.o
+[ 96%] Building CXX object src/CMakeFiles/luantiserver.dir/server.cpp.o
+[ 97%] Building CXX object src/CMakeFiles/luantiserver.dir/serverenvironment.cpp.o
+[ 97%] Building CXX object src/CMakeFiles/luantiserver.dir/servermap.cpp.o
+[ 98%] Building CXX object src/CMakeFiles/luantiserver.dir/translation.cpp.o
+[ 98%] Building CXX object src/CMakeFiles/luantiserver.dir/version.cpp.o
+[ 99%] Building CXX object src/CMakeFiles/luantiserver.dir/voxel.cpp.o
+[ 99%] Building CXX object src/CMakeFiles/luantiserver.dir/voxelalgorithms.cpp.o
+[100%] Linking CXX executable "/home/josh/Projects/Minecraft golden era/golden-era-luanti/upstream/luanti/bin/luantiserver"
+[100%] Built target luantiserver
+[100%] Built target minetestserver_alias
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era

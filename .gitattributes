@@ -1,0 +1,3 @@
+# Preserve raw engine/build evidence, including upstream banner whitespace.
+/handoff/evidence/** -whitespace
+/docs/evidence/** -whitespace

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-18",
+  "user_timezone": "America/Chicago",
+  "platform": "Linux Mint 22.3 (noble), x86_64",
+  "compiler": "GCC/G++ 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+  "archive_sha256": "c5780335837741044714ab659ead2fe0e9b198f54f711740d2131d5c7a91ac49",
+  "original_source_entries_verified_before_edits": 37,
+  "setup_exit_code": 0,
+  "unit_exit_code": 0,
+  "unit_tests": 12,
+  "integration_exit_code": 0,
+  "integration_phases": [
+    "seed",
+    "resume",
+    "automatic"
+  ],
+  "source_packages": "transferred caches, exact hashes verified by setup",
+  "system_packages_installed": false,
+  "hosted_ci_executed": false
+}
