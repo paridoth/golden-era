@@ -32,5 +32,17 @@
   "fakelib": {
     "url": "https://github.com/OgelGames/fakelib.git",
     "commit": "562dc359f00227daf0ee56dbba9c36a240c59d4c"
+  },
+  "elepower": {
+    "url": "https://github.com/LunaSquee/elepower.git",
+    "commit": "c37fe7bc3fc52a05e03507ca35cba2c8e5b3e330"
+  },
+  "fluid_lib": {
+    "url": "https://github.com/LunaSquee/fluid_lib.git",
+    "commit": "9b52f6eb7b6fd7fa81f2e923e1d3bd5950ec9762"
+  },
+  "drawers": {
+    "url": "https://github.com/minetest-mods/drawers.git",
+    "commit": "5c8aa86f481852cc59b678023193135d5ab9963d"
   }
 }

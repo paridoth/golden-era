@@ -434,3 +434,37 @@ registration moved to mod loading before the final run. See the captured
 Lua/Python syntax and whitespace checks passed. The next adoption milestone is
 the filtered factory line, restart/lifecycle and relocation coverage documented
 in [mod compatibility](mod-compatibility.md).
+
+## Playable existing-mod pack — 2026-10-18
+
+The user explicitly changed the delivery priority: use available Luanti mods and
+forks to obtain a playable Revelation-style pack quickly, then play, fix issues
+and add features. Built the separate `golden_era_playtest` assembly with full
+Elepower, fluid_lib, Pipeworks, Storage Drawers and Mesecons on Mineclonia. Native
+equivalents and stock balance are accepted for this first build. The earlier
+custom Thermal modules/worlds remain available through their previous launchers.
+
+The assembly enforces ten clean source pins, preserves upstream notices and
+records ten bounded copy-only compatibility edits. They handle game-ID/material
+mappings, native Elepower tin/bronze/silver, Mineclonia's recipe guide, Mesecons
+dye/piston compatibility, a missing documentation declaration, and fluid remainder
+accounting. Added focused checks for single/multiple guide outputs and partial,
+full, mixed and multiple-buffer fluid insertion. No upstream checkout was edited.
+
+The supplied workshop uses stock machines, power ABMs, timers, Mesecons clocks
+and Pipeworks filter-injectors. The real engine processed two raw iron into four
+ingots and collected all four in a native barrel without manually advancing work.
+Selected machine/storage/transport crafts and fluid fill/drain/overflow passed.
+The first complete workshop run took about 113 seconds. Starter supply IDs and
+spawn/help handling were corrected during integration.
+
+Launched the graphical client into the new persistent v7 playtest world as Josh;
+it joined and reached `ERA PLAYTEST READY` at 13:37:49 local time. First terrain
+generation emitted upstream craft-width/structure/metadata warnings, with no
+error before workshop readiness. This confirms startup/join/bootstrap, not user
+mouse interaction or a complete survival playthrough. See [playtest](playtest.md)
+for commands, included content and remaining coverage. Current development now
+follows play feedback instead of further custom framework expansion.
+The final patched-assembly workshop smoke passed at 13:40:03 in roughly 114
+seconds with zero warnings/errors. Captured evidence is in
+[playtest-smoke.log](evidence/2026-10-18/playtest-smoke.log).

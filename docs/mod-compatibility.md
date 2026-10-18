@@ -1,5 +1,15 @@
 # Mod compatibility
 
+## Active playable pack
+
+The user has now authorized a faster existing-mod delivery path. The active
+`golden_era_playtest` game uses full Elepower, Pipeworks, fluid_lib, Drawers and
+Mesecons on Mineclonia, with small compatibility patches. The stock workshop's
+coal → power → ore processing → tube delivery loop has passed in the real
+engine. See [playtest instructions](playtest.md) and [test results](test-results.md).
+The earlier native Thermal integration/reuse comparison below is retained as
+reference work, rather than a requirement to recreate those systems before play.
+
 ## Gameplay reference versus native runtime
 
 The selected gameplay reference is **FTB Revelation 3.7.0 / Minecraft 1.12.2**.

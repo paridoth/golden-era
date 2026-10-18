@@ -1,5 +1,22 @@
 # Golden Era design pathway
 
+## Active delivery priority — playable existing-mod pack
+
+The user's 2026-10-18 direction is to get a playable pack quickly using available
+Luanti mods/forks, then play, fix issues and add features. The active build now
+assembles Mineclonia with full Elepower, Pipeworks, fluid_lib, Storage Drawers and
+Mesecons. A supplied workshop makes the first industry/logistics loop immediately
+available; see [playtest](playtest.md). Native equivalents and stock balance are
+accepted for this first build. Recreating every infrastructure layer or requiring
+exact Revelation parity before play is no longer the critical path.
+
+Next work should follow actual play feedback: broken or confusing interactions,
+missing survival ingredients, useful pack recipe changes, and the next requested
+storage/tools/magic/exploration feature. Reuse existing projects first. Keep a
+small automated boot/industrial-flow regression and preserve working worlds.
+The detailed reference/parity pathway below remains background for selective
+future adaptations and the earlier custom prototype.
+
 ## Goal and reference decision
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0

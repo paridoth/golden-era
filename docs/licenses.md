@@ -26,6 +26,9 @@ human created those pixels or reproducing protected mod content.
 | Technic | LGPL-2.0-or-later default; file/submod exceptions | `upstream/technic/README.md`, mod-local notices |
 | Pipeworks | LGPL-3.0 code, CC-BY-SA-4.0 media | `upstream/pipeworks/LICENSE` |
 | Mesecons | LGPL-3.0 code, CC-BY-SA-3.0 non-code | `upstream/mesecons/LICENSE.txt`, `COPYING.txt` |
+| Elepower | MIT project license; retain local notices/assets | `upstream/elepower/LICENSE`, mod-local notices |
+| fluid_lib | MIT project license; retain submod notices | `upstream/fluid_lib/LICENSE`, submod notices |
+| Storage Drawers | MIT code/textures, CC-BY-3.0 sound files, CC0 translations | `upstream/drawers/LICENSE.txt` with per-file authors |
 
 Mineclonia's LEGAL.md attributes Pixel Perfection textures to XSSheep and Pixel
 Perfection Legacy to Nova Wostra (CC-BY-SA-4.0), glazed terracotta to
@@ -41,6 +44,12 @@ CREDITS, configuration and menu files are copied into the assembled runtime;
 mod directories are symlinked. The root project license does not relicense
 those upstream files or media. Upstream directories and runtime are not stored
 in project Git; their source URLs/revisions are locked separately.
+
+The existing-mod playtest retains the full Elepower/fluid_lib/Mesecons trees and
+notices in its assembled copies. Checked compatibility edits are tracked under
+`integrations/playtest/`; unchanged upstream mods remain linked with their own
+notices. The playtest adds no new bitmap/audio assets and incorporates no original
+Minecraft modpack media. The inherited file-by-file release audit remains separate.
 
 ## Distribution status and next audit
 

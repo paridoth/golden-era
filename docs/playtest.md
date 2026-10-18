@@ -1,0 +1,85 @@
+# Existing-mod Golden Era playtest
+
+The user redirected development on 2026-10-18 toward getting something playable
+quickly from existing Luanti mods and forks, then testing through ordinary play.
+This pack uses Revelation-style equivalents with their stock mechanics. The
+earlier custom Thermal implementation remains a separate prototype and source
+of reference findings; it does not dictate this pack's power or progression.
+
+## Start playing
+
+```sh
+python3 scripts/play-playtest.py
+```
+
+The launcher assembles the pinned mods and opens the existing local graphical
+client. It creates a persistent world at
+`runtime/playtest/worlds/revelation-playtest`, with normal v7 survival terrain,
+survival inventory quantities and damage disabled. Close the game normally to
+save. Relaunch with the same command to continue. No system packages are installed.
+
+New players arrive at a supplied workshop above the terrain. It contains a
+coal-fired generator, power cell, Pulverizer, powered furnace, tubes, filter
+injectors and blinking controls. Coal and two raw iron start the first batch.
+The blinking controls pulse the injectors to move dust into the furnace and
+ingots into the output barrel. Right-click machines to inspect them. The front
+left barrel contains parts and materials to expand or rebuild the factory.
+A crafting table, alloy furnaces, a drawer and a fluid tank are also available.
+The extra alloy furnaces are ready for the player to wire into power.
+The first batch takes roughly two minutes with the supplied stock generator.
+
+- `/packhelp` shows workshop instructions.
+- `/workshop` returns to the workshop without resetting it.
+- `/explore` returns to the player's original survival spawn.
+- **K** toggles flight; fast movement is available with **J**.
+- The **Elepower Tome** explains the existing machines. The inventory's recipe
+  guide includes machine recipes as well as ordinary crafting recipes.
+- `/gamemode creative` opens the full item catalog for building experiments;
+  `/gamemode survival` returns to ordinary item quantities.
+
+Drawers accept items by right-clicking their front and dispense by left-clicking.
+The workshop starts once per world; later joins preserve the player's position
+and all workshop changes. The game exposes local development privileges so the
+player can experiment freely.
+
+## What is included
+
+| Foundation | Gameplay supplied |
+| --- | --- |
+| Mineclonia 0.124.0 | Survival, terrain, mining, crafting, mobs, exploration, dimensions, enchanting and native redstone |
+| Elepower `c37fe7b` | Full upstream industrial content: generation, storage, processing, alloys, farming/mining machinery, powered tools, solar/nuclear and further technology |
+| Pipeworks `5dfd572` | Tubes, filters, routing, injectors and autocrafting |
+| fluid_lib `9b52f6e` | Fluid buffers, tanks, pumps, ducts and bucket compatibility |
+| Storage Drawers `5c8aa86` | Bulk storage, item locks, upgrades and drawer controllers |
+| Mesecons `aca87db` | Clocks, controls and logic used by the workshop's existing filter-injectors |
+
+These are available native content, not completed ports of Thermal, AE2,
+Tinkers' Construct or Thaumcraft. Exact Revelation balance, custom scripts,
+research/magic and missing systems remain future additions driven by play.
+Original Minecraft JARs/configs remain inert reference inputs.
+
+## Reproduce and check
+
+```sh
+python3 scripts/setup-playtest.py --no-fetch
+python3 scripts/play-playtest.py --prepare-only
+python3 tests/playtest/run.py
+```
+
+The setup command can fetch missing exact source commits when `--no-fetch` is
+omitted. Existing dirty/mismatched source checkouts are rejected. It builds the
+game at `runtime/playtest/games/golden_era_playtest`, preserving upstream notices
+and producing `playtest-sources.json`. The earlier `runtime/games/golden_era`
+and its worlds remain separate. The client binds only to loopback port 30200;
+the smoke test uses a temporary world on 30202.
+
+Bounded compatibility changes apply only to assembled source copies: xcompat's
+game-ID mapping; Elepower's Mineclonia item/metal mappings and recipe-guide hook;
+Mesecons' dye table/piston compatibility; and fluid insertion remainder fixes.
+Source checkouts stay clean. Patch helpers reject unexpected source text.
+
+The headless smoke checks selected crafting, fluid accounting and the actual
+stock industrial line using normal timers, power ABMs and tube routing. It is a
+quick regression guard for the playable build. Ordinary graphical play remains
+the primary way to find the next feature or compatibility issue; it does not
+establish that every included upstream machine has been exercised.

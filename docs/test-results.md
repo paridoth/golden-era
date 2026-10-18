@@ -513,3 +513,32 @@ The normal game and demo world are not modified by this probe. Captured evidence
 [reuse-probe.log](evidence/2026-10-18/reuse-probe.log). All 50 existing unit tests
 and generated catalog/model checks also passed; Lua/Python syntax and whitespace
 checks passed.
+
+## Existing-mod playable pack — 2026-10-18
+
+The `tests/playtest/run.py` harness assembles the actual stock-mod game in a
+temporary world. Selected generator/cell/processor, tube/filter, tank and drawer
+recipes resolve to registered ingredients and produce the expected engine craft
+results. Fluid insertion/drain and a nearly full 8000mB tank preserve exact volume.
+
+The same starter workshop exposed to players runs through normal stock timers,
+power ABMs and Mesecons pulses: two raw iron become four iron ingots through the
+Elepower Pulverizer/furnace, then Pipeworks collects them all in a barrel. The
+test uses transient forceloads in place of a nearby player and never calls the
+production ABM, machine timer or filter callback to advance the line. The initial
+complete workshop run passed in roughly 113 seconds.
+The final patched-assembly run passed at 13:40:03 local time in roughly 114
+seconds, with zero warning/error lines; see
+[captured smoke](evidence/2026-10-18/playtest-smoke.log).
+
+The graphical launcher created its own v7 world and joined as Josh. The workshop
+ready marker confirms bootstrap finished; captured
+[client startup](evidence/2026-10-18/playtest-client-startup.log) includes initial
+upstream craft-width and terrain structure/metadata warnings, with no error before
+readiness. Graphical mouse actions, all upstream machines, long-term survival,
+multiplayer and restart of in-flight stock items remain separate play/checks.
+
+Focused patched-upstream Lua checks cover recipe-guide single/multiple outputs
+and fluid partial/full/mixed/multiple-buffer conservation. Existing unit/source
+model checks (50 tests), Python/Lua syntax and whitespace checks pass. All selected
+upstream checkouts match their enforced source pins and remain clean.

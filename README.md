@@ -1,5 +1,22 @@
 # Golden Era
 
+The current priority is a **playable pack built from existing Luanti mods**,
+using FTB Revelation as the experience to work toward. Launch the new playtest:
+
+```sh
+python3 scripts/play-playtest.py
+```
+
+It combines Mineclonia, the full Elepower technology pack, Pipeworks, fluid
+tanks/ducts, Storage Drawers and Mesecons. A supplied workshop lets you operate
+and expand a factory immediately; `/packhelp`, `/workshop` and `/explore` are
+available in-game. See [playtest instructions](docs/playtest.md) for controls,
+the persistent world location and current coverage. This uses native equivalents
+and stock progression; exact Revelation recipes/systems will be added as play
+reveals the priorities. The earlier custom factory remains available separately.
+
+## Earlier native factory and reference work
+
 A native Luanti/Mineclonia game prototype using **FTB Revelation 3.7.0 for
 Minecraft Java 1.12.2** as its gameplay reference. Golden Era is a provisional
 project name. This is an independent engineering prototype; it is not an

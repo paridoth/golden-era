@@ -1,0 +1,64 @@
+
+
+-------------
+  Separator
+-------------
+
+2026-10-18 13:37:23: ACTION[ServerStart]: [mcl_villages]: World was upgraded or is pristine.
+2026-10-18 13:37:24: ACTION[ServerStart]: [mcl_levelgen]: Preparing stronghold placement.  This may take a while.
+2026-10-18 13:37:28: ACTION[ServerStart]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/playtest/worlds/revelation-playtest]
+2026-10-18 13:37:28: ACTION[ServerStart]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30200.
+2026-10-18 13:37:29: ACTION[Server]: Josh [127.0.0.1] joins game. List of players: Josh
+2026-10-18 13:37:30: WARNING[Server]: [mcl_inventory] craft width for player Josh is 0
+2026-10-18 13:37:30: WARNING[Server]: [mcl_inventory] craft width for player Josh is 0
+2026-10-18 13:37:32: WARNING[Emerge-0]: [mcl_structures] desert_well at (36,3,8) not placed. No solid ground.
+2026-10-18 13:37:34: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era: stock mod playtest | uptime: 1s | max lag: 0.161s | clients: Josh
+2026-10-18 13:37:34: ACTION[Main]: CHAT: *** Josh joined the game.
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:40: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::getNodeMetadata(): Block not found
+2026-10-18 13:37:48: WARNING[Emerge-0]: Map::setNodeMetadata(): Block not found
+2026-10-18 13:37:49: ACTION[Server]: ERA PLAYTEST READY: workshop and existing-mod factory available for Josh

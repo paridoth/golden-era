@@ -1,5 +1,11 @@
 # Architecture
 
+The active playable build is now a Mineclonia game assembled with full existing
+Elepower, Pipeworks, fluid_lib, Drawers and Mesecons. Its only custom gameplay
+module supplies the starter workshop; production uses upstream systems. See
+[playtest](playtest.md). The custom factory architecture below describes the
+earlier separate prototype, retained for reference and selective future reuse.
+
 Gameplay reference: FTB Revelation 3.7.0 (Minecraft 1.12.2), selected on
 2026-10-18. The runtime remains native Luanti/Mineclonia. See
 [the reference workflow](../references/README.md) and [roadmap](roadmap.md).
