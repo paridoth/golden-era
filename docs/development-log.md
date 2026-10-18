@@ -112,3 +112,36 @@ Documented schema 1 and its repair boundary in `docs/save-state.md`. No reset
 button, implicit schema migration, privileged-metadata authentication or forced-
 crash transaction journal was added. Graphical/multiplayer tests, historical
 reference recovery and scale/fairness measurements remain outstanding.
+
+## 2026-10-18 — user selects Revelation as the gameplay reference
+
+After reviewing the differences, the user selected FTB Revelation. Established
+3.7.0 (pack 35, version 12180) as the concrete reference discussed in that
+comparison, using Minecraft 1.12.2 / Forge 14.23.5.2858. This supersedes the
+initial Direwolf20 target; the migration HANDOFF remains immutable. Updated
+AGENTS, README, reference/fidelity/compatibility/architecture records and a
+current roadmap so later transitions retain the user's decision.
+
+Pinned a normalized 1000-entry official manifest with SHA-256/SHA-1, byte sizes,
+side flags, paths, URLs and mirrors. The content digest excludes volatile API
+usage counters/timestamps; the observed raw response hash is retained separately.
+Fetched 675 config files and four scripts (16338511 bytes) into ignored local
+reference storage; every selected file passed all size/hash checks. Four nested
+library-cache entries labeled as config were excluded by root-path selection.
+No installer, Java runtime, JAR or pack script was executed.
+
+Added an inert reference acquisition/verification tool, a top-level JAR inventory
+and 15 Thermal config facts with source hashes and line numbers. The Steam
+Dynamo base is configured to 40 RF/t; furnace/pulverizer bases to 20 RF/t; the
+default ore-to-dust multiplier to 2. Those facts do not establish recipe costs,
+fuel/fluid consumption or effective tier/buffer/augment behavior. Existing Lua
+simulation values and engine/foundation pins were retained; only the old TE4
+comment was corrected. The next deliverable is a reference-driven Thermal
+behavior specification and supported import, followed by graphical play.
+
+Executed acquisition plus offline verification, fact extraction and unit checks.
+The test entrypoint now includes eight Python reference-provenance/cache tests
+alongside the 13 Lua tests. Final verification evidence is recorded separately.
+Runtime behavior was unchanged, so the earlier ten engine phases remain the
+latest engine run rather than being reported as a new run for this reference
+selection. Hosted CI remains unexecuted.

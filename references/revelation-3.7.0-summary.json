@@ -1,0 +1,31 @@
+{
+  "pack": "FTB Revelation",
+  "version": "3.7.0",
+  "targets": [
+    {
+      "name": "forge",
+      "version": "14.23.5.2858",
+      "type": "modloader"
+    },
+    {
+      "name": "java",
+      "version": "8.0.312+7",
+      "type": "runtime"
+    },
+    {
+      "name": "minecraft",
+      "version": "1.12.2",
+      "type": "game"
+    }
+  ],
+  "manifest_entries": 1000,
+  "file_types": {
+    "config": 679,
+    "mod": 210,
+    "resource": 107,
+    "script": 4
+  },
+  "top_level_mod_jar_entries": 199,
+  "reference_config_script_files": 679,
+  "reference_config_script_bytes": 16338511
+}

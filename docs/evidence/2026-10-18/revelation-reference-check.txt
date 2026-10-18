@@ -1,0 +1,2 @@
+REFERENCE PASS: 679 config/script files match locked size, SHA-256 and SHA-1
+Fresh official manifest normalized content matches pinned digest: PASS

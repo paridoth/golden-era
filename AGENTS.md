@@ -3,3 +3,6 @@ Use Lua 5.1 syntax. Server simulation must not yield between inventory preflight
 Run scripts/test.sh before committing. Run engine integration after runtime changes.
 Record historical claims with exact version evidence; otherwise mark provisional.
 Do not add assets without provenance and license. Keep generated worlds and downloads untracked.
+
+Current reference: FTB Revelation 3.7.0 (Minecraft 1.12.2), selected by the user on 2026-10-18. See references/revelation-3.7.0.lock.json and docs/historical-reference.md. The Direwolf20 target in the immutable migration HANDOFF.md is superseded.
+Use the actual pinned pack/configs as primary evidence. Keep downloaded pack originals under ignored references/cache/; never execute them as part of reference import or bundle them into the game.

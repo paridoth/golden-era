@@ -165,12 +165,39 @@ See [saved-state validation and repair](save-state.md) for supported schema
 bounds, pause behavior and recovery limits. Unknown-schema migration, arbitrary
 hostile-Lua sandboxing and forced-crash transactions remain separate work.
 
+## Revelation reference selection and acquisition — 2026-10-18
+
+The user selected Revelation 3.7.0. This change pins and inspects reference data;
+production simulation values, behavior, saves and native dependency pins were
+not changed. The TE4 comment on fixture rates was corrected to describe the new
+TE5 reference. The prior 10-process engine run remains the latest engine run;
+it was not rerun or claimed anew for this acquisition/docs/tooling change.
+
+Executed `python3 scripts/reference.py pin --date 2026-10-18`, `fetch`, `check`,
+`report`, and `facts`. All selected 675 configs plus four scripts (16338511 bytes)
+match locked size, SHA-256 and SHA-1. Fifteen Thermal config facts were extracted
+with source paths/hashes/line numbers. No pack installer, Java, mod JAR or script
+was executed. These checks establish reference-input integrity, not native
+behavioral parity or a complete recipe import.
+
+`./scripts/test.sh` passed **13 Lua tests and eight Python tests** (21 total).
+The Python tests cover unsafe paths, incorrect identity/duplicate entries/
+missing hashes, stable content pins despite usage-counter changes, changed
+artifact hashes, exclusion of mislabeled nested mod caches, corrupted/truncated
+files, refusal to trust or overwrite invalid cached content, and verified-mirror
+fallback/cache reuse. Tests run offline against temporary fixtures.
+
+Evidence is in `evidence/2026-10-18/revelation-reference-fetch.txt`,
+`revelation-reference-check.txt`, `revelation-unit-tests.txt` and
+`revelation-reference-summary.json`. Downloaded originals stay ignored.
+
 ## Scope of the suite
 
-The 13 pure Lua tests cover integer conservation/capacity, fuel exhaustion and
+The 13 pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
 full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
 connect/disconnect, copied ledger save boundary, invalid RF inputs and non-finite RF/burn/cost rejection.
+Eight additional Python tests cover reference acquisition/provenance/cache integrity.
 
 Engine integration creates one temporary SQLite world and runs ten separate
 headless server processes, each with a 120-second timeout on loopback port

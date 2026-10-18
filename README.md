@@ -1,7 +1,7 @@
 # Golden Era
 
-A Luanti/Mineclonia factory prototype inspired by the initial late-2014
-Direwolf20 experience on Minecraft Java 1.7.10. Golden Era is a provisional
+A native Luanti/Mineclonia game prototype using **FTB Revelation 3.7.0 for
+Minecraft Java 1.12.2** as its gameplay reference. Golden Era is a provisional
 project name. This is an independent engineering prototype; it is not an
 accurate or complete recreation, and is not affiliated with Mojang, Microsoft,
 Feed The Beast, or the original mod authors.
@@ -10,7 +10,34 @@ The working slice generates integer RF from coal, moves it through adjacent
 machines/cables, pulverizes iron ore or raw iron into dust, smelts dust, and
 routes ingots east into an ordinary native Mineclonia chest. Six custom mods
 provide the implementation. Machine values, capacities and recipes are
-**provisional** pending a pinned launch-era reference.
+**provisional** pending behavior/recipe verification against the selected pack.
+
+The user selected Revelation on October 18, 2026, superseding the earlier
+Direwolf20 1.7.10 target in the preserved migration handoff. The Luanti engine,
+Mineclonia foundation and tested factory infrastructure remain in use. Our goal
+is native implementations grounded in the actual pack's data and observed
+behavior. The Java mods are reference inputs; this game does not execute them.
+
+## Reference inputs and development pathway
+
+The exact pack identity, targets, 1000 manifest file entries and content digest
+are pinned in [references/revelation-3.7.0.lock.json](references/revelation-3.7.0.lock.json).
+All 675 selected config files and four scripts were downloaded and hash-verified
+into an ignored local cache. A reviewed
+[configuration fact sheet](references/revelation-3.7.0-facts.json) records source
+hashes and line numbers. These are configuration facts, not completed runtime
+parity or a complete recipe export.
+
+```sh
+python3 scripts/reference.py fetch
+python3 scripts/reference.py check
+python3 scripts/reference.py report
+python3 scripts/reference.py facts
+```
+
+Reference import downloads inert config/script files only; it never runs an
+installer, Java, Forge, mod code or recipe scripts. See the
+[reference workflow](references/README.md) and [roadmap](docs/roadmap.md).
 
 ## Build and test
 

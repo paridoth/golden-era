@@ -55,3 +55,13 @@ record every shipped file's source/revision/license/attribution, retain
 corresponding source and license texts as applicable, audit bundled libraries
 and Debian-package contents, and review the final assembled distribution.
 No claim of completed redistribution clearance is made here.
+
+## Revelation reference cache
+
+The 2026-10-18 reference acquisition keeps original FTB Revelation config/script
+bytes and their existing headers under ignored `references/cache/`. The project
+tracks the reviewed file inventory, hashes, factual configuration values and
+our own inspection code/documentation. No downloaded pack scripts, JARs or
+media are installed into the Luanti runtime or included in project Git. The
+project's GPL/CC0 notices do not relicense third-party reference files. Any later
+asset reuse or distribution remains subject to a separate provenance review.

@@ -1,5 +1,9 @@
 # Architecture
 
+Gameplay reference: FTB Revelation 3.7.0 (Minecraft 1.12.2), selected on
+2026-10-18. The runtime remains native Luanti/Mineclonia. See
+[the reference workflow](../references/README.md) and [roadmap](roadmap.md).
+
 ## Modules and boundaries
 
 | Mod | Responsibility |
@@ -84,7 +88,10 @@ machines currently show input/output/fuel slots even where a slot is unused.
 
 ## Extension order
 
-Resolve historical references, extend schema migration and chunk-lifecycle
-coverage, and test multiplayer contention, crash recovery and scale/fairness before
-expanding content. Smelteries, storage/crafting networks and research/magic are
-future milestones in the handoff, not implemented subsystems.
+The selected reference inventory/configs are now pinned. Next, specify and
+import the supported Thermal factory behavior from those exact inputs, then
+validate it in graphical survival and multiplayer sessions. Extend migrations,
+crash recovery and performance checks around those systems as they grow.
+Tinkers 2, AE2 rv6 and Thaumcraft 6 are future native branches; the earlier
+handoff's 1.7.10 generation choices are historical. No reference importer
+executes Java mods, pack scripts or installers.

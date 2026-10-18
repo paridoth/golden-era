@@ -1,0 +1,85 @@
+{
+  "pack": "FTB Revelation",
+  "version": "3.7.0",
+  "source_path": "config/cofh/thermalexpansion/common.cfg",
+  "source_url": "https://files.feed-the-beast.com/blob/a3/a3e99d8f5ef067fe5089f11333f0bd3cef078f8c1332ebb05f84715e1ab3a553.cfg",
+  "source_sha256": "6232ee2e04483ae16872553f4af33c92a3cfcb6851b2cbc7fd718468650e3a8a",
+  "evidence_kind": "configured values; effective runtime behavior not yet verified",
+  "facts": [
+    {
+      "key": "Dynamo.CustomPowerScaling",
+      "value": false,
+      "line": 111
+    },
+    {
+      "key": "Dynamo.Steam.BasePower",
+      "value": 40,
+      "line": 128
+    },
+    {
+      "key": "Dynamo.Upgradable",
+      "value": true,
+      "line": 121
+    },
+    {
+      "key": "Item.Capacitor.BaseSend",
+      "value": 500,
+      "line": 228
+    },
+    {
+      "key": "Machine.CustomEnergyScaling",
+      "value": false,
+      "line": 282
+    },
+    {
+      "key": "Machine.CustomPowerScaling",
+      "value": false,
+      "line": 285
+    },
+    {
+      "key": "Machine.DisableAutoInput",
+      "value": false,
+      "line": 289
+    },
+    {
+      "key": "Machine.DisableAutoOutput",
+      "value": false,
+      "line": 292
+    },
+    {
+      "key": "Machine.Furnace.BasePower",
+      "value": 20,
+      "line": 308
+    },
+    {
+      "key": "Machine.Pulverizer.BasePower",
+      "value": 20,
+      "line": 314
+    },
+    {
+      "key": "Machine.Pulverizer.Ore -> Dust Multiplier",
+      "value": 2,
+      "line": 318
+    },
+    {
+      "key": "Machine.Upgradable",
+      "value": true,
+      "line": 301
+    },
+    {
+      "key": "Storage.Cell.BaseCapacity",
+      "value": 2000000,
+      "line": 648
+    },
+    {
+      "key": "Storage.Cell.BaseReceive",
+      "value": 1000,
+      "line": 651
+    },
+    {
+      "key": "Storage.Cell.BaseSend",
+      "value": 1000,
+      "line": 654
+    }
+  ]
+}

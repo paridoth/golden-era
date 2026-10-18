@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-18",
+  "user_timezone": "America/Chicago",
+  "reference": "FTB Revelation 3.7.0",
+  "pack_id": 35,
+  "version_id": 12180,
+  "content_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+  "manifest_entries": 1000,
+  "selected_config_files": 675,
+  "selected_script_files": 4,
+  "selected_bytes": 16338511,
+  "verified_cached_files": 679,
+  "config_facts": 15,
+  "lua_unit_tests": 13,
+  "python_unit_tests": 8,
+  "fresh_manifest_content_matches_lock": true,
+  "pack_code_executed": false,
+  "native_runtime_behavior_changed": false,
+  "engine_suite_rerun": false
+}

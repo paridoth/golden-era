@@ -1,5 +1,14 @@
 # Mod compatibility
 
+## Gameplay reference versus native runtime
+
+The selected gameplay reference is **FTB Revelation 3.7.0 / Minecraft 1.12.2**.
+Its exact Forge/Java/mod builds and file hashes are in
+`references/revelation-3.7.0.lock.json`. Those are inert reference inputs, not
+Luanti dependencies. The native foundation and comparison checkouts below keep
+their existing pins. Java JAR execution/Forge runtime compatibility is not part
+of this native implementation pathway; see `docs/roadmap.md`.
+
 ## Pinned foundation and comparison sources
 
 | Project | Revision | Role |
@@ -36,7 +45,9 @@ not runtime interoperability results.
 
 ## Outstanding checks
 
-An isolated Minetest Game + Technic comparison could inform future choices.
+The next priority is the reference-driven native Thermal factory slice. An
+isolated Minetest Game + Technic comparison remains optional background work
+that could inform later choices.
 Audit dependency licenses/APIs, lock all revisions, assemble a separate game
 and run a reproducible startup/inventory/protection smoke test before drawing
 conclusions. Do not install comparison modpacks into the normal game without
