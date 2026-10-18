@@ -43,8 +43,8 @@ obtain the exact locked apt versions and fails if they are unavailable.
 ## Expanded crafting and recipe-settings checks — 2026-10-18
 
 `./scripts/test.sh --integration` returned **0** with all 12 unit tests and all
-**six** engine phases passing. This is the current suite; the three-process
-restore result above remains preserved as its original baseline.
+**six** engine phases passing. The three-process restore result above and
+this six-process extension remain preserved as earlier baseline evidence.
 
 The seed phase now calls the real engine recipe manager (`core.get_craft_result`)
 for all four machines, cable (8 per craft), ejector and dust cooking (10 seconds).
@@ -75,6 +75,47 @@ checks also passed. No gameplay source change was required. New output is in
 six `expanded-*.log` files. Original restore logs remain intact. The temporary
 SQLite world was removed after all phases completed.
 
+## Natural mapblock lifecycle checks — 2026-10-18
+
+`./scripts/test.sh --integration` returned **0** with all **12 unit tests** and
+**seven engine phases** passing. This is the current suite. The additional
+`lifecycle` phase uses a factory spanning x=14..20 at y=200, z=40. The generator
+and cable are in one mapblock; buffer, processors, ejector and chest are in the
+neighboring mapblock across x=15/16.
+
+Transient engine forceload/release calls control activation. Only this phase
+sets `server_unload_unused_data_timeout=5` and
+`active_block_mgmt_interval=0.1`. Eviction itself uses Luanti's ordinary timer,
+not a fabricated node result or deleted mapblock. The fixture observes real
+`core.get_node_or_nil` nil results, then checks:
+
+- The processor block actually unloads while the generator block remains
+  active. Missing positions are pruned and the cached component shrinks from
+  five nodes to two. After 100 explicit simulation ticks, the isolated generator
+  has gained exactly 2000 RF; unloaded processors receive none.
+- Reloaded processor RF/work/burn/schema/job/inventory fields match the saved
+  snapshot exactly. Loading into memory alone leaves tracking pruned; subsequent
+  engine activation runs the production LBM and restores the five-node network.
+- Both blocks actually unload. All six tracked fixture nodes are pruned;
+  another 100 explicit simulation ticks and at least one further second of
+  wall time do not regenerate state or reload the factory.
+- Full reload preserves the exact saved state. Engine activation automatically
+  discovers machines, cable and ejector. No `era.track` call, tracking-table
+  edit, or direct invocation of the production LBM is used to restore them.
+- Processing resumes to exactly four ingots, with 32000 generated RF equal to
+  16000 processing RF plus 16000 stored RF, and no duplicated output.
+
+The old six phases passed too. Production gameplay code did not need a fix.
+Evidence: `evidence/2026-10-18/chunks-integration.txt`, `chunks-summary.json`, and
+seven `chunks-*.log` phase logs. Original and expanded evidence remain intact;
+the temporary world was removed after the run.
+
+This is actual engine-managed mapblock eviction/reactivation using a headless
+activation harness and explicit `era.step()` calls. It does not establish
+real-player travel/proximity, arbitrary chunk-bridge layouts, or long-duration
+behavior under default timing. The automatic scheduler remains covered by its
+separate phase.
+
 ## Scope of the suite
 
 The 12 pure Lua tests cover integer conservation/capacity, fuel exhaustion and
@@ -82,7 +123,7 @@ full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
 connect/disconnect, copied ledger save boundary and invalid RF inputs.
 
-Engine integration creates one temporary SQLite world and runs six separate
+Engine integration creates one temporary SQLite world and runs seven separate
 headless server processes, each with a 120-second timeout on loopback port
 30199. Seed saves partly processed work after a cable disconnection/reconnection.
 Resume compares saved RF/work/burn/job/inventories exactly and processes two
@@ -93,7 +134,7 @@ survive another restart and an isolated precharged furnace processes dust
 through normal globalstep. Worlds are removed automatically; phase logs remain
 in `runtime/tests`.
 
-Seed/resume and recipe phases manually invoke `era.step()` against real engine
+Seed/resume, recipe and lifecycle phases manually invoke `era.step()` against real engine
 objects. Resume explicitly re-tracks fixture nodes. Protection testing temporarily overrides
 `core.is_protected`. These boundaries matter when interpreting a passing suite.
 
@@ -101,8 +142,8 @@ objects. Resume explicitly re-tracks fixture nodes. Protection testing temporari
 
 Graphical player placement/UI and crafting callbacks, survival progression,
 v7 terrain play, real multi-client contention, third-party protection,
-natural mapblock eviction/reactivation, chunk-boundary networks, very large
-networks, fairness/performance/stress, corrupt job metadata, save migrations and forced-crash atomicity remain untested.
+player-driven mapblock activation and broader chunk-boundary topologies, very
+large networks, fairness/performance/stress, corrupt job metadata, save migrations and forced-crash atomicity remain untested.
 The Mineclonia custom singlenode mapgen remains disabled after an old-machine
 timeout. There is no graphical client build or optional modpack comparison.
 

@@ -3,6 +3,7 @@ local storage=core.get_mod_storage()
 local modpath=core.get_modpath("era_integration")
 local crafting=dofile(modpath.."/crafting.lua")
 local recipe_restart=dofile(modpath.."/recipe_restart.lua")
+local lifecycle=dofile(modpath.."/lifecycle.lua")
 local function p(x,z) return vector.new(x,200,z or 0) end
 local positions={generator=p(0,2),buffer=p(1,2),cable=p(0,1),pulverizer=p(0),furnace=p(1),ejector=p(2),chest=p(3)}
 local function inv(name) return core.get_meta(positions[name]):get_inventory() end
@@ -102,6 +103,10 @@ local function run()
  core.request_shutdown("Integration passed",false,0)
 end
 core.register_on_mods_loaded(function()
+ if core.settings:get("era_test_phase")=="lifecycle" then
+  core.after(0,function() lifecycle(place,eq) end)
+  return
+ end
  core.after(0,function()
   core.emerge_area(p(-1,-1),p(13,3),function(_,_,remaining)
    if remaining==0 then core.after(0,function()

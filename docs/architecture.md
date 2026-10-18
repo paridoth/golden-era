@@ -42,7 +42,7 @@ properties do not provide crash-atomic transactions across mapblocks.
 
 Node metadata stores `energy`, `work`, `burn`, and `schema` (currently 1).
 An in-flight `job` serializes input name, result, total RF cost and processing
-rate. A six-process integration suite covers clean SQLite restarts and changing the
+rate. Integration covers clean SQLite restarts and changing the
 recipe cost/rate/yield across a restart: the saved job retains its old values,
 the next input uses the changed values, and completed results survive another
 restart back to defaults. Corrupt job metadata, schema migrations and forced
@@ -50,8 +50,18 @@ crashes still need dedicated tests.
 
 Loaded positions are tracked; unavailable/ignore nodes are pruned. A load-time
 LBM re-registers machines, cables and ejectors. Offline generation is absent.
-The restart fixture explicitly re-tracks nodes; it does not establish actual
-mapblock eviction/reactivation or chunk-boundary behavior.
+The older restart fixture explicitly re-tracks nodes. A separate lifecycle
+fixture now exercises actual engine-timed mapblock eviction and engine-driven
+LBM reactivation across the x=15/16 boundary, with no manual re-tracking or
+tracking-table edits. Keeping only the generator side active splits the network;
+reactivating the processor side restores connectivity. Full eviction/reload
+preserves pending jobs, RF, burn and inventories without offline catch-up.
+
+LBMs run when mapblocks become **active**, not merely when loaded into memory.
+The lifecycle test uses transient forceload/release calls to control activation
+without a graphical client, shortened test-only eviction/activation intervals,
+and explicit simulation steps. Real player travel/proximity and broader network
+topologies remain separate validation targets.
 
 ## Interaction and protection
 

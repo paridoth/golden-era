@@ -61,3 +61,27 @@ checks passed. No production gameplay changes were necessary. Destination
 restore evidence was preserved; new logs use the `expanded-` prefix. Historical
 values and recipes remain provisional. Hosted CI and graphical/multiplayer
 validation remain outstanding.
+
+## 2026-10-18 — actual mapblock eviction and reactivation
+
+Added a seventh engine phase with a factory crossing x=15/16. Transient
+forceload/release calls control activation; the normal engine timer performs
+actual eviction with a five-second test-only unload timeout. The processor
+block unloads while the generator block stays active, the cached network
+splits, and 100 explicit ticks charge only the isolated generator. Exact
+metadata/inventory snapshots survive reload. The normal production LBM restores
+tracking and connectivity when the block becomes active, without manual
+`era.track` calls or tracking-table changes.
+
+The same fixture then releases both blocks, observes complete eviction and
+pruning, steps the simulation while unloaded, waits another second, and checks
+that reactivation preserves all saved balances and pending work. The resumed
+factory produces exactly four ingots; 32000 RF generated equals 16000 RF spent
+plus 16000 stored. No duplicate output or offline catch-up was observed.
+
+Executed `./scripts/test.sh --integration`: exit 0, all 12 unit tests and seven
+engine phases passed. Lua 5.1 syntax and Python compilation checks passed.
+No production gameplay changes were needed. Evidence uses the `chunks-`
+prefix. This covers engine eviction/activation and one real cross-block
+factory topology; player-driven travel, other layouts, default-timing stress,
+multiplayer, corrupt state and crash recovery remain unverified.

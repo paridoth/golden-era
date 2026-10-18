@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-18",
+  "user_timezone": "America/Chicago",
+  "command": "./scripts/test.sh --integration",
+  "exit_code": 0,
+  "unit_tests": 12,
+  "engine_phases": [
+    "seed",
+    "resume",
+    "automatic",
+    "recipe_seed",
+    "recipe_resume",
+    "recipe_verify",
+    "lifecycle"
+  ],
+  "lifecycle": {
+    "server_unload_unused_data_timeout": 5,
+    "active_block_mgmt_interval": 0.1,
+    "eviction": "normal engine timer, observed get_node_or_nil returning nil",
+    "activation": "transient forceloads through normal engine LBM activation",
+    "manual_retracking": false,
+    "manual_tracking_table_edits": false,
+    "simulation": "explicit era.step calls with real nodes and SQLite",
+    "partial_unload_loaded_generator_rf_gain": 2000,
+    "completed_ingots": 4,
+    "generated_rf": 32000,
+    "recipe_rf": 16000,
+    "stored_rf": 16000
+  },
+  "production_gameplay_changes": false,
+  "real_player_travel_tested": false
+}
