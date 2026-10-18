@@ -73,7 +73,9 @@ Energy Cell also have different settings; do not conflate them.
 The current fixture uses generator 20 RF/t, coal 1600 ticks, donor/buffer transfer
 80 RF/t, processor input 40 RF/t, pulverizer cost 4000 RF, furnace cost 2000 RF,
 processing limit 40 RF/t, and ore multiplier 2. Capacities remain 32000 generator,
-100000 buffer and 8000 processors. Crafting patterns remain provisional.
+100000 buffer and 8000 processors. Three machine crafting patterns and their supported material/component recipes
+now use the [reviewed native catalog](native-crafting.md). Buffer/cable/ejector
+crafting, survival acquisition and remaining progression are still provisional.
 
 These fixture numbers have not been changed merely because a few config fields
 are known. A correct native implementation must first connect the reference's

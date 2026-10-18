@@ -65,3 +65,10 @@ our own inspection code/documentation. No downloaded pack scripts, JARs or
 media are installed into the Luanti runtime or included in project Git. The
 project's GPL/CC0 notices do not relicense third-party reference files. Any later
 asset reuse or distribution remains subject to a separate provenance review.
+
+
+The native crafting catalog reuses the existing project-authored placeholder
+image; it adds no downloaded textures or sounds. The ignored MCP stable mapping
+ZIP is used only to resolve source field names. Its URL/hash and factual selected
+name mappings are recorded in the crafting review; the original ZIP is neither
+relicensed nor bundled into the native game.

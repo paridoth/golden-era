@@ -3,7 +3,9 @@
 Reference: FTB Revelation 3.7.0, Thermal Expansion 5.5.7.1 and CoFH Core 4.6.6.1.
 The generated [intermediate specification](../references/revelation-3.7.0-thermal.json)
 is a **static reference**, not an effective Minecraft registry export. It is
-explicitly marked `runtime_ready: false`. Existing Lua gameplay is unchanged.
+explicitly marked `runtime_ready: false`. The processing/resource model still uses the older fixtures. The separate
+[native crafting catalog](native-crafting.md) now supplies ten reviewed patterns
+with explicit native material representatives.
 
 ## Evidence and reproducibility
 
@@ -112,8 +114,10 @@ unmapped.
 
 Before replacing fixture behavior:
 
-1. Resolve the iron, nickel, copper and tin groups and concrete outputs. Confirm
-   effective registrations/overrides and complete first-machine crafting.
+1. The native crafting subset now has explicit material representatives and
+   three first-machine patterns. Resolve effective original registrations,
+   processing outputs and remaining storage crafting; provide tin/silver
+   survival acquisition before claiming a playable progression.
 2. Map side configuration, fuel/water loading, redstone and transfer order. Obtain
    controlled original-runtime observations or exports for uncertain behavior.
 3. Introduce versioned native definitions and an explicit save migration for

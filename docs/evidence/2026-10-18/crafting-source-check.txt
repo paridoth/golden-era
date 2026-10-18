@@ -1,0 +1,3 @@
+CRAFTING SOURCE PASS: three inert JARs, configs/scripts and MCP mapping verified
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs
+CRAFTING CATALOG PASS: 14 material declarations and 10 recipes match reviewed source inputs

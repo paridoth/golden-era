@@ -30,7 +30,8 @@ function era.process(pos,name,state)
  end
 end
 
-for _,id in ipairs({"generator","buffer","pulverizer","furnace"}) do
- core.register_craft({output="era_thermal:"..id,recipe={{era.mcl.ingot,era.mcl.ingot,era.mcl.ingot},{era.mcl.stone,id=="generator" and era.mcl.coal or id=="buffer" and era.mcl.redstone or id=="pulverizer" and era.mcl.raw_iron or "era_materials:iron_dust",era.mcl.stone},{era.mcl.ingot,era.mcl.redstone,era.mcl.ingot}}})
-end
+-- Three reviewed machine crafting patterns; RF/fluid behavior is still the fixture model.
+era.register_catalog_crafts("thermal")
+-- Storage and cable progression are still engineering fixtures.
+core.register_craft({output="era_thermal:buffer",recipe={{era.mcl.ingot,era.mcl.ingot,era.mcl.ingot},{era.mcl.stone,era.mcl.redstone,era.mcl.stone},{era.mcl.ingot,era.mcl.redstone,era.mcl.ingot}}})
 core.register_craft({output="era_energy:cable 8",recipe={{era.mcl.ingot,era.mcl.redstone,era.mcl.ingot}}})

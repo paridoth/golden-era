@@ -1,0 +1,431 @@
+{
+  "schema": 1,
+  "lock_content_sha256": "afbb46220bef4970fd6759424fd4bdd66c0f29dc4146e0e5542954bb473ce55a",
+  "basis": "Reviewed default patterns and identities from exact binaries, plus selected pack script overrides. Native representatives are explicit implementation choices, not a complete effective Forge registry.",
+  "binary_evidence": [
+    {
+      "id": "materials",
+      "jar": "mods/ThermalFoundation-1.12.2-2.6.7.1-universal.jar",
+      "entry": "cofh/thermalfoundation/item/ItemMaterial.class",
+      "sha256": "0527df3d767bad17bc93049dab04a73a697830014fa9eda0da2c64165b2c2580",
+      "locations": [
+        "preInit()Z: material metadata and ore-group registration",
+        "initialize()Z offsets 955..970: copper/tin gear selection",
+        "addConfigurableGearRecipe(ItemStack,String)V: AlternateGears conditional",
+        "initialize()Z offsets 1166..1279: gold/silver coil patterns"
+      ]
+    },
+    {
+      "id": "gear_helper",
+      "jar": "mods/CoFHCore-1.12.2-4.6.6.1-universal.jar",
+      "entry": "cofh/core/util/helpers/RecipeHelper.class",
+      "sha256": "1562eb3634490a0f8f773d48387fef9abcdaa6b513caef8f60bd58453cb71c09",
+      "locations": [
+        "addGearRecipe(ItemStack,String)V offsets 0..32: four ingots in a cross, empty center"
+      ]
+    },
+    {
+      "id": "frame",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/item/ItemFrame.class",
+      "sha256": "a51a02f86bb5e44e4b9bfd210222774389911b17a0810d461e5209c351b22949",
+      "locations": [
+        "preInit()Z offsets 22..29: frameMachine metadata 0",
+        "initialize()Z offsets 0..65: iron/glass/tin-gear frame"
+      ]
+    },
+    {
+      "id": "machines",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/BlockMachine.class",
+      "sha256": "b8c08fcb7e6b939e53f4c9a2054fb1215ede6f0dc8e5b61788991e72b2685e36",
+      "locations": [
+        "addRecipes()V offsets 21..122: furnace recipe",
+        "addRecipes()V offsets 138..239: pulverizer recipe"
+      ]
+    },
+    {
+      "id": "dynamo",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/dynamo/BlockDynamo.class",
+      "sha256": "a9302c0f8146fdb294c4ba1df0f54525f273fc886f598dfb72883d8c8e2df590",
+      "locations": [
+        "addRecipes()V offsets 13..116: Steam Dynamo recipe"
+      ]
+    },
+    {
+      "id": "pulverizer_sides",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/TilePulverizer.class",
+      "sha256": "f5ff00e15514f53246868eb90863e0bf830f9d5f01193d6602342e249561969e",
+      "locations": [
+        "initialize()V offsets 14..208: normal slot groups, side types and default sides"
+      ]
+    },
+    {
+      "id": "furnace_sides",
+      "jar": "mods/ThermalExpansion-1.12.2-5.5.7.1-universal.jar",
+      "entry": "cofh/thermalexpansion/block/machine/TileFurnace.class",
+      "sha256": "ae11d282ab1f2b8b7d0839ffa3306677ab8ac7a23d6b09e7e34b107cf5406fbc",
+      "locations": [
+        "initialize()V offsets 14..168: normal slot groups, side types and default sides"
+      ]
+    }
+  ],
+  "config_evidence": [
+    {
+      "path": "config/cofh/thermalfoundation/common.cfg",
+      "sha256": "a080829dee66efd6574fa0abeea6b8bc22ca438782489092ba6c20cb4e2b28ed",
+      "locations": {
+        "General.AlternateGears": 448,
+        "General.DisableBasicItemRecipes": 454
+      }
+    },
+    {
+      "path": "config/unidict/UniDict.cfg",
+      "sha256": "8bf61e5cc7977e218c744afc71cbb23069e304d77bfb2165cacfa3f95e66548c",
+      "locations": {
+        "ownerOfEveryThing": 227
+      }
+    }
+  ],
+  "mcp_mapping": {
+    "url": "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/39-1.12/mcp_stable-39-1.12.zip",
+    "size": 378607,
+    "sha256": "13a31f28c11f8f395ffe7e8563ade459f5a0ee46493abbbde3ce6e9493ac4152",
+    "fields": {
+      "field_150331_J": "PISTON",
+      "field_150336_V": "BRICK_BLOCK",
+      "field_151145_ak": "FLINT"
+    }
+  },
+  "native_foundation": {
+    "url": "https://codeberg.org/mineclonia/mineclonia.git",
+    "commit": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+    "release": "0.124.0"
+  },
+  "items": [
+    {
+      "source": "item:thermalfoundation:material:0",
+      "native": "era_materials:iron_dust",
+      "description": "Iron Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:1",
+      "native": "era_materials:gold_dust",
+      "description": "Gold Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:64",
+      "native": "era_materials:copper_dust",
+      "description": "Copper Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:65",
+      "native": "era_materials:tin_dust",
+      "description": "Tin Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:69",
+      "native": "era_materials:nickel_dust",
+      "description": "Nickel Dust"
+    },
+    {
+      "source": "item:thermalfoundation:material:128",
+      "native": "mcl_copper:copper_ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:129",
+      "native": "era_materials:tin_ingot",
+      "description": "Tin Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:130",
+      "native": "era_materials:silver_ingot",
+      "description": "Silver Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:163",
+      "native": "era_materials:bronze_ingot",
+      "description": "Bronze Ingot"
+    },
+    {
+      "source": "item:thermalfoundation:material:256",
+      "native": "era_materials:copper_gear",
+      "description": "Copper Gear"
+    },
+    {
+      "source": "item:thermalfoundation:material:257",
+      "native": "era_materials:tin_gear",
+      "description": "Tin Gear"
+    },
+    {
+      "source": "item:thermalfoundation:material:291",
+      "native": "era_materials:bronze_gear",
+      "description": "Bronze Gear"
+    },
+    {
+      "source": "item:thermalfoundation:material:513",
+      "native": "era_materials:gold_coil",
+      "description": "Redstone Reception Coil"
+    },
+    {
+      "source": "item:thermalfoundation:material:514",
+      "native": "era_materials:silver_coil",
+      "description": "Redstone Transmission Coil"
+    },
+    {
+      "source": "item:thermalexpansion:frame:0",
+      "native": "era_materials:machine_frame",
+      "description": "Basic Machine Frame"
+    }
+  ],
+  "mappings": {
+    "item:thermalfoundation:material:0": "era_materials:iron_dust",
+    "item:thermalfoundation:material:1": "era_materials:gold_dust",
+    "item:thermalfoundation:material:64": "era_materials:copper_dust",
+    "item:thermalfoundation:material:65": "era_materials:tin_dust",
+    "item:thermalfoundation:material:69": "era_materials:nickel_dust",
+    "item:thermalfoundation:material:128": "mcl_copper:copper_ingot",
+    "item:thermalfoundation:material:129": "era_materials:tin_ingot",
+    "item:thermalfoundation:material:130": "era_materials:silver_ingot",
+    "item:thermalfoundation:material:163": "era_materials:bronze_ingot",
+    "item:thermalfoundation:material:256": "era_materials:copper_gear",
+    "item:thermalfoundation:material:257": "era_materials:tin_gear",
+    "item:thermalfoundation:material:291": "era_materials:bronze_gear",
+    "item:thermalfoundation:material:513": "era_materials:gold_coil",
+    "item:thermalfoundation:material:514": "era_materials:silver_coil",
+    "item:thermalexpansion:frame:0": "era_materials:machine_frame",
+    "ore:dustIron": "era_materials:iron_dust",
+    "ore:dustGold": "era_materials:gold_dust",
+    "ore:dustCopper": "era_materials:copper_dust",
+    "ore:dustTin": "era_materials:tin_dust",
+    "ore:dustNickel": "era_materials:nickel_dust",
+    "ore:ingotCopper": "mcl_copper:copper_ingot",
+    "ore:ingotTin": "era_materials:tin_ingot",
+    "ore:ingotSilver": "era_materials:silver_ingot",
+    "ore:ingotBronze": "era_materials:bronze_ingot",
+    "ore:gearCopper": "era_materials:copper_gear",
+    "ore:gearTin": "era_materials:tin_gear",
+    "ore:gearBronze": "era_materials:bronze_gear",
+    "ore:ingotIron": "mcl_core:iron_ingot",
+    "ore:ingotGold": "mcl_core:gold_ingot",
+    "ore:dustRedstone": "mcl_redstone:redstone",
+    "ore:blockGlass": "mcl_core:glass",
+    "item:minecraft:iron_ingot:0": "mcl_core:iron_ingot",
+    "item:minecraft:brick_block:0": "mcl_core:brick_block",
+    "item:minecraft:piston:0": "mcl_pistons:piston_off",
+    "item:minecraft:flint:0": "mcl_core:flint",
+    "symbol:machineFurnace": "era_thermal:furnace",
+    "symbol:machinePulverizer": "era_thermal:pulverizer",
+    "symbol:dynamoSteam": "era_thermal:generator"
+  },
+  "recipes": [
+    {
+      "id": "copper_gear",
+      "output": "item:thermalfoundation:material:256",
+      "pattern": [
+        " C ",
+        "C C",
+        " C "
+      ],
+      "key": {
+        "C": "ore:ingotCopper"
+      },
+      "evidence": [
+        "materials",
+        "gear_helper"
+      ]
+    },
+    {
+      "id": "gold_coil",
+      "output": "item:thermalfoundation:material:513",
+      "pattern": [
+        "  R",
+        " G ",
+        "R  "
+      ],
+      "key": {
+        "R": "ore:dustRedstone",
+        "G": "ore:ingotGold"
+      },
+      "evidence": [
+        "materials"
+      ]
+    },
+    {
+      "id": "silver_coil",
+      "output": "item:thermalfoundation:material:514",
+      "pattern": [
+        "  R",
+        " G ",
+        "R  "
+      ],
+      "key": {
+        "R": "ore:dustRedstone",
+        "G": "ore:ingotSilver"
+      },
+      "evidence": [
+        "materials"
+      ]
+    },
+    {
+      "id": "machine_frame",
+      "output": "item:thermalexpansion:frame:0",
+      "pattern": [
+        "IGI",
+        "GTG",
+        "IGI"
+      ],
+      "key": {
+        "I": "ore:ingotIron",
+        "G": "ore:blockGlass",
+        "T": "ore:gearTin"
+      },
+      "evidence": [
+        "frame"
+      ]
+    },
+    {
+      "id": "steam_dynamo",
+      "output": "symbol:dynamoSteam",
+      "pattern": [
+        " C ",
+        "IGI",
+        "URU"
+      ],
+      "key": {
+        "C": "item:thermalfoundation:material:514",
+        "I": "ore:ingotIron",
+        "G": "ore:gearCopper",
+        "U": "ore:ingotCopper",
+        "R": "ore:dustRedstone"
+      },
+      "evidence": [
+        "dynamo"
+      ]
+    },
+    {
+      "id": "pulverizer",
+      "output": "symbol:machinePulverizer",
+      "pattern": [
+        " P ",
+        "FMF",
+        "CRC"
+      ],
+      "key": {
+        "P": "item:minecraft:piston:0",
+        "F": "item:minecraft:flint:0",
+        "M": "item:thermalexpansion:frame:0",
+        "C": "ore:gearCopper",
+        "R": "item:thermalfoundation:material:513"
+      },
+      "evidence": [
+        "machines"
+      ]
+    },
+    {
+      "id": "furnace",
+      "output": "symbol:machineFurnace",
+      "pattern": [
+        " R ",
+        "BMB",
+        "CPC"
+      ],
+      "key": {
+        "R": "ore:dustRedstone",
+        "B": "item:minecraft:brick_block:0",
+        "M": "item:thermalexpansion:frame:0",
+        "C": "ore:gearCopper",
+        "P": "item:thermalfoundation:material:513"
+      },
+      "evidence": [
+        "machines"
+      ]
+    }
+  ],
+  "side_review": {
+    "status": "Static index tables only; orientation and access semantics still need tracing. Not used by the native runtime.",
+    "pulverizer": {
+      "slot_groups": [
+        [],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "side_types": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        8
+      ],
+      "default_sides": [
+        3,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": "pulverizer_sides"
+    },
+    "furnace": {
+      "slot_groups": [
+        [],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "side_types": [
+        0,
+        1,
+        4,
+        7,
+        8
+      ],
+      "default_sides": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": "furnace_sides"
+    }
+  }
+}

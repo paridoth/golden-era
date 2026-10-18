@@ -69,7 +69,9 @@ sound and inherited-media provenance before preparing a public distribution.
 Keep reproducible source/config pins, automated checks, native gameplay tests
 and documented limitations together.
 
-The initial Thermal specification and bounded import are recorded. The next
+The initial Thermal specification and bounded import are recorded. Ten native
+crafting patterns now replace the first three machine shortcuts; their material
+representatives are explicit and still lack tin/silver survival acquisition. The next
 concrete deliverable is the resolved first-loop data/side mapping and a tested
 native state migration, then a graphical factory session. Further
 infrastructure work should address risks exposed by that milestone.

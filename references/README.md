@@ -82,3 +82,14 @@ recipes and three literal ZenScript statements. It does not evaluate general
 ZenScript, resolve ore dictionary groups/NBT, run registration code, export the
 effective recipe registry, or translate arbitrary Java logic. Follow `docs/roadmap.md`
 for the scoped native implementation and parity workflow.
+
+## Native crafting catalog
+
+`thermal-crafting-review.json` records exact class/config evidence, source item
+identities, chosen native representatives and reviewed default patterns. Three
+pack overrides are taken from the Thermal intermediate specification. The
+compiler produces `mods/era_materials/catalog.lua`, which the native game uses
+for 14 materials and ten recipes. See [native crafting](../docs/native-crafting.md)
+for evidence, generation commands and gameplay limitations. `check-generated`
+runs offline; full `check` verifies originals in the ignored cache. The additional
+MCP mapping used to resolve vanilla field names is hash-pinned in the review.

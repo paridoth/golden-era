@@ -9,8 +9,11 @@ Feed The Beast, or the original mod authors.
 The working slice generates integer RF from coal, moves it through adjacent
 machines/cables, pulverizes iron ore or raw iron into dust, smelts dust, and
 routes ingots east into an ordinary native Mineclonia chest. Six custom mods
-provide the implementation. Machine values, capacities and recipes are
-**provisional** pending behavior/recipe verification against the selected pack.
+provide the implementation. Machine RF values/capacities and transport remain
+**provisional**. The
+[native crafting subset](docs/native-crafting.md) now uses ten reviewed pack/mod
+patterns for materials, coils, frames and three machines. Tin/silver acquisition
+and a complete survival progression remain pending.
 
 The user selected Revelation on October 18, 2026, superseding the earlier
 Direwolf20 1.7.10 target in the preserved migration handoff. The Luanti engine,
@@ -117,6 +120,7 @@ no discharge/wrench tool yet. Transport only supports fixed eastward routing.
 ## Development records
 
 - [Architecture and invariants](docs/architecture.md)
+- [Native crafting and its current limits](docs/native-crafting.md)
 - [Saved-state validation and repair](docs/save-state.md)
 - [Historical reference and provisional values](docs/historical-reference.md)
 - [Compatibility findings](docs/mod-compatibility.md)

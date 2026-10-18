@@ -217,6 +217,37 @@ Python compilation and Git whitespace checks passed. Evidence is in
 There were no Lua runtime/state changes, so engine integration was not rerun;
 the earlier ten-phase validation run remains the latest engine evidence.
 
+## Native crafting catalog — 2026-10-18
+
+The runtime now registers 14 material/component items from a generated native
+catalog and ten reviewed recipes. It replaces the generator/pulverizer/furnace
+shortcuts with mapped Thermal patterns. Source review pins seven class hashes,
+config evidence, three pack-script overrides, the native foundation and a Forge
+Maven MCP mapping ZIP used for three vanilla field names. Full source integrity
+and catalog regeneration checks passed. The offline consistency check requires
+only committed review/specification inputs, not the downloaded originals.
+
+The first engine attempt failed at startup: the adapter used the craft-query
+method name `normal` as the registration type, which must be `shaped`. Fixed the
+compiler and retained that failure transcript. The next complete run passed
+**36 unit tests** (13 Lua, 8 reference, 9 importer, 6 catalog) and **all ten engine
+processes**. Lua 5.1 syntax, Python compilation and whitespace checks also passed.
+
+The engine crafting manager verifies ten catalog patterns with exact ingredient
+consumption, bronze's two-ingot output from shuffled shapeless inputs, coils,
+frames and all three machines. Six negative cases reject missing tin-gear iron,
+unwanted copper-gear iron, each old machine shortcut and a wrong pulverizer coil.
+Denied crafting preserves every input. The older buffer/cable/ejector/cooking
+fixture checks remain alongside the new source-driven checks. The other nine
+phases retain their earlier save/state and scheduling coverage.
+
+Evidence: `evidence/2026-10-18/crafting-source-check.txt`,
+`crafting-engine-failed.txt`, `crafting-engine-suite.txt` and ten `crafting-*.log`
+phase logs. This demonstrates native recipe registration and existing-state
+regression checks, not effective full-pack parity or survival progression.
+Tin/silver acquisition, resource-model migration and graphical/player callback
+validation remain pending; see [native crafting](native-crafting.md).
+
 ## Scope of the suite
 
 The 13 pure Lua ledger tests cover integer conservation/capacity, fuel exhaustion and
@@ -224,7 +255,9 @@ full-capacity pause, no-input/no-energy/overflow behavior, exact completion
 cost, no duplicates with caller inventory accounting, two consumers, graph
 connect/disconnect, copied ledger save boundary, invalid RF inputs and non-finite RF/burn/cost rejection.
 Eight Python tests cover reference acquisition/provenance/cache integrity; nine
-more cover the bounded Thermal data import.
+more cover the bounded Thermal data import. Six catalog tests cover offline
+regeneration, concrete metadata, missing mappings/pattern keys, explicit override
+conflicts, stale pack/foundation pins and unsupported counted ingredients.
 
 Engine integration creates one temporary SQLite world and runs ten separate
 headless server processes, each with a 120-second timeout on loopback port

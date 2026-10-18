@@ -177,3 +177,33 @@ Python compilation and whitespace checks passed. Original code/scripts were neve
 executed; downloaded originals remain untracked. Runtime was unchanged and the
 prior ten engine phases were not rerun for this acquisition/import/specification
 change. Graphical play and effective original-runtime observations remain pending.
+
+## 2026-10-18 — source-backed native crafting and material representatives
+
+Traced first-machine recipes through the exact TE/TF/Core compiled classes and
+pack scripts. Confirmed TF metadata 0 for iron dust and 69 for nickel dust;
+Foundation AlternateGears=false uses an empty-center copper gear, while the pack
+explicitly adds an iron-center tin gear. Recorded seven class hashes with
+locations, config hashes and source-to-native choices. Pinned MCP stable 39-1.12
+from Forge Maven (size/SHA-256 and field rows) to resolve piston, brick block and
+flint names. Reviewed normal side index arrays separately; orientation/access
+semantics remain incomplete and are not installed as native side controls.
+
+Added a fail-closed compiler producing a native Lua 5.1 catalog: 14 material/
+component declarations and ten recipes, including the three machine patterns.
+Removed their older shortcuts. Kept the existing iron-dust identity and all
+placed-machine/job state semantics. Explicitly require the pinned foundation's
+copper and piston mods and validate all catalog ingredients/outputs at startup.
+No original assets or executable pack code enter the runtime. Existing original
+placeholder art is reused; tin/silver acquisition is still a creative/test input
+rather than a completed survival path. RF/water/rate and storage/transport remain
+engineering fixtures, with their coupled model/migration still pending.
+
+Added six offline compiler tests and a committed-output regeneration check.
+Expanded independent engine crafting examples to verify every catalog recipe,
+exact consumption, shuffled bronze inputs, empty grid cells and six rejected
+shortcut/substitution cases. The first engine attempt failed on registration
+`type=normal`; corrected it to `shaped` (normal is the query method), regenerated
+and retained the failed transcript. The next full run passed 36 unit tests and
+all ten engine phases. Full source verification, Lua syntax, Python compilation
+and whitespace checks passed. Evidence is under the crafting- prefix.

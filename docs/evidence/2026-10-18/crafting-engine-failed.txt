@@ -1,0 +1,36 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+OK
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/games/golden_era
+2026-10-18 11:04:31: ACTION[Main]: Server: Shutting down
+2026-10-18 11:04:31: ERROR[Main]: ModError: Failed to load and run script from /home/josh/Projects/Minecraft golden era/golden-era-luanti/mods/era_materials/init.lua:
+2026-10-18 11:04:31: ERROR[Main]: "Unknown crafting definition type: "normal""
+2026-10-18 11:04:31: ERROR[Main]: stack traceback:
+2026-10-18 11:04:31: ERROR[Main]: 	[C]: ?
+2026-10-18 11:04:31: ERROR[Main]: 	[C]: in function 'old_mt_reg_craft'
+2026-10-18 11:04:31: ERROR[Main]: 	...nti/upstream/mineclonia/mods/COMPAT/mcl_dye/init.lua:36: in function 'register_craft'
+2026-10-18 11:04:31: ERROR[Main]: 	...en era/golden-era-luanti/mods/era_materials/init.lua:11: in function 'register_catalog_crafts'
+2026-10-18 11:04:31: ERROR[Main]: 	...en era/golden-era-luanti/mods/era_materials/init.lua:15: in main chunk
+
+ENGINE INTEGRATION FAILED: seed

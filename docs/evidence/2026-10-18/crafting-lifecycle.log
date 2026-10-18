@@ -1,0 +1,14 @@
+2026-10-18 11:05:53: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:05:54: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-42i26czg/world]
+2026-10-18 11:05:54: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:06:00: ACTION[Server]: ERA LIFECYCLE: processor block evicted; generator stayed active, network split, unloaded processors received no RF
+2026-10-18 11:06:01: ACTION[Server]: ERA LIFECYCLE: processor block reactivated; LBM restored network without manual tracking
+2026-10-18 11:06:06: ACTION[Server]: ERA LIFECYCLE: both mapblocks naturally evicted; all tracked positions pruned
+2026-10-18 11:06:08: ACTION[Server]: ERA LIFECYCLE: full reload preserved RF/work/burn/job/inventories; engine activation rediscovered every node
+2026-10-18 11:06:08: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-18 11:06:08: ACTION[Main]: Server: Shutting down

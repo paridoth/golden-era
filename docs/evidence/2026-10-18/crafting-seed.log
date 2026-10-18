@@ -1,0 +1,11 @@
+2026-10-18 11:05:18: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-18 11:05:19: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-42i26czg/world]
+2026-10-18 11:05:19: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-18 11:05:20: ACTION[Server]: ERA CRAFTING PASS: ten reference catalog recipes, exact consumption, pack overrides, six denied shortcuts/substitutions, provisional storage/transport and dust cooking
+2026-10-18 11:05:20: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-18 11:05:20: ACTION[Main]: Server: Shutting down
