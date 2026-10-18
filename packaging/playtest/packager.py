@@ -150,7 +150,9 @@ def _collect_game(game, sources, project_revision, payloads):
 def _collect_project(project_revision, payloads):
     paths = ["LICENSE", "upstream.lock.json", "scripts/setup-playtest.py", "scripts/package-playtest.py",
              "integrations/playtest", "packaging/playtest/packager.py", "packaging/playtest/source-supplements.lock.json",
-             "packaging/playtest/source-supplements", "packaging/playtest/templates"]
+             "packaging/playtest/source-supplements", "packaging/playtest/templates",
+             "scripts/package-installer.py", "packaging/playtest/installer.py", "packaging/playtest/installer.nsi",
+             "packaging/playtest/nsis-toolchain.lock.json", "packaging/playtest/nsis-LICENSE.txt"]
     for relative in paths:
         source = ROOT / relative
         files = _files(source) if source.is_dir() else [source]

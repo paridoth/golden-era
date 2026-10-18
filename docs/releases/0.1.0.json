@@ -1,12 +1,22 @@
 {
   "version": "0.1.0",
-  "artifact": "dist/golden-era-playtest-0.1.0-windows-test.zip",
-  "size_bytes": 69842303,
-  "sha256": "0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db",
-  "files": 11837,
+  "artifact": "dist/golden-era-playtest-0.1.0-windows.exe",
+  "size_bytes": 66479246,
+  "sha256": "f61632c45172a75bb16f8dab43a263d014cf7fb1889d9da7e4a8b6b6631ca7a4",
+  "files": 11846,
+  "zip_fallback": {
+    "artifact": "dist/golden-era-playtest-0.1.0-windows-test.zip",
+    "size_bytes": 69842303,
+    "sha256": "0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db",
+    "files": 11837
+  },
   "platform_intent": "Windows 10/11 x86_64; official engine fetched and hash checked on first launch",
   "engine_bundled": false,
+  "installation": "Automatic per-user extraction to %LOCALAPPDATA%\\GoldenEraPlaytest\\app\\0.1.0; desktop/Start Menu shortcuts; automatic game launch; /S skips launch",
+  "save_data": "%LOCALAPPDATA%\\GoldenEraPlaytest; retained on reinstall",
   "game_runtime_test": "Passed from clean extracted ZIP through Unix launcher and Luanti5.17.0 headless engine",
+  "windows_installer_test": "Passed: exact extracted payload versus verified ZIP plus enumerated support and pinned System plugin; PE ordinary-user manifest",
   "windows_runtime_test": "Pending first native Windows tester run; bootstrap structure and official artifact SHA256 verified",
+  "code_signed": false,
   "itch_published": false
 }

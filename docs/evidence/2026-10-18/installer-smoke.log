@@ -1,0 +1,23 @@
+Golden Era 0.1.0 Windows EXE: actual archive verification on Linux
+Artifact: dist/golden-era-playtest-0.1.0-windows.exe
+Size: 66479246 bytes
+SHA256: f61632c45172a75bb16f8dab43a263d014cf7fb1889d9da7e4a8b6b6631ca7a4
+Source ZIP SHA256: 0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db
+Source ZIP internal/external manifests and CRC: PASS (11837 files)
+Pinned NSIS 3.09-4ubuntu1 DEBs and freshly extracted compiler/stubs/plugins: PASS
+NSIS compile with -NOCONFIG -WX and zlib: PASS (no warnings suppressed)
+Actual EXE extraction via 7-Zip: PASS (all 11846 installed files plus transient System.dll)
+Independent second extraction: PASS (11837 ZIP files byte-identical; exactly 9 support files)
+Installer support EXTRA-FILES.json exact set and SHA256: PASS
+Included build source matches current installer source: PASS
+System plugin SHA256: b89448b9fd7be5ef215cac6d973a57c0e75e1fffa25552afe174855c9b71fdf9
+Windows PE32 GUI signature and ordinary-user asInvoker manifest: PASS
+CLI --verify checksum and every extracted file: PASS
+scripts/test.sh: PASS (50 unit/reference/model checks plus generated-data validation)
+Game runtime unchanged from the previously passing clean ZIP factory smoke.
+Static NSIS review: fixed per-user app directory; separate saves; no removal commands;
+desktop/Start Menu shortcuts; automatic ShellExecute launch; /S skips game launch;
+concurrent-installer mutex; extraction errors prevent launch.
+LIMIT: Native Windows install/shortcut/PowerShell/game startup not executed on Linux.
+LIMIT: EXE unsigned; first launch requires the pinned official engine download.
+Itch.io upload/publication: not performed.
