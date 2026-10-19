@@ -1,0 +1,50 @@
+Golden Era 0.1.2 final Linux release validation
+
+{
+  "source_commit": "af570eb3335c590728ab6bfb5cb937e601128f8d",
+  "input_game_zip_sha256": "e869250a328a477ab0091f2f6b23de4283a9cfb2045088a9453606354e563108",
+  "linux_archive_sha256": "0b90bdeb721a857cac30001919929e752816710baefffcbb5cb36902d74ce3d7",
+  "linux_archive_bytes": 61903987,
+  "linux_archive_files": 11859,
+  "game_files_exactly_match_zip": 11783,
+  "project_source_files_exactly_match_git_commit": 52,
+  "frozen_prior_release_files_unchanged": 21,
+  "official_flathub_app_commit": "2f5005c9ef6135ad0e345de6dd1bc6590da54556d8f492a7d66ead719593d362",
+  "official_engine_binary_sha256": "f9c00d71351b8706e047cca601eac164d2c7f5dc8d10c1df9c9cdf91f432f809",
+  "freedesktop_runtime": "org.freedesktop.Platform/x86_64/26.08",
+  "freedesktop_runtime_commit": "92659297ffdb4f9f14dd1562bd919b48160b0dc42c99653dcfc0688096af41df",
+  "engine_version": "5.17.0",
+  "engine_source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "engine_warning_count": 0,
+  "engine_error_count": 0,
+  "factory_result": "PASS: exact final archive, actual official Flathub engine in its matching runtime, stock 2 raw iron -> 4 ingots",
+  "launcher_suite_result": "PASS: actual Gio desktop dispatch with stub engine, version/path/save checks, normal Flatpak transport arguments tested separately with stub",
+  "ordinary_graphical_flatpak_launch": "Not established by this headless archive test; separate GUI evidence belongs to parent run",
+  "linux_archive": "dist/golden-era-playtest-0.1.2-linux.tar.gz",
+  "manifest": "dist/golden-era-playtest-0.1.2-linux.tar.gz.manifest.json",
+  "checksum": "dist/golden-era-playtest-0.1.2-linux.tar.gz.sha256"
+}
+
+Golden Era Linux archive validation
+SHA256: 0b90bdeb721a857cac30001919929e752816710baefffcbb5cb36902d74ce3d7
+Files: 11859
+PASS: actual Gio desktop launcher dispatch from a folder containing spaces
+PASS: path quoting, engine version checks, first save, settings preservation, and wrong-game refusal
+PASS: Flatpak backend selects current app ID and grants only game read/save write paths (stub transport)
+Actual engine: official Flathub application binary inside Freedesktop 26.08 runtime; ordinary app-data/portal launch not tested
+Golden Era engine: native
+Luanti 5.17.0 (Linux)
+Saves: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/linux tester with spaces ztgghknu/real factory save
+2026-10-19 05:33:55: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:33:56: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/linux tester with spaces ztgghknu/real factory save/worlds/playtest]
+2026-10-19 05:33:56: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30216.
+2026-10-19 05:33:57: ACTION[Server]: Survival recipe reachability: 15 factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.
+2026-10-19 05:35:50: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+2026-10-19 05:35:50: ACTION[Main]: Server: Shutting down
+
+PASS: complete real 2 raw iron -> 4 ingots stock factory via Linux launcher, with extracted game and fresh external save

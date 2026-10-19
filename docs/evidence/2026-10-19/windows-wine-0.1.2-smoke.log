@@ -1,0 +1,26 @@
+Command: python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.2-windows.exe --engine-smoke --keep-prefix
+Source commit: af570eb3335c590728ab6bfb5cb937e601128f8d
+Installer bytes: 66500211
+The exact new installer and official Windows engine were executed in a fresh isolated prefix.
+No 0.1.2 batch launch or PowerShell preflight execution was attempted under Wine.
+
+Actual Windows installer compatibility smoke under Wine 9 / Linux
+This does not establish native Windows, Windows PowerShell 5.1, SmartScreen, or real GPU behavior.
+Installer SHA256: 31272fcf14cedaceb93d91f4ee06ddae2973294da77d2620f63347f74f8a1971
+Workspace: fresh isolated prefix
+PASS: isolated 64-bit Wine prefix; all user special folders remain inside repository test directory
+PASS: actual x86 NSIS release installed silently under WoW64; 11868 installed files match release SHA256 manifest
+PASS: desktop and Start Menu shortcuts target the installed batch launcher; no Linux menu builder used
+PASS: silent reinstall preserves existing world/settings bytes
+PASS: official hash-pinned Win64 Luanti 5.17.0 / LuaJIT completed the installed stock factory smoke under Wine
+2026-10-19 05:37:03: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+Official engine diagnostics: 107 warning lines; 0 error lines. Full output is retained in runtime/tests/windows-wine-logs/engine-factory.log.
+First warning: 2026-10-19 05:34:58: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+Test workspace: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/windows-wine-iof24eb2
+All 107 engine warnings match the upstream builtin-path hash lookup category; no other engine warning category appeared.
+Known upstream warning: https://github.com/luanti-org/luanti/issues/17607
+engine-factory.log: 3 Wine console diagnostic error lines; retained unfiltered.
+install.log: 1 Wine console diagnostic error lines; retained unfiltered.
+reinstall.log: 1 Wine console diagnostic error lines; retained unfiltered.
+wineboot.log: 7 Wine console diagnostic error lines; retained unfiltered.
+Native Windows startup, PowerShell 5.1, first download, SmartScreen, and hardware graphics remain unverified.

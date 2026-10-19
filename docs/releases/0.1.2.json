@@ -1,0 +1,58 @@
+{
+  "version": "0.1.2",
+  "source_revision": "af570eb3335c590728ab6bfb5cb937e601128f8d",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.2-windows.exe",
+      "size_bytes": 66500211,
+      "sha256": "31272fcf14cedaceb93d91f4ee06ddae2973294da77d2620f63347f74f8a1971",
+      "installed_files": 11868
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.2-linux.tar.gz",
+      "size_bytes": 61903987,
+      "sha256": "0b90bdeb721a857cac30001919929e752816710baefffcbb5cb36902d74ce3d7",
+      "files": 11859
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.2-windows-test.zip",
+      "size_bytes": 69906553,
+      "sha256": "e869250a328a477ab0091f2f6b23de4283a9cfb2045088a9453606354e563108",
+      "files": 11858
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Windows ZIP on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "changes": [
+    "Visible nonblocking workshop loading with /cancelworkshop and retry guidance",
+    "Pending workshop trips persist and resume after reconnect without another kit",
+    "Session/request identities prevent stale terrain callbacks from overriding current travel",
+    "Desktop launchers check game IDs and orphaned world data before writes; developer settings persist",
+    "Explicit per-line fresh Windows world settings avoid Wine cmd block-redirection behavior",
+    "Guide explains returned empty spools; stock autocrafting/drawer backpressure and restart tested"
+  ],
+  "validation": {
+    "ci": "PASS existing unit/reference/model checks, 24 legacy server processes, active stock factory, survival, automation and Unix guards",
+    "onboarding_gui": "PASS real native Linux and exact official Flathub client choices, loading HUD, actual destinations, inventory/position restart",
+    "interrupted_trip": "PASS three real client sessions: pending state before resume, exact one-time kit and seven saved fixture ingots, arrival and later different-position preservation",
+    "autocrafting": "PASS normal timers/injectors/tubes/drawers; 16 conduits, six spools, four alternate-wood sticks, full/insufficient output stalls and restart conservation",
+    "windows_powershell": "PASS exact preflight/bootstrap under PowerShell 7/Linux; native PowerShell 5.1 pending",
+    "windows_world_creation_wine": "PASS exact five-line current block through Wine cmd.exe with special-character paths; existing metadata retained",
+    "windows_installer_wine": "PASS actual final0.1.2 installer/reinstall, all11868 installed files and shortcuts; official Win64 LuaJIT full stock factory/recipes/fluid checks;107 known builtin-path warnings,zero engine errors",
+    "windows_native_fixture": "Parser, C# helpers, loopback server and argument encoding pass on Linux; actual native Windows run pending",
+    "packaged_game": "PASS final ZIP clean extraction, real Unix launcher and full stock factory with no warnings/errors",
+    "linux_archive": "PASS final archive and exact source comparisons, Gio/launcher tests, official Flathub/LuaJIT full factory with no warnings/errors"
+  },
+  "limitations": [
+    "Native Windows/PowerShell 5.1, SmartScreen and hardware graphics/audio remain unverified",
+    "The complete 0.1.2 batch is not executed under Wine; its new mandatory PowerShell preflight is tested separately",
+    "Official Linux GUI check uses its exact binary in the matching runtime with software X11 and null audio; ordinary app/portal startup remains separate",
+    "Two inherited Mineclonia craft-width warnings on each fresh graphical join",
+    "No full human survival playthrough, every-machine compatibility or performance claim",
+    "Optional custom-engine controller prototype remains separate"
+  ],
+  "previous_releases": "Frozen 0.1.0 Windows EXE/ZIP and 0.1.1 Windows EXE/ZIP/Linux archive match recorded SHA256; older artifacts preserved"
+}

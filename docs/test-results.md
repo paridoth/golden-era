@@ -617,5 +617,13 @@ copy. That run used software X11 graphics and a null audio device; ordinary app
 startup and physical audio/graphics are separate checks. Fresh joins had two
 inherited craft-width warnings each; all four sessions had zero engine errors.
 
+Final 0.1.2 packages also passed: clean ZIP extraction and native launcher factory,
+the exact Linux archive through the official Flathub/LuaJIT runtime, and the exact
+Windows EXE installed under Wine followed by the official Win64 factory. Linux
+and ZIP factory runs had no warnings/errors. The Windows engine had 107 known
+builtin-path SHA warnings and zero engine errors. All 11,868 installed file hashes,
+shortcuts and reinstall preservation passed. The full new Windows batch/native
+PowerShell path remains separate from those executed checks.
+
 Evidence uses `0.1.2` filenames under `evidence/2026-10-19/`, plus
 `automation-smoke.log`. Frozen 0.1.0/0.1.1 artifacts remain unchanged.

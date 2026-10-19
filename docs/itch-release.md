@@ -81,9 +81,11 @@ bundle notices record the exact source-correspondence limit and inherited
 license exceptions.
 
 The packaged game is checked from a clean extraction through its Unix launcher
-using the existing Luanti engine. The frozen 0.1.1 installer, official Win64 engine
-and actual batch launcher also passed isolated Wine tests, including a graphical
-workshop choice and save/reconnect. Wine is a compatibility check on Linux.
+using the existing Luanti engine. The final 0.1.2 installer and official Win64
+factory passed isolated Wine tests. The earlier frozen 0.1.1 batch also passed a
+graphical workshop choice and save/reconnect under Wine. The complete 0.1.2 batch
+has its preflight tested separately under PowerShell 7/Linux. Wine is a
+compatibility check on Linux.
 Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
 for a Windows tester. Exact bootstrap/save-preflight commands run separately under
 PowerShell 7 on Linux; their scope and hashes are retained in the evidence.
