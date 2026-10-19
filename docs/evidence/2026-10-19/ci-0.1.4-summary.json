@@ -1,0 +1,146 @@
+{
+  "result": "PASS",
+  "command": "./scripts/ci.sh",
+  "exit_code": 0,
+  "elapsed_seconds": 789.647,
+  "started_utc": "2026-10-19T11:26:35.096277+00:00",
+  "finished_utc": "2026-10-19T11:39:44.743535+00:00",
+  "starting_base_commit": "5efccb5a7142f010709076a0ea9e5657477a98ad",
+  "scope": "Development-worktree CI began before the 0.1.4 source-freeze commit; actual helper and fixture hashes below identify inputs. This report does not label the whole start-to-finish run as one frozen commit.",
+  "native_server_processes": 40,
+  "native_process_breakdown": {
+    "legacy": 24,
+    "stock_factory": 1,
+    "survival": 1,
+    "automation": 2,
+    "storage_baseline_repaired": 4,
+    "controller_transport": 2,
+    "machine_removal_baseline_repaired": 2,
+    "pipeworks_baseline_repaired": 4
+  },
+  "native_engine": "Repository-built Luanti 5.17.0 with bundled Lua; setup disables LuaJIT",
+  "native_engine_sha256": "8068b1d6ec3297645b27ae542f794558d3731846fce60641f26c13eff356b971",
+  "native_engine_source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "source_sha256_initial": {
+    "integrations/playtest/pipeworks.py": "c05ae66de38585c411a9a88574047f1cb0c52b27b5efe6a917023177125d4a40",
+    "integrations/playtest/elepower.py": "a73bc6ec2dc378662d6ad68fc80957957fbe420d59a5a829c293336982834fe4",
+    "integrations/playtest/drawers.py": "929ba4b0b9e6ff0cdd126d417aed0b89544d92af9819b7defc22fe2788ea670d",
+    "integrations/playtest/assembly.py": "cf53d9c522b4dde990998c1dd1bc8746780d8896294e1bfb1c5d0c30782f4a37",
+    "integrations/playtest/mod/guide.lua": "90542c27a069b973035cc3fab17f9f248a79221b1f291fce732ab10d21ebe957",
+    "scripts/ci.sh": "999056dc607f9b63a96b1cf689e787296f8ef38f80d5fff0e6cdf889d17e9588",
+    "scripts/test.sh": "123b49fae2780c6b0de43ef5dc9a1909f6c22df50ae8171490289390fd652e59",
+    "tests/pipeworks-removal/mod/init.lua": "ac6d93bfb6da6e15f1fe1509fd47260446ece7e79833c97bae3c28471159b169",
+    "tests/pipeworks-removal/run.py": "ecb6d01db3a518267d759eb0fb56a62d2958d8b07b151431739d656c86fa4a7f",
+    "upstream.lock.json": "5429a2c834520ed38af2cb74acbe9b730f39ea666c880974ab2e292b406da0fb",
+    "packaging/playtest/release.json": "8981c95c41e2c369749d6617d8fd3e127c928c7dcbffd19a768ce0314b0d2d44"
+  },
+  "source_sha256_on_finish": {
+    "integrations/playtest/pipeworks.py": "c05ae66de38585c411a9a88574047f1cb0c52b27b5efe6a917023177125d4a40",
+    "integrations/playtest/elepower.py": "a73bc6ec2dc378662d6ad68fc80957957fbe420d59a5a829c293336982834fe4",
+    "integrations/playtest/drawers.py": "929ba4b0b9e6ff0cdd126d417aed0b89544d92af9819b7defc22fe2788ea670d",
+    "integrations/playtest/assembly.py": "cf53d9c522b4dde990998c1dd1bc8746780d8896294e1bfb1c5d0c30782f4a37",
+    "integrations/playtest/mod/guide.lua": "e4494e69d14ae65d7b21bf4481727a1b61ef7317e29ebfdde216347c23b37c2a",
+    "scripts/ci.sh": "999056dc607f9b63a96b1cf689e787296f8ef38f80d5fff0e6cdf889d17e9588",
+    "scripts/test.sh": "123b49fae2780c6b0de43ef5dc9a1909f6c22df50ae8171490289390fd652e59",
+    "tests/pipeworks-removal/mod/init.lua": "330fed166afff11fb475d801e1c1d71edf03fd879688e8e2d89df1e4bd4a0465",
+    "tests/pipeworks-removal/run.py": "ecb6d01db3a518267d759eb0fb56a62d2958d8b07b151431739d656c86fa4a7f",
+    "upstream.lock.json": "5429a2c834520ed38af2cb74acbe9b730f39ea666c880974ab2e292b406da0fb",
+    "packaging/playtest/release.json": "8981c95c41e2c369749d6617d8fd3e127c928c7dcbffd19a768ce0314b0d2d44"
+  },
+  "source_adjustments": {
+    "observed_utc": "2026-10-19T11:28:00.510483+00:00",
+    "phase_at_observation": "legacy integration suite; Pipeworks native CI stage not yet reached",
+    "reason": "Root-authorized guide wording edit and author-reported native fixture activation timing correction",
+    "files": {
+      "tests/pipeworks-removal/mod/init.lua": {
+        "initial_sha256": "ac6d93bfb6da6e15f1fe1509fd47260446ece7e79833c97bae3c28471159b169",
+        "current_sha256": "330fed166afff11fb475d801e1c1d71edf03fd879688e8e2d89df1e4bd4a0465"
+      },
+      "integrations/playtest/mod/guide.lua": {
+        "initial_sha256": "90542c27a069b973035cc3fab17f9f248a79221b1f291fce732ab10d21ebe957",
+        "current_sha256": "e4494e69d14ae65d7b21bf4481727a1b61ef7317e29ebfdde216347c23b37c2a"
+      }
+    }
+  },
+  "source_timing": "Guide wording and the Pipeworks observer activation wait changed while legacy phases were active, before the stock/Pipeworks native stages. Production helpers, runner and CI/test scripts stayed unchanged. Unrelated checks were not repeated.",
+  "setup_warning": "One CMake warning: cURL unavailable for server announcement/HTTP API in this repository-local test build.",
+  "diagnostic_policy": "Unchanged runner policies passed. Legacy phases emitted five lag warnings, which that harness permits, plus four asserted relocation refusal/rollback ERROR records. Storage baseline emitted one expected missing-default warning. All repaired industrial suites and all Pipeworks phases have zero engine warnings/errors.",
+  "limitations": [
+    "Headless repository-built engine coverage; official Linux LuaJIT/archive evidence is separate in linux-release-0.1.4.json/txt.",
+    "No native Windows hardware, graphical/audio or human survival playthrough claim.",
+    "No package creation or production edits by the CI task; all setup/build/test paths are repository-local."
+  ],
+  "logs": {
+    "full": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4.log",
+      "sha256": "80605798afb428019a1282d19440448d5bd6e041e134e3b77b0f373af4017182",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "playtest": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-playtest.log",
+      "sha256": "5386c96d4cb528cc65a382a4ae8aadf8a894dc129382900bcb275010175c2333",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "survival": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-survival.log",
+      "sha256": "46d5ae37e98235c8eed119253fb074e95f0d850e8625d8176198571b69aadca4",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "automation": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-automation.log",
+      "sha256": "5ff4cf1375ff382a63c7131a627351eab80fdcac283c1ad2a1adf90a1bc8b231",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "storage": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-storage.log",
+      "sha256": "e4838c99a762aa5d3db9136fc5b6f0d3438d7e438ac0f54807ce32d881312082",
+      "engine_warning_count": 1,
+      "engine_error_count": 0
+    },
+    "storage-controller": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-storage-controller.log",
+      "sha256": "dfad9b9690e6075e14b8a77189d23d531123f154c5de7e317a88fdfb7a08de37",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "machine-removal": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-machine-removal.log",
+      "sha256": "b13d8c764766c2741e34c7e8736b6f663a76d1d7a0805678de973e74f7885de0",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "pipeworks-removal": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-pipeworks-removal.log",
+      "sha256": "09e07c20056b0924608657d2c534f13e528f3f7fbe66c61a43601eb4e0e060e8",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "unix-save-guards": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-unix-save-guards.log",
+      "sha256": "bf83b0e3890aa3ea6a9cb642b0b1528edbdde73e47084bad494da81cabfc1f05",
+      "engine_warning_count": 0,
+      "engine_error_count": 0
+    },
+    "legacy-integration": {
+      "path": "docs/evidence/2026-10-19/ci-0.1.4-legacy-integration.log",
+      "sha256": "1cecf0148392ca1f5b22cb186c6ee308552e706cc5b9c42d40fd42341b33617d",
+      "engine_warning_count": 5,
+      "engine_error_count": 4
+    }
+  },
+  "reruns": 0,
+  "source_advance": "CI finished; sources released for 0.1.5 work.",
+  "final_observed_source_hashes_match_commit": "843893580af93e9f3d03fd02b5ee72c5bd6b9e41",
+  "legacy_lag_warning_peaks_seconds": [
+    1.14762,
+    1.29644,
+    5.12446,
+    4.96301,
+    1.03448
+  ],
+  "legacy_expected_relocation_error_count": 4
+}

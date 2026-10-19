@@ -1,0 +1,39 @@
+{
+  "version": "0.1.4",
+  "source_revision": "843893580af93e9f3d03fd02b5ee72c5bd6b9e41",
+  "engine": "official org.luanti.luanti client 5.17.0 in matching Freedesktop 26.08 runtime",
+  "engine_binary_sha256": "f9c00d71351b8706e047cca601eac164d2c7f5dc8d10c1df9c9cdf91f432f809",
+  "wrapper_sha256": "aaf57175a8ef712ea79c0bb221ad4e89a493cea591db3e061ce0e67c5c4490c7",
+  "command": "python3 tests/playtest/gui.py --engine tests/linux/flatpak-client.sh --evidence-dir runtime/tests/onboarding-flatpak-0.1.4-final",
+  "phases": {
+    "survival-choice": {
+      "result": "PASS",
+      "warnings": 2,
+      "errors": 0,
+      "log_sha256": "fd579ad4975214aea9f85d91c17f321870b1f631d2ef12fddfcc3ebf55e6fcc0"
+    },
+    "survival-reconnect": {
+      "result": "PASS",
+      "warnings": 0,
+      "errors": 0,
+      "log_sha256": "1e13963977185c888b125e27ad399497ca3ca0001729a84bb9925ef9b512b0ab"
+    },
+    "workshop-choice": {
+      "result": "PASS",
+      "warnings": 2,
+      "errors": 0,
+      "log_sha256": "7630fe379ac0d38b2cfbec164912e13d4200487f1fb92aa990ea170290f1fde1"
+    },
+    "workshop-reconnect": {
+      "result": "PASS",
+      "warnings": 0,
+      "errors": 0,
+      "log_sha256": "a7f337fab3244e994d65397868cb42a4e2fd068b5189888342b7b2668e796e82"
+    }
+  },
+  "limitations": [
+    "Software X11/Xvfb and null OpenAL; no hardware graphics/audio or ordinary app/portal startup claim",
+    "Two inherited Mineclonia craft-width warnings on each fresh join; none on reconnect",
+    "Isolated fixture world and real PlayerRef; no user save modified"
+  ]
+}

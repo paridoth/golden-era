@@ -1,0 +1,343 @@
+Legacy phase: seed
+2026-10-19 06:26:41: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:26:43: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:26:43: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:26:43: ACTION[Server]: ERA CRAFTING PASS: sixteen reference catalog recipes, exact consumption, pack overrides, seven denied shortcuts/substitutions, provisional transport and dust cooking
+2026-10-19 06:26:43: ACTION[Server]: ERA INTEGRATION SEED PASS: connected, disconnected, generation, pending recipe saved
+2026-10-19 06:26:43: ACTION[Main]: Server: Shutting down
+
+Legacy phase: resume
+2026-10-19 06:26:47: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:26:49: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:26:49: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:26:51: ACTION[Server]: ERA INTEGRATION RESUME PASS: exact restart, 2 ores -> 4 ingots, RF conservation, overflow, locks, no duplication
+2026-10-19 06:26:51: WARNING[Server]: Server: Maximum lag peaked at 1.14762 (steplen=0.05)
+2026-10-19 06:26:51: ACTION[Main]: Server: Shutting down
+
+Legacy phase: automatic
+2026-10-19 06:26:54: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:26:56: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:26:56: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:00: ACTION[Server]: ERA INTEGRATION AUTOMATIC PASS: completed outputs persisted; normal 20-Hz scheduler processed dust
+2026-10-19 06:27:00: ACTION[Main]: Server: Shutting down
+
+Legacy phase: recipe_seed
+2026-10-19 06:27:04: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:05: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:05: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:06: ACTION[Server]: ERA INTEGRATION RECIPE_SEED PASS: raw-iron job saved at 280/4000 RF, 40 RF/tick, two-dust yield
+2026-10-19 06:27:06: ACTION[Main]: Server: Shutting down
+
+Legacy phase: recipe_resume
+2026-10-19 06:27:09: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:11: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:11: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:12: ACTION[Server]: ERA INTEGRATION RECIPE_RESUME PASS: saved 4000/40/x2 job unchanged; next job uses 900/75/x3; overflow and locks preserve state
+2026-10-19 06:27:12: ACTION[Main]: Server: Shutting down
+
+Legacy phase: recipe_verify
+2026-10-19 06:27:16: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:18: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:18: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:18: ACTION[Server]: ERA INTEGRATION RECIPE_VERIFY PASS: changed/default settings restart preserved five dust and 3100 RF without duplication
+2026-10-19 06:27:18: ACTION[Main]: Server: Shutting down
+
+Legacy phase: lifecycle
+2026-10-19 06:27:22: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:24: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:24: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:30: ACTION[Server]: ERA LIFECYCLE: processor block evicted; generator stayed active, network split, unloaded processors received no RF
+2026-10-19 06:27:30: ACTION[Server]: ERA LIFECYCLE: processor block reactivated; LBM restored network without manual tracking
+2026-10-19 06:27:36: ACTION[Server]: ERA LIFECYCLE: both mapblocks naturally evicted; all tracked positions pruned
+2026-10-19 06:27:37: ACTION[Server]: ERA LIFECYCLE: full reload preserved RF/work/burn/job/inventories; engine activation rediscovered every node
+2026-10-19 06:27:38: ACTION[Server]: ERA INTEGRATION LIFECYCLE PASS: partial/full natural eviction, no offline work, automatic LBM discovery, cross-block reconnection, four ingots and RF conservation
+2026-10-19 06:27:38: ACTION[Main]: Server: Shutting down
+
+Legacy phase: corrupt_seed
+2026-10-19 06:27:42: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:44: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:44: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:27:46: ACTION[Server]: ERA INTEGRATION CORRUPT_SEED PASS: 49 malformed job/state cases paused without mutation; healthy neighbors continued; corrupt job saved
+2026-10-19 06:27:46: WARNING[Server]: Server: Maximum lag peaked at 1.29644 (steplen=0.05)
+2026-10-19 06:27:46: ACTION[Main]: Server: Shutting down
+
+Legacy phase: corrupt_resume
+2026-10-19 06:27:50: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:51: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:27:51: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:02: ACTION[Server]: ERA INTEGRATION CORRUPT_RESUME PASS: normal scheduler preserved corrupt job, healthy neighbor ran, explicit repair resumed exactly once
+2026-10-19 06:28:02: ACTION[Main]: Server: Shutting down
+
+Legacy phase: corrupt_verify
+2026-10-19 06:28:05: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:07: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:07: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:08: ACTION[Server]: ERA INTEGRATION CORRUPT_VERIFY PASS: repaired balances and outputs persisted without duplication
+2026-10-19 06:28:08: ACTION[Main]: Server: Shutting down
+
+Legacy phase: native_seed
+2026-10-19 06:28:11: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:13: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:13: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:13: ACTION[Server]: ERA INTEGRATION NATIVE_SEED PASS: native water/fuel job saved; blocked bucket preserves inputs; schema-1 burn/job preserved; protected/busy upgrades denied; idle upgrade retains RF/items
+2026-10-19 06:28:13: ACTION[Main]: Server: Shutting down
+
+Legacy phase: native_resume
+2026-10-19 06:28:17: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:19: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:19: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:24: ACTION[Server]: ERA INTEGRATION NATIVE_RESUME PASS: native SQLite continuation; four ingots cost 14000 of 24000 RF; charcoal 16000 RF; water credit, full-buffer loss and signed debt saved
+2026-10-19 06:28:24: WARNING[Server]: Server: Maximum lag peaked at 5.12446 (steplen=0.05)
+2026-10-19 06:28:25: ACTION[Main]: Server: Shutting down
+
+Legacy phase: native_verify
+2026-10-19 06:28:28: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:30: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:30: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:30: ACTION[Server]: ERA INTEGRATION NATIVE_VERIFY PASS: second restart preserves outputs and signed credits; next batches carry debt; 11 malformed native states and two malformed native jobs pause without mutation
+2026-10-19 06:28:30: ACTION[Main]: Server: Shutting down
+
+Legacy phase: byproduct_seed
+2026-10-19 06:28:34: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:36: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:36: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:36: ACTION[Server]: ERA INTEGRATION BYPRODUCT_SEED PASS: preflight blocks RF/RNG; winning/losing decisions saved once; old schema-2 job retains primary-only semantics
+2026-10-19 06:28:36: ACTION[Main]: Server: Shutting down
+
+Legacy phase: byproduct_resume
+2026-10-19 06:28:40: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:42: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:42: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:42: ACTION[Server]: ERA INTEGRATION BYPRODUCT_RESUME PASS: blocked decisions survive restart without reroll; two primary outputs plus exact saved win/loss; no duplicated RF/items
+2026-10-19 06:28:42: ACTION[Main]: Server: Shutting down
+
+Legacy phase: byproduct_verify
+2026-10-19 06:28:45: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:47: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:47: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:52: ACTION[Server]: ERA INTEGRATION BYPRODUCT_VERIFY PASS: second restart preserves outputs; all 100 percentile outcomes yield ten nickel; eight malformed decisions pause without mutation
+2026-10-19 06:28:52: WARNING[Server]: Server: Maximum lag peaked at 4.96301 (steplen=0.05)
+2026-10-19 06:28:52: ACTION[Main]: Server: Shutting down
+
+Legacy phase: sides_seed
+2026-10-19 06:28:56: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:58: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:28:58: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:28:58: ACTION[Server]: ERA INTEGRATION SIDES_SEED PASS: seven source mode groups, panel/protection, split primary/byproduct outputs, configured furnace input, disabled auto-output, reserved-input lock and vertical ejector
+2026-10-19 06:28:58: ACTION[Main]: Server: Shutting down
+
+Legacy phase: sides_resume
+2026-10-19 06:29:02: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:04: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:04: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:04: ACTION[Server]: ERA INTEGRATION SIDES_RESUME PASS: side/rotation/toggle/ejector state survives SQLite; older layouts retain routing until explicit opt-in; six malformed port records pause
+2026-10-19 06:29:04: ACTION[Main]: Server: Shutting down
+
+Legacy phase: survival_seed
+2026-10-19 06:29:07: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:09: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:09: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:10: ACTION[Server]: ERA INTEGRATION SURVIVAL_SEED PASS: real scatter generates three ores only in stone/bands; ore drops/cooking; tin/silver components; gold/silver dust -> electrum -> energy cell; exact RF/secondary outputs
+2026-10-19 06:29:10: WARNING[Server]: Server: Maximum lag peaked at 1.03448 (steplen=0.05)
+2026-10-19 06:29:10: ACTION[Main]: Server: Shutting down
+
+Legacy phase: survival_resume
+2026-10-19 06:29:14: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:16: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:16: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:16: ACTION[Server]: ERA INTEGRATION SURVIVAL_RESUME PASS: sourced storage representative and RF persist through SQLite restart
+2026-10-19 06:29:16: ACTION[Main]: Server: Shutting down
+
+Legacy phase: player_counts
+2026-10-19 06:29:19: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:21: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:21: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:21: ACTION[Server]: ERA INTEGRATION PLAYER_COUNTS PASS: real ordinary chest withdraws 1/4; registered Mineclonia callbacks reproduce creative expansion to 64 and preserve survival counts (callback-level fixture)
+2026-10-19 06:29:21: ACTION[Main]: Server: Shutting down
+
+Legacy phase: relocation_seed
+2026-10-19 06:29:25: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:27: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:27: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:27: ERROR[Server]: [Golden Era] Machine packing failed: ...lden-era-luanti/tests/integration/mod/relocation.lua:99: Intentional relocation inventory insertion failure
+stack traceback:
+	[C]: in function 'error'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:99: in function 'set_stack'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:150: in function <...n era/golden-era-luanti/mods/era_core/relocation.lua:146>
+	[C]: in function 'xpcall'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:146: in function 'pack_machine'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:106: in function 'source_tests'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:120: in function <...lden-era-luanti/tests/integration/mod/relocation.lua:117>
+	[C]: in function 'xpcall'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:117: in function 'relocation'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:42: in function <...era/golden-era-luanti/tests/integration/mod/init.lua:39>
+	[C]: in function 'xpcall'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:148: in function 'func'
+	...anti/upstream/luanti/bin/../builtin/common/after.lua:140: in function '?'
+	...i/upstream/luanti/bin/../builtin/common/register.lua:27: in function <...i/upstream/luanti/bin/../builtin/common/register.lua:13>
+2026-10-19 06:29:27: ACTION[Server]: ERA INTEGRATION RELOCATION_SEED PASS: protected/full-inventory/wrong-tool/malformed-source refusals and injected insertion rollback; native saved decision, generator water/debts, genuine schema-1 migration/job preservation and cell RF packed into registry
+2026-10-19 06:29:27: ACTION[Main]: Server: Shutting down
+
+Legacy phase: relocation_resume
+2026-10-19 06:29:31: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:33: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:33: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:33: ERROR[Server]: [Golden Era] Machine placement failed: ...n era/golden-era-luanti/mods/era_core/relocation.lua:215: Saved machine state is invalid
+stack traceback:
+	[C]: in function 'assert'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:215: in function <...n era/golden-era-luanti/mods/era_core/relocation.lua:211>
+	[C]: in function 'xpcall'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:211: in function 'unpack_machine'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:52: in function 'failed_place'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:223: in function <...lden-era-luanti/tests/integration/mod/relocation.lua:117>
+	[C]: in function 'xpcall'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:117: in function 'relocation'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:42: in function <...era/golden-era-luanti/tests/integration/mod/init.lua:39>
+	[C]: in function 'xpcall'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:148: in function 'func'
+	...anti/upstream/luanti/bin/../builtin/common/after.lua:140: in function '?'
+	...i/upstream/luanti/bin/../builtin/common/register.lua:27: in function <...i/upstream/luanti/bin/../builtin/common/register.lua:13>
+2026-10-19 06:29:33: ERROR[Server]: [Golden Era] Machine placement failed: ...n era/golden-era-luanti/mods/era_core/relocation.lua:215: Saved machine state is invalid
+stack traceback:
+	[C]: in function 'assert'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:215: in function <...n era/golden-era-luanti/mods/era_core/relocation.lua:211>
+	[C]: in function 'xpcall'
+	...n era/golden-era-luanti/mods/era_core/relocation.lua:211: in function 'unpack_machine'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:245: in function <...lden-era-luanti/tests/integration/mod/relocation.lua:117>
+	[C]: in function 'xpcall'
+	...lden-era-luanti/tests/integration/mod/relocation.lua:117: in function 'relocation'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:42: in function <...era/golden-era-luanti/tests/integration/mod/init.lua:39>
+	[C]: in function 'xpcall'
+	...era/golden-era-luanti/tests/integration/mod/init.lua:148: in function 'func'
+	...anti/upstream/luanti/bin/../builtin/common/after.lua:140: in function '?'
+	...i/upstream/luanti/bin/../builtin/common/register.lua:27: in function <...i/upstream/luanti/bin/../builtin/common/register.lua:13>
+2026-10-19 06:29:33: ERROR[Server]: [Golden Era] Machine placement rollback failed: ...lden-era-luanti/tests/integration/mod/relocation.lua:241: Intentional relocation destination rollback failure
+2026-10-19 06:29:33: ACTION[Server]: ERA INTEGRATION RELOCATION_RESUME PASS: packed SQLite state restores metadata/facing/items/owner; invalid/occupied/protected/unloaded/replayed packets, occupied air and invalid restored state denied; failed rollback quarantines its snapshot and disables replay; unique creative consumption, exact jobs/byproduct and generator debts
+2026-10-19 06:29:33: ACTION[Main]: Server: Shutting down
+
+Legacy phase: relocation_verify
+2026-10-19 06:29:37: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:29:39: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/integration-x5sa_n52/world]
+2026-10-19 06:29:39: ACTION[Main]: Server for gameid="golden_era" listening on 127.0.0.1:30199.
+2026-10-19 06:29:39: ACTION[Server]: ERA INTEGRATION RELOCATION_VERIFY PASS: placed resources/items/owner survive second SQLite restart; quarantined snapshot remains recoverable with its token disabled; consumed tokens stay spent and completed outputs do not duplicate
+2026-10-19 06:29:39: ACTION[Main]: Server: Shutting down

@@ -20,6 +20,9 @@ The Windows EXE installs and launches automatically. A separate Linux archive
 uses an installed Luanti engine or the official Flatpak. Both include source,
 credits and license notices. New players can choose a supplied workshop or
 survival progression; `/factoryguide` explains the early machinery.
+Windows and Linux are the active delivery targets. Release hashes, source
+revisions and executed checks are retained under [release records](docs/releases/).
+The optional custom-engine controller experiment is separate from these builds.
 
 ## Earlier native factory and reference work
 
@@ -73,6 +76,22 @@ runs an installer, Java, Forge, mod code or recipe scripts. See the
 
 ## Build and test
 
+The active existing-mod pack is assembled and checked separately from the earlier
+custom factory. After the local bootstrap below, run:
+
+```sh
+python3 scripts/setup-playtest.py
+python3 tests/playtest/run.py
+```
+
+`./scripts/ci.sh` also runs the survival material, native automation, storage and
+machine-removal regressions. These use disposable worlds. See
+[playtest instructions](docs/playtest.md) for the active game and
+[the release guide](docs/itch-release.md) for packaging.
+
+The following bootstrap and custom-factory commands preserve the original
+prototype and its independent worlds.
+
 Supported bootstrap: Linux Mint 22.x / Ubuntu 24.04, x86_64. Have Git, Python 3,
 GCC/G++, normal development headers, make, apt-get, dpkg-deb, and at least 1 GB
 free space (more for worlds). The scripts extract locked Debian packages into
@@ -95,9 +114,9 @@ The build creates a headless Luanti 5.17.0 server with bundled Lua 5.1.5, using
 two compiler jobs. It assembles Mineclonia 0.124.0 and the custom mods under
 `runtime/games/golden_era`. Technic, Pipeworks and Mesecons are downloaded for
 comparison but are not installed into this runtime. Pipeworks' three dependencies
-are also pinned. The next development milestone is to reuse existing transport,
-power/fluid, storage and tooling APIs where they satisfy our reference behavior;
-see [compatibility findings](docs/mod-compatibility.md).
+are also pinned. The active existing-mod pack already uses native transport,
+power/fluid, storage and tooling; this earlier runtime remains available for
+reference-driven experiments. See [compatibility findings](docs/mod-compatibility.md).
 
 An isolated Pipeworks feasibility probe already routes items into our native
 machines with guarded callbacks. Run `python3 tests/reuse/run.py` after setup;

@@ -59,6 +59,16 @@ manual retrieval behavior are documented in the
 [storage guide](../integrations/playtest/storage-notes.md). Further compatibility
 work follows concrete stock-mod defects and player feedback.
 
+Version 0.1.4 preserves the Pipeworks autocrafter's owned input/output stacks
+through Mineclonia explosions and distinguishes newly constructed filter
+previews from historical physical inventories. Its baseline/repaired regression
+uses real explosions, both piston APIs, normal block activation and process
+restart. All filter variants temporarily resist piston movement; mine, place
+and reconfigure them to relocate. Existing unmarked filters retain native legacy
+refunds because their ownership cannot reliably be inferred. See the
+[Pipeworks findings](../integrations/playtest/pipeworks-notes.md) for the exact
+old-save boundary and the source evidence.
+
 ## Goal and reference decision
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0

@@ -1,0 +1,42 @@
+Actual Windows installer compatibility smoke under Wine 9 / Linux
+This does not establish native Windows, Windows PowerShell 5.1, SmartScreen, or real GPU behavior.
+Installer SHA256: 4a9b619a61b95f6f736bd265bf57998699fc60ca0dab91a3f1957ff6493654e5
+Workspace: fresh isolated prefix
+PASS: isolated 64-bit Wine prefix; all user special folders remain inside repository test directory
+PASS: actual x86 NSIS release installed silently under WoW64; 11873 installed files match release SHA256 manifest
+PASS: desktop and Start Menu shortcuts target the installed batch launcher; no Linux menu builder used
+PASS: silent reinstall preserves existing world/settings bytes
+PASS: official hash-pinned Win64 Luanti 5.17.0 / LuaJIT completed the installed stock factory smoke under Wine
+2026-10-19 06:34:26: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+Official engine diagnostics: 107 warning lines; 0 error lines. Full output is retained in runtime/tests/windows-wine-logs/engine-factory.log.
+First warning: 2026-10-19 06:32:17: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+Stock factory diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+Storage mode: repaired; separate disposable SQLite world; copied fixture SHA256: e40f1f1717fd30843651c8bcc566830dcd326dfdf95617ba3bf1a27e686f49c1
+Storage checkpoint diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 06:34:43: ACTION[Server]: ERA STORAGE SMOKE PASS: CHECKPOINT: all 5000 iron recovered; native dig/explosion spills preserved; controller explosion preserves worn metadata stack and adjacent barrel; warm deposits avoid rescans; disconnect/reconnect and visual invalidation work
+Storage resume diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 06:35:01: ACTION[Server]: ERA STORAGE SMOKE PASS: COMPLETE: process restart rejects stale disconnected cache; reconnect resumes native deposits and preserves 7 iron, 11 copper and the four-compartment drawer
+PASS: installed game storage repairs passed checkpoint and resume in separate official Win64 engine processes under Wine; only documented builtin SHA warnings permitted
+Machine removal mode: repaired; separate disposable SQLite world; copied fixture SHA256: a58934ff0bffc57990c0648dccf013f02e6d336b4b8796f96563cf2cd8c677a0
+Machine removal diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 06:35:17: ACTION[Server]: ERA MACHINE REMOVAL PASS: owned items protected; full blast ItemStacks/charge/upgrades/lifecycle conserved; scratch/ghost and no-drop contracts respected; active upgrade locks recover
+PASS: installed game machine removal repairs passed using the official Win64 engine under Wine; only documented builtin SHA warnings permitted
+Pipeworks mode: repaired; separate disposable SQLite world; copied fixture SHA256: 330fed166afff11fb475d801e1c1d71edf03fd879688e8e2d89df1e4bd4a0465
+Pipeworks checkpoint diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 06:35:45: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: CHECKPOINT: native removals and inactive-block preview/legacy conversions checked; persistent markers saved for restart
+Pipeworks resume diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 06:36:03: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: COMPLETE: baseline/repaired contracts retained across native engine restart; no saved player worlds touched
+PASS: installed game Pipeworks repairs passed checkpoint and resume in separate official Win64 engine processes under Wine; only documented builtin SHA warnings permitted
+Test workspace: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/windows-wine-epqnii0w
+
+Frozen game/test source: 843893580af93e9f3d03fd02b5ee72c5bd6b9e41
+Exact input game ZIP SHA256: 7daf814d95bb99e58d693bb22c0017253b0f3a925b2f9ae2e1617da07aba3dae
+Test command: python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.4-windows.exe --engine-smoke --storage-smoke --removal-smoke --pipeworks-smoke
+Test harness SHA256: 667345008bea9cffa05f6b60735a2a0b6c560d93e7602a133894e0c3203dceb9; exact bytes match frozen source.
+Cached official Win64 engine ZIP SHA256: 3ce20c77f5c206a988d7a6b883439e2759e3cf67428c9dbcf99ecd2936da631c
+Aggregate across six official Win64 engine processes: 642 documented builtin SHA warning lines, zero other engine warnings, zero engine errors; 18 Wine diagnostic lines counted separately.
+Each engine process emitted Wine diagnostics for disabled menu-builder invocation, missing ntlm_auth and NTLM support. Raw command outputs retain these separately from engine errors.
+Separate disposable SQLite worlds were used for factory, storage, Elepower removal and Pipeworks checks. Fixture init.lua SHA256 values are recorded above.
+The private Wine prefix was removed after stopping its Wine server and private Xvfb. No existing player world was opened.
+Native Windows, Windows PowerShell 5.1, SmartScreen, hardware graphics/audio and full 0.1.4 start.bat remain unverified. No full batch/GUI claim is made.
+No production files, release artifacts or prior evidence were modified by this validation.

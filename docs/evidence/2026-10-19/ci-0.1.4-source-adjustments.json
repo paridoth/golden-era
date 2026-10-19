@@ -1,0 +1,15 @@
+{
+  "observed_utc": "2026-10-19T11:28:00.510483+00:00",
+  "phase_at_observation": "legacy integration suite; Pipeworks native CI stage not yet reached",
+  "reason": "Root-authorized guide wording edit and author-reported native fixture activation timing correction",
+  "files": {
+    "tests/pipeworks-removal/mod/init.lua": {
+      "initial_sha256": "ac6d93bfb6da6e15f1fe1509fd47260446ece7e79833c97bae3c28471159b169",
+      "current_sha256": "330fed166afff11fb475d801e1c1d71edf03fd879688e8e2d89df1e4bd4a0465"
+    },
+    "integrations/playtest/mod/guide.lua": {
+      "initial_sha256": "90542c27a069b973035cc3fab17f9f248a79221b1f291fce732ab10d21ebe957",
+      "current_sha256": "e4494e69d14ae65d7b21bf4481727a1b61ef7317e29ebfdde216347c23b37c2a"
+    }
+  }
+}

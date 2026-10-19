@@ -1,20 +1,27 @@
-# Golden Era 0.1.3: itch.io tester release
+# Golden Era 0.1.4: itch.io tester release
 
-Version 0.1.3 repairs confirmed item loss from drawer upgrades, digging, native
-piston movement and Elepower machine removal, plus the drawer controller explosion crash.
-Controllers also reindex after moving and reuse their cache for repeated deposits.
-Existing saves use the same item/node formats; keep your save-data folder when
-updating. Previous builds remain frozen as historical fallbacks.
+Version 0.1.4 keeps an autocrafter's real input/output items when explosions
+destroy it, while leaving recipe previews out of physical drops. New filters
+record that their selectors are previews. Filters temporarily resist piston
+movement; mine, place and reconfigure them to relocate your setup. This prevents
+repeatable preview duplication while preserving native historical item refunds.
+An old unmarked filter already moved into an inactive block before updating
+remains ambiguous; see the [Pipeworks notes](../integrations/playtest/pipeworks-notes.md).
 
-Known issue under review for 0.1.4: an explosion can erase a full Pipeworks
-autocrafter and its contents. Normal mining of an occupied autocrafter is blocked.
+The release retains the earlier drawer, controller and Elepower item-preservation
+repairs. Keep your save-data folder when updating. Previous builds remain frozen
+as historical fallbacks.
 
-Shareable artifact: `dist/golden-era-playtest-0.1.3-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.3-windows-test.zip`.
-Linux: `dist/golden-era-playtest-0.1.3-linux.tar.gz`; see [Linux setup](linux-release.md).
+The stock Automatic Harvester still loses crops when its output fills. This is
+confirmed in a native powered-timer baseline and is queued for the next update;
+empty its output regularly when experimenting with farming in 0.1.4.
+
+Shareable artifact: `dist/golden-era-playtest-0.1.4-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.4-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.4-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.3`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.4`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -62,7 +69,7 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.3-windows.exe`.
+**Windows test instructions:** open `golden-era-playtest-0.1.4-windows.exe`.
 It installs automatically, creates a shortcut and starts the game. New players
 choose the supplied workshop or a survival start without workshop tools/materials.
 Existing players retain their position and inventory. Workshop preparation shows
@@ -90,11 +97,14 @@ bundle notices record the exact source-correspondence limit and inherited
 license exceptions.
 
 The packaged game is checked from a clean extraction through its Unix launcher
-using the existing Luanti engine. The final 0.1.3 installer and official Win64
-factory, storage restart and machine-removal checks passed isolated Wine tests. The earlier frozen 0.1.1 batch also passed a
-graphical workshop choice and save/reconnect under Wine. The complete 0.1.3 batch
+using the existing Luanti engine. The final 0.1.4 installer and official Win64
+factory, storage restart, machine-removal and Pipeworks restart checks passed isolated Wine tests. The earlier frozen 0.1.1 batch also passed a
+graphical workshop choice and save/reconnect under Wine. The complete 0.1.4 batch
 has its preflight tested separately under PowerShell 7/Linux. Wine is a
 compatibility check on Linux.
+The six 0.1.4 Windows engine processes each retained 107 documented builtin SHA
+warnings, with zero other engine warnings or errors. The Linux archive passed
+the same six scenarios with zero warnings or errors.
 Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
 for a Windows tester. Exact bootstrap/save-preflight commands run separately under
 PowerShell 7 on Linux; their scope and hashes are retained in the evidence.
@@ -111,12 +121,12 @@ game file manifest remains valid. `/S` installs without launching the game.
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.3-windows-test.zip
-python3 tests/package/run.py dist/golden-era-playtest-0.1.3-windows-test.zip
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.4-windows-test.zip
+python3 tests/package/run.py dist/golden-era-playtest-0.1.4-windows-test.zip
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.3-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.4-windows.exe
 python3 scripts/package-linux.py
-python3 tests/linux/run.py dist/golden-era-playtest-0.1.3-linux.tar.gz --flatpak-runtime --storage-smoke --removal-smoke
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.4-linux.tar.gz --flatpak-runtime --storage-smoke --removal-smoke --pipeworks-smoke
 ```
 
 Frozen outputs are protected: select a new version in

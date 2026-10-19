@@ -1,0 +1,18 @@
+Golden Era release ZIP: clean extraction and real launcher/engine smoke
+Archive SHA256: 7daf814d95bb99e58d693bb22c0017253b0f3a925b2f9ae2e1617da07aba3dae
+Verified files: 11863
+Cached official Windows download matches its pinned SHA256
+2026-10-19 06:31:09: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:31:13: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tester copy with spaces lc3_tl99/new tester data/worlds/playtest]
+2026-10-19 06:31:13: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30206.
+2026-10-19 06:31:14: ACTION[Server]: Survival recipe reachability: 15 factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.
+2026-10-19 06:31:14: WARNING[Server]: Server: Maximum lag peaked at 1.04321 (steplen=0.05)
+2026-10-19 06:33:07: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+2026-10-19 06:33:07: ACTION[Main]: Server: Shutting down
+
+PACKAGE SMOKE FAIL: Unexpected packaged-run diagnostics

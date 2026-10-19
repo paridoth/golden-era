@@ -640,3 +640,45 @@ the exact 0.1.3 ZIP while preserving the checked quantities and full tool
 metadata. All thirty older artifacts and companions retain their bytes.
 The continuing Pipeworks audit has confirmed a separate full-autocrafter blast
 loss; that is recorded as a 0.1.3 known issue for the next version.
+
+## Desktop 0.1.4 Pipeworks repairs — 2026-10-19
+
+Real explosions reproduced loss of an autocrafter and its occupied src/dst lists.
+The Mineclonia-specific copied definition now emits the owned full ItemStacks
+and device once, excludes both preview lists, honors no-drop decisions and keeps
+native recipe-cache/tube cleanup. Ordinary mining still refuses occupied devices.
+
+Actual piston movement into an inactive block also reproduced a legacy filter
+refund creating a real item from a modern preview. Fresh filters now carry a
+persistent format marker. Native historical refunds remain intact and mark only
+completed conversions; editing one old slot never classifies other slots. All
+three filter variants temporarily resist both piston systems. The guide explains
+mining, placing and reconfiguring filters to relocate them. Old unmarked previews
+with a pending first legacy activation remain an explicit ownership ambiguity.
+
+Four native baseline/repaired checkpoint/restart processes pass with zero
+diagnostics. The exact frozen ZIP has two byte-identical builds and passes its
+extracted launcher/factory. Its first run completed the factory but a strict
+warning check rejected startup lag under concurrent test load; the unchanged
+archive then passed without relaxing that policy. The official Linux archive
+passes six gameplay processes with zero diagnostics. The exact Windows installer
+passes all 11,873 installed file hashes, reinstall/save preservation and six
+official Win64 gameplay processes under Wine, retaining the known builtin SHA
+warnings. Native Windows and PowerShell 5.1 remain pending.
+
+The final production source also passes real graphical Linux start choices,
+loading/arrival and reconnect with unchanged inventories. All 39 earlier artifact
+and sidecar files retain their bytes; three registered builders refuse the new
+frozen paths, preserving all 48 current/historical files. Source revision and
+hashes are recorded in `docs/releases/0.1.4.json`.
+
+A separate powered-timer farming audit confirms that a full or partial Automatic
+Harvester output silently discards native wheat/seed drops after removing the
+crop. The next bounded repair will emit insertion leftovers using native world
+items, then check the existing planter/harvester/seed-return path. It does not
+require a new mod or an automation framework.
+
+The full desktop CI also passes: 24 legacy and 16 active-pack native engine
+processes, fast/reference checks and Unix save guards. Its before/after hash
+record identifies two early guide/fixture edits; all eleven final observed source
+hashes match the frozen 0.1.4 commit. Targeted native stages ran the final fixture.

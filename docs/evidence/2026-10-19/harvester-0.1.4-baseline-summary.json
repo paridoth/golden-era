@@ -1,0 +1,76 @@
+{
+  "mode": "read-only baseline audit; native crop and timers, no production changes",
+  "port": 30228,
+  "port_released": true,
+  "game": "/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/repaired/games/golden_era_playtest",
+  "sources": {
+    "elepower": "c37fe7bc3fc52a05e03507ca35cba2c8e5b3e330",
+    "mineclonia": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+    "luanti": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d"
+  },
+  "harvester_source_sha256": "3176de38c9972a0b8e17b8a235c391e7493d6f05e143362de111ce03fcfdf06a",
+  "copied_source_identical": true,
+  "fixture": "runtime/tests/harvester-audit/world2/worldmods/era_harvester_audit/init.lua",
+  "fixture_sha256": "26113662ece91aa417b72af49654cd586c3df5ce6e2f154a22b531da53f7d28a",
+  "log": "runtime/tests/harvester-audit/native-baseline-confirmed.log",
+  "log_sha256": "433c35659fdff3907ea19a4ef7f91c17a7422c9b522885a4bc0532af29f35e1d",
+  "diagnostics": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "observed": {
+    "empty": {
+      "native_seeds": 2,
+      "native_wheat": 1,
+      "stored_seeds": 2,
+      "stored_wheat": 1,
+      "world_items": 0,
+      "lost": 0
+    },
+    "partial": {
+      "native_seeds": 1,
+      "native_wheat": 1,
+      "stored_seeds": 1,
+      "stored_wheat": 0,
+      "world_items": 0,
+      "lost": 1
+    },
+    "full": {
+      "native_seeds": 1,
+      "native_wheat": 1,
+      "stored_seeds": 0,
+      "stored_wheat": 0,
+      "world_items": 0,
+      "lost": 2
+    }
+  },
+  "all_cases": {
+    "mature_crop_removed": true,
+    "immature_crop_preserved": true,
+    "sludge_mb": 10,
+    "provided_coal_generators": true,
+    "injected_power": false,
+    "manual_machine_timer_or_ABM_calls": false
+  },
+  "recipe_reachability": "Existing15-target closure extended in ignored fixture to17 with planter+harvester and ordinary diamond root; counts/travel not modeled.",
+  "acquisition": "Native hidden survival-hand capability supplied to detached actor. Six seed items acquired from actual hand-dug fixture short grass drops+item pickup in19 digs, then consumed by native planting. Supplied bone-meal growth callbacks mature crops; not a natural-world/human full playthrough.",
+  "recommendation": "Next version: native add_item insertion leftovers spilled with core.add_item; no new queue/framework. Preserve full/partial conservation under normal timers, then validate small native planter-harvester-seed-return-storage line and document proper soil/sludge tier.",
+  "retained_evidence": {
+    "harvester-0.1.4-baseline-fixture.lua": "26113662ece91aa417b72af49654cd586c3df5ce6e2f154a22b531da53f7d28a",
+    "harvester-0.1.4-baseline-progression.lua": "1a2db97cf7138d07303169f4e596e0e52e96c527e15187b359c8e20be79d3aa4",
+    "harvester-0.1.4-baseline-native.log": "433c35659fdff3907ea19a4ef7f91c17a7422c9b522885a4bc0532af29f35e1d"
+  },
+  "reproduction": {
+    "mod_name": "era_harvester_audit",
+    "depends": "name = era_harvester_audit\ndepends = era_playtest,elepower_farming,elepower_machines,mcl_farming",
+    "world_mt": "gameid = golden_era_playtest\nbackend = sqlite3\nplayer_backend = sqlite3\nauth_backend = sqlite3\nmod_storage_backend = sqlite3\n",
+    "config": "bind_address = 127.0.0.1\nport = 30228\nserver_announce = false\nmg_name = singlenode\nmcl_singlenode_mapgen = false\ncreative_mode = false\nenable_damage = false\nmax_forceloaded_blocks = 32\nera_playtest_no_welcome = true\n",
+    "fixture_setup": "In a fresh ignored world, install baseline-fixture.lua as era_harvester_audit/init.lua and baseline-progression.lua beside it as progression.lua. Use pinned assembled0.1.4 game, or restore only copied elepower_farming/machines/harvester.lua to exact pinned source and verify its SHA256 before running a later assembly. Never restore through a symlink into upstream.",
+    "engine": "upstream/luanti/bin/luantiserver --gameid golden_era_playtest --world <fresh world> --config <recorded config> --logfile <new baseline log>",
+    "env": {
+      "LUANTI_GAME_PATH": "<isolated games directory>",
+      "LD_LIBRARY_PATH": "<repository>/tools/root/usr/lib/x86_64-linux-gnu"
+    },
+    "scope": "One native server process; require HARVESTER AUDIT PASS plus zero ERROR/WARNING. Expected baseline deliberately asserts losses; it is not release acceptance."
+  }
+}

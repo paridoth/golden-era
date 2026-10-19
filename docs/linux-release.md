@@ -15,8 +15,8 @@ archive. Registered frozen releases cannot be replaced; bump the active version
 before a new release, or choose a separate explicit diagnostic output path:
 
     python3 scripts/package-playtest.py
-    python3 scripts/package-linux.py --game-zip dist/golden-era-playtest-0.1.3-windows-test.zip
-    python3 scripts/package-linux.py --verify dist/golden-era-playtest-0.1.3-linux.tar.gz
+    python3 scripts/package-linux.py --game-zip dist/golden-era-playtest-0.1.4-windows-test.zip
+    python3 scripts/package-linux.py --verify dist/golden-era-playtest-0.1.4-linux.tar.gz
 
 The Linux archive uses sorted files, fixed timestamps, normalized permissions,
 and normalized archive ownership. It carries an internal SHA256 file manifest,
@@ -67,8 +67,8 @@ verification from a source-only or simulated launcher check.
 Developer validation:
 
     python3 tests/linux/test_save_guard.py
-    python3 tests/linux/run.py dist/golden-era-playtest-0.1.3-linux.tar.gz --launcher-only
-    python3 tests/linux/run.py dist/golden-era-playtest-0.1.3-linux.tar.gz --flatpak-runtime --storage-smoke --removal-smoke
+    python3 tests/linux/run.py dist/golden-era-playtest-0.1.4-linux.tar.gz --launcher-only
+    python3 tests/linux/run.py dist/golden-era-playtest-0.1.4-linux.tar.gz --flatpak-runtime --storage-smoke --removal-smoke --pipeworks-smoke
 
 The `--flatpak-runtime` command expects the official app in the repository-only installation
 at `runtime/tests/linux-flatpak/installation` and Freedesktop runtime 26.08.
@@ -90,7 +90,7 @@ Its evidence distinguishes these checks from an actual graphical game run.
 
 The graphical onboarding test can also use the exact installed official client:
 
-    python3 tests/playtest/gui.py --engine tests/linux/flatpak-client.sh --evidence-dir runtime/tests/onboarding-flatpak-0.1.3-final
+    python3 tests/playtest/gui.py --engine tests/linux/flatpak-client.sh --evidence-dir runtime/tests/onboarding-flatpak-0.1.4-final
 
 This passed both real start choices, workshop arrival/loading HUD and saved
 inventory/position through restart. The helper uses a self-contained game copy,
@@ -100,9 +100,12 @@ audio device. It validates the official client binary, not ordinary app/portal
 startup, hardware graphics or audible sound. Initial fresh joins retain the two
 known Mineclonia craft-width warnings; reconnects had no warnings or errors.
 
-The optional `--storage-smoke` and `--removal-smoke` checks use separate fresh
-saves within the existing sandbox data grant. They load the archive's Drawers and
-Elepower code, exercise real native spills/blasts and machine item metadata, and
-restart the storage world. These callbacks use detached fixture actors; human
-mining, multiplayer upgrade editing and a full survival playthrough remain
-separate checks. `--launcher-only` cannot be combined with either repair check.
+The optional `--storage-smoke`, `--removal-smoke` and `--pipeworks-smoke` checks
+use separate fresh saves within the existing sandbox data grant. They load the
+archive's Drawers, Elepower and Pipeworks code, exercise real native spills/blasts,
+full item metadata and both filter piston policies, and restart the storage and
+Pipeworks worlds. The Pipeworks check also exercises native historical refunds
+and preview markers through actual block activation. These callbacks use detached
+fixture actors; human mining, multiplayer upgrade editing and a full survival
+playthrough remain separate checks. `--launcher-only` cannot be combined with
+these repair checks.

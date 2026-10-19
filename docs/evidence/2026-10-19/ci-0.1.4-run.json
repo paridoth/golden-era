@@ -1,0 +1,35 @@
+{
+  "label": "0.1.4 development source; no frozen commit claimed",
+  "base_commit": "5efccb5a7142f010709076a0ea9e5657477a98ad",
+  "started_utc": "2026-10-19T11:26:35.096277+00:00",
+  "source_sha256": {
+    "integrations/playtest/pipeworks.py": "c05ae66de38585c411a9a88574047f1cb0c52b27b5efe6a917023177125d4a40",
+    "integrations/playtest/elepower.py": "a73bc6ec2dc378662d6ad68fc80957957fbe420d59a5a829c293336982834fe4",
+    "integrations/playtest/drawers.py": "929ba4b0b9e6ff0cdd126d417aed0b89544d92af9819b7defc22fe2788ea670d",
+    "integrations/playtest/assembly.py": "cf53d9c522b4dde990998c1dd1bc8746780d8896294e1bfb1c5d0c30782f4a37",
+    "integrations/playtest/mod/guide.lua": "90542c27a069b973035cc3fab17f9f248a79221b1f291fce732ab10d21ebe957",
+    "scripts/ci.sh": "999056dc607f9b63a96b1cf689e787296f8ef38f80d5fff0e6cdf889d17e9588",
+    "scripts/test.sh": "123b49fae2780c6b0de43ef5dc9a1909f6c22df50ae8171490289390fd652e59",
+    "tests/pipeworks-removal/mod/init.lua": "ac6d93bfb6da6e15f1fe1509fd47260446ece7e79833c97bae3c28471159b169",
+    "tests/pipeworks-removal/run.py": "ecb6d01db3a518267d759eb0fb56a62d2958d8b07b151431739d656c86fa4a7f",
+    "upstream.lock.json": "5429a2c834520ed38af2cb74acbe9b730f39ea666c880974ab2e292b406da0fb",
+    "packaging/playtest/release.json": "8981c95c41e2c369749d6617d8fd3e127c928c7dcbffd19a768ce0314b0d2d44"
+  },
+  "finished_utc": "2026-10-19T11:39:44.743535+00:00",
+  "elapsed_seconds": 789.647,
+  "exit_code": 0,
+  "source_sha256_after": {
+    "integrations/playtest/pipeworks.py": "c05ae66de38585c411a9a88574047f1cb0c52b27b5efe6a917023177125d4a40",
+    "integrations/playtest/elepower.py": "a73bc6ec2dc378662d6ad68fc80957957fbe420d59a5a829c293336982834fe4",
+    "integrations/playtest/drawers.py": "929ba4b0b9e6ff0cdd126d417aed0b89544d92af9819b7defc22fe2788ea670d",
+    "integrations/playtest/assembly.py": "cf53d9c522b4dde990998c1dd1bc8746780d8896294e1bfb1c5d0c30782f4a37",
+    "integrations/playtest/mod/guide.lua": "e4494e69d14ae65d7b21bf4481727a1b61ef7317e29ebfdde216347c23b37c2a",
+    "scripts/ci.sh": "999056dc607f9b63a96b1cf689e787296f8ef38f80d5fff0e6cdf889d17e9588",
+    "scripts/test.sh": "123b49fae2780c6b0de43ef5dc9a1909f6c22df50ae8171490289390fd652e59",
+    "tests/pipeworks-removal/mod/init.lua": "330fed166afff11fb475d801e1c1d71edf03fd879688e8e2d89df1e4bd4a0465",
+    "tests/pipeworks-removal/run.py": "ecb6d01db3a518267d759eb0fb56a62d2958d8b07b151431739d656c86fa4a7f",
+    "upstream.lock.json": "5429a2c834520ed38af2cb74acbe9b730f39ea666c880974ab2e292b406da0fb",
+    "packaging/playtest/release.json": "8981c95c41e2c369749d6617d8fd3e127c928c7dcbffd19a768ce0314b0d2d44"
+  },
+  "source_hashes_unchanged": false
+}

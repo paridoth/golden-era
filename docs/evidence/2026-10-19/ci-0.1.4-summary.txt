@@ -1,0 +1,12 @@
+Golden Era 0.1.4 development CI: PASS
+Command: ./scripts/ci.sh
+Exit 0; elapsed 789.647 seconds; one full run, no reruns.
+All fast checks, 40 native server processes and Unix save/config guards passed.
+Native phases: 24 legacy, 1 factory, 1 survival, 2 automation, 4 storage, 2 controller, 2 machine removal, 4 Pipeworks.
+Build: repository-local Luanti 5.17.0/bundled Lua; one existing CMake cURL warning.
+Legacy logs retain five lag warnings (1.034–5.124 seconds) permitted by the existing harness and four asserted relocation refusal/rollback ERROR records. Storage baseline retains its one expected missing-default warning. Repaired industrial suites and all Pipeworks phases are clean.
+CI started from a development worktree based on 5efccb5a7142f010709076a0ea9e5657477a98ad before source freeze. Guide wording and observer activation timing changed before their native stages; initial/final hashes and timing notes are preserved. Production helpers, runner and CI/test wiring stayed stable.
+All 11 final observed source hashes match 843893580af93e9f3d03fd02b5ee72c5bd6b9e41. The complete run is not presented as starting from that frozen commit.
+Official Linux archive/LuaJIT proof is recorded separately. Native Windows hardware, graphics/audio and human playthrough are outside this run.
+CI dependencies are released; sources can advance to 0.1.5.
+Captured inputs/checksums: ci-0.1.4-summary.json. Full output: ci-0.1.4.log.

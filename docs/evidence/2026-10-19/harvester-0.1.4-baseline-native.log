@@ -1,0 +1,17 @@
+
+
+-------------
+  Separator
+-------------
+
+2026-10-19 06:35:35: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+2026-10-19 06:35:38: ACTION[Main]: World at [runtime/tests/harvester-audit/world2]
+2026-10-19 06:35:38: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30228.
+2026-10-19 06:35:41: ACTION[Server]: Survival recipe reachability: 17 factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.
+2026-10-19 06:35:41: ACTION[Server]: HARVESTER AUDIT: Recipe dependency closure includes native planter+harvester after ordinary diamond mining; counts/travel are not modeled
+2026-10-19 06:35:41: ACTION[Server]: HARVESTER AUDIT: Six seeds acquired through native hand-dug fixture grass drops and pickup in 19 grass digs; supplied bone-meal growth callbacks used below
+2026-10-19 06:36:01: ACTION[Server]: HARVESTER AUDIT: empty output: exact native drops seeds=2,wheat=1; stored delta seeds=2,wheat=1; loose=0; LOST=0; crop removed, immature control stays, sludge=10mB
+2026-10-19 06:36:01: ACTION[Server]: HARVESTER AUDIT: partial output: exact native drops seeds=1,wheat=1; stored delta seeds=1,wheat=0; loose=0; LOST=1; crop removed, immature control stays, sludge=10mB
+2026-10-19 06:36:01: ACTION[Server]: HARVESTER AUDIT: full output: exact native drops seeds=1,wheat=1; stored delta seeds=0,wheat=0; loose=0; LOST=2; crop removed, immature control stays, sludge=10mB
+2026-10-19 06:36:01: ACTION[Server]: HARVESTER AUDIT PASS: native stock timer and real coal-generated power confirm full/partial output harvest loss; ordinary seed planting/maturity, native recipes and empty-output control pass; no production edits
+2026-10-19 06:36:01: ACTION[Main]: Server: Shutting down

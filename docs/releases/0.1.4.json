@@ -1,0 +1,67 @@
+{
+  "version": "0.1.4",
+  "source_revision": "843893580af93e9f3d03fd02b5ee72c5bd6b9e41",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.4-windows.exe",
+      "size_bytes": 66520257,
+      "sha256": "4a9b619a61b95f6f736bd265bf57998699fc60ca0dab91a3f1957ff6493654e5",
+      "installed_files": 11873
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.4-linux.tar.gz",
+      "size_bytes": 61917870,
+      "sha256": "bb6a46f87d6ac764ddd4cba07b561d6f100f2547ed3898ba07a12042942febcc",
+      "files": 11864
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.4-windows-test.zip",
+      "size_bytes": 69927805,
+      "sha256": "7daf814d95bb99e58d693bb22c0017253b0f3a925b2f9ae2e1617da07aba3dae",
+      "files": 11863
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Windows ZIP on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "changes": [
+    "Pipeworks autocrafter explosions preserve full owned src/dst ItemStacks and device once, while excluding recipe/output previews and honoring native no-drop decisions",
+    "Native autocrafter recipe-cache invalidation and after-dig tube cleanup remain intact; occupied normal mining stays refused",
+    "Fresh Mineclonia filter construction records a persistent preview marker before first activation",
+    "Historical unmarked filter refunds retain native behavior and mark only completed conversion paths; editing one old slot never classifies the other slots",
+    "All three filter variants temporarily resist native Mineclonia and Mesecons piston movement; the factory guide explains mining, replacing and reconfiguring them",
+    "Pipeworks patches apply to copied pinned sources; upstream checkouts and earlier release bytes stay unchanged"
+  ],
+  "validation": {
+    "fast_suite": "PASS existing unit/reference/model/onboarding checks, frozen-output protections and two Pipeworks anchor/repeatability/upstream-isolation tests",
+    "native_pipeworks": "PASS baseline/repaired checkpoint and real process restart: four native processes, zero warnings/errors; actual explosions, both mover APIs, normal block activation, legacy input/fallback refunds and completed-refund persistence",
+    "packaged_zip": "PASS exact ZIP clean extraction and real Unix launcher full factory, fresh external save and isolated game path; final attempt zero warnings/errors; two fresh builds byte-identical",
+    "package_retry": "First factory completed but strict check rejected one startup maximum-lag warning while GUI/CI/platform tests started concurrently; preserved raw evidence; unchanged archive rerun passed without changing warning policy",
+    "linux_archive": "PASS exact archive/official Flathub LuaJIT factory, storage checkpoint/resume, removal and Pipeworks checkpoint/resume; all six processes zero warnings/errors on first attempt; Gio/launcher checks",
+    "source_equivalence": "PASS all 11783 Linux game files equal exact ZIP; all 57 packaged project files equal frozen source commit",
+    "onboarding_gui": "PASS final production source with official Flathub client: real survival/workshop choices, loading HUD, PlayerRef inventory and reconnect; two inherited craft-width warnings per fresh join, zero errors",
+    "prior_artifacts": "PASS all 39 prior public/archived artifact and sidecar files retain exact hashes",
+    "windows_installer_wine": "PASS exact EXE, all 11873 installed file hashes, shortcuts and reinstall/world/settings preservation",
+    "windows_engine_wine": "PASS official Win64 LuaJIT factory, storage checkpoint/resume, Elepower removal and Pipeworks checkpoint/resume against installed game; six processes each 107 known builtin SHA warnings, zero other warnings/errors; 642 known warnings and 18 Wine diagnostic lines separately retained",
+    "windows_harness": "SHA256 667345008bea9cffa05f6b60735a2a0b6c560d93e7602a133894e0c3203dceb9; exact bytes match frozen source commit; complete current batch/PowerShell/GUI path not executed",
+    "full_ci": "PASS scripts/ci.sh exit 0 in 789.647 seconds: 24 legacy and 16 active-pack native engine processes plus fast/save guards. All 11 final observed source hashes match the frozen commit; guide wording and fixture activation timing changed during early legacy phases, before their active tests, with before/after evidence retained",
+    "frozen_output_protection": "PASS actual default ZIP/EXE/Linux commands refuse registered 0.1.4 paths before work; all 48 current and prior artifact/sidecar files remain byte-identical"
+  },
+  "limitations": [
+    "Native Windows/PowerShell 5.1, SmartScreen and hardware graphics/audio remain unverified",
+    "Wine compatibility evidence does not establish native Windows behavior or the full current batch/PowerShell/GUI launch path",
+    "Linux GUI uses the exact official client in its matching runtime with software X11 and null audio; ordinary app/portal startup remains separate",
+    "Old unmarked modern filter previews and historical physical inventories can be indistinguishable. An already pending first legacy activation cannot safely classify ownership; native historical refunds remain intact",
+    "Filter piston immobility is an explicit temporary gameplay restriction, not a bulk inventory migration or a general movement layer",
+    "Device fixtures/detached actors and native mover APIs do not establish a human survival playthrough or powered in-world piston build",
+    "A synthetic nodebreaker internal main-buffer spill gap was source-audited but no ordinary pending gameplay path was established; it remains unchanged",
+    "Simultaneous multiplayer soldering retains upstream shared detached-inventory concurrency limits; drain fluid machines before ordinary relocation",
+    "Optional custom-engine controller work remains separate; Shield/Android work was canceled"
+  ],
+  "evidence_directory": "docs/evidence/2026-10-19/",
+  "known_issues": [
+    "Confirmed after source freeze: native Elepower Automatic Harvester removes mature crops but silently skips drops when its output cannot hold them. A normal powered timer baseline reproduces lost wheat/seeds under full and partial output. Repair and renewable farming acceptance are planned for the next version."
+  ]
+}
