@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.3
+GOLDEN ERA — FACTORY PLAYTEST 0.1.4
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -50,6 +50,8 @@ The optional supplied coal generator powers a cell, Pulverizer and furnace. Two 
 become four ingots, delivered through tubes into the output barrel. The first
 batch takes about two minutes. The front-left barrel holds spare materials and
 parts. Use the Elepower Tome and inventory recipe guide to learn more.
+Filter-injectors resist piston movement in this build. Mine and place them to
+relocate them, then configure their selectors again.
 
 The factory guide explains the hand-cranked grindstone, coal-fired alloys,
 electronics, first power and item routing. Six crafting milestones use the

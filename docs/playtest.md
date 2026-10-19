@@ -101,6 +101,12 @@ Mesecons' dye table/piston compatibility; fluid insertion remainder fixes; and
 Drawers' Mineclonia spill/explosion handling and controller cache invalidation.
 Elepower machines also protect their owned inventory slots during mining and
 preserve full item stacks through Mineclonia's explosion callback.
+Pipeworks autocrafters preserve their owned input/output stacks through native
+explosions. New filter previews carry a format marker. Filter-injectors are
+temporarily stationary under native and Mesecons pistons; mine and place them,
+then configure their selectors to relocate them. Historical unmarked physical
+selector refunds remain native; see the
+[Pipeworks notes](../integrations/playtest/pipeworks-notes.md) for old-save bounds.
 Source checkouts stay clean. Patch helpers reject unexpected source text.
 Empty machine item slots before mining, including a reconstructor's tool and a
 wireless station's card. See [machine removal](../integrations/playtest/removal-notes.md)

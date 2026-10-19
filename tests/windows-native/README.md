@@ -52,6 +52,17 @@ separately. Both optional repair checks can run together:
 
     python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.3-windows.exe --engine-smoke --storage-smoke --removal-smoke
 
+For a release containing the Pipeworks repairs, `--pipeworks-smoke` adds the
+copied `tests/pipeworks-removal/mod` fixture in a separate SQLite world on port
+30226. It requires `--engine-smoke`, selects `era_pipeworks_baseline=false`, records
+the copied fixture SHA256, and requires exactly one
+`ERA PIPEWORKS SMOKE PASS: CHECKPOINT:` and `COMPLETE:` marker in separate
+processes. FAIL markers, engine errors and warnings outside the documented
+builtin SHA category fail the check. Command and server logs are retained and
+Wine diagnostics are counted separately. The flags can be combined:
+
+    python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.4-windows.exe --engine-smoke --storage-smoke --removal-smoke --pipeworks-smoke
+
 To additionally run the actual installed batch launcher through Wine's cmd.exe,
 click the real first-join workshop chooser, and reconnect to verify saved
 choice/inventory/position, use:

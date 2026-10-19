@@ -1,0 +1,47 @@
+
+
+-------------
+  Separator
+-------------
+
+2026-10-19 06:19:07: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+2026-10-19 06:19:09: ACTION[Main]: World at [runtime/tests/pipeworks-removal-audit/world4]
+2026-10-19 06:19:09: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30220.
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS ordinary autocrafter mining refuses occupied src/dst without changing either complete stack
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: CONFIRMED: actual Mineclonia explosion loses autocrafter + 7 physical src iron + 5 physical dst gold after its mining guard refuses
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS ghost-only autocrafter mine returns only device
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS ghost-only autocrafter blast returns only device
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:mese_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:mese_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:digiline_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:digiline_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:deployer_off mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:deployer_off blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:deployer_on mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:deployer_on blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:dispenser_off mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:dispenser_off blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:dispenser_on mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:dispenser_on blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:nodebreaker_off mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:nodebreaker_off blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:nodebreaker_on mine preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: PASS pipeworks:nodebreaker_on blast preserves physical count, wear and metadata
+2026-10-19 06:19:11: ACTION[Server]: PIPEWORKS AUDIT: LIMITED REACHABILITY: synthetic saved-state nodebreaker main buffer loses 9 gold on mining; normal actions eject that internal buffer synchronously
+2026-10-19 06:19:13: ACTION[Server]: PIPEWORKS AUDIT: BOUNDARY RESULT: native piston moved a configured ghost filter into a previously inactive block; activation emits 1 actual duplicate diamondblock item(s), original physical item remains in actor inventory; preview still holds 1
+2026-10-19 06:19:15: ACTION[Server]: PIPEWORKS AUDIT: LEGACY CONTROL: 3 owned fixture gold ingots transferred into an unmarked historical physical-list state; native activation refunds exactly 3 recoverable ingots and keeps the logical preview; physical total remains 3; historical old-mod execution was not performed
+2026-10-19 06:19:15: ACTION[Server]: PIPEWORKS AUDIT PASS: autocrafter blast loss and modern ghost boundary duplication confirmed; legitimate legacy owned-item refund conserved; standard removal controls pass; no production edits
+2026-10-19 06:19:15: ACTION[Main]: Server: Shutting down

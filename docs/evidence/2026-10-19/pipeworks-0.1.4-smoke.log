@@ -1,0 +1,202 @@
+Golden Era Pipeworks regression: pinned baseline versus copied repair; native mining/explosions, real dropped ItemStacks, inactive-block LBMs, both piston APIs and process restarts
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: elepower: clear stale soldering locks when their editor reconnects
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Runtime-copy patch: pipeworks: preserve owned autocrafter src/dst under Mineclonia explosions without dropping previews
+Runtime-copy patch: pipeworks: distinguish newly constructed modern Mineclonia filter previews
+Runtime-copy patch: pipeworks: mark fresh filter previews before their first block activation
+Runtime-copy patch: pipeworks: temporarily keep all filter variants stationary under native and Mesecons pistons
+Runtime-copy patch: pipeworks: skip modern previews while retaining native legacy owned-item refunds
+Runtime-copy patch: pipeworks: mark only completed legacy input refunds or empty-list conversions
+Runtime-copy patch: pipeworks: mark fallback legacy conversion only after successful refund drops
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/baseline/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/baseline/games/golden_era_playtest/playtest-sources.json
+
+BASELINE: only Pipeworks restored to exact pinned 5dfd572 sources; known loss/duplication contracts are asserted safely
+Variant: baseline; phase: checkpoint
+2026-10-19 06:26:51: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:26:54: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/baseline/world]
+2026-10-19 06:26:54: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30220.
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: BASELINE: occupied autocrafter explosion loses device and four complete physical stacks
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: Ordinary occupied mining remains refused; actual no-drop blasts emit no previews or physical payloads
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:mese_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:mese_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:digiline_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:digiline_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_off mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_off blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_on mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_on blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_off mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_off blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_on mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_on blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_off mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_off blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_on mine preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_on blast preserves physical count, wear and metadata
+2026-10-19 06:26:56: ACTION[Server]: Pipeworks smoke: BASELINE: all three filter variants move under both native piston APIs
+2026-10-19 06:26:58: ACTION[Server]: Pipeworks smoke: BASELINE: native piston into inactive block changes owned diamondblock total 1 to 2
+2026-10-19 06:27:00: ACTION[Server]: Pipeworks smoke: BASELINE: fresh configured inactive-block filter also refunds its modern preview
+2026-10-19 06:27:02: ACTION[Server]: Pipeworks smoke: Historical owned fallback: exactly 3 recoverable gold retain wear/metadata; preview remains logical
+2026-10-19 06:27:04: ACTION[Server]: Pipeworks smoke: Historical owned input refund: 2 gold fit barrel, 1 excess gold and full worn metadata tool recover as entities
+2026-10-19 06:27:06: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: CHECKPOINT: native removals and inactive-block preview/legacy conversions checked; persistent markers saved for restart
+2026-10-19 06:27:06: ACTION[Main]: Server: Shutting down
+
+baseline checkpoint: process exited successfully
+Variant: baseline; phase: resume
+2026-10-19 06:27:19: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:22: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/baseline/world]
+2026-10-19 06:27:22: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30220.
+2026-10-19 06:27:26: ACTION[Server]: Pipeworks smoke: Native process restart preserves marker, converted previews, full input refund and recoverable leftovers without another refund
+2026-10-19 06:27:26: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: COMPLETE: baseline/repaired contracts retained across native engine restart; no saved player worlds touched
+2026-10-19 06:27:26: ACTION[Main]: Server: Shutting down
+
+baseline resume: process exited successfully
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: elepower: clear stale soldering locks when their editor reconnects
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Runtime-copy patch: pipeworks: preserve owned autocrafter src/dst under Mineclonia explosions without dropping previews
+Runtime-copy patch: pipeworks: distinguish newly constructed modern Mineclonia filter previews
+Runtime-copy patch: pipeworks: mark fresh filter previews before their first block activation
+Runtime-copy patch: pipeworks: temporarily keep all filter variants stationary under native and Mesecons pistons
+Runtime-copy patch: pipeworks: skip modern previews while retaining native legacy owned-item refunds
+Runtime-copy patch: pipeworks: mark only completed legacy input refunds or empty-list conversions
+Runtime-copy patch: pipeworks: mark fallback legacy conversion only after successful refund drops
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/repaired/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/repaired/games/golden_era_playtest/playtest-sources.json
+
+Variant: repaired; phase: checkpoint
+2026-10-19 06:27:39: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:27:42: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/repaired/world]
+2026-10-19 06:27:42: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30220.
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: Actual explosion returns device and all src/dst stacks including last slots, wear/metadata; cache cleanup and tube rescan each run once; previews never drop
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: Ordinary occupied mining remains refused; actual no-drop blasts emit no previews or physical payloads
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:mese_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:mese_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:digiline_filter mine preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:digiline_filter blast preserves no physical payload and creates no ghost items
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_off mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_off blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_on mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:deployer_on blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_off mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_off blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_on mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:dispenser_on blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_off mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_off blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_on mine preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Explosion at (0,200,0) with strength 4 and radius 7
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: PASS pipeworks:nodebreaker_on blast preserves physical count, wear and metadata
+2026-10-19 06:27:44: ACTION[Server]: Pipeworks smoke: All three filter variants, fresh and old unmarked, refuse native Mineclonia and Mesecons piston movement without changing previews
+2026-10-19 06:27:46: ACTION[Server]: Pipeworks smoke: Temporary native piston stopper prevents old unclassified boundary movement and duplicate selector
+2026-10-19 06:27:48: ACTION[Server]: Pipeworks smoke: Fresh modern filter first activation keeps preview without emitting physical items
+2026-10-19 06:27:50: ACTION[Server]: Pipeworks smoke: Historical owned fallback: exactly 3 recoverable gold retain wear/metadata; preview remains logical
+2026-10-19 06:27:52: ACTION[Server]: Pipeworks smoke: Historical owned input refund: 2 gold fit barrel, 1 excess gold and full worn metadata tool recover as entities
+2026-10-19 06:27:54: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: CHECKPOINT: native removals and inactive-block preview/legacy conversions checked; persistent markers saved for restart
+2026-10-19 06:27:54: ACTION[Main]: Server: Shutting down
+
+repaired checkpoint: process exited successfully
+Variant: repaired; phase: resume
+2026-10-19 06:28:07: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:28:10: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/pipeworks-removal-debug-j9jrap0j/repaired/world]
+2026-10-19 06:28:10: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30220.
+2026-10-19 06:28:14: ACTION[Server]: Pipeworks smoke: Native process restart preserves marker, converted previews, full input refund and recoverable leftovers without another refund
+2026-10-19 06:28:14: ACTION[Server]: ERA PIPEWORKS SMOKE PASS: COMPLETE: baseline/repaired contracts retained across native engine restart; no saved player worlds touched
+2026-10-19 06:28:14: ACTION[Main]: Server: Shutting down
+
+repaired resume: process exited successfully

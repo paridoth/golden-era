@@ -35,9 +35,10 @@ def main():
     parser.add_argument("--launcher-only", action="store_true", help="Skip the 114-second real factory simulation")
     parser.add_argument("--storage-smoke", action="store_true", help="Also run repaired native storage callbacks and restart against the extracted game")
     parser.add_argument("--removal-smoke", action="store_true", help="Also check machine mining/blast inventory preservation against the extracted game")
+    parser.add_argument("--pipeworks-smoke", action="store_true", help="Also check repaired Pipeworks blast and ghost-filter callbacks against the extracted game")
     args = parser.parse_args()
-    if (args.storage_smoke or args.removal_smoke) and args.launcher_only:
-        parser.error("--storage-smoke/--removal-smoke require the real engine; omit --launcher-only")
+    if (args.storage_smoke or args.removal_smoke or args.pipeworks_smoke) and args.launcher_only:
+        parser.error("--storage-smoke/--removal-smoke/--pipeworks-smoke require the real engine; omit --launcher-only")
     checked = packager.verify_package(args.archive)
     report = ["Golden Era Linux archive validation", "SHA256: " + checked["sha256"], "Files: " + str(checked["files"])]
     base = ROOT / "runtime/tests"
@@ -227,6 +228,34 @@ def main():
                 assert "ERA MACHINE REMOVAL FAIL" not in result.stdout
                 assert not any(message in result.stdout for message in ("ERROR[", "WARNING["))
                 report.append("PASS: extracted Linux game protects occupied machine slots and preserves native blast items without scratch/ghost duplicates")
+            if args.pipeworks_smoke:
+                # Separate SQLite world, within the existing narrow save grant.
+                pipeworks_data = actual_data / "pipeworks-regression"
+                observer = pipeworks_data / "worlds/playtest/worldmods/era_pipeworks_smoke"
+                shutil.copytree(ROOT / "tests/pipeworks-removal/mod", observer)
+                pipeworks_source = observer / "init.lua"
+                pipeworks_source.write_text('core.register_on_mods_loaded(function() local p=core.get_modpath("pipeworks"); assert(p:sub(1, #'
+                    + expected + ') == ' + expected + ', "Pipeworks must load from extracted Linux archive") end)\n' + pipeworks_source.read_text())
+                (pipeworks_data / "settings.conf").write_text((bundle / "defaults/playtest.conf").read_text() +
+                    "\nport = 30216\nmg_name = singlenode\nmcl_singlenode_mapgen = false\n"
+                    "creative_mode = false\nenable_damage = false\nera_playtest_no_welcome = true\n"
+                    "max_forceloaded_blocks = 32\nera_pipeworks_baseline = false\n")
+                pipeworks_env = real_env.copy()
+                pipeworks_env["GOLDEN_ERA_DATA_DIR"] = str(pipeworks_data)
+                for phase, marker in (("checkpoint", "CHECKPOINT:"), ("resume", "COMPLETE:")):
+                    result = subprocess.run([str(launcher), "--server"], env=pipeworks_env, text=True,
+                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+                    report.append("Pipeworks phase: " + phase)
+                    report.append(result.stdout)
+                    (base / "linux-package-smoke.txt").write_text("\n".join(report) + "\n")
+                    passed = "ERA PIPEWORKS SMOKE PASS: " + marker
+                    if result.returncode or passed not in result.stdout:
+                        print(result.stdout, file=sys.stderr)
+                    assert result.returncode == 0, "Linux Pipeworks engine failed"
+                    assert result.stdout.count(passed) == 1, "Missing/duplicate Pipeworks " + phase
+                    assert "ERA PIPEWORKS SMOKE FAIL" not in result.stdout
+                    assert not any(message in result.stdout for message in ("ERROR[", "WARNING["))
+                report.append("PASS: extracted Linux Pipeworks blast/filter/piston callbacks and SQLite process restart through its launcher")
     evidence = base / "linux-package-smoke.txt"
     evidence.write_text("\n".join(report) + "\n")
     print("\n".join(report))

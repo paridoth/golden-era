@@ -64,7 +64,8 @@
     "Optional custom-engine controller prototype remains separate"
   ],
   "known_issues": [
-    "Confirmed after source freeze: Mineclonia explosions can erase occupied Pipeworks autocrafter src/dst and the device because its native dig guard refuses before bulk deletion. Repair planned for 0.1.4."
+    "Confirmed after source freeze: Mineclonia explosions can erase occupied Pipeworks autocrafter src/dst and the device because its native dig guard refuses before bulk deletion. Repair planned for 0.1.4.",
+    "Confirmed by native baseline audit: moving an unmarked modern Pipeworks filter into a previously inactive block can make its legacy refund LBM create real items from previews. New-format markers and temporary filter piston immobility are under development for 0.1.4; old unmarked ownership remains ambiguous."
   ],
   "evidence_directory": "docs/evidence/2026-10-19/"
 }
