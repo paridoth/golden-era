@@ -1,0 +1,78 @@
+Bounded exact release ZIP storage upgrade: 0.1.2 CHECKPOINT -> same closed SQLite world -> 0.1.3 COMPLETE
+{
+  "inputs": [
+    {
+      "archive": "dist/golden-era-playtest-0.1.2-windows-test.zip",
+      "sha256": "e869250a328a477ab0091f2f6b23de4283a9cfb2045088a9453606354e563108",
+      "bytes": 69906553,
+      "files": 11858
+    },
+    {
+      "archive": "dist/golden-era-playtest-0.1.3-windows-test.zip",
+      "sha256": "1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5",
+      "bytes": 69920800,
+      "files": 11861
+    }
+  ]
+}
+Release phase: 0.1.2
+2026-10-19 06:10:38: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:10:40: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-release-upgrade-_ng5alov/same SQLite world]
+2026-10-19 06:10:40: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30218.
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: Concrete native recipes verified: 26 (wood/stick/drawer groups use real pinned Mineclonia items)
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: first iron preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: first iron commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 3 preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 3 commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 5 preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 5 commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 7 preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: warm iron 7 commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: moved connected controller neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: moved disconnected controller neighborhood scans=1
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: new copper preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: new copper commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: disconnected preflight neighborhood scans=1
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: reconnected iron preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: reconnected iron commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: respawned visual iron preflight neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: respawned visual iron commit neighborhood scans=5
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: new four-compartment drawer preflight neighborhood scans=7
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: new four-compartment drawer commit neighborhood scans=7
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: BASELINE: exactly 2696 overflow iron lost; retained 2304 manually recovered
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: BASELINE: native piston restores 130 coal into metadata over an empty visual; next insertion erases that 130
+2026-10-19 06:10:42: ACTION[Server]: Storage smoke: BASELINE: dummy dig loses 130 coal and upgrade; sneaking full-inventory dig drops only 3/130 coal
+2026-10-19 06:10:43: ACTION[Server]: Explosion at (24,200,24) with strength 16 and radius 28
+2026-10-19 06:10:43: WARNING[Server]: Undeclared global variable "default" accessed at .../golden_era_playtest/mods/drawers/lua/controller.lua:374
+2026-10-19 06:10:43: ACTION[Server]: Storage smoke: BASELINE expected real explosion error caught: .../golden_era_playtest/mods/drawers/lua/controller.lua:374: attempt to index global 'default' (a nil value)
+2026-10-19 06:10:43: ACTION[Server]: Storage smoke: saved cache seed preflight neighborhood scans=7
+2026-10-19 06:10:43: ACTION[Server]: Storage smoke: saved cache seed commit neighborhood scans=7
+2026-10-19 06:10:43: ACTION[Server]: ERA STORAGE SMOKE PASS: CHECKPOINT: native baseline reproduced repeated scans, 2696 lost overflow iron, native piston/dig losses, wear loss and actual explosion crash
+2026-10-19 06:10:43: ACTION[Main]: Server: Shutting down
+
+Closed SQLite integrity PASS after 0.1.2: map.sqlite, mod_storage.sqlite
+Release phase: 0.1.3
+2026-10-19 06:10:55: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:10:58: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-release-upgrade-_ng5alov/same SQLite world]
+2026-10-19 06:10:58: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30218.
+2026-10-19 06:11:00: ACTION[Server]: Storage smoke: UPGRADE BEFORE DEPOSITS: retained 4 iron, 11 copper, one redstone in native four-slot drawer and one iron pick with wear=3210 and full metadata
+2026-10-19 06:11:00: ACTION[Server]: Storage smoke: reloaded stale disconnected cache neighborhood scans=1
+2026-10-19 06:11:00: ACTION[Server]: Storage smoke: reconnected after restart preflight neighborhood scans=7
+2026-10-19 06:11:00: ACTION[Server]: Storage smoke: reconnected after restart commit neighborhood scans=0
+2026-10-19 06:11:00: ACTION[Server]: Storage smoke: UPGRADE COMPLETE: same closed SQLite world retains all pre-existing checked payloads; native reconnection adds only three new iron
+2026-10-19 06:11:00: ACTION[Server]: ERA STORAGE SMOKE PASS: COMPLETE: process restart rejects stale disconnected cache; reconnect resumes native deposits and preserves 7 iron, 11 copper and the four-compartment drawer
+2026-10-19 06:11:00: ACTION[Main]: Server: Shutting down
+
+Closed SQLite integrity PASS after 0.1.3: map.sqlite, mod_storage.sqlite
+STORAGE UPGRADE PASS: exact immutable ZIPs and six archive/sidecar files; same SQLite save; retained 4 iron/11 copper/redstone/tool before new deposits, then exactly 7 iron/11 copper and unchanged other payloads
+Scope: no lost 0.1.2 overflow is restored; no player-world migration, player-inventory, GUI or whole-game compatibility claim

@@ -1,0 +1,5 @@
+0.1.3 build preservation and reproducibility
+PASS: all 30 prior public/archived artifacts and sidecars retain exact recorded bytes.
+PASS: two fresh 0.1.3 ZIP builds are byte-identical; SHA256 1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5.
+Frozen source: b0031d1689ae5036ebfe995c51901b990d150a71
+Reproduction output stays under ignored runtime/tests; it is not a public download.

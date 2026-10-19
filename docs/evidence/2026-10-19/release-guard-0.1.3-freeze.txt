@@ -1,0 +1,8 @@
+Actual frozen 0.1.3 package-builder refusal after registration
+PASS: scripts/package-playtest.py
+PLAYTEST PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.3-windows-test.zip is registered in docs/releases/0.1.3.json; use --output with a different path or select a new release version
+PASS: scripts/package-installer.py
+WINDOWS SETUP FAILED: Frozen release output dist/golden-era-playtest-0.1.3-windows.exe is registered in docs/releases/0.1.3.json; use --output with a different path or select a new release version
+PASS: scripts/package-linux.py
+LINUX PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.3-linux.tar.gz is registered in docs/releases/0.1.3.json; use --output with a different path or select a new release version
+PASS: all nine 0.1.3 artifact/manifest/checksum bytes unchanged; builders refuse before assembly/compiler/runtime work.

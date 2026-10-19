@@ -667,3 +667,34 @@ items. Active-editor, shared-flag and stale/rejoining editor checks use fixture
 player metadata. They do not establish multiplayer UI safety or a real PlayerRef
 mining session. Four additional source-copy/anchor tests join the fast suite.
 See [removal evidence](evidence/2026-10-19/machine-removal-0.1.3-smoke.log).
+
+The separate `tests/storage-controller/run.py` passes two real engine processes
+with native clock timers, injectors and tube entities. Partial insertion leaves a
+five-iron packet bouncing while copper still reaches its locked drawer. Enabling
+native distribution releases it. A blocked nine-iron packet survives shutdown/
+restart and resumes movement/delivery. Every poll accounts for inventories,
+drawer counts and in-flight payloads; final totals are 5,200 iron and 24 copper,
+with no loose items or hidden packets and no warnings/errors. No production
+change was needed. [Controller evidence](evidence/2026-10-19/storage-controller-0.1.3-smoke.log).
+
+Final 0.1.3 artifacts are recorded in [release metadata](releases/0.1.3.json).
+The clean ZIP launcher/factory passes. The exact Linux archive passes four
+official Flathub/LuaJIT processes: factory, storage checkpoint/resume and machine
+removal; all are free of engine warnings/errors. All 11,783 game files match the
+ZIP and all 55 packaged project files match the frozen source commit. The exact
+Windows EXE passes installation, all 11,871 file hashes, shortcuts/reinstall
+preservation and the same four official Win64 engine processes under Wine. Those
+processes have 428 documented builtin SHA warnings, zero other engine warnings
+and zero engine errors; twelve Wine diagnostics are retained separately. A
+Main-only test warning classifier was corrected for Emerge threads; that first
+attempt was a harness false positive after a successful factory run. No release
+payload changed. Native Windows and PowerShell 5.1 remain pending.
+
+The final production source also passes official-client onboarding and reconnect
+checks with the inherited fresh-join craft-width warnings. An exact 0.1.2 ZIP
+storage save continues in the same closed SQLite databases under the exact
+0.1.3 ZIP: checked item identities/counts, redstone in a four-slot drawer, and a
+full worn metadata tool persist before and after new deposits. This is bounded
+storage continuity, not whole-world/player migration or recovery of old losses.
+See [upgrade scope](../tests/storage/UPGRADE.md). Two fresh ZIP builds are
+byte-identical; all thirty older artifact/sidecar hashes remain unchanged.

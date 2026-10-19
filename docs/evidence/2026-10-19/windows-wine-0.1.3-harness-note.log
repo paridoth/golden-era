@@ -1,0 +1,13 @@
+0.1.3 Wine validation test-harness correction; release payload unchanged.
+Frozen game source: b0031d1689ae5036ebfe995c51901b990d150a71
+Installer SHA256: 14d204f89fa89dcea4af81eccba64bab9ec8af8dbdb73166b38c05d298de6bce
+First attempt installed all 11871 verified files, checked shortcuts and save/settings preservation, and completed the stock factory PASS.
+Its Main-only warning classifier falsely rejected 60 Emerge-thread builtin SHA lookup warnings. There were 107 total engine warnings, all the documented builtin SHA category, and zero engine errors.
+No storage/removal phase ran on that attempt; the completed factory did not fail.
+Correction accepts the exact builtin SHA warning message independently of thread; all other warning/error messages still fail.
+Harness SHA256 before correction: 39a75274f39c0542f7776ec566e0279e695d7ae23ec9b9d4d4076407b1e534ae
+Harness SHA256 after correction: 1bbc93ec0b6b1ec1c63b7a5eb6cbcf6870e0d14466a444b30012b9ce05d4e5df
+Classifier checks passed for Main, Server, Emerge-1 and Emerge-3, plus unrelated warning, trailing-content warning and engine error rejection.
+Final validation is rerun in a new isolated prefix. This does not establish native Windows, Windows PowerShell5.1, SmartScreen or hardware GPU behavior.
+
+Final fresh-prefix run passed installer, factory, storage checkpoint/resume and removal checks. The exact immutable EXE hash was reverified after execution. Full final report: windows-wine-0.1.3-smoke.log.

@@ -1,0 +1,13 @@
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+OK
+
+Real input verifier checks also passed without starting native engine phases:
+0.1.2: 69906553 bytes; 11858 files; SHA256 e869250a328a477ab0091f2f6b23de4283a9cfb2045088a9453606354e563108
+0.1.3: 69920800 bytes; 11861 files; SHA256 1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5
+Both match their matching frozen docs/releases/<version>.json game_zip path, size and SHA256, plus internal/external manifests and checksum sidecars.
+
+Isolated small fixtures (payload verifier mocked only for guard isolation) reject tampered registry path, size, hash or frozen state, and changed archive bytes even with refreshed checksum/size. Real release archives/registries remain untouched.
+The previously passing native storage-upgrade phases are unchanged and were not rerun for this input-only hardening.

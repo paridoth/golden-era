@@ -623,3 +623,20 @@ unlock another active editor. Source-based fixtures cover this lock behavior;
 the upstream shared detached upgrade inventory remains a multiplayer review
 limit. These changes preserve the stock fluid behavior: drain fluids before
 ordinary relocation. No fluid-state item format was added.
+
+The final 0.1.3 ZIP, Windows EXE and Linux archive are frozen from
+`b0031d1689ae5036ebfe995c51901b990d150a71`; exact hashes and limits are in
+`docs/releases/0.1.3.json`. The ZIP and Linux archive pass the extracted factory;
+the official Linux and Windows engines additionally pass storage restart and
+machine-removal tests against those exact distributions. Windows installation/
+reinstallation retains saved sentinel data. Wine's known builtin SHA warnings
+remain visible; native Windows testing remains pending. A test-only warning
+classifier correction is recorded separately from the frozen game source.
+
+Additional native controller delivery checks use real timers and in-flight tube
+entities through capacity stalls, distribution and restart, with exact final
+totals and no production changes. The actual 0.1.2 storage save continues under
+the exact 0.1.3 ZIP while preserving the checked quantities and full tool
+metadata. All thirty older artifacts and companions retain their bytes.
+The continuing Pipeworks audit has confirmed a separate full-autocrafter blast
+loss; that is recorded as a 0.1.3 known issue for the next version.

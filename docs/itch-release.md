@@ -1,16 +1,20 @@
-# Golden Era 0.1.2: itch.io tester release
+# Golden Era 0.1.3: itch.io tester release
 
-The storage audit found two inherited issues after these package checks: removing
-upgrades from an overfilled drawer can lose excess items, and an explosion at a
-drawer controller can raise a Lua error. Fixes are being validated for 0.1.3.
-Keep this frozen build as a fallback while that update is prepared.
+Version 0.1.3 repairs confirmed item loss from drawer upgrades, digging, native
+piston movement and Elepower machine removal, plus the drawer controller explosion crash.
+Controllers also reindex after moving and reuse their cache for repeated deposits.
+Existing saves use the same item/node formats; keep your save-data folder when
+updating. Previous builds remain frozen as historical fallbacks.
 
-Shareable artifact: `dist/golden-era-playtest-0.1.2-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.2-windows-test.zip`.
-Linux: `dist/golden-era-playtest-0.1.2-linux.tar.gz`; see [Linux setup](linux-release.md).
+Known issue under review for 0.1.4: an explosion can erase a full Pipeworks
+autocrafter and its contents. Normal mining of an occupied autocrafter is blocked.
+
+Shareable artifact: `dist/golden-era-playtest-0.1.3-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.3-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.3-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.2`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.3`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -58,7 +62,7 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.2-windows.exe`.
+**Windows test instructions:** open `golden-era-playtest-0.1.3-windows.exe`.
 It installs automatically, creates a shortcut and starts the game. New players
 choose the supplied workshop or a survival start without workshop tools/materials.
 Existing players retain their position and inventory. Workshop preparation shows
@@ -86,9 +90,9 @@ bundle notices record the exact source-correspondence limit and inherited
 license exceptions.
 
 The packaged game is checked from a clean extraction through its Unix launcher
-using the existing Luanti engine. The final 0.1.2 installer and official Win64
-factory passed isolated Wine tests. The earlier frozen 0.1.1 batch also passed a
-graphical workshop choice and save/reconnect under Wine. The complete 0.1.2 batch
+using the existing Luanti engine. The final 0.1.3 installer and official Win64
+factory, storage restart and machine-removal checks passed isolated Wine tests. The earlier frozen 0.1.1 batch also passed a
+graphical workshop choice and save/reconnect under Wine. The complete 0.1.3 batch
 has its preflight tested separately under PowerShell 7/Linux. Wine is a
 compatibility check on Linux.
 Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
@@ -102,18 +106,24 @@ enumerated installer source, metadata and NSIS notices added. The installed
 `installer-support/EXTRA-FILES.json` identifies these additions; the original
 game file manifest remains valid. `/S` installs without launching the game.
 
-## Rebuild and verify
+## Build and verify
 
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.2-windows-test.zip
-python3 tests/package/run.py
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.3-windows-test.zip
+python3 tests/package/run.py dist/golden-era-playtest-0.1.3-windows-test.zip
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.2-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.3-windows.exe
 python3 scripts/package-linux.py
-python3 tests/linux/run.py dist/golden-era-playtest-0.1.2-linux.tar.gz --launcher-only
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.3-linux.tar.gz --flatpak-runtime --storage-smoke --removal-smoke
 ```
+
+Frozen outputs are protected: select a new version in
+`packaging/playtest/release.json` and the instruction header before creating a
+new release. The build commands above use that active version. To reproduce a
+frozen source snapshot for diagnostics, use a separate explicit output path;
+verification commands remain read-only.
 
 The explicit fetch option restores missing hash-verified model-source inputs.
 Ordinary builds perform no downloads and fail if those inputs are missing,

@@ -1,0 +1,70 @@
+{
+  "version": "0.1.3",
+  "source_revision": "b0031d1689ae5036ebfe995c51901b990d150a71",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.3-windows.exe",
+      "size_bytes": 66513764,
+      "sha256": "14d204f89fa89dcea4af81eccba64bab9ec8af8dbdb73166b38c05d298de6bce",
+      "installed_files": 11871
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.3-linux.tar.gz",
+      "size_bytes": 61910358,
+      "sha256": "194aaac19b0dfaaf00a88f30777f3c6b96ade08d8d8fbf78e3b852a35fff3521",
+      "files": 11862
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.3-windows-test.zip",
+      "size_bytes": 69920800,
+      "sha256": "1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5",
+      "files": 11861
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Windows ZIP on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "changes": [
+    "Drawers upgrade overflow and automatic dig spills emit recoverable complete stacks under Mineclonia",
+    "Drawer controller explosions use the native drop/removal contract and preserve source wear/metadata",
+    "Worn stacks are refused by name/count drawers rather than losing wear",
+    "Native pistons respect existing drawer immobility; moved controllers reindex absolute paths by origin",
+    "Controller cache matches native index shape and invalidates on topology, visual and reload changes",
+    "Elepower guards owned tool/card inventories during mining; native blasts preserve full owned stacks and charged/upgraded machine drops",
+    "Elepower scratch output and ghost inventories never become physical drops; active upgrade editors block removal and stale joins recover",
+    "All builders protect registered frozen artifacts and sidecar aliases before work and promotion",
+    "Existing factory guide explains storage controls, controller deposits, item-slot emptying and fluid draining"
+  ],
+  "validation": {
+    "fast_suite": "PASS existing unit/reference/model/onboarding checks, 17 release-output tests, 2 Drawers patch tests and 4 Elepower patch tests; 3 isolated historical ZIP pin checks",
+    "native_storage": "PASS pinned baseline/repaired checkpoint and restart; all 5000 iron recovered; actual digging/blasts, metadata/wear, native piston/MVPS movement, cache invalidation and 26 concrete recipes",
+    "native_removal": "PASS pinned baseline/repaired mining and real explosions; full ItemStack conservation, no scratch/ghost duplication, native charge/upgrade placement and editor-lock checks",
+    "native_automation": "PASS normal timers/injectors/tube entities/autocrafting to drawers with returned spools, output backpressure and restart",
+    "native_controller_automation": "PASS two processes with actual timers/injectors/tube packets; partial insertion, capacity bounce, distribution and blocked packet restart; exact 5200 iron/24 copper",
+    "packaged_zip": "PASS final ZIP clean extraction, real Unix launcher, fresh external save, native full factory with zero warnings/errors; two fresh builds byte-identical",
+    "linux_archive": "PASS exact final archive/official Flathub LuaJIT factory, storage checkpoint/resume and removal; all four engine processes zero warnings/errors; Gio/launcher checks",
+    "source_equivalence": "PASS all 11783 Linux game files equal ZIP; all 55 packaged project files equal frozen source commit",
+    "onboarding_gui": "PASS final production source with official Flathub client: both real start choices, loading HUD/destinations, PlayerRef inventory and reconnect; two inherited craft-width warnings on each fresh join, zero errors",
+    "windows_installer_wine": "PASS exact EXE, all 11871 installed file hashes, shortcuts and reinstall/world/settings preservation",
+    "windows_engine_wine": "PASS official Win64 LuaJIT factory, storage checkpoint/resume and removal against installed game; four engine processes each 107 known builtin SHA warnings, zero other warnings/errors; 12 Wine diagnostic lines separately retained",
+    "windows_harness": "Exact builtin warning classifier corrected after frozen game source to accept Emerge threads. Harness SHA256 1bbc93ec0b6b1ec1c63b7a5eb6cbcf6870e0d14466a444b30012b9ce05d4e5df; first attempt was a harness false positive after factory PASS",
+    "storage_upgrade": "PASS exact immutable 0.1.2 ZIP CHECKPOINT -> same closed SQLite world -> exact 0.1.3 ZIP COMPLETE; checked iron/copper/redstone quantities and full worn tool metadata, three new iron only, DB integrity and unchanged world metadata",
+    "prior_artifacts": "PASS all 30 prior public/archived artifact and sidecar files retain exact hashes"
+  },
+  "limitations": [
+    "Native Windows/PowerShell 5.1, SmartScreen and hardware graphics/audio remain unverified",
+    "The full 0.1.3 batch/PowerShell/GUI path is not executed under Wine; unchanged bootstrap/preflight commands have earlier separate PowerShell 7/Linux evidence",
+    "Linux GUI uses the exact official client in its matching runtime with software X11 and null audio; ordinary app/portal startup remains separate",
+    "Device fixtures/detached actors do not establish a human survival playthrough or every-machine compatibility",
+    "Simultaneous multiplayer soldering uses upstream shared detached inventory and remains a separate concurrency limitation",
+    "Fluid buffers and in-progress work retain native loss-on-removal behavior; drain fluid machines before ordinary relocation",
+    "The bounded old-save test does not restore items already lost in 0.1.2 or establish whole-world/player-inventory migration",
+    "Optional custom-engine controller prototype remains separate"
+  ],
+  "known_issues": [
+    "Confirmed after source freeze: Mineclonia explosions can erase occupied Pipeworks autocrafter src/dst and the device because its native dig guard refuses before bulk deletion. Repair planned for 0.1.4."
+  ],
+  "evidence_directory": "docs/evidence/2026-10-19/"
+}

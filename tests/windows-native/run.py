@@ -10,6 +10,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import shutil
 import subprocess
@@ -178,8 +179,8 @@ def require_engine_diagnostics(output, label, report):
     """Only the pinned stock engine's documented builtin SHA warning is allowed."""
     warnings = [line for line in output.splitlines() if 'WARNING[' in line]
     errors = [line for line in output.splitlines() if 'ERROR[' in line]
-    unexpected = [line for line in warnings
-                  if ': WARNING[Main]: No SHA256 known for builtin file "' not in line or not line.endswith('"')]
+    unexpected = [line for line in warnings if not re.search(
+        r': WARNING\[[^]]+\]: No SHA256 known for builtin file "[^"\r\n]+"$', line)]
     wine_errors = [line for line in output.splitlines() if ':err:' in line]
     report.append(label + ' diagnostics: ' + str(len(warnings) - len(unexpected)) +
                   ' builtin SHA warning lines; ' + str(len(unexpected)) + ' unexpected warning lines; ' +

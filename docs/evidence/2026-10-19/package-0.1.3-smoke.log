@@ -1,0 +1,18 @@
+Golden Era release ZIP: clean extraction and real launcher/engine smoke
+Archive SHA256: 1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5
+Verified files: 11861
+Cached official Windows download matches its pinned SHA256
+2026-10-19 06:04:22: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:04:25: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tester copy with spaces nth_sb4o/new tester data/worlds/playtest]
+2026-10-19 06:04:25: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30206.
+2026-10-19 06:04:26: ACTION[Server]: Survival recipe reachability: 15 factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.
+2026-10-19 06:06:19: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+2026-10-19 06:06:19: ACTION[Main]: Server: Shutting down
+
+PACKAGE SMOKE PASS: full factory through the extracted launcher; fresh external save; source paths isolated
+Windows: pinned official ZIP and bootstrap checked structurally; native Windows execution still requires tester confirmation
