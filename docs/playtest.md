@@ -40,11 +40,16 @@ ingots into the output barrel. Right-click machines to inspect them. The front
 left barrel contains parts and materials to expand or rebuild the factory.
 A crafting table, alloy furnaces, a drawer and a fluid tank are also available.
 The extra alloy furnaces are ready for the player to wire into power.
+Fresh 0.1.5 workshops also include a planter, harvester, seeds, eight soil blocks,
+bone meal, one wheat item for filter setup and two spare blinking controls in the
+supplies barrel. The Farming guide page explains a small seed-return wheat line. Existing workshop barrels are not
+refilled on update; craft the parts or use the single-player workshop's creative
+catalog while retaining the same world.
 The first batch takes roughly two minutes with the supplied stock generator.
 
 - `/packhelp` shows workshop instructions.
-- `/factoryguide` explains unpowered grinding/alloying, electronics, first power and item routing.
-- `/awards` includes six native factory crafting milestones. These do not grant free items.
+- `/factoryguide` explains unpowered grinding/alloying, electronics, first power, item routing and a small wheat farm.
+- `/awards` includes seven native factory crafting milestones. These do not grant free items.
 - `/workshop` returns to the workshop without resetting it.
 - `/explore` returns to the player's original survival spawn.
 - **K** toggles flight; fast movement is available with **J**.

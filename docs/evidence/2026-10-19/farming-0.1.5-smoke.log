@@ -1,0 +1,148 @@
+Golden Era farming regression: pinned baseline versus copied repair; native coal/timers, exact crop drops, full/partial overflow, full ItemStack pickup,3x3 farm, clocked seed return, wheat storage and process restart
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: elepower: clear stale soldering locks when their editor reconnects
+Runtime-copy patch: elepower: preserve harvester overflow as recoverable full stacks above the machine
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Runtime-copy patch: pipeworks: preserve owned autocrafter src/dst under Mineclonia explosions without dropping previews
+Runtime-copy patch: pipeworks: distinguish newly constructed modern Mineclonia filter previews
+Runtime-copy patch: pipeworks: mark fresh filter previews before their first block activation
+Runtime-copy patch: pipeworks: temporarily keep all filter variants stationary under native and Mesecons pistons
+Runtime-copy patch: pipeworks: skip modern previews while retaining native legacy owned-item refunds
+Runtime-copy patch: pipeworks: mark only completed legacy input refunds or empty-list conversions
+Runtime-copy patch: pipeworks: mark fallback legacy conversion only after successful refund drops
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/games/golden_era_playtest/playtest-sources.json
+
+BASELINE: only harvester restored to exact pinned c37fe7b sources; known output-loss contracts are asserted safely
+Variant: baseline; phase: checkpoint
+2026-10-19 06:54:42: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:54:45: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/world]
+2026-10-19 06:54:45: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30228.
+2026-10-19 06:54:47: ACTION[Server]: Farming smoke: Runtime farm source=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/games/golden_era_playtest/mods/elepower/elepower_farming; game=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/games/golden_era_playtest
+2026-10-19 06:54:47: ACTION[Server]: Farming smoke: Native grass digging/pickup supplied 6 owned seeds in 42 fixture grass digs
+2026-10-19 06:55:09: ACTION[Server]: Farming smoke: empty output generated seeds=2,wheat=1; stored=2,1; world=0,0
+2026-10-19 06:55:09: ACTION[Server]: Farming smoke: partial output generated seeds=1,wheat=1; stored=1,0; world=0,0
+2026-10-19 06:55:09: ACTION[Server]: Farming smoke: full output generated seeds=1,wheat=1; stored=0,0; world=0,0
+2026-10-19 06:55:09: ACTION[Server]: Farming smoke: Full ItemStack contract: generated 5 metadata copper and 1 worn tool; stored copper delta=0; world copper=0,tool=0; wear/metadata retained
+2026-10-19 06:55:09: ACTION[Server]: Farming smoke: Counted supplied bone meal consumed=6 of128; no fertilizer is granted on restart
+2026-10-19 06:55:09: ACTION[Server]: ERA FARMING SMOKE PASS: CHECKPOINT: native full/partial losses reproduced; empty output and exact drop contracts observed; saved recovery ownership
+2026-10-19 06:55:09: ACTION[Main]: Server: Shutting down
+
+baseline checkpoint: process exited successfully
+Variant: baseline; phase: resume
+2026-10-19 06:55:21: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:55:23: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/baseline/world]
+2026-10-19 06:55:23: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30228.
+2026-10-19 06:55:29: ACTION[Server]: ERA FARMING SMOKE PASS: COMPLETE: pinned loss baseline and saved ownership remain unchanged across process restart
+2026-10-19 06:55:29: ACTION[Main]: Server: Shutting down
+
+baseline resume: process exited successfully
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: elepower: clear stale soldering locks when their editor reconnects
+Runtime-copy patch: elepower: preserve harvester overflow as recoverable full stacks above the machine
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Runtime-copy patch: pipeworks: preserve owned autocrafter src/dst under Mineclonia explosions without dropping previews
+Runtime-copy patch: pipeworks: distinguish newly constructed modern Mineclonia filter previews
+Runtime-copy patch: pipeworks: mark fresh filter previews before their first block activation
+Runtime-copy patch: pipeworks: temporarily keep all filter variants stationary under native and Mesecons pistons
+Runtime-copy patch: pipeworks: skip modern previews while retaining native legacy owned-item refunds
+Runtime-copy patch: pipeworks: mark only completed legacy input refunds or empty-list conversions
+Runtime-copy patch: pipeworks: mark fallback legacy conversion only after successful refund drops
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/games/golden_era_playtest/playtest-sources.json
+
+Variant: repaired; phase: checkpoint
+2026-10-19 06:55:42: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:55:45: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/world]
+2026-10-19 06:55:45: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30228.
+2026-10-19 06:55:47: ACTION[Server]: Farming smoke: Runtime farm source=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/games/golden_era_playtest/mods/elepower/elepower_farming; game=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/games/golden_era_playtest
+2026-10-19 06:55:47: ACTION[Server]: Farming smoke: Native grass digging/pickup supplied 6 owned seeds in 44 fixture grass digs
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: empty output generated seeds=2,wheat=1; stored=2,1; world=0,0
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: partial output generated seeds=1,wheat=1; stored=1,0; world=0,1
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: full output generated seeds=2,wheat=1; stored=0,0; world=2,1
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: Full ItemStack contract: generated 5 metadata copper and 1 worn tool; stored copper delta=2; world copper=3,tool=1; wear/metadata retained
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: Starting stock3x3 farm; machines/fertilizer supplied, seeds gathered; no power injection
+2026-10-19 06:56:09: ACTION[Server]: Farming smoke: Native grass digging/pickup supplied 9 owned seeds in 121 fixture grass digs
+2026-10-19 06:56:09: ACTION[Server]:  takes stuff from barrel at (56,200,8)
+2026-10-19 06:56:38: ACTION[Server]: Farming smoke: Native center-layout planter placed 8 crops using 8 seeds: buried planter, central water and surrounding farmland geometry accepted
+2026-10-19 06:56:38: ACTION[Server]:  takes stuff from barrel at (86,200,4)
+2026-10-19 06:57:05: ACTION[Server]: Farming smoke: First native harvest/return/storage cycle: 8 wheat stored, 8 replanted crops, 5 excess seeds, no tube payloads or loose items
+2026-10-19 06:57:05: ACTION[Server]: Farming smoke: Counted supplied bone meal consumed=23 of128; no fertilizer is granted on restart
+2026-10-19 06:57:05: ACTION[Server]: ERA FARMING SMOKE PASS: CHECKPOINT: all overflow recovered with full wear/metadata; native3x3 farm harvested8 wheat into storage and replanted8 crops through real seed-return tubes
+2026-10-19 06:57:05: ACTION[Main]: Server: Shutting down
+
+repaired checkpoint: process exited successfully
+Variant: repaired; phase: resume
+2026-10-19 06:57:17: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 06:57:19: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/farming-debug-yzpinu24/repaired/world]
+2026-10-19 06:57:19: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30228.
+2026-10-19 06:57:26: ACTION[Server]:  takes stuff from barrel at (86,200,4)
+2026-10-19 06:57:45: ACTION[Server]: Farming smoke: After restart, native farm produced16 total wheat, replanted8 crops again, retained all excess seeds; sludge=20mB, bone meal used=35
+2026-10-19 06:57:45: ACTION[Server]: ERA FARMING SMOKE PASS: COMPLETE: physical spill recovery saved; stock planter/harvester/clocked seed return/wheat storage completed another cycle without seed or power gifts
+2026-10-19 06:57:45: ACTION[Main]: Server: Shutting down
+
+repaired resume: process exited successfully

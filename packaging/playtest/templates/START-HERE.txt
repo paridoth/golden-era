@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.4
+GOLDEN ERA — FACTORY PLAYTEST 0.1.5
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -54,9 +54,14 @@ Filter-injectors resist piston movement in this build. Mine and place them to
 relocate them, then configure their selectors again.
 
 The factory guide explains the hand-cranked grindstone, coal-fired alloys,
-electronics, first power and item routing. Six crafting milestones use the
+electronics, first power, item routing and a small renewable wheat farm. Seven crafting milestones use the
 existing advancement system (/awards). The extra workshop alloy furnaces can
 be wired with the supplied conduits. Explore, build and report confusing parts.
+New workshops include a planter, harvester, seeds, soil, bone meal, one wheat
+for filter setup and two blinking controls in the supplies barrel. Follow the
+Farming guide page to build a small seed-return line.
+Existing worlds keep their barrels unchanged; use recipes or the workshop's
+creative catalog to try the new machinery without replacing your save.
 
 SAVES AND FEEDBACK
 

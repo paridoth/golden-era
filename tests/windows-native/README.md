@@ -63,6 +63,17 @@ Wine diagnostics are counted separately. The flags can be combined:
 
     python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.4-windows.exe --engine-smoke --storage-smoke --removal-smoke --pipeworks-smoke
 
+`--farming-smoke` adds `tests/farming/mod` as `era_farming_smoke` in another fresh
+SQLite world on port 30232. It requires `--engine-smoke`, selects
+`era_farming_baseline=false`, and records both the copied fixture SHA256 and the
+exact installed `elepower_farming/machines/harvester.lua` path and SHA256. It
+requires the exact `ERA FARMING SMOKE PASS: CHECKPOINT:` and `COMPLETE:` prefixes
+from two engine processes on the same world, rejects FAIL markers and unexpected
+engine diagnostics, and retains command/server logs and diagnostic counts.
+For a release containing that repair:
+
+    python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.5-windows.exe --engine-smoke --storage-smoke --removal-smoke --pipeworks-smoke --farming-smoke
+
 To additionally run the actual installed batch launcher through Wine's cmd.exe,
 click the real first-join workshop chooser, and reconnect to verify saved
 choice/inventory/position, use:

@@ -53,7 +53,12 @@ function era_playtest.build_fixture(base,owner)
   "mcl_redstone:redstone 64","elepower_dynamics:conduit 32","pipeworks:tube_1 32",
   "pipeworks:mese_filter 4","drawers:oakwood1 4","drawers:controller 1","fluid_tanks:tank 4",
   "fluid_transfer:fluid_duct 16","fluid_transfer:fluid_transfer_pump 2","mcl_buckets:bucket_water 1",
-  "elepower_machines:generator 2","elepower_machines:power_cell_0 2","elepower_tome:tome 1","mcl_farming:bread 32"}
+  "elepower_machines:generator 2","elepower_machines:power_cell_0 2","elepower_tome:tome 1","mcl_farming:bread 32",
+  "elepower_farming:planter 1","elepower_farming:harvester 1","mcl_farming:wheat_seeds 32",
+  "mcl_core:dirt 8","mcl_bone_meal:bone_meal 32","mcl_farming:wheat_item 1"}
+ if core.registered_nodes["mesecons_blinkyplant:blinky_plant_off"] then
+  items[#items+1]="mesecons_blinkyplant:blinky_plant_off 2"
+ end
  for _,stack in ipairs(items) do
   assert(core.registered_items[ItemStack(stack):get_name()],"Missing supply: "..stack)
   assert(supplies:add_item("main",stack):is_empty(),"Workshop supplies overflow")
@@ -67,7 +72,8 @@ local function help(name)
   "The barrel on the right collects ingots. The barrel at the front left holds building supplies.\n\n"..
   "Right-click machines to see their inventories. Use the Elepower Tome for machine help, "..
   "and the inventory recipe guide to find crafts. Drawers accept items by right-clicking; "..
-  "left-click their front to take items out. Extra alloy furnaces and a fluid tank are ready to experiment with.\n\n"..
+  "left-click their front to take items out. Extra alloy furnaces and a fluid tank are ready to experiment with. "..
+  "New workshops include farming parts in the supplies barrel; /factoryguide explains a small seed-return wheat farm.\n\n"..
   "/workshop returns here. /explore takes you to the survival spawn. "..
   "This world uses survival item quantities with damage disabled. In the single-player workshop, "..
   "K toggles flight and /gamemode creative enables the full item catalog. Server players need the appropriate privileges.\n\n"..

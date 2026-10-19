@@ -1,0 +1,97 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+PASS machine rate thresholds use integer ramp
+PASS dynamo rate thresholds and full-buffer minimum
+PASS no water preserves unconsumed coal
+PASS no fuel preserves unconverted water
+PASS coal and water become separate persistent credits
+PASS one coal drains to 24000 RF and carries water credit
+PASS charcoal uses 16000 RF
+PASS signed overshoot is carried into both next batches
+PASS full storage dissipates minimum generation and debits credits
+PASS copying persisted credits preserves exact continuation
+PASS invalid resource bounds fail before mutation
+THERMAL MODEL UNIT PASS: 11 tests
+ONBOARDING PASS: survival/legacy saves; one-time kit; visible loading; pending resume; session isolation; cancellation/error/retry; stale travel callbacks; guide and craft milestones
+test_all_three_formats_and_companions_are_reserved (__main__.ReleaseGuardTests.test_all_three_formats_and_companions_are_reserved) ... ok
+test_alternate_apis_reach_their_normal_pipeline (__main__.ReleaseGuardTests.test_alternate_apis_reach_their_normal_pipeline) ... ok
+test_alternate_output_with_existing_unregistered_files_remains_allowed (__main__.ReleaseGuardTests.test_alternate_output_with_existing_unregistered_files_remains_allowed) ... ok
+test_exe_api_rejects_default_before_input_verification_or_toolchain (__main__.ReleaseGuardTests.test_exe_api_rejects_default_before_input_verification_or_toolchain) ... ok
+test_exe_registration_during_compile_blocks_promotion (__main__.ReleaseGuardTests.test_exe_registration_during_compile_blocks_promotion) ... ok
+test_explicit_sidecar_collision_is_rejected_by_zip_api_before_assembly (__main__.ReleaseGuardTests.test_explicit_sidecar_collision_is_rejected_by_zip_api_before_assembly) ... ok
+test_hardlinked_sidecar_alias_is_refused (__main__.ReleaseGuardTests.test_hardlinked_sidecar_alias_is_refused) ... ok
+test_legacy_nested_and_list_records (__main__.ReleaseGuardTests.test_legacy_nested_and_list_records) ... ok
+test_linux_api_rejects_default_from_input_version_before_assembly (__main__.ReleaseGuardTests.test_linux_api_rejects_default_from_input_version_before_assembly) ... ok
+test_linux_registration_during_build_blocks_promotion (__main__.ReleaseGuardTests.test_linux_registration_during_build_blocks_promotion) ... ok
+test_malformed_or_escaping_registry_fails_closed (__main__.ReleaseGuardTests.test_malformed_or_escaping_registry_fails_closed) ... ok
+test_missing_registered_file_is_still_reserved (__main__.ReleaseGuardTests.test_missing_registered_file_is_still_reserved) ... ok
+test_parent_directory_and_symlink_aliases (__main__.ReleaseGuardTests.test_parent_directory_and_symlink_aliases) ... ok
+test_tiny_alternate_zip_build_and_verification_succeed (__main__.ReleaseGuardTests.test_tiny_alternate_zip_build_and_verification_succeed) ... ok
+test_zip_api_rejects_default_before_assembly_or_download (__main__.ReleaseGuardTests.test_zip_api_rejects_default_before_assembly_or_download) ... ok
+test_zip_manifest_collision_with_frozen_linux_and_exe (__main__.ReleaseGuardTests.test_zip_manifest_collision_with_frozen_linux_and_exe) ... ok
+test_zip_registration_during_build_blocks_promotion (__main__.ReleaseGuardTests.test_zip_registration_during_build_blocks_promotion) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.084s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.022s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.273s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.138s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.162s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.014s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.056s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.046s
+
+OK
+CRAFTING CATALOG PASS: 23 material declarations and 16 recipes match reviewed source inputs
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+SURVIVAL MODEL PASS: three ores, five scatters, eight dust cooking and six pulverizing records

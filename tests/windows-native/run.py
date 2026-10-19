@@ -295,6 +295,48 @@ def pipeworks_smoke(work, wine64, engine, run, report):
     report.append('PASS: installed game Pipeworks repairs passed checkpoint and resume in separate official Win64 engine processes under Wine; only documented builtin SHA warnings permitted')
 
 
+def farming_smoke(work, wine64, engine, app, run, report):
+    """Run repaired stock farming and persistence against the installed game."""
+    relative = 'games/golden_era_playtest/mods/elepower/elepower_farming/machines/harvester.lua'
+    harvester = app / relative
+    if not harvester.is_file():
+        raise RuntimeError('Installed farming source is missing: ' + relative)
+    report.append('Installed harvester path: ' + relative + '; SHA256: ' + sha(harvester))
+    test_data = work / 'prefix/drive_c/GoldenEraWineFarming'
+    if test_data.exists():
+        raise RuntimeError('Farming smoke requires a fresh disposable world')
+    world = test_data / 'world'
+    observer = world / 'worldmods/era_farming_smoke'
+    shutil.copytree(ROOT / 'tests/farming/mod', observer)
+    (world / 'world.mt').write_text(
+        'gameid = golden_era_playtest\nbackend = sqlite3\nplayer_backend = sqlite3\n'
+        'auth_backend = sqlite3\nmod_storage_backend = sqlite3\n')
+    (test_data / 'server.conf').write_text('\n'.join([
+        'bind_address = 127.0.0.1', 'port = 30232', 'server_announce = false',
+        'mg_name = singlenode', 'mcl_singlenode_mapgen = false', 'creative_mode = false',
+        'enable_damage = false', 'max_forceloaded_blocks = 32',
+        'mesecon.blinky_plant_interval = 1',
+        'era_playtest_no_welcome = true', 'era_farming_baseline = false']) + '\n')
+    report.append('Farming mode: repaired; separate disposable SQLite world; copied fixture SHA256: ' +
+                  sha(observer / 'init.lua'))
+    for phase, marker in (
+            ('checkpoint', 'ERA FARMING SMOKE PASS: CHECKPOINT:'),
+            ('resume', 'ERA FARMING SMOKE PASS: COMPLETE:')):
+        output = run([
+            str(wine64), str(engine / 'bin/luanti.exe'), '--server', '--gameid', 'golden_era_playtest',
+            '--world', 'C:\\GoldenEraWineFarming\\world', '--config', 'C:\\GoldenEraWineFarming\\server.conf',
+            '--logfile', 'C:\\GoldenEraWineFarming\\' + phase + '.log'], 'farming-' + phase, timeout=210)
+        engine_log = test_data / (phase + '.log')
+        if engine_log.is_file():
+            shutil.copy2(engine_log, work / ('farming-' + phase + '-server.log'))
+        require_engine_diagnostics(output, 'Farming ' + phase, report)
+        passes = [line for line in output.splitlines() if 'ERA FARMING SMOKE PASS:' in line]
+        if len(passes) != 1 or marker not in passes[0] or 'ERA FARMING SMOKE FAIL' in output:
+            raise RuntimeError('Official Win64 engine did not complete repaired farming ' + phase + ': ' + output[-3000:])
+        report.append(passes[0])
+    report.append('PASS: installed game farming repairs passed checkpoint and resume in separate official Win64 engine processes under Wine; only documented builtin SHA warnings permitted')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--fetch-tools', action='store_true')
@@ -305,6 +347,7 @@ def main():
     parser.add_argument('--storage-smoke', action='store_true', help='Also run repaired storage checkpoint/resume against the installed game; requires --engine-smoke')
     parser.add_argument('--removal-smoke', action='store_true', help='Also run repaired machine removal against the installed game; requires --engine-smoke')
     parser.add_argument('--pipeworks-smoke', action='store_true', help='Also run repaired Pipeworks checkpoint/resume against the installed game; requires --engine-smoke')
+    parser.add_argument('--farming-smoke', action='store_true', help='Also run repaired farming checkpoint/resume against the installed game; requires --engine-smoke')
     parser.add_argument('--launcher-smoke', action='store_true', help='Also run the installed batch/GUI first-join and reconnect tests; requires --engine-smoke')
     parser.add_argument('--world-creation-smoke', action='store_true', help='Run exact frozen/current world creation blocks through Wine cmd.exe')
     args = parser.parse_args()
@@ -316,6 +359,8 @@ def main():
         parser.error('--removal-smoke requires --engine-smoke to prepare the verified Windows engine')
     if args.pipeworks_smoke and not args.engine_smoke:
         parser.error('--pipeworks-smoke requires --engine-smoke to prepare the verified Windows engine')
+    if args.farming_smoke and not args.engine_smoke:
+        parser.error('--farming-smoke requires --engine-smoke to prepare the verified Windows engine')
     installer = inside(args.installer)
     record = json.loads(installer.with_suffix('.exe.manifest.json').read_text())
     if sha(installer) != record['sha256']:
@@ -460,7 +505,7 @@ def main():
             report.append('Official engine diagnostics: ' + str(len(warnings)) + ' warning lines; ' + str(len(errors)) + ' error lines. Full output is retained in runtime/tests/windows-wine-logs/engine-factory.log.')
             if warnings:
                 report.append('First warning: ' + warnings[0])
-            if args.storage_smoke or args.removal_smoke or args.pipeworks_smoke:
+            if args.storage_smoke or args.removal_smoke or args.pipeworks_smoke or args.farming_smoke:
                 require_engine_diagnostics(output, 'Stock factory', report)
             if args.storage_smoke:
                 storage_smoke(work, wine64, engine, run, report)
@@ -468,6 +513,8 @@ def main():
                 removal_smoke(work, wine64, engine, run, report)
             if args.pipeworks_smoke:
                 pipeworks_smoke(work, wine64, engine, run, report)
+            if args.farming_smoke:
+                farming_smoke(work, wine64, engine, app, run, report)
             if args.launcher_smoke:
                 launcher_smoke(work, env, wine64, data, app, localappdata, record['version'], report)
     except Exception as error:

@@ -1,0 +1,18 @@
+{
+  "mode": "final Farming guide layout inspection; exact source hash recorded",
+  "actual_survival_chooser_click": true,
+  "guide_page": 6,
+  "page_selected_by": "test observer calls native era_playtest.show_factory_guide; no claim of clicking a guide tab",
+  "guide_sha256": "d203731b316d3ab6761fb9c92253c483940c1a37518484e0e7f2169d9f4a177e",
+  "harness_sha256": "5b9a1b3f8318af2b453859953d5925c5611817e776ca34a3278737592e6d59cd",
+  "probe_sha256": "687c23aebfdb5f9fe677f6667eac599726b52a8bace0dd7c287497f6bbb5ddbd",
+  "engine": "official Flathub Luanti 5.17.0 via repository wrapper; software Xvfb, null audio",
+  "warnings": 2,
+  "errors": 0,
+  "layout_review": "PASS: all six tab labels, complete Farming instructions and three buttons visible at 1280x900",
+  "limitations": [
+    "Guide page selected through native server API by the disposable observer; guide-tab clicking and a full new onboarding/reconnect suite are not claimed",
+    "Software X11 and null audio; ordinary desktop portal startup and hardware graphics/audio remain unverified",
+    "Two inherited fresh-join Mineclonia craft-width warnings; zero errors"
+  ]
+}

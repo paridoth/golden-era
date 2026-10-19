@@ -84,7 +84,8 @@ local function run()
  for _,name in ipairs({"elepower_machines:generator","elepower_machines:power_cell_0","elepower_machines:pulverizer","elepower_machines:furnace",
   "elepower_dynamics:conduit","pipeworks:tube_1","pipeworks:mese_filter","fluid_tanks:tank","drawers:oakwood1",
   "elepower_machines:grindstone","elepower_machines:crank","elepower_machines:coal_alloy_furnace",
-  "elepower_machines:machine_block","elepower_dynamics:steel_block"}) do
+  "elepower_machines:machine_block","elepower_dynamics:steel_block",
+  "elepower_farming:planter","elepower_farming:harvester"}) do
   assert(core.registered_nodes[name],"Missing selected playable node: "..name)
   check_craft(name)
  end

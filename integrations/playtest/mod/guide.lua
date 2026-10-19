@@ -22,6 +22,10 @@ local pages={
   "Storage Drawers hold bulk materials. Right-click the front to store items; left-click to retrieve a stack, or sneak to retrieve one item. E + left-click toggles the item-type lock. Connect drawers or trim to a controller for bulk deposits, including Pipeworks input; retrieve from drawer fronts. The recipe guide includes upgrades and controllers.\n\n"..
   "Pipeworks autocrafters need output room for both products and returned containers. Crafting conduits from copper wire returns empty spools. Filter the conduits into storage and collect or route the spools separately; a full output pauses crafting.\n\n"..
   "Try fluid tanks and ducts, better generation, powered tools or mining machines next. Build one addition at a time and check that the previous line still works."},
+ {title="Farming",text="After powered soldering and diamond mining, build an Automatic Planter and Automatic Harvester. Use the inventory recipe guide and Elepower Tome for their components and recipes.\n\n"..
+  "Bury the planter below the soil layer with water directly above it. Drag a wheat seed into the upper center layout slot: it selects a 3x3 patch with eight soil blocks around that water. The layout is a preview; put real seeds in the lower supply inventory.\n\n"..
+  "Power both machines through conduits and face the harvester toward the field at crop height. Configure one filter for wheat seeds and another for wheat. Return seeds to the planter; send wheat to a drawer or barrel. Place a Mesecons blinking control beside each filter after configuration.\n\n"..
+  "New workshop supplies include seeds, a wheat item and two controls. The harvester drops overflow above itself; collect loose items before they expire. Sludge is a byproduct: drain its buffer periodically so it has room to keep harvesting."},
 }
 era_playtest.factory_guide_pages=pages
 
@@ -63,6 +67,7 @@ local milestones={
  {id="processing",item="elepower_machines:pulverizer",title="Factory: ore processing",description="Craft a Pulverizer to grind raw iron into two dust."},
  {id="routing",item="pipeworks:mese_filter",title="Factory: item routing",description="Craft a filter-injector. Add tubes and a Mesecons control to move items automatically."},
  {id="storage",item="drawers:oakwood1",title="Factory: bulk storage",description="Craft an oak drawer for bulk materials. Right-click its front to store items."},
+ {id="farming",item="elepower_farming:harvester",title="Factory: renewable harvest",description="Craft an Automatic Harvester. Add a powered planter and filter seeds back to its supply inventory."},
 }
 era_playtest.factory_milestones=milestones
 for _,goal in ipairs(milestones) do

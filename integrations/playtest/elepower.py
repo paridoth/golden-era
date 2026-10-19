@@ -209,4 +209,23 @@ minetest.register_on_joinplayer(clear_soldering)
 '''
     if _replace(soldering, old, new):
         changed.append("elepower: clear stale soldering locks when their editor reconnects")
+    harvester = path / "elepower_farming/machines/harvester.lua"
+    old = '''                for _, itm in ipairs(harvested) do
+                    local stack = ItemStack(itm)
+                    if inv:room_for_item("dst", stack) then
+                        inv:add_item("dst", stack)
+                    end
+                end
+'''
+    new = '''                for _, itm in ipairs(harvested) do
+                    -- Golden Era: harvesting already removed the crop/tree.
+                    -- Keep partial insertion and spill only its real leftover.
+                    local leftover = inv:add_item("dst", ItemStack(itm))
+                    if not leftover:is_empty() then
+                        core.add_item(vector.offset(pos, 0, 1, 0), leftover)
+                    end
+                end
+'''
+    if _replace(harvester, old, new):
+        changed.append("elepower: preserve harvester overflow as recoverable full stacks above the machine")
     return changed

@@ -353,5 +353,5 @@ for id,definition in pairs(awards.registered_awards) do
  eq(definition.trigger.target,1,"One craft milestone")
  assert(not definition.prizes,"Guidance does not mint free items")
 end
-eq(count,6,"Six native factory milestones")
+eq(count,7,"Seven native factory milestones")
 print("ONBOARDING PASS: survival/legacy saves; one-time kit; visible loading; pending resume; session isolation; cancellation/error/retry; stale travel callbacks; guide and craft milestones")

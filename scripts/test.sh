@@ -9,6 +9,7 @@ python3 tests/storage/test_patch.py
 python3 tests/storage/test_upgrade.py
 python3 tests/machine-removal/test_patch.py
 python3 tests/pipeworks-removal/test_patch.py
+python3 tests/farming/test_patch.py
 python3 tests/unit/test_reference.py
 python3 tests/unit/test_thermal_reference.py
 python3 tests/unit/test_thermal_catalog.py

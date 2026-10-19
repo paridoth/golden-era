@@ -11,7 +11,7 @@ return function()
  end
  local roots={"mcl_trees:tree_oak","mcl_trees:leaves_oak","mcl_core:cobble","mcl_core:sand",
   "mcl_core:clay_lump","mcl_core:flint","mcl_core:coal_lump","mcl_core:water_source",
-  "mcl_raw_ores:raw_iron","mcl_copper:raw_copper","mcl_raw_ores:raw_gold",
+  "mcl_raw_ores:raw_iron","mcl_copper:raw_copper","mcl_raw_ores:raw_gold","mcl_core:diamond",
   "mcl_redstone:redstone","mcl_farming:wheat_seeds","mcl_dyes:black","mcl_dyes:red","mcl_dyes:blue",
   "elepower_dynamics:lead_lump","elepower_dynamics:tin_lump","moreores:silver_lump",
   "elepower_dynamics:zinc_lump","elepower_dynamics:nickel_lump"}
@@ -74,7 +74,8 @@ return function()
  local targets={"elepower_machines:grindstone","elepower_machines:crank","elepower_machines:coal_alloy_furnace",
   "elepower_machines:generator","elepower_dynamics:conduit","elepower_machines:pulverizer","elepower_machines:furnace",
   "elepower_machines:solderer","elepower_machines:compressor","elepower_machines:power_cell_0",
-  "pipeworks:tube_1","pipeworks:mese_filter","pipeworks:autocrafter","drawers:oakwood1","fluid_tanks:tank"}
+  "pipeworks:tube_1","pipeworks:mese_filter","pipeworks:autocrafter","drawers:oakwood1","fluid_tanks:tank",
+  "elepower_farming:planter","elepower_farming:harvester"}
  for _,name in ipairs(targets) do assert(has(name),"Survival recipe dependency cycle or missing source: "..name) end
  core.log("action","Survival recipe reachability: "..#targets.." factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.")
 end
