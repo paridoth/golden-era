@@ -80,35 +80,114 @@ local function help(name)
 end
 era_playtest.show_workshop_help = help
 core.register_chatcommand("packhelp",{description="Show playtest workshop instructions",func=function(name) help(name);return true end})
+-- Session/request identities prevent old mapgen callbacks from moving a newly
+-- connected player, or overriding a more recent travel/cancel request.
+local sessions,travel={},{}
+function era_playtest.player_session(name) return sessions[name] end
+local function current_player(name,request)
+ if travel[name]~=request or sessions[name]~=request.session then return end
+ return core.get_player_by_name(name)
+end
+local function remove_loading(player,request)
+ if request and request.hud~=nil then player:hud_remove(request.hud);request.hud=nil end
+end
+core.register_on_joinplayer(function(player)
+ sessions[player:get_player_name()]={}
+end)
+core.register_on_leaveplayer(function(player)
+ local name=player:get_player_name()
+ remove_loading(player,travel[name])
+ sessions[name]=nil;travel[name]=nil
+ -- Pending metadata stays saved; the next session resumes without another kit.
+end)
+local function clear_pending(player)
+ local meta=player:get_meta()
+ meta:set_int("era_playtest_workshop_pending",0)
+ meta:set_int("era_playtest_workshop_first",0)
+end
+local function cancel_workshop(name)
+ local player=core.get_player_by_name(name);if not player then return false,"Player is offline." end
+ local request=travel[name]
+ local pending=player:get_meta():get_int("era_playtest_workshop_pending")==1
+ if request and request.kind=="workshop" then
+  remove_loading(player,request);travel[name]=nil;pending=true
+ end
+ clear_pending(player)
+ if not pending then return false,"No workshop trip is waiting." end
+ return true,"Workshop trip canceled. /workshop starts another trip whenever you are ready."
+end
+era_playtest.cancel_workshop=cancel_workshop
+core.register_chatcommand("cancelworkshop",{description="Cancel a waiting workshop trip and stay where you are",func=cancel_workshop})
+local function workshop_failed(name,request,reason)
+ local player=current_player(name,request);if not player then return end
+ remove_loading(player,request);travel[name]=nil
+ core.log("warning","ERA PLAYTEST WORKSHOP RETRY: "..tostring(reason))
+ core.chat_send_player(name,"The workshop could not finish loading. Your trip is saved. /workshop retries; /cancelworkshop cancels it.")
+end
 local function workshop(name,first)
- core.emerge_area(at(origin,-8,-2,-5),at(origin,14,5,9),function(_,_,remaining)
+ local player=core.get_player_by_name(name);if not player then return false,"Player is offline." end
+ local session=sessions[name];if not session then return false,"Player is not ready." end
+ local previous=travel[name]
+ if previous and previous.kind=="workshop" and previous.session==session then
+  return true,"Your workshop trip is already loading. Keep exploring; /cancelworkshop cancels the trip."
+ end
+ local meta=player:get_meta()
+ meta:set_int("era_playtest_workshop_pending",1)
+ if first then meta:set_int("era_playtest_workshop_first",1) end
+ local request={kind="workshop",session=session,first=meta:get_int("era_playtest_workshop_first")==1}
+ travel[name]=request
+ request.hud=player:hud_add({type="text",position={x=0.5,y=0.2},alignment={x=0,y=0},
+  number=0xFFE7A0,style=1,size={x=1,y=1},z_index=100,
+  text="Preparing workshop terrain. You can keep exploring.\nYou will be moved when it is ready. /cancelworkshop cancels."})
+ core.chat_send_player(name,"Preparing workshop terrain. You can keep exploring and will be moved when it is ready. /cancelworkshop cancels this trip.")
+ local queued,err=pcall(core.emerge_area,at(origin,-8,-2,-5),at(origin,14,5,9),function(_,action,remaining)
+  if not current_player(name,request) then return end
+  if action==core.EMERGE_CANCELLED or action==core.EMERGE_ERRORED then
+   workshop_failed(name,request,"terrain generation action "..tostring(action));return
+  end
   if remaining~=0 then return end
   core.after(0,function()
-   local player=core.get_player_by_name(name);if not player then return end
-   local ok,err=xpcall(function()
+   local current=current_player(name,request);if not current then return end
+   local ok,failure=xpcall(function()
     if storage:get_int("workshop_v1")~=1 then
      era_playtest.build_fixture(origin,name);storage:set_int("workshop_v1",1)
     end
-    player:set_pos(at(origin,3,0.5,6));player:set_look_horizontal(math.pi);player:set_look_vertical(0.2)
-    if first then help(name) end
-    core.chat_send_player(name,"Workshop ready. /packhelp for instructions; /explore for survival terrain; /workshop to return.")
-    core.log("action","ERA PLAYTEST READY: workshop and existing-mod factory available for "..name)
+    current:set_pos(at(origin,3,0.5,6));current:set_look_horizontal(math.pi);current:set_look_vertical(0.2)
    end,debug.traceback)
-   if not ok then core.log("error","ERA PLAYTEST WORKSHOP FAIL: "..err);core.chat_send_player(name,"Workshop setup failed; see the game log.") end
+   if not ok then workshop_failed(name,request,failure);return end
+   clear_pending(current);remove_loading(current,request);travel[name]=nil
+   if request.first then help(name) end
+   core.chat_send_player(name,"Workshop ready. /packhelp for instructions; /explore for survival terrain; /workshop to return.")
+   core.log("action","ERA PLAYTEST READY: workshop and existing-mod factory available for "..name)
   end)
  end)
+ if not queued then workshop_failed(name,request,err);return false,"Could not queue the workshop trip." end
+ return true
 end
 era_playtest.visit_workshop = workshop
-core.register_chatcommand("workshop",{description="Return to the playtest workshop",func=function(name) workshop(name,false);return true,"Loading workshop..." end})
+core.register_chatcommand("workshop",{description="Return to the playtest workshop",func=function(name) return workshop(name,false) end})
 local function explore(name)
  local player=core.get_player_by_name(name);if not player then return false,"Player is offline." end
+ local session=sessions[name];if not session then return false,"Player is not ready." end
+ cancel_workshop(name)
+ local request={kind="surface",session=session};travel[name]=request
  local target=core.deserialize(player:get_meta():get_string("era_playtest_surface")) or mcl_spawn.get_world_spawn_pos(player)
- core.emerge_area(vector.subtract(target,16),vector.add(target,16),function(_,_,remaining)
+ local queued,err=pcall(core.emerge_area,vector.subtract(target,16),vector.add(target,16),function(_,action,remaining)
+  if not current_player(name,request) then return end
+  if action==core.EMERGE_CANCELLED or action==core.EMERGE_ERRORED then
+   travel[name]=nil;core.chat_send_player(name,"The survival terrain could not load. /explore retries the trip.");return
+  end
   if remaining~=0 then return end
   core.after(0,function()
-   local current=core.get_player_by_name(name);if current then current:set_pos(target) end
+   local current=current_player(name,request)
+   if current then current:set_pos(target);travel[name]=nil end
   end)
  end)
+ if not queued then
+  if current_player(name,request) then travel[name]=nil end
+  core.log("warning","ERA PLAYTEST SURFACE RETRY: "..tostring(err))
+  return false,"Could not queue the survival trip. /explore retries it."
+ end
  return true,"Returning to survival terrain. /workshop brings you back."
 end
 era_playtest.return_to_surface = explore

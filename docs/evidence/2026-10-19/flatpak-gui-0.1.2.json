@@ -1,0 +1,18 @@
+{
+  "result": "pass",
+  "engine_version": "5.17.0",
+  "engine_sha256": "f9c00d71351b8706e047cca601eac164d2c7f5dc8d10c1df9c9cdf91f432f809",
+  "flathub_commit": "2f5005c9ef6135ad0e345de6dd1bc6590da54556d8f492a7d66ead719593d362",
+  "wrapper_sha256": "aaf57175a8ef712ea79c0bb221ad4e89a493cea591db3e061ce0e67c5c4490c7",
+  "game_layout": "self-contained dereferenced assembly inside disposable world",
+  "phases": [
+    "survival choice",
+    "survival reconnect",
+    "workshop choice",
+    "workshop reconnect"
+  ],
+  "graphics": "authenticated Xvfb :97, software OpenGL",
+  "audio": "OpenAL null backend; no audible sound claim",
+  "scope": "Exact official application binary inside Freedesktop26.08 runtime; ordinary application/portal launch is not tested",
+  "warnings": "Two inherited craft-width warnings per fresh join; zero reconnect warnings; zero engine errors in all sessions"
+}

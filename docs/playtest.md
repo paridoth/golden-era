@@ -17,6 +17,8 @@ client. It creates a persistent world at
 `runtime/playtest/worlds/revelation-playtest`, with normal v7 survival terrain,
 survival inventory quantities and damage disabled. Close the game normally to
 save. Relaunch with the same command to continue. No system packages are installed.
+The developer launcher creates its configuration once; later launches keep your
+changes to `runtime/playtest/playtest.conf`.
 
 New players choose once between a supplied workshop and a survival start at the
 natural spawn. Survival grants no workshop tools or materials; the stock Elepower
@@ -25,6 +27,10 @@ tools and torches and enables experiment privileges in single-player. Server
 guests keep their configured privileges. Neither choice clears an
 inventory. Existing 0.1.0 players keep their position, inventory and workshop.
 `/startchoice` reopens an unfinished choice.
+Workshop preparation shows a nonblocking status message. You can continue exploring
+until automatic arrival, or use `/cancelworkshop` to stay where you are. Unfinished
+trips resume after reconnecting without another starter kit. See
+[workshop loading](workshop-loading.md) for cancellation and retry behavior.
 
 The optional supplied workshop above the terrain contains a
 coal-fired generator, power cell, Pulverizer, powered furnace, tubes, filter
@@ -111,3 +117,8 @@ inventories and saved positions. The helper downloads only the hash-locked GUI
 test packages into `tools/`; no system packages or user worlds are changed.
 It requires the local graphical client, Pillow with XCB, xauth, X11 and XTest.
 The isolated display is :97 and the test port is 30212.
+
+`scripts/ci.sh` now checks the active stock-mod pack as well as the earlier custom
+prototype: factory flow, survival material acquisition, autocrafting/drawer restart
+and current Unix launcher save guards. Graphical checks and Windows bootstrap/Wine
+checks remain separate because they need their respective local developer tools.

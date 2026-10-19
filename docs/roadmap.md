@@ -36,9 +36,17 @@ flow, real Linux onboarding/destination/restart checks and the exact Windows
 PowerShell bootstrap have separate evidence and clearly stated limits. Human
 survival pacing and native Windows startup remain to be played.
 
-Next work is a Pipeworks autocrafter feeding Storage Drawers: check material and
-replacement-item conservation, blocked outputs and restart recovery. Also make
-slow first-workshop preparation visible and resumable after a disconnect.
+The next desktop update, 0.1.2, adds visible workshop loading, saved pending trips,
+cancellation/retry and protection against stale travel callbacks. Real client
+shutdown/restart checks preserve the trip and exact inventory, then keep the
+player's new position after arrival. Launchers reject foreign, ambiguous and
+orphaned saves before writing settings or metadata.
+
+The stock Pipeworks autocrafter-to-drawer scenario is now verified: sixteen
+conduits and all six returned spools survive output backpressure and a process
+restart. The guide explains collecting returned spools separately. The next
+feature priority still follows actual play feedback; these checks do not replace
+a human survival session or a native Windows test.
 The experimental [desktop controller engine](controller-support.md) is separate
 from these stock-engine releases; physical controllers and a custom Windows
 binary remain unverified.

@@ -552,3 +552,28 @@ rebound a controller key and reopened inventory. The unmodified engine failed
 the same first transfer as expected. This separately built Linux development
 engine is optional, lacks development-build audio/HTTP, and is not part of the
 Windows/Linux stock-engine packages. See controller-support.md for scope.
+
+## Desktop 0.1.2 — 2026-10-19
+
+Workshop preparation now shows a readable status while the player keeps exploring.
+Pending trips survive disconnects, resume without another kit, and can be canceled
+or retried. Session/request identities prevent old terrain callbacks from moving
+a reconnected player or overriding a newer trip. Returning players without a
+pending trip keep their saved positions. The actual native three-session test
+confirmed pending metadata, one pick/axe, 32 torches and seven saved test ingots
+through interruption, arrival and a later reconnect at a different position.
+
+All desktop launchers now validate existing world metadata before writing files.
+They respect final case-sensitive IDs, conservatively refuse structured metadata,
+and preserve orphaned SQLite/LevelDB/legacy data. The developer launcher also
+preserves its configuration. Windows writes the five fresh world settings on
+separate lines, resolving the block-redirection behavior observed under Wine.
+Stock autocrafting-to-drawer tests cover blocked outputs, returned spools and
+restart conservation; the guide explains keeping output room for byproducts.
+
+The expanded CI passed unit/reference checks, 24 legacy engine processes, the
+active factory/survival/automation scenarios and Unix save guards. Both native
+Linux and official Flathub client GUI checks passed choices and saved state.
+Windows has actual installer/Win64/batch/GUI compatibility evidence under Wine;
+native Windows and PowerShell 5.1 remain pending. The optional controller engine
+remains separate, and frozen 0.1.0/0.1.1 artifacts are preserved.

@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import shutil
 import subprocess
 import tempfile
 import time
@@ -18,6 +19,13 @@ OBSERVER = r'''
 local choice=assert(core.settings:get("gui_smoke_choice"))
 assert(core.registered_items["mcl_copper:copper_ingot"],"Persistence fixture must be a registered item")
 local state=core.get_mod_storage()
+local function loading_huds(player)
+ local count=0
+ for _,hud in pairs(player:hud_get_all()) do
+  if hud.type=="text" and hud.text and hud.text:find("Preparing workshop terrain.",1,true) then count=count+1 end
+ end
+ return count
+end
 core.register_on_joinplayer(function(player)
  local name=player:get_player_name()
  core.after(3,function()
@@ -51,6 +59,10 @@ core.register_on_joinplayer(function(player)
      assert(inv:contains_item("main","mcl_tools:pick_diamond"),"Real workshop choice grants a pick")
      assert(inv:contains_item("main","mcl_tools:axe_diamond"),"Real workshop choice grants an axe")
      assert(inv:contains_item("main","mcl_torches:torch 32"),"Real workshop choice grants torches")
+     if p:get_meta():get_int("era_playtest_workshop_pending")==1 then
+      assert(loading_huds(p)==1,"Queued workshop shows exactly one native loading HUD")
+      core.log("action","ONBOARDING GUI LOADING HUD PASS workshop")
+     end
     end
     local began=core.get_us_time()
     local function verify_destination()
@@ -61,6 +73,8 @@ core.register_on_joinplayer(function(player)
      end
      if choice=="workshop" then
       assert(vector.distance(selected:get_pos(),{x=3,y=200.5,z=6})<4,"Workshop choice reaches the supplied platform")
+      assert(selected:get_meta():get_int("era_playtest_workshop_pending")==0,"Arrival clears pending trip")
+      assert(loading_huds(selected)==0,"Arrival removes the loading HUD")
      else
       local surface=assert(core.deserialize(selected:get_meta():get_string("era_playtest_surface")))
       assert(vector.distance(selected:get_pos(),surface)<16,"Survival choice stays near the natural spawn")
@@ -136,10 +150,18 @@ def main():
     parser.add_argument("--fetch-tools", action="store_true")
     parser.add_argument("--inspect", action="store_true", help="Capture the first chooser without clicking, for layout inspection")
     parser.add_argument("--inspect-guide", action="store_true", help="Capture the first actual guide after choosing survival, then stop")
+    parser.add_argument("--engine", type=Path, default=ROOT / "upstream/luanti/bin/luanti",
+                        help="Graphical client or explicit developer wrapper to validate")
+    parser.add_argument("--evidence-dir", type=Path, default=ROOT / "runtime/tests/onboarding-gui")
     args = parser.parse_args()
+    engine = args.engine.resolve()
+    if not engine.is_file() or not os.access(engine, os.X_OK):
+        raise ValueError("Graphical test engine must be an executable file")
     from PIL import ImageGrab
     xvfb = setup_tools(args.fetch_tools)
-    evidence = ROOT / "runtime/tests/onboarding-gui"
+    evidence = args.evidence_dir.resolve()
+    if not evidence.is_relative_to(ROOT / "runtime/tests"):
+        raise ValueError("GUI evidence must remain inside runtime/tests")
     evidence.mkdir(parents=True, exist_ok=True)
     base = ROOT / "runtime/tests"
     report = []
@@ -161,7 +183,12 @@ def main():
             if server.poll() is not None:
                 raise RuntimeError("Isolated Xvfb could not start")
             game = work / "games/golden_era_playtest"
-            subprocess.run(["python3", str(ROOT / "scripts/setup-playtest.py"), "--no-fetch", "--destination", str(game)], check=True, stdout=subprocess.DEVNULL)
+            assembled = work / "assembly/golden_era_playtest"
+            subprocess.run(["python3", str(ROOT / "scripts/setup-playtest.py"), "--no-fetch", "--destination", str(assembled)], check=True, stdout=subprocess.DEVNULL)
+            # Exercise the link-free layout shipped to testers. This also keeps
+            # sandboxed engines from needing access to developer source paths.
+            shutil.copytree(assembled, game, symlinks=False)
+            shutil.rmtree(assembled.parent)
             env["LUANTI_GAME_PATH"] = str(work / "games")
             for choice in ("survival", "workshop"):
                 world = work / choice
@@ -176,7 +203,7 @@ def main():
                 for phase in ("choice", "reconnect"):
                     log = evidence / (choice + "-" + phase + ".log")
                     with log.open("w") as output:
-                        client = subprocess.Popen([str(ROOT / "upstream/luanti/bin/luanti"), "--go", "--port", "30212", "--gameid", "golden_era_playtest", "--world", str(world), "--name", "GUITester", "--config", str(config), "--logfile", str(work / "client.log")], cwd=ROOT, env=env, stdout=output, stderr=subprocess.STDOUT)
+                        client = subprocess.Popen([str(engine), "--go", "--port", "30212", "--gameid", "golden_era_playtest", "--world", str(world), "--name", "GUITester", "--config", str(config), "--logfile", str(work / "client.log")], cwd=ROOT, env=env, stdout=output, stderr=subprocess.STDOUT)
                         try:
                             if phase == "choice":
                                 wait_text(log, "ONBOARDING GUI CHOOSER READY " + choice, client)
@@ -186,6 +213,9 @@ def main():
                                     return
                                 # The real 12x7 form is centered on the fixed 1280x900 test display.
                                 click(850 if choice == "survival" else 400, 425)
+                                if choice == "workshop":
+                                    time.sleep(0.5)
+                                    ImageGrab.grab(xdisplay=DISPLAY).save(evidence / "workshop-loading.png")
                                 wait_text(log, "ONBOARDING GUI CHOICE PASS " + choice, client, 60)
                                 time.sleep(0.4)
                                 ImageGrab.grab(xdisplay=DISPLAY).save(evidence / (choice + "-selected.png"))
@@ -206,6 +236,7 @@ def main():
             server.wait(timeout=10)
             server_log.close()
     report.append("Actual client rendering, X11 mouse clicks, real PlayerRef inventory and restart persistence checked; no user world modified.")
+    report.append("Test launcher: " + str(engine) + "; SHA256 " + hashlib.sha256(engine.read_bytes()).hexdigest())
     (evidence / "summary.log").write_text("\n".join(report) + "\n")
     print("\n".join(report))
 

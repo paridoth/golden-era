@@ -20,7 +20,8 @@ local pages={
  {title="Automation",text="Begin with one processing step and a nearby storage container. Pipeworks tubes and filter-injectors can move items between compatible machines.\n\n"..
   "The workshop uses Mesecons blinking controls to pulse filter-injectors. Follow the tube direction and watch which inventory each filter extracts from. Build a short route before expanding it.\n\n"..
   "Storage Drawers hold bulk materials. Right-click the front to store items; left-click the front to take items out. The recipe guide includes drawer upgrades and controllers.\n\n"..
-  "Next experiments already included in the pack: fluid tanks and ducts, better generation, powered tools, mining machines and Pipeworks autocrafting. Build one addition at a time and check that the previous line still works."},
+  "Pipeworks autocrafters need output room for both products and returned containers. Crafting conduits from copper wire returns empty spools. Filter the conduits into storage and collect or route the spools separately; a full output pauses crafting.\n\n"..
+  "Try fluid tanks and ducts, better generation, powered tools or mining machines next. Build one addition at a time and check that the previous line still works."},
 }
 era_playtest.factory_guide_pages=pages
 

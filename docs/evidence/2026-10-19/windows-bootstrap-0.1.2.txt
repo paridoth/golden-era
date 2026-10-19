@@ -1,0 +1,12 @@
+Exact Windows bootstrap PowerShell/.NET filesystem regression
+PowerShell 7.6.7 / Linux; cmd.exe and native Windows PowerShell 5.1 are not executed
+Official tool archive SHA256: 6896f9e3a6b0a354bf470835a96da76d2f801cd50dcf047ad7c4563bf93bf431
+Bootstrap command SHA256: 1523150bf203e2580114ce868eaff63d94952dbee054566d9da7cf54f2a2409e
+Save preflight SHA256: c9f869a34850735e399b3c46c19232dfb2bf5a63c9135f7af724b923773babe3
+PASS: read-only save preflight accepts new/correct saves and final game ID; comments stay comments; grouped/multiline names containing # or empty names refuse without writes
+PASS: foreign/missing/case-mismatched IDs and all nine orphan markers, including a saved LevelDB map.db directory, refuse without creating or changing files/directories
+PASS: fresh verified download, extraction, direct engine promotion, special characters/spaces in paths, and staging cleanup
+PASS: incomplete cache quarantined intact and replaced without nesting; tester saves/settings preserved
+PASS: wrong checksum fails before cache replacement; no engine executable promoted
+PASS: archive with missing engine executable fails before replacement and cleans staging
+PASS: two concurrent fresh promotions complete without nesting, corruption, or leftover staging

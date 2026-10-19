@@ -64,12 +64,17 @@ core.register_on_player_receive_fields(function(player,formname,fields)
 end)
 
 core.register_on_joinplayer(function(player)
- if core.settings:get_bool("era_playtest_no_welcome",false) then return end
  local name=player:get_player_name()
+ local session=era_playtest.player_session(name)
  core.after(1,function()
   local current=core.get_player_by_name(name)
-  if not current then return end
+  if not current or era_playtest.player_session(name)~=session then return end
   local meta=current:get_meta()
+  if meta:get_int("era_playtest_workshop_pending")==1 then
+   era_playtest.visit_workshop(name,meta:get_int("era_playtest_workshop_first")==1)
+   return
+  end
+  if core.settings:get_bool("era_playtest_no_welcome",false) then return end
   if meta:get_int("era_playtest_joined")==1 then return end
   -- Capture the natural spawn once, including when a player dismisses the chooser.
   if meta:get_string("era_playtest_surface")=="" then

@@ -4,6 +4,7 @@
 import argparse
 import os
 from pathlib import Path
+import re
 import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -12,14 +13,28 @@ parser.add_argument('--prepare-only',action='store_true',help='Assemble the game
 args=parser.parse_args()
 subprocess.run(['python3',str(ROOT/'scripts/setup-playtest.py')],cwd=ROOT,check=True)
 base=ROOT/'runtime/playtest'
-world=base/'worlds/revelation-playtest';world.mkdir(parents=True,exist_ok=True)
+world=base/'worlds/revelation-playtest'
 world_file=world/'world.mt'
-if not world_file.exists():
+if world_file.exists():
+ metadata=world_file.read_bytes().decode('utf-8')
+ gameid=None
+ for line in metadata.split('\n'):
+  if re.match(r'^[ \t\r\v\f]*#',line):
+   continue
+  if re.match(r'^[^=]*=[ \t\r\v\f]*(?:\{|"{3})[ \t\r\v\f]*$',line):
+   raise SystemExit('The playtest world uses structured world.mt settings; restore its flat Golden Era metadata before launching')
+  match=re.match(r'^[ \t\r\v\f]*gameid[ \t\r\v\f]*=[ \t\r\v\f]*(.*?)[ \t\r\v\f]*$',line)
+  if match: gameid=match.group(1)
+ if gameid!='golden_era_playtest':
+  raise SystemExit('Unexpected game ID in the playtest world; left untouched')
+elif any((world/name).exists() for name in ('map.sqlite','map.db','map.sqlite-wal','map_meta.txt','players.sqlite','auth.sqlite','auth.txt','mod_storage.sqlite','players')):
+ raise SystemExit('The playtest world has saved data but no world.mt; restore it before launching')
+else:
+ world.mkdir(parents=True,exist_ok=True)
  world_file.write_text('gameid = golden_era_playtest\nbackend = sqlite3\nplayer_backend = sqlite3\nauth_backend = sqlite3\nmod_storage_backend = sqlite3\n')
-elif 'gameid = golden_era_playtest' not in world_file.read_text():
- raise SystemExit('Unexpected game ID in the playtest world; left untouched')
 config=base/'playtest.conf'
-config.write_text('''bind_address = 127.0.0.1
+if not config.exists():
+ config.write_text('''bind_address = 127.0.0.1
 port = 30200
 server_announce = false
 mg_name = v7

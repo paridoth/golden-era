@@ -1,0 +1,6 @@
+survival choice: PASS
+survival reconnect: PASS
+workshop choice: PASS
+workshop reconnect: PASS
+Actual client rendering, X11 mouse clicks, real PlayerRef inventory and restart persistence checked; no user world modified.
+Test launcher: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tests/linux/flatpak-client.sh; SHA256 aaf57175a8ef712ea79c0bb221ad4e89a493cea591db3e061ce0e67c5c4490c7

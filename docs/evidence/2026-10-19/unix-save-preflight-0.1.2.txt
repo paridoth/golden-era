@@ -1,0 +1,15 @@
+Current Unix launcher save/config preflight
+Source-template fixtures only; frozen 0.1.1 release artifacts are unchanged.
+packaging/linux/templates/start.sh SHA256 f9a407eadabc30b9de8e7faae4030ffa5a65fe168868830d7ece2c7cb420544e
+PASS: fresh saves and preinstalled worldmods initialize normally
+PASS: final case-sensitive game ID honored; foreign/missing/empty/conflicting IDs refuse before all writes or engine calls
+PASS: comments/CRLF work, existing config/map/metadata bytes survive; grouped/multiline metadata including #/empty names is conservatively refused
+PASS: --check validates an existing world without writing settings/logs/cache
+PASS: all nine orphan save markers, metadata directories and dangling metadata/database links refuse without creating settings/log/cache files
+packaging/playtest/templates/start.sh SHA256 acf3e42185634153c58658e9a01e5a667bff45a6556464cd4e5dee4227adcfb1
+PASS: fresh saves and preinstalled worldmods initialize normally
+PASS: final case-sensitive game ID honored; foreign/missing/empty/conflicting IDs refuse before all writes or engine calls
+PASS: comments/CRLF work, existing config/map/metadata bytes survive; grouped/multiline metadata including #/empty names is conservatively refused
+PASS: all nine orphan save markers, metadata directories and dangling metadata/database links refuse without creating settings/log/cache files
+scripts/play-playtest.py SHA256 e14541fd009fde378c739f8539389505126faf3f8f5a087ba87dc87e0633254b
+PASS: actual developer guard preserves UTF8 BOM/bare-CR semantics, rejects #/empty structured names and all nine orphan markers without changing saves

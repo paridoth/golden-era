@@ -584,3 +584,38 @@ The release record is [0.1.1](releases/0.1.1.json). Executed checks and their li
 Evidence and three onboarding screenshots are under `docs/evidence/2026-10-19/`.
 Native Windows install/game startup, ordinary graphical Flatpak launch, all
 included machines and human survival resource pacing remain explicit limits.
+
+## Desktop 0.1.2 source checks — 2026-10-19
+
+`tests/playtest/test_onboarding.lua` now executes the actual travel/onboarding
+callbacks. It covers saved pending trips, session isolation, cancellation, queue/
+generation/fixture failures and retry without granting another starter kit.
+The native GUI checks confirm a real loading HUD, its removal on arrival, both
+starting choices and saved inventory/position. A separate three-session test
+interrupts a real workshop click, observes pending metadata on disk before resume,
+then checks arrival and a later reconnect away from the arrival point. All three
+phases pass. This is graceful shutdown/restart, not a forced power-loss test.
+
+The two-process stock automation scenario passes with normal node timers,
+Mesecons controls, tube entities and drawers. It checks sixteen conduits, six
+empty-spool replacements and four acacia-group sticks; full or insufficient
+output space consumes no ingredients. Recipe metadata and physical inventories
+survive restart, with no hidden tube stacks or dropped duplicates.
+
+Current Windows preflight/bootstrap commands pass under real PowerShell 7/Linux.
+Both Unix templates and the actual developer guard pass matching save fixtures:
+final case-sensitive game IDs, comments/CRLF, structured settings, BOM/Unicode,
+all nine orphan markers including a LevelDB directory, and untouched existing
+settings/maps/logs. Native Windows PowerShell 5.1 remains pending. Wine confirms
+the explicit five-line world-file creation and preserves existing metadata.
+
+The full updated `scripts/ci.sh` passed: existing unit/reference checks, all
+24 legacy engine processes, stock factory, survival, automation and Unix save
+preflight. The official Flathub 5.17.0 client separately passed all four graphical
+onboarding/reconnect phases inside its matching runtime with a link-free game
+copy. That run used software X11 graphics and a null audio device; ordinary app
+startup and physical audio/graphics are separate checks. Fresh joins had two
+inherited craft-width warnings each; all four sessions had zero engine errors.
+
+Evidence uses `0.1.2` filenames under `evidence/2026-10-19/`, plus
+`automation-smoke.log`. Frozen 0.1.0/0.1.1 artifacts remain unchanged.

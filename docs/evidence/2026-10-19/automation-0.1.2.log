@@ -1,0 +1,46 @@
+Golden Era native autocrafter/injector/tube/drawer smoke: stock node timers; no manual production ticks
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/automation-smoke-e17q53uk/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/automation-smoke-e17q53uk/games/golden_era_playtest/playtest-sources.json
+
+Phase: checkpoint
+2026-10-19 05:28:08: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:28:10: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/automation-smoke-e17q53uk/world]
+2026-10-19 05:28:10: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:28:15: ACTION[Server]: automation_smoke takes stuff from barrel at (0,200,0)
+2026-10-19 05:28:21: ACTION[Server]: automation_smoke takes stuff from barrel at (0,200,0)
+2026-10-19 05:28:39: ACTION[Server]: automation_smoke takes stuff from barrel at (0,200,0)
+2026-10-19 05:28:45: ACTION[Server]: automation_smoke takes stuff from barrel at (0,200,0)
+2026-10-19 05:28:47: ACTION[Server]: ERA AUTOMATION SMOKE PASS: CHECKPOINT: native input injectors/tubes supply 6 lead + 3 wire; full output and one free slot preserve every input; two slots recover to 8 drawer conduits + 3 empty spools; second batch saved while disabled for process restart
+2026-10-19 05:28:47: ACTION[Main]: Server: Shutting down
+
+checkpoint: process exited successfully
+Phase: resume
+2026-10-19 05:29:02: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:29:04: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/automation-smoke-e17q53uk/world]
+2026-10-19 05:29:04: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:29:09: ACTION[Server]: automation_smoke takes stuff from barrel at (0,200,8)
+2026-10-19 05:29:20: ACTION[Server]: ERA AUTOMATION SMOKE PASS: COMPLETE: process restart preserves physical inputs, recipe and drawer contents; native timers craft second conduit batch; real blinking controls, injectors and tubes deliver all 16 conduits and 4 group-wood sticks to drawers; all 6 empty spools retained with no duplicate production after inputs exhaust
+2026-10-19 05:29:20: ACTION[Main]: Server: Shutting down
+
+resume: process exited successfully

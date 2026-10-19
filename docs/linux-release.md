@@ -13,8 +13,8 @@ scripts, so the engine determines the CPU/platform support.
 Build a verified base game ZIP first, then derive the Linux archive:
 
     python3 scripts/package-playtest.py
-    python3 scripts/package-linux.py --game-zip dist/golden-era-playtest-0.1.1-windows-test.zip
-    python3 scripts/package-linux.py --verify dist/golden-era-playtest-0.1.1-linux.tar.gz
+    python3 scripts/package-linux.py --game-zip dist/golden-era-playtest-0.1.2-windows-test.zip
+    python3 scripts/package-linux.py --verify dist/golden-era-playtest-0.1.2-linux.tar.gz
 
 The Linux archive uses sorted files, fixed timestamps, normalized permissions,
 and normalized archive ownership. It carries an internal SHA256 file manifest,
@@ -50,6 +50,12 @@ default to `$XDG_DATA_HOME/golden-era-playtest` or
 `~/.local/share/golden-era-playtest`, separate from the extracted release.
 `GOLDEN_ERA_DATA_DIR` overrides this path. Existing settings/world metadata are
 kept on subsequent launches. Back up that data directory before updating.
+Before creating settings, logs or save files, both Unix launchers check the
+existing world's final case-sensitive `gameid`. Foreign, missing or ambiguous
+IDs are refused with existing files untouched. Known world databases without
+`world.mt` are also refused: restore the original metadata or choose a different
+data directory. Nonstandard grouped/multiline metadata is conservatively
+refused; ordinary flat Luanti metadata, comments, CRLF and repeated keys work.
 
 Actual Flatpak sandbox execution and graphical launch depend on host namespace,
 display, driver and portal support; native headless tests are documented
@@ -58,10 +64,11 @@ verification from a source-only or simulated launcher check.
 
 Developer validation:
 
-    python3 tests/linux/run.py dist/golden-era-playtest-0.1.1-linux.tar.gz --launcher-only
-    python3 tests/linux/run.py dist/golden-era-playtest-0.1.1-linux.tar.gz --flatpak-runtime
+    python3 tests/linux/test_save_guard.py
+    python3 tests/linux/run.py dist/golden-era-playtest-0.1.2-linux.tar.gz --launcher-only
+    python3 tests/linux/run.py dist/golden-era-playtest-0.1.2-linux.tar.gz --flatpak-runtime
 
-The second command expects the official app in the repository-only installation
+The `--flatpak-runtime` command expects the official app in the repository-only installation
 at `runtime/tests/linux-flatpak/installation` and Freedesktop runtime 26.08.
 For this test installation, set `FLATPAK_USER_DIR` to that absolute directory and
 `XDG_CACHE_HOME`, `XDG_DATA_HOME`, and `XDG_CONFIG_HOME` to sibling `cache`, `data`,
@@ -78,3 +85,15 @@ runtime, with game read-only and save writable. The ordinary app backend's
 argument/permission transport is tested with a stub separately. The test also
 uses Gio to dispatch the real desktop entry when available, with a stub engine.
 Its evidence distinguishes these checks from an actual graphical game run.
+
+The graphical onboarding test can also use the exact installed official client:
+
+    python3 tests/playtest/gui.py --engine tests/linux/flatpak-client.sh --evidence-dir runtime/tests/onboarding-flatpak-0.1.2
+
+This passed both real start choices, workshop arrival/loading HUD and saved
+inventory/position through restart. The helper uses a self-contained game copy,
+the repository-only installation and matching Freedesktop runtime, authenticated
+Xvfb and software graphics. OpenAL uses its null backend because the test has no
+audio device. It validates the official client binary, not ordinary app/portal
+startup, hardware graphics or audible sound. Initial fresh joins retain the two
+known Mineclonia craft-width warnings; reconnects had no warnings or errors.

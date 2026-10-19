@@ -1,0 +1,18 @@
+2026-10-19 05:22:55: ACTION[ServerStart]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:22:59: ACTION[ServerStart]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/trip-gui-fafqyrwu/world]
+2026-10-19 05:22:59: ACTION[ServerStart]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30216.
+2026-10-19 05:23:00: ACTION[Server]: TripGUITester [127.0.0.1] joins game. List of players: TripGUITester
+2026-10-19 05:23:00: ACTION[Server]: TRIP GUI PENDING SAVED PASS
+2026-10-19 05:23:01: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era: stock mod playtest | uptime: 1s | max lag: 0.177s | clients: TripGUITester
+2026-10-19 05:23:01: ACTION[Main]: CHAT: *** TripGUITester joined the game.
+2026-10-19 05:23:01: ACTION[Main]: CHAT: Preparing workshop terrain. You can keep exploring and will be moved when it is ready. /cancelworkshop cancels this trip.
+2026-10-19 05:23:27: ACTION[Server]: ERA PLAYTEST READY: workshop and existing-mod factory available for TripGUITester
+2026-10-19 05:23:27: ACTION[Server]: TRIP GUI RESUMED ARRIVAL PASS
+2026-10-19 05:23:27: ACTION[Main]: CHAT: Workshop ready. /packhelp for instructions; /explore for survival terrain; /workshop to return.
+2026-10-19 05:23:27: ACTION[Server]: TripGUITester leaves game. List of players: 
+2026-10-19 05:23:27: ACTION[ServerStop]: Server: Shutting down

@@ -1,0 +1,15 @@
+{
+	"axe" : 1,
+	"copper" : 7,
+	"loading_huds" : 0,
+	"pending" : 1,
+	"phase" : "rejoined-pending",
+	"pick" : 1,
+	"position" : 
+	{
+		"x" : -1,
+		"y" : 11,
+		"z" : 1
+	},
+	"torches" : 32
+}

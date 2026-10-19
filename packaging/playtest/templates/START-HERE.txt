@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.1
+GOLDEN ERA — FACTORY PLAYTEST 0.1.2
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -29,10 +29,14 @@ The first launch generates a fresh world. Choose the supplied workshop to try
 machinery with tools and spare materials, or choose survival to gather your own
 materials without granted supplies. Damage is disabled in both paths. Existing
 players keep their position and inventory. Allow time for initial world generation.
+Preparing the workshop shows a loading message while you keep exploring. Arrival
+is automatic; /cancelworkshop cancels the trip. Disconnecting saves an unfinished
+trip for your next login without granting the starting tools again.
 
 W/A/S/D move, mouse looks, Space jumps, I opens inventory.
 Right-click machines to open them. Left-click digs or takes items from drawers.
-K toggles flight. J toggles fast movement; E activates fast movement.
+In the single-player workshop, K toggles flight. J toggles fast movement;
+E activates fast movement. Server players need the appropriate privileges.
 
 /packhelp   Workshop instructions
 /factoryguide   Early survival and machinery guide
@@ -60,6 +64,8 @@ macOS saves/logs:   ~/Library/Application Support/GoldenEraPlaytest
 
 Close the game normally to save. Keep that data folder when replacing the game
 ZIP with a later build. The game package contains no existing player world.
+If an existing save has the wrong game ID or lacks its world.mt, the launcher
+leaves it untouched and asks you to choose another data folder or restore it.
 
 For a bug report, send the build number, what you did, what you expected, what
 happened, and a screenshot if useful. The client log is logs/client.log inside

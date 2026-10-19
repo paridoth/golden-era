@@ -18,6 +18,9 @@ moving its complete contents is safe. Saves and settings are separate:
   ~/.local/share/golden-era-playtest/
 or $XDG_DATA_HOME/golden-era-playtest/ if configured. Replacing the game folder
 with an update does not overwrite those saves. Back up this data folder first.
+If startup reports a foreign world or missing world.mt, existing files are left
+untouched. Restore that world's original world.mt or select a different save
+folder with GOLDEN_ERA_DATA_DIR.
 
 No engine binary is bundled. The launcher uses a compatible installed Luanti or
 the official org.luanti.luanti Flatpak. It never installs or updates software on

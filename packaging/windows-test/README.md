@@ -1,5 +1,5 @@
 Windows bootstrap regression uses the exact inline `powershell.exe -Command`
-script extracted from `packaging/playtest/templates/start.bat`. It does not
+scripts extracted from `packaging/playtest/templates/start.bat`. It does not
 rewrite its paths or replace PowerShell commands with Python approximations.
 
     python3 tests/windows/run.py --fetch-tool
@@ -17,6 +17,13 @@ and is never executed. Tests cover direct fresh promotion, incomplete-cache
 quarantine, checksum failure, missing executable, concurrent fresh promotion,
 cleanup, special characters in paths, and preservation of tester save/settings
 bytes. The current inline script's SHA256 is recorded in the evidence.
+
+The read-only save preflight also runs as shipped. It checks the final,
+case-sensitive game ID, treats only actual comment lines as comments, and
+refuses grouped/multiline metadata even when its setting name contains `#` or
+is empty. BOM, Unicode whitespace and bare-CR fixtures preserve the engine's
+UTF8/newline semantics. All nine orphan save markers are checked, including
+the LevelDB `map.db` directory, with existing file and directory contents kept.
 
 This verifies real PowerShell 7/.NET filesystem and archive operations on Linux.
 It does not execute `cmd.exe`, Windows PowerShell 5.1, the NSIS installer or the

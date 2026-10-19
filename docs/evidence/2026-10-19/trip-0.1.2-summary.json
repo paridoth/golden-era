@@ -1,0 +1,41 @@
+{
+  "display": ":98",
+  "limitations": [
+    "Linux native client on software-rendered authenticated Xvfb; no physical Windows run in this test.",
+    "Seven copper ingots are an inventory preservation fixture, not a survival gathering claim.",
+    "This checks graceful immediate shutdown/restart, not power loss during storage writes."
+  ],
+  "observer_sha256": "cf5440c9fd9b180a59d19ca809b310a0044be8788e2f862500f3083d0a265d49",
+  "phases": [
+    {
+      "marker": "TRIP GUI PENDING INTERRUPT PASS",
+      "phase": "interrupt",
+      "result": "pass"
+    },
+    {
+      "marker": "TRIP GUI RESUMED ARRIVAL PASS",
+      "phase": "resume",
+      "result": "pass"
+    },
+    {
+      "marker": "TRIP GUI COMPLETED RECONNECT PASS",
+      "phase": "completed-reconnect",
+      "result": "pass"
+    }
+  ],
+  "port": "30216",
+  "post_validation_harness_change": {
+    "check": "Python compilation and unchanged-observer/production hash checks passed; native three-session test was not repeated for cleanup-only changes.",
+    "current_harness_sha256": "d26b74994f048d8e2107976a847f94f37f3f4d982f90a9c7a52383155066cd58",
+    "scope": "Only artifact lifecycle changed: default TemporaryDirectory, stable runtime evidence, optional --keep-world. The executed native observer and production Lua are unchanged."
+  },
+  "result": "pass",
+  "scope": "Actual X11 workshop click, real PlayerRef metadata/HUD and inventories, normal immediate shutdown and two restarts in a disposable world; ordinary saves untouched.",
+  "source_base_revision": "7f4955f71ac9e7ac59099255b52c202815627ca5",
+  "source_scope": "Working-tree Lua/observer hashes identify the validated code; base revision is context only.",
+  "source_sha256": {
+    "integrations/playtest/mod/init.lua": "12348246c5750b919c03dd4aca176bc053f6224662de201af64aca27cde3d9d5",
+    "integrations/playtest/mod/onboarding.lua": "92d55b62463c4db721f6173787b5e3139155749676f31e2a9fa427e045043397",
+    "tests/playtest/trip_gui.py": "90edb93e047eee6fc8c0f98da25a894bcf04fa2a3a285e2ae4c646a7bf6ec106"
+  }
+}

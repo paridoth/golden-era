@@ -1,0 +1,24 @@
+{
+  "command": "./scripts/ci.sh",
+  "exit_code": 0,
+  "source_base_revision": "ac0cae877ca42353e56da27abf4559d943da0430",
+  "source_scope": "Working-tree hashes identify validated sources; base revision is context only.",
+  "source_sha256": {
+    "scripts/ci.sh": "9dd1bfa493c31b61a6132d7a43cd1c17000f13290c337f3fd0662c4cbc3f94d7",
+    "integrations/playtest/mod/init.lua": "12348246c5750b919c03dd4aca176bc053f6224662de201af64aca27cde3d9d5",
+    "integrations/playtest/mod/onboarding.lua": "92d55b62463c4db721f6173787b5e3139155749676f31e2a9fa427e045043397",
+    "integrations/playtest/mod/guide.lua": "7623baade1cf1832cf6228f7f52e43d33be577cb78a80f18acafddeb8d07ad4d",
+    "packaging/playtest/templates/start.bat": "efed1695774efe2a897865a372767f3edcd723518cb02504ddf53138058cb1e4",
+    "packaging/playtest/templates/start.sh": "acf3e42185634153c58658e9a01e5a667bff45a6556464cd4e5dee4227adcfb1",
+    "packaging/linux/templates/start.sh": "f9a407eadabc30b9de8e7faae4030ffa5a65fe168868830d7ece2c7cb420544e",
+    "scripts/play-playtest.py": "e14541fd009fde378c739f8539389505126faf3f8f5a087ba87dc87e0633254b"
+  },
+  "results": {
+    "unit_reference_models": "PASS 50 existing checks plus actual-source onboarding/travel tests and generated data",
+    "legacy_engine": "PASS 24 real server processes",
+    "stock_factory": "PASS 26 craft outputs,15-target reachability,PCB/fluid checks,2rawiron to4ingots",
+    "survival": "PASS native v7 generated material harvesting and early machines; detached actor/supplied devices",
+    "automation": "PASS native timers/tubes/autocrafter/drawers,backpressure/byproducts/restart",
+    "unix_save_preflight": "PASS current Unix templates and developer guard; no engine invocation or writes for refused worlds"
+  }
+}

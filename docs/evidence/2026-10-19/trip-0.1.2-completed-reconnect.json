@@ -1,0 +1,15 @@
+{
+	"axe" : 1,
+	"copper" : 7,
+	"loading_huds" : 0,
+	"pending" : 0,
+	"phase" : "completed-reconnect",
+	"pick" : 1,
+	"position" : 
+	{
+		"x" : 11,
+		"y" : 199.5,
+		"z" : 6
+	},
+	"torches" : 32
+}

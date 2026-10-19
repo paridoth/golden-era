@@ -74,8 +74,9 @@ def main():
     tool, lock = powershell(args.fetch_tool)
     batch = args.batch.read_text()
     matches = re.findall(r'^\s*powershell\.exe\s+-NoProfile\s+-Command\s+"(.*)"\s*$', batch, re.M)
-    assert len(matches) == 1, "Expected one exact inline PowerShell bootstrap command"
-    command = matches[0]
+    assert len(matches) == 2, "Expected exact save preflight and engine bootstrap commands"
+    preflight, command = matches
+    assert batch.index(preflight) < batch.index('mkdir'), "Save validation must precede every launcher write"
     assert "[IO.Directory]::Move" in command and "finally" in command
     fixtures = {"/valid.zip": payload(), "/missing.zip": payload(False)}
 
@@ -98,7 +99,8 @@ def main():
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     report = ["Exact Windows bootstrap PowerShell/.NET filesystem regression", "PowerShell " + lock["version"] + " / Linux; cmd.exe and native Windows PowerShell 5.1 are not executed",
-              "Official tool archive SHA256: " + lock["sha256"], "Inline command SHA256: " + sha(command.encode())]
+              "Official tool archive SHA256: " + lock["sha256"], "Bootstrap command SHA256: " + sha(command.encode()),
+              "Save preflight SHA256: " + sha(preflight.encode())]
     base = ROOT / "runtime/tests"
     base.mkdir(parents=True, exist_ok=True)
     try:
@@ -140,6 +142,69 @@ def main():
                 for name in ("settings.conf", "worlds/playtest/map.sqlite"):
                     assert (data / name).read_bytes() == initial[name], "Bootstrap changed tester saves/settings"
                 assert not list(data.glob("download-*")), "Temporary download staging was not cleaned"
+
+            # Execute the shipped read-only preflight with actual .NET filesystem
+            # semantics. Luanti settings use the final occurrence of a key.
+            guard = work / "save preflight [qa] ' $"
+            guard.mkdir()
+            guard_env = env.copy()
+            guard_env["GE_DATA"] = str(guard / "absent data")
+            result = subprocess.run([str(tool), "-NoProfile", "-NonInteractive", "-Command", preflight],
+                                    env=guard_env, text=True, capture_output=True, timeout=30)
+            assert result.returncode == 0 and not (guard / "absent data").exists(), result.stderr
+            for name, metadata, accepted in (
+                ("correct", "gameid = golden_era_playtest\n", True),
+                ("whitespace", "\tgameid\t=\tgolden_era_playtest \t\r\n", True),
+                ("comment", "# gameid = other_game\ngameid = golden_era_playtest\n", True),
+                ("commented structure", '# example = {\n# example = """\ngameid = golden_era_playtest\n', True),
+                ("final correct", "gameid = other_game\ngameid = golden_era_playtest\n", True),
+                ("foreign", "gameid = other_game\n", False),
+                ("final foreign", "gameid = golden_era_playtest\ngameid = other_game\n", False),
+                ("missing key", "backend = sqlite3\n", False),
+                ("empty", "", False),
+                ("case sensitive", "gameid = GOLDEN_ERA_PLAYTEST\n", False),
+                ("case sensitive key", "gameid = other_game\nGAMEID = golden_era_playtest\n", False),
+                ("nested key", "gameid = other_game\nexample = {\ngameid = golden_era_playtest\n}\n", False),
+                ("hash group name", "gameid = other_game\nfoo#bar = {\ngameid = golden_era_playtest\n}\n", False),
+                ("empty group name", "gameid = other_game\n= {\ngameid = golden_era_playtest\n}\n", False),
+                ("multiline key", 'gameid = other_game\nexample = """\ngameid = golden_era_playtest\n"""\n', False),
+                ("hash multiline name", 'gameid = other_game\nfoo#bar = """\ngameid = golden_era_playtest\n"""\n', False),
+                ("empty multiline name", 'gameid = other_game\n= """\ngameid = golden_era_playtest\n"""\n', False),
+                ("unicode whitespace", "gameid = other_game\n\u00a0gameid = golden_era_playtest\n", False),
+                ("byte order mark", "\ufeffgameid = golden_era_playtest\n", False),
+                ("bare CR is not a line break", "gameid = other_game\rgameid = golden_era_playtest\n", False),
+            ):
+                folder = guard / name
+                world = folder / "worlds/playtest"
+                world.mkdir(parents=True)
+                (world / "world.mt").write_bytes(metadata.encode())
+                (world / "map.sqlite").write_bytes(b"untouched saved map")
+                initial = snapshot(folder)
+                guard_env["GE_DATA"] = str(folder)
+                result = subprocess.run([str(tool), "-NoProfile", "-NonInteractive", "-Command", preflight],
+                                        env=guard_env, text=True, capture_output=True, timeout=30)
+                assert (result.returncode == 0) == accepted, name + ": " + result.stderr
+                assert snapshot(folder) == initial, "Save preflight wrote existing files: " + name
+                assert {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_dir()} == {"worlds", "worlds/playtest"}
+            for marker in ("map.sqlite", "map.db", "map.sqlite-wal", "map_meta.txt", "players.sqlite", "auth.sqlite", "auth.txt", "mod_storage.sqlite", "players"):
+                orphan = guard / ("orphan " + marker)
+                world = orphan / "worlds/playtest"
+                world.mkdir(parents=True)
+                if marker in ("players", "map.db"):
+                    (world / marker).mkdir()
+                    (world / marker / "saved-data").write_bytes(b"existing world directory contents")
+                else:
+                    (world / marker).write_bytes(b"existing world without metadata")
+                guard_env["GE_DATA"] = str(orphan)
+                initial = snapshot(orphan)
+                directories = {path.relative_to(orphan).as_posix() for path in orphan.rglob('*') if path.is_dir()}
+                result = subprocess.run([str(tool), "-NoProfile", "-NonInteractive", "-Command", preflight],
+                                        env=guard_env, text=True, capture_output=True, timeout=30)
+                assert result.returncode != 0 and "no world.mt" in result.stderr, marker + ": " + result.stderr
+                assert snapshot(orphan) == initial
+                assert {path.relative_to(orphan).as_posix() for path in orphan.rglob('*') if path.is_dir()} == directories
+            report.append("PASS: read-only save preflight accepts new/correct saves and final game ID; comments stay comments; grouped/multiline names containing # or empty names refuse without writes")
+            report.append("PASS: foreign/missing/case-mismatched IDs and all nine orphan markers, including a saved LevelDB map.db directory, refuse without creating or changing files/directories")
 
             data, initial, local = case("fresh")
             result = run(local)

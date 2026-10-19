@@ -1,0 +1,16 @@
+Two failed harness setup attempts, not game regressions. First: source symlinks escaped the sandbox and no audio device existed. Second: integration mod symlink still escaped. Final test dereferences the game tree and uses an explicit null audio backend; all four phases pass.
+
+[ALSOFT] (EE) Failed to connect PipeWire event context (errno: 112)
+ALSA lib ../../pulse/pulse.c:242:(pulse_connect) [error.] PulseAudio: Unable to connect: Connection refused
+
+2026-10-19 05:26:06: ERROR[Main]: Audio: Global Initialization: Failed to open device
+2026-10-19 05:26:07: ERROR[Main]: ModError: The mod specified as first by the game was not found.
+2026-10-19 05:26:07: ERROR[Main]: Check debug.txt for details.
+2026-10-19 05:26:07: ACTION[ServerStop]: Server: Shutting down
+
+2026-10-19 05:27:21: ERROR[Main]: ServerError: Some mods have unsatisfied dependencies:
+2026-10-19 05:27:21: ERROR[Main]:  - gui_observer is missing: era_playtest
+2026-10-19 05:27:21: ERROR[Main]: Install and enable the required mods, or disable the mods causing errors.
+2026-10-19 05:27:21: ERROR[Main]: Note: this may be caused by a dependency cycle, in which case try updating the mods.
+2026-10-19 05:27:21: ACTION[ServerStop]: Server: Shutting down
+X connection to :97 broken (explicit kill or server shutdown).

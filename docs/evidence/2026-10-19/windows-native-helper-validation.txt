@@ -1,0 +1,8 @@
+Native Windows regression helper-only validation; PowerShell 7.6.7.
+Script SHA256: 27570c994e7018121b48693236ef68d0cc287aa220beff8524480f326989d16c
+PowerShell parser: PASS
+Both distinct C# helpers compile: PASS
+Loopback TCP fixture download: PASS
+CLR fixture capture encoding: PASS
+NATIVE WINDOWS EXECUTION: NOT RUN BY THIS CHECK
+Exit: 0

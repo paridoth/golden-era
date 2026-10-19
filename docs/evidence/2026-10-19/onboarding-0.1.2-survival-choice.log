@@ -1,0 +1,22 @@
+2026-10-19 05:19:44: ACTION[ServerStart]: [mcl_villages]: World was upgraded or is pristine.
+2026-10-19 05:19:46: ACTION[ServerStart]: [mcl_levelgen]: Preparing stronghold placement.  This may take a while.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:19:51: ACTION[ServerStart]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/onboarding-gui-lqamrt8p/survival]
+2026-10-19 05:19:51: ACTION[ServerStart]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30212.
+2026-10-19 05:19:53: ACTION[Server]: GUITester [127.0.0.1] joins game. List of players: GUITester
+2026-10-19 05:19:53: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era: stock mod playtest | uptime: 1s | max lag: 0.157s | clients: GUITester
+2026-10-19 05:19:53: ACTION[Main]: CHAT: *** GUITester joined the game.
+2026-10-19 05:19:54: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:19:54: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:19:56: ACTION[Server]: ONBOARDING GUI CHOOSER READY survival
+2026-10-19 05:19:57: ACTION[Main]: CHAT: Gather your own materials. /factoryguide explains the first factory; /workshop visits the optional demonstration.
+2026-10-19 05:20:00: ACTION[Server]: ONBOARDING GUI CHOICE PASS survival
+2026-10-19 05:20:00: ACTION[Main]: CHAT: *** Server shutting down in 3s.
+2026-10-19 05:20:01: ACTION[Main]: CHAT: *** Server shutting down in 2s.
+2026-10-19 05:20:02: ACTION[Main]: CHAT: *** Server shutting down in 1s.
+2026-10-19 05:20:03: ACTION[Server]: GUITester leaves game. List of players: 
+2026-10-19 05:20:03: ACTION[ServerStop]: Server: Shutting down

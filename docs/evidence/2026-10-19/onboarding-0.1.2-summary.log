@@ -1,0 +1,5 @@
+survival choice: PASS
+survival reconnect: PASS
+workshop choice: PASS
+workshop reconnect: PASS
+Actual client rendering, X11 mouse clicks, real PlayerRef inventory and restart persistence checked; no user world modified.

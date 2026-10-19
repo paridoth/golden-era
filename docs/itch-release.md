@@ -1,11 +1,11 @@
-# Golden Era 0.1.1: itch.io tester release
+# Golden Era 0.1.2: itch.io tester release
 
-Shareable artifact: `dist/golden-era-playtest-0.1.1-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.1-windows-test.zip`.
-Linux: `dist/golden-era-playtest-0.1.1-linux.tar.gz`; see [Linux setup](linux-release.md).
+Shareable artifact: `dist/golden-era-playtest-0.1.2-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.2-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.2-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.1`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.2`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -53,10 +53,12 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.1-windows.exe`.
+**Windows test instructions:** open `golden-era-playtest-0.1.2-windows.exe`.
 It installs automatically, creates a shortcut and starts the game. New players
 choose the supplied workshop or a survival start without workshop tools/materials.
-Existing players retain their position and inventory. First launch
+Existing players retain their position and inventory. Workshop preparation shows
+a loading message and resumes an unfinished trip after reconnecting;
+`/cancelworkshop` cancels it. First launch
 needs internet to download the official Luanti engine
 (about 18MB), with a checksum check.
 `/factoryguide` explains early progression, `/packhelp` shows workshop instructions, `/workshop` returns to the factory, and `/explore`
@@ -64,7 +66,8 @@ returns to survival terrain. Saves are kept in
 `%LOCALAPPDATA%\GoldenEraPlaytest`, outside the installed game folder.
 
 The starter line turns two raw iron into four ingots in about two minutes.
-Damage is disabled, flight is available, and spare parts are provided. Please
+Damage is disabled. The optional workshop provides spare parts and enables flight
+in single-player; the survival start grants no workshop materials. Please
 report broken or confusing interactions with the build number, steps,
 expected/actual result, and a screenshot or log when useful.
 
@@ -78,9 +81,12 @@ bundle notices record the exact source-correspondence limit and inherited
 license exceptions.
 
 The packaged game is checked from a clean extraction through its Unix launcher
-using the existing Luanti engine. Windows download/import structure and the
-pinned hash have been checked; no Windows runtime is available on this host,
-so a native Windows/PowerShell run remains for the tester.
+using the existing Luanti engine. The frozen 0.1.1 installer, official Win64 engine
+and actual batch launcher also passed isolated Wine tests, including a graphical
+workshop choice and save/reconnect. Wine is a compatibility check on Linux.
+Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
+for a Windows tester. Exact bootstrap/save-preflight commands run separately under
+PowerShell 7 on Linux; their scope and hashes are retained in the evidence.
 
 The EXE is built with pinned NSIS packages extracted locally, using its zlib
 stub and System plugin. Its ordinary-user PE manifest and every extracted file
@@ -94,12 +100,12 @@ game file manifest remains valid. `/S` installs without launching the game.
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.1-windows-test.zip
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.2-windows-test.zip
 python3 tests/package/run.py
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.1-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.2-windows.exe
 python3 scripts/package-linux.py
-python3 tests/linux/run.py dist/golden-era-playtest-0.1.1-linux.tar.gz --launcher-only
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.2-linux.tar.gz --launcher-only
 ```
 
 The explicit fetch option restores missing hash-verified model-source inputs.

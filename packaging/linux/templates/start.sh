@@ -20,6 +20,31 @@ fail() {
   exit 1
 }
 
+# Read-only preflight: never relabel an existing world or write settings before
+# its effective final game ID has been checked. Luanti keys are case-sensitive.
+GE_WORLD="$GE_DATA/worlds/playtest"
+if [ -e "$GE_WORLD/world.mt" ] || [ -L "$GE_WORLD/world.mt" ]; then
+  if [ ! -f "$GE_WORLD/world.mt" ] || ! LC_ALL=C awk '
+    /^[[:space:]]*#/ { next }
+    /^[^=]*=[[:space:]]*(\{|""")[[:space:]]*$/ { structured=1 }
+    /^[[:space:]]*gameid[[:space:]]*=/ {
+      value=$0
+      sub(/^[[:space:]]*gameid[[:space:]]*=[[:space:]]*/, "", value)
+      sub(/[[:space:]]*$/, "", value)
+      found=1
+    }
+    END { exit !(found && value=="golden_era_playtest" && !structured) }
+  ' "$GE_WORLD/world.mt"; then
+    fail 'This save belongs to another game or has no unambiguous Golden Era game ID. Choose a different GOLDEN_ERA_DATA_DIR; existing files were left unchanged.'
+  fi
+else
+  for GE_MARKER in map.sqlite map.db map.sqlite-wal map_meta.txt players.sqlite auth.sqlite auth.txt mod_storage.sqlite players; do
+    if [ -e "$GE_WORLD/$GE_MARKER" ] || [ -L "$GE_WORLD/$GE_MARKER" ]; then
+      fail 'This save has world data but no world.mt. Restore its world.mt or choose a different GOLDEN_ERA_DATA_DIR; existing files were left unchanged.'
+    fi
+  done
+fi
+
 version_ok() {
   printf '%s\n' "$1" | sed -n '1s/^[^0-9]*\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\).*$/\1/p' |
     awk -F. 'NF==3 {found=1; if ($1>5 || ($1==5 && $2>=17)) valid=1} END {exit !(found && valid)}'
@@ -72,9 +97,6 @@ player_backend = sqlite3
 auth_backend = sqlite3
 mod_storage_backend = sqlite3
 WORLD
-fi
-if ! sed -n '/^[[:space:]]*gameid[[:space:]]*=[[:space:]]*golden_era_playtest[[:space:]]*$/p' "$GE_DATA/worlds/playtest/world.mt" | sed -n '1p' | awk 'END {exit NR==0}'; then
-  fail 'The selected save belongs to another game. Choose a different GOLDEN_ERA_DATA_DIR; no save files have been changed.'
 fi
 LUANTI_GAME_PATH="$GE_ROOT/games"
 LUANTI_USER_PATH="$GE_DATA/engine-user"

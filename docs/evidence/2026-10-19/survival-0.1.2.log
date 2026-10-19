@@ -1,0 +1,36 @@
+Golden Era v7 material acquisition smoke: detached survival actor at iron-pick checkpoint; provided stock device fixtures; real node timers
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/survival-smoke-ahh4hyiq/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/survival-smoke-ahh4hyiq/games/golden_era_playtest/playtest-sources.json
+
+2026-10-19 05:26:49: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+2026-10-19 05:26:51: ACTION[Main]: [mcl_levelgen]: Preparing stronghold placement.  This may take a while.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:26:54: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/survival-smoke-ahh4hyiq/world]
+2026-10-19 05:26:54: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30208.
+2026-10-19 05:27:21: ACTION[Server]: Survival generated ore elepower_dynamics:stone_with_lead: 1712
+2026-10-19 05:27:21: ACTION[Server]: Survival generated ore elepower_dynamics:stone_with_tin: 2140
+2026-10-19 05:27:21: ACTION[Server]: Survival generated ore moreores:mineral_silver: 1985
+2026-10-19 05:27:22: ACTION[Server]: Survival generated ore elepower_dynamics:stone_with_zinc: 868
+2026-10-19 05:27:22: ACTION[Server]: Survival generated ore elepower_dynamics:stone_with_nickel: 516
+2026-10-19 05:27:22: ACTION[Server]: Survival generated ore mcl_core:stone_with_iron: 4923
+2026-10-19 05:27:22: ACTION[Server]: Survival generated ore mcl_copper:stone_with_copper: 5804
+2026-10-19 05:27:22: ACTION[Server]: Survival generated ore mcl_core:stone_with_redstone: 2756
+2026-10-19 05:27:22: WARNING[Server]: Server: Maximum lag peaked at 1.04908 (steplen=0.05)
+2026-10-19 05:27:55: ACTION[Server]: ERA SURVIVAL SMOKE PASS: v7 lead/tin/silver/zinc/nickel/iron/copper/redstone mined with iron pick and collected via item pickup; native oak grown from fixture sapling supplies sheared leaves, oil and two plastic smelts; native furnace creates low-carbon steel; hand-cranked raw iron yields two smelted ingots; coal alloy furnace consumes 2 copper + 1 silver into 3 brass. Detached actor and provided device fixtures; no workshop build or injected power.
+2026-10-19 05:27:55: ACTION[Main]: Server: Shutting down
+

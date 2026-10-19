@@ -6,17 +6,18 @@ if defined GOLDEN_ERA_DATA_DIR (
 ) else (
   set "GE_DATA=%LOCALAPPDATA%\GoldenEraPlaytest"
 )
+rem Refuse foreign or incomplete saves before creating settings or downloading an engine.
+powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; try { $world=Join-Path $env:GE_DATA 'worlds\playtest'; $meta=Join-Path $world 'world.mt'; if (Test-Path -LiteralPath $meta) { $game=$null; foreach ($line in ([Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes($meta)) -split '\n')) { if ($line -cmatch '^[ \t\r\v\f]*#') { continue }; if ($line -cmatch '^[^=]*=[ \t\r\v\f]*(\{|\x22{3})[ \t\r\v\f]*$') { throw 'This world.mt uses structured settings. Choose a different GOLDEN_ERA_DATA_DIR or restore its flat Golden Era metadata; existing files were left unchanged.' }; if ($line -cmatch '^[ \t\r\v\f]*gameid[ \t\r\v\f]*=[ \t\r\v\f]*(.*?)[ \t\r\v\f]*$') { $game=$matches[1] } }; if ($game -cne 'golden_era_playtest') { throw 'This save belongs to another game or has no Golden Era game ID. Choose a different GOLDEN_ERA_DATA_DIR; existing files were left unchanged.' } } else { foreach ($name in @('map.sqlite','map.db','map.sqlite-wal','map_meta.txt','players.sqlite','auth.sqlite','auth.txt','mod_storage.sqlite','players')) { if (Test-Path -LiteralPath (Join-Path $world $name)) { throw 'This save has world data but no world.mt. Restore its world.mt or choose a different GOLDEN_ERA_DATA_DIR; existing files were left unchanged.' } } } } catch { [Console]::Error.WriteLine($_.Exception.Message); exit 1 }"
+if errorlevel 1 goto worldfailed
 if not exist "%GE_DATA%\worlds\playtest" mkdir "%GE_DATA%\worlds\playtest"
 if not exist "%GE_DATA%\logs" mkdir "%GE_DATA%\logs"
 if not exist "%GE_DATA%\settings.conf" copy /y "%GE_ROOT%defaults\playtest.conf" "%GE_DATA%\settings.conf" >nul
 if not exist "%GE_DATA%\worlds\playtest\world.mt" (
-  >"%GE_DATA%\worlds\playtest\world.mt" (
-    echo gameid = golden_era_playtest
-    echo backend = sqlite3
-    echo player_backend = sqlite3
-    echo auth_backend = sqlite3
-    echo mod_storage_backend = sqlite3
-  )
+  >"%GE_DATA%\worlds\playtest\world.mt" echo gameid = golden_era_playtest
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo player_backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo auth_backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo mod_storage_backend = sqlite3
 )
 if not exist "%GE_DATA%\engine-5.17.0\bin\luanti.exe" (
   echo Downloading the official Luanti engine once, about 18 MB...
@@ -28,6 +29,11 @@ set "LUANTI_USER_PATH=%GE_DATA%\engine-user"
 "%GE_DATA%\engine-5.17.0\bin\luanti.exe" --go --gameid golden_era_playtest --world "%GE_DATA%\worlds\playtest" --config "%GE_DATA%\settings.conf" --logfile "%GE_DATA%\logs\client.log" --name Tester
 if errorlevel 1 goto failed
 exit /b 0
+:worldfailed
+echo.
+echo Golden Era did not open this save. See the message above.
+pause
+exit /b 1
 :failed
 echo.
 echo Golden Era could not start. See START-HERE.txt and the log at:
