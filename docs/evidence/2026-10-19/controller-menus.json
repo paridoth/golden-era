@@ -1,0 +1,88 @@
+{
+  "baseline": {
+    "binary_sha256": "18e64ed1cfb5c673f64c170c5a28713549e3d41df2237c9cc419219343b513b4",
+    "command": "python3 tests/desktop/run_native.py --client upstream/luanti/bin/luanti",
+    "log": "runtime/tests/controller-baseline-negative.log",
+    "result": "Expected failure: first A/stick/A transfer did not occur; actual src=8,dst=0 versus expected src=0,dst=8"
+  },
+  "checks": {
+    "python3 integrations/desktop/build-client.py": "pass: isolated native client compiled and linked",
+    "python3 tests/desktop/run_native.py": "pass: real SDL virtual controller, native GUI and server inventory actions",
+    "python3 tests/desktop/test_gamepad.py": "pass: six tests, compiled C++17 policy under UBSan plus patch isolation/preflight",
+    "scripts/test.sh": "pass"
+  },
+  "limitations": [
+    "No physical controller test",
+    "No Windows custom-engine build",
+    "The complete Mineclonia/Elepower menu range remains to be played",
+    "Keyboard required for text entry",
+    "Development build has sound and HTTP downloads disabled; not a portable release binary"
+  ],
+  "linux_candidate_binary_sha256": "04e86b8e6ededa33343f2b573bc9a1b71e68e9f58f91068923b7939795361851",
+  "luanti_source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "native_asserted_inventory_counts": [
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "native_evidence_directory": "runtime/tests/controller-native-b_2sdm75",
+  "native_other_assertions": [
+    "A GUI button activates",
+    "raw controller rebinding captures GAMEPAD_BUTTON_2",
+    "B closes the server form",
+    "world Y opens the player inventory",
+    "A/B works immediately in the new menu"
+  ],
+  "native_result": {
+    "result": "pass",
+    "scope": "Custom Linux client, real SDL virtual gamepad and native inventory actions; no physical hardware test.",
+    "state": {
+      "actions": [
+        "move",
+        "move",
+        "move",
+        "move",
+        "move"
+      ],
+      "bound": "GAMEPAD_BUTTON_2",
+      "closed": true,
+      "confirmed": true,
+      "dst": 8,
+      "inventory_closed": true,
+      "inventory_confirmed": true,
+      "ready": true,
+      "src": 0
+    }
+  },
+  "native_screenshot_sha256": "ccaabe915f4e4d5ce0ad89b87997cc37eedce7d26fe5cfca2f74c2fce0770ef3",
+  "recorded_utc": "2026-10-19T10:02:20.961845+00:00",
+  "source_files_sha256": {
+    "integrations/desktop/build-client.py": "b57f3227961ec686be90c56b114069f7a2be7923902900908fd4d2888f49ec7d",
+    "integrations/desktop/gamepad.py": "3495d8eee4f3996b919c1e747a15007bf2e161362e98812a352cd0bdfbbaad86",
+    "integrations/desktop/gamepad_bridge.cpp.inc": "891cac6b01fda39590f729ffedd9d10a072156eb7f20b36cbe7427525f9830d8",
+    "integrations/desktop/gamepad_cursor.h": "429679aeebc7a5e3b0499d27f91d4b052d28954edd9c5f88550dc7021d0bbf94",
+    "integrations/desktop/play-controller.py": "26eca94397afe08e005877947315991dcd8dff593927f311a680e16e4029d682",
+    "tests/desktop/run_native.py": "4695f2b44e69769961449ce1657dc54898b90f5a7a1d5c9948ad3e684d6a093d",
+    "tests/desktop/test_gamepad.py": "08b0ebfdaf066fa02c26b1716fddb5e18b00b10e71c1ef6375682db3281ad865",
+    "tests/desktop/test_gamepad_cursor.cpp": "509a28d60cfa58a66d304675ccfbb6c43b519d2b7fc4f7bb7e0a4071a320e88c",
+    "tests/desktop/virtual_gamepad.c": "aa4d5b318d260c3d6a3738febc93389c7e3dbc1c052c3f2c4dd7554d5dc5ce7c"
+  },
+  "variant": "Optional Linux desktop controller prototype; stock Windows/Linux release engines unchanged"
+}
