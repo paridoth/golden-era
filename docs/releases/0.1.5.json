@@ -1,0 +1,70 @@
+{
+  "version": "0.1.5",
+  "source_revision": "cb50e704ce5ba77af79da003bd9fe224941534dc",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.5-windows.exe",
+      "size_bytes": 66524471,
+      "sha256": "d6c6451a39efdf2c5a7bdc7b343c735e99308a81abaa4688376edb64000ca09d",
+      "installed_files": 11874
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.5-linux.tar.gz",
+      "size_bytes": 61922955,
+      "sha256": "937e28037d4b041c7514f1bbc80f71307130864ce85f121877574141fa522de2",
+      "files": 11865
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.5-windows-test.zip",
+      "size_bytes": 69932952,
+      "sha256": "662d37939fa27ab2e0f530debdc852b5e090765101d476936301f14682ad168d",
+      "files": 11864
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "changes": [
+    "Automatic Harvester inserts what fits, then emits only complete leftover ItemStacks above itself; selection, timing, power and sludge remain native",
+    "Farming guide explains buried planter/central water, ghost layout versus real seed supply, two filtered routes and Mesecons controls",
+    "Fresh workshops supply planter, harvester, seeds, eight dirt, bone meal, one wheat item for filter setup and two controls in the existing 27-slot barrel; existing barrels remain unchanged",
+    "Seventh native craft milestone uses the existing awards system; native recipe reachability now includes planter/harvester from ordinary materials including diamonds"
+  ],
+  "validation": {
+    "fast_suite": "PASS existing unit/reference/model/onboarding checks and two farming anchor/repeatability/upstream-isolation checks",
+    "native_farming": "PASS all four baseline/repaired checkpoint/restart processes, zero warnings/errors. Exact metadata split 5 copper -> 2 stored + 3 dropped plus full worn tool; native pickup/restart ownership retained. Real coal/planter/clocked tubes store 16 wheat across two cycles, replant 8 crops each time and retain excess seeds/selectors without resume gifts",
+    "source_factory": "PASS final source 27-slot workshop kit, both actual native farm crafting results, 17-target registered-recipe closure and original two-raw-iron/four-ingot line; zero warnings/errors",
+    "source_automation": "PASS unchanged native tube/autocrafter backpressure and restart with all 16 conduits and six returned spools retained",
+    "packaged_zip": "PASS exact ZIP clean extraction, real Unix launcher, external fresh save and factory; zero warnings/errors on first attempt; independent fresh reproduction byte-identical",
+    "source_equivalence": "PASS all 11783 Linux game files equal exact ZIP; all 58 packaged project files equal frozen source commit; compared with 0.1.4 exactly five runtime paths changed, 11778 identical, no additions/removals",
+    "farming_guide_gui": "PASS actual official Linux client rendering: six tabs, complete Farming text and buttons fit. Real survival-choice click; observer opens page 6 through native API. Two inherited craft-width warnings, zero errors; not a full new onboarding/reconnect run",
+    "windows_installer_wine": "PASS exact EXE, all 11874 installed hashes, shortcuts and reinstall/world/settings preservation",
+    "prior_artifacts": "PASS all 48 earlier public/archived artifact and sidecar files retain exact hashes",
+    "regression_scope": "0.1.5 uses targeted factory/automation/farming and final archive checks. Unchanged storage, machine-removal and Pipeworks runtime files retain 0.1.4 evidence; its full 40-process CI remains recorded separately; new farming runner is wired into future CI",
+    "linux_archive": "PASS exact Linux archive with official Flathub LuaJIT factory and farming checkpoint/resume; all three processes zero warnings/errors on first attempt. Restart reaches 16 stored wheat/eight replanted crops without new gifts; actual archived harvester source identity asserted",
+    "frozen_output_protection": "PASS actual default ZIP/EXE/Linux builders refuse registered 0.1.5 paths before work; all 57 current and prior artifact/sidecar files remain byte-identical",
+    "windows_engine_wine": "PASS official Win64 LuaJIT factory and farming checkpoint/resume against installed game; three processes each 107 known builtin SHA warnings, zero other warnings/errors; 321 known SHA warnings and nine Wine diagnostic lines separately retained. Actual installed harvester hash matches both exact ZIP and EXE manifest",
+    "windows_harness": "SHA256 556abcb1e0665d982538a179925bc65c591c8a4bd8d601f904beb2209b7e772a; exact bytes match frozen source commit; full current batch/PowerShell/GUI startup remains a separate native-Windows check"
+  },
+  "limitations": [
+    "Native Windows/PowerShell 5.1, SmartScreen and hardware graphics/audio remain unverified; Wine is compatibility evidence on Linux",
+    "The full current batch/PowerShell/GUI launch path is not established by direct-engine Wine checks",
+    "GUI uses official client in matching runtime with software Xvfb/null audio; ordinary app/portal startup remains separate",
+    "Machines, coal and 128 bone meal are native-test fixtures; gathered seeds and actual crop/fertilizer callbacks do not establish full human material gathering or natural growth duration",
+    "Harvester overflow remains ordinary loose world items with native pickup/expiry; full output does not pause harvesting",
+    "Inherited crop/tree harvesting protection and original node-metadata behavior remain unchanged; the full ItemStack contract applies to generated drops",
+    "Older unmarked filter ownership, synthetic nodebreaker buffers and shared multiplayer soldering retain the 0.1.4 documented boundaries",
+    "Optional custom-engine controller work remains separate; Shield/Android was canceled"
+  ],
+  "evidence_directory": "docs/evidence/2026-10-19/",
+  "runtime_changes_from_0.1.4": [
+    "mods/elepower/elepower_farming/machines/harvester.lua",
+    "mods/era_playtest/guide.lua",
+    "mods/era_playtest/init.lua",
+    "mods/era_playtest/mod.conf",
+    "playtest-sources.json"
+  ],
+  "save_compatibility": "No node names, inventory lists or storage schema were migrated; existing workshop barrels remain unchanged. Same-version farm restart and installer sentinels are checked; no new full cross-version human-world migration claim"
+}

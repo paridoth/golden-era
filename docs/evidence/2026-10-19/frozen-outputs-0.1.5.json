@@ -1,0 +1,251 @@
+{
+  "result": "PASS",
+  "registered_builders_refuse_before_work": [
+    {
+      "command": "python3 scripts/package-playtest.py",
+      "exit_code": 1,
+      "output": "PLAYTEST PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.5-windows-test.zip is registered in docs/releases/0.1.5.json; use --output with a different path or select a new release version"
+    },
+    {
+      "command": "python3 scripts/package-installer.py",
+      "exit_code": 1,
+      "output": "WINDOWS SETUP FAILED: Frozen release output dist/golden-era-playtest-0.1.5-windows.exe is registered in docs/releases/0.1.5.json; use --output with a different path or select a new release version"
+    },
+    {
+      "command": "python3 scripts/package-linux.py",
+      "exit_code": 1,
+      "output": "LINUX PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.5-linux.tar.gz is registered in docs/releases/0.1.5.json; use --output with a different path or select a new release version"
+    }
+  ],
+  "unchanged_files": 57,
+  "files": {
+    "dist/golden-era-playtest-0.1.0-windows.exe": {
+      "size_bytes": 66479246,
+      "sha256": "f61632c45172a75bb16f8dab43a263d014cf7fb1889d9da7e4a8b6b6631ca7a4"
+    },
+    "dist/golden-era-playtest-0.1.0-windows.exe.manifest.json": {
+      "size_bytes": 2340793,
+      "sha256": "80003b955ed3fe8f8e8797d0428598e688a74547044a1257c0aa3c7aa4ef79a0"
+    },
+    "dist/golden-era-playtest-0.1.0-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "9d98f3a8edd674176e975fa9245d4dc1d8515409a91709ab9a67093695b9a921"
+    },
+    "dist/golden-era-playtest-0.1.0-windows-test.zip": {
+      "size_bytes": 69842303,
+      "sha256": "0972a548208b8db24595c558efae76e4c5b44b8df6ba8c19a70df85be59b28db"
+    },
+    "dist/golden-era-playtest-0.1.0-windows-test.manifest.json": {
+      "size_bytes": 11472264,
+      "sha256": "7097ff545d5bb7b6dbdcdd9851fed04337b09849b06449bc85c37bba4610dd5d"
+    },
+    "dist/golden-era-playtest-0.1.0-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "96fcad1064b027d767202fb4fe6d8caf4030b8f151a6df16398c0d8a07d14447"
+    },
+    "dist/golden-era-playtest-0.1.1-windows.exe": {
+      "size_bytes": 66497347,
+      "sha256": "cb7955373f0bf3d2d0101b4186fe2eeb38ab1b67fb6b0e0daf34d073dc1cdeb5"
+    },
+    "dist/golden-era-playtest-0.1.1-windows.exe.manifest.json": {
+      "size_bytes": 2344578,
+      "sha256": "7598cd4fb1da8ef4eba7bfbfbdfb3f4b3ea21338057b454db107b12c7ff6f1fd"
+    },
+    "dist/golden-era-playtest-0.1.1-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "17fab7b608bcb7678a0983d892de261f2ed6db6eb56adf3693ed257412e548c2"
+    },
+    "dist/golden-era-playtest-0.1.1-linux.tar.gz": {
+      "size_bytes": 61898359,
+      "sha256": "55f55752378cdd58ef358070d942f720cc06d6b4a985e18f4104516bd0290678"
+    },
+    "dist/golden-era-playtest-0.1.1-linux.tar.gz.manifest.json": {
+      "size_bytes": 11485914,
+      "sha256": "711df3e501b32b1bb601ddd7d572887b7bc91e50c2dcb11b1b41da4cf22c3a0f"
+    },
+    "dist/golden-era-playtest-0.1.1-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "6447132fa653cce187c430c8195f7fe70279208c8716f1fc05ffdf96cf4f0da3"
+    },
+    "dist/golden-era-playtest-0.1.1-windows-test.zip": {
+      "size_bytes": 69901254,
+      "sha256": "85d7b5e6651ca6b575c6045d5b678424eea4b56e1f5b3cabdd2351e543cf5391"
+    },
+    "dist/golden-era-playtest-0.1.1-windows-test.manifest.json": {
+      "size_bytes": 11485303,
+      "sha256": "ade45b12b8a5699fbac3cbbb9f9b281a539f91281e2005ca2bf2f5e554027355"
+    },
+    "dist/golden-era-playtest-0.1.1-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "22b9d1740583a098683e373dd41f99403d3d83d30e4704a523d4e93b99a068d5"
+    },
+    "dist/golden-era-playtest-0.1.2-windows.exe": {
+      "size_bytes": 66500211,
+      "sha256": "31272fcf14cedaceb93d91f4ee06ddae2973294da77d2620f63347f74f8a1971"
+    },
+    "dist/golden-era-playtest-0.1.2-windows.exe.manifest.json": {
+      "size_bytes": 2344580,
+      "sha256": "99d75e09a90a7547b3d21757829375c51f573b318985f408483339a08283f7f3"
+    },
+    "dist/golden-era-playtest-0.1.2-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "ce2a6f25c422912de40eeb5f4476af3a6634d6472963465596b5fbf2f93ed20c"
+    },
+    "dist/golden-era-playtest-0.1.2-linux.tar.gz": {
+      "size_bytes": 61903987,
+      "sha256": "0b90bdeb721a857cac30001919929e752816710baefffcbb5cb36902d74ce3d7"
+    },
+    "dist/golden-era-playtest-0.1.2-linux.tar.gz.manifest.json": {
+      "size_bytes": 11485916,
+      "sha256": "d1579ececf0625e44fc5196f3c5520aca3f4cc640c7de201d4d602f09d4537a8"
+    },
+    "dist/golden-era-playtest-0.1.2-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "aaa07f1e5ca0c457f6e554053d41d43c9588ff1eb2b643937884351616a8c12c"
+    },
+    "dist/golden-era-playtest-0.1.2-windows-test.zip": {
+      "size_bytes": 69906553,
+      "sha256": "e869250a328a477ab0091f2f6b23de4283a9cfb2045088a9453606354e563108"
+    },
+    "dist/golden-era-playtest-0.1.2-windows-test.manifest.json": {
+      "size_bytes": 11485305,
+      "sha256": "d0011605f96741f32dfed438bedf431678ef30d9ffac49ab9f9c9f2c08a35d26"
+    },
+    "dist/golden-era-playtest-0.1.2-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "3715e24101bb8e6f19e7c2a6798ef27c0a44e92d83bb40fbd0a5a4e4502345e0"
+    },
+    "dist/golden-era-playtest-0.1.3-windows.exe": {
+      "size_bytes": 66513764,
+      "sha256": "14d204f89fa89dcea4af81eccba64bab9ec8af8dbdb73166b38c05d298de6bce"
+    },
+    "dist/golden-era-playtest-0.1.3-windows.exe.manifest.json": {
+      "size_bytes": 2345093,
+      "sha256": "c3e10ed867f53f7edfa7506c2ecf686e88ae637030bf7e69d5840d7b34ec5f96"
+    },
+    "dist/golden-era-playtest-0.1.3-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "bffe8de5d9cc89a63d9d7cc1fa19332705b07103641f8928623a6c8acc7e9aa0"
+    },
+    "dist/golden-era-playtest-0.1.3-linux.tar.gz": {
+      "size_bytes": 61910358,
+      "sha256": "194aaac19b0dfaaf00a88f30777f3c6b96ade08d8d8fbf78e3b852a35fff3521"
+    },
+    "dist/golden-era-playtest-0.1.3-linux.tar.gz.manifest.json": {
+      "size_bytes": 11487702,
+      "sha256": "ac05963cdb2a8db9e17cd9431f0f22dd2d601b5a8ab6b0d59074307b246a64e9"
+    },
+    "dist/golden-era-playtest-0.1.3-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "27c11abad672e6a39038b8e4bc830999221432e493bbb2821512a1f2794a7351"
+    },
+    "dist/golden-era-playtest-0.1.3-windows-test.zip": {
+      "size_bytes": 69920800,
+      "sha256": "1d0d528e95af8640227afa0e380082175c532a158c5f8fbb3be7e5d912290be5"
+    },
+    "dist/golden-era-playtest-0.1.3-windows-test.manifest.json": {
+      "size_bytes": 11487091,
+      "sha256": "f3ca6e277c732ac24beaed4f5e9c7edf88a6b9b112612abe9a25788603e5f545"
+    },
+    "dist/golden-era-playtest-0.1.3-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "0429446312021fbf8cead2c6b1a3d834c09d3b875b7d141c544b27e97c3672ed"
+    },
+    "dist/golden-era-playtest-0.1.0-game.zip": {
+      "size_bytes": 69774544,
+      "sha256": "db2e9691ce211e299928af39b7b277cdc066f45a67da46008eea2b3ee244b71b"
+    },
+    "dist/golden-era-playtest-0.1.0-game.manifest.json": {
+      "size_bytes": 11454025,
+      "sha256": "07f9a34ef1e5102051fe17a7dc1ba936d8749696d69d837297c6589b47a90425"
+    },
+    "dist/golden-era-playtest-0.1.0-game.zip.sha256": {
+      "size_bytes": 101,
+      "sha256": "4a4faeffa717003184c8a32d81e974945c0e30a2e7854161a3f7e58f0f34f6bc"
+    },
+    "dist/golden-era-playtest-0.1.0-linux.tar.gz": {
+      "size_bytes": 61857670,
+      "sha256": "f5bc99dc8125331cae0680360b86cd1c339da6e0215a53ed678572a3111ec68c"
+    },
+    "dist/golden-era-playtest-0.1.0-linux.tar.gz.manifest.json": {
+      "size_bytes": 11477668,
+      "sha256": "f4b7d35776ebec837bcbd5745be87f779dff0b269d315a0f3278f1c1ce09e9da"
+    },
+    "dist/golden-era-playtest-0.1.0-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "ce5fae0aee9ffbc8eca0182f87496aafcc07414e96f1d291bceeeda92edd398b"
+    },
+    "dist/golden-era-playtest-0.1.4-windows.exe": {
+      "size_bytes": 66520257,
+      "sha256": "4a9b619a61b95f6f736bd265bf57998699fc60ca0dab91a3f1957ff6493654e5"
+    },
+    "dist/golden-era-playtest-0.1.4-windows.exe.manifest.json": {
+      "size_bytes": 2345437,
+      "sha256": "6246c66de8f7d0b6926ecd0a8dddc4fcc970c3a841352530155e293c2498920e"
+    },
+    "dist/golden-era-playtest-0.1.4-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "d28ad7918167b97b2795447daae014b34129dac69d39bc4dd3d9fbf318a80291"
+    },
+    "dist/golden-era-playtest-0.1.4-linux.tar.gz": {
+      "size_bytes": 61917870,
+      "sha256": "bb6a46f87d6ac764ddd4cba07b561d6f100f2547ed3898ba07a12042942febcc"
+    },
+    "dist/golden-era-playtest-0.1.4-linux.tar.gz.manifest.json": {
+      "size_bytes": 11488898,
+      "sha256": "fb1282c75799966d670ac18638971bd6954dc352a4a7285bba975a3d3d0f3476"
+    },
+    "dist/golden-era-playtest-0.1.4-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "2c021bca3e23be1b39a0c63a015d5da66988a1424c6c7b4bc4af56d32dd73ac8"
+    },
+    "dist/golden-era-playtest-0.1.4-windows-test.zip": {
+      "size_bytes": 69927805,
+      "sha256": "7daf814d95bb99e58d693bb22c0017253b0f3a925b2f9ae2e1617da07aba3dae"
+    },
+    "dist/golden-era-playtest-0.1.4-windows-test.manifest.json": {
+      "size_bytes": 11488287,
+      "sha256": "c2755cdfb7d652a1f1e1a108ed41813b9b3149e6a5b53e76bee494fde3ac42cd"
+    },
+    "dist/golden-era-playtest-0.1.4-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "cb0673dca24fb6846cf7e231beef8455e0f468bbe5115ee7ddeda2966a06c8a5"
+    },
+    "dist/golden-era-playtest-0.1.5-windows.exe": {
+      "size_bytes": 66524471,
+      "sha256": "d6c6451a39efdf2c5a7bdc7b343c735e99308a81abaa4688376edb64000ca09d"
+    },
+    "dist/golden-era-playtest-0.1.5-windows.exe.manifest.json": {
+      "size_bytes": 2345610,
+      "sha256": "5167937ca5164f2170a2ff57d9945df1fb05fe674b0cbd265eed469679f954b9"
+    },
+    "dist/golden-era-playtest-0.1.5-windows.exe.sha256": {
+      "size_bytes": 104,
+      "sha256": "41b1be000b4c25e3d8eb076a1eda9d34f00d61a9e24776e8fd3e20dff2811a6f"
+    },
+    "dist/golden-era-playtest-0.1.5-linux.tar.gz": {
+      "size_bytes": 61922955,
+      "sha256": "937e28037d4b041c7514f1bbc80f71307130864ce85f121877574141fa522de2"
+    },
+    "dist/golden-era-playtest-0.1.5-linux.tar.gz.manifest.json": {
+      "size_bytes": 11489498,
+      "sha256": "4d684e64cc14c136af8f1489ac2813c639f1d2d463d2cb9a5885e98657bad478"
+    },
+    "dist/golden-era-playtest-0.1.5-linux.tar.gz.sha256": {
+      "size_bytes": 105,
+      "sha256": "8a4a7e9f7f1e8e7027768340e2e0b83cfef886d8f78748b0c1f4995d0c593287"
+    },
+    "dist/golden-era-playtest-0.1.5-windows-test.zip": {
+      "size_bytes": 69932952,
+      "sha256": "662d37939fa27ab2e0f530debdc852b5e090765101d476936301f14682ad168d"
+    },
+    "dist/golden-era-playtest-0.1.5-windows-test.manifest.json": {
+      "size_bytes": 11488887,
+      "sha256": "e3a9de7b2b66e218ed199f6f8f84743205ce46ff25bba457bb1e3471c5b22450"
+    },
+    "dist/golden-era-playtest-0.1.5-windows-test.zip.sha256": {
+      "size_bytes": 109,
+      "sha256": "8395e61f52062d413c96e50ebb8bb408f7f335c2ad5821753985fe28f8047354"
+    }
+  }
+}

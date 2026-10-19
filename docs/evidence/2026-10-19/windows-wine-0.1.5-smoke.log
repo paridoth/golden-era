@@ -1,0 +1,36 @@
+Actual Windows installer compatibility smoke under Wine 9 / Linux
+This does not establish native Windows, Windows PowerShell 5.1, SmartScreen, or real GPU behavior.
+Installer SHA256: d6c6451a39efdf2c5a7bdc7b343c735e99308a81abaa4688376edb64000ca09d
+Workspace: fresh isolated prefix
+PASS: isolated 64-bit Wine prefix; all user special folders remain inside repository test directory
+PASS: actual x86 NSIS release installed silently under WoW64; 11874 installed files match release SHA256 manifest
+PASS: desktop and Start Menu shortcuts target the installed batch launcher; no Linux menu builder used
+PASS: silent reinstall preserves existing world/settings bytes
+PASS: official hash-pinned Win64 Luanti 5.17.0 / LuaJIT completed the installed stock factory smoke under Wine
+2026-10-19 07:05:34: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+Official engine diagnostics: 107 warning lines; 0 error lines. Full output is retained in runtime/tests/windows-wine-logs/engine-factory.log.
+First warning: 2026-10-19 07:03:28: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+Stock factory diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+Installed harvester path: games/golden_era_playtest/mods/elepower/elepower_farming/machines/harvester.lua; SHA256: f28ef46a268e86d5013222c151a91ef629dafe5f5059e669b5aaa945a1591b7a
+Farming mode: repaired; separate disposable SQLite world; copied fixture SHA256: 814404a08cdaab56b09bf5de720d8d57c2bf24f119fd03abed38806c59e932a7
+Farming checkpoint diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 07:07:09: ACTION[Server]: ERA FARMING SMOKE PASS: CHECKPOINT: all overflow recovered with full wear/metadata; native3x3 farm harvested8 wheat into storage and replanted 8 crops through real seed-return tubes
+Farming resume diagnostics: 107 builtin SHA warning lines; 0 unexpected warning lines; 0 engine error lines; 3 Wine diagnostic lines (retained separately from engine errors).
+2026-10-19 07:07:49: ACTION[Server]: ERA FARMING SMOKE PASS: COMPLETE: physical spill recovery saved; stock planter/harvester/clocked seed return/wheat storage completed another cycle without seed or power gifts
+PASS: installed game farming repairs passed checkpoint and resume in separate official Win64 engine processes under Wine; only documented builtin SHA warnings permitted
+Test workspace: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/windows-wine-nyl6kqf7
+
+Frozen game/test source: cb50e704ce5ba77af79da003bd9fe224941534dc
+Exact input game ZIP SHA256: 662d37939fa27ab2e0f530debdc852b5e090765101d476936301f14682ad168d
+Test command: python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.5-windows.exe --engine-smoke --farming-smoke
+Test harness SHA256: 556abcb1e0665d982538a179925bc65c591c8a4bd8d601f904beb2209b7e772a; exact bytes match frozen source.
+Cached official Win64 engine ZIP SHA256: 3ce20c77f5c206a988d7a6b883439e2759e3cf67428c9dbcf99ecd2936da631c
+Installed harvester identity: games/golden_era_playtest/mods/elepower/elepower_farming/machines/harvester.lua; SHA256 f28ef46a268e86d5013222c151a91ef629dafe5f5059e669b5aaa945a1591b7a independently matches installer manifest and immutable input ZIP bytes.
+2026-10-19 07:05:51: ACTION[Server]: Farming smoke: Runtime farm source=C:\users\josh\AppData\Local\GoldenEraPlaytest\app\0.1.5\games\golden_era_playtest\mods\elepower\elepower_farming; game=C:\users\josh\AppData\Local\GoldenEraPlaytest\app\0.1.5\games\golden_era_playtest
+Aggregate across three official Win64 engine processes: 321 documented builtin SHA warning lines, zero other engine warnings, zero engine errors; 9 Wine diagnostic lines counted separately.
+Each engine process emitted Wine diagnostics for disabled menu-builder invocation, missing ntlm_auth and NTLM support. Raw command outputs retain these separately from engine errors.
+Farming checkpoint stored 8 wheat and replanted 8 crops through native seed-return routing; restart/second cycle stored 16 total wheat and replanted 8 again. Final sludge 20mB and 36 supplied bone meal consumed. The metadata/wear crop is an explicitly synthetic drop contract.
+Storage, Elepower-removal and Pipeworks suites were not rerun for this harvester-only machinery change; prior 0.1.4 evidence remains separate.
+The private Wine prefix was removed after stopping its Wine server and private Xvfb. No existing player world was opened.
+Native Windows, Windows PowerShell 5.1, SmartScreen, hardware graphics/audio and full 0.1.5 start.bat remain unverified. No full batch/GUI claim is made.
+No production files, release artifacts or prior evidence were modified by this validation.

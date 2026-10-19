@@ -1,0 +1,110 @@
+{
+  "source_commit": "cb50e704ce5ba77af79da003bd9fe224941534dc",
+  "game_files_exactly_match_zip": 11783,
+  "project_source_files_exactly_match_git_commit": 58,
+  "frozen_prior_release_files_unchanged": 48,
+  "runtime_comparison_base": "dist/golden-era-playtest-0.1.4-windows-test.zip",
+  "runtime_files_added": [],
+  "runtime_files_removed": [],
+  "runtime_files_unchanged": 11778,
+  "runtime_changed_paths": [
+    "games/golden_era_playtest/mods/elepower/elepower_farming/machines/harvester.lua",
+    "games/golden_era_playtest/mods/era_playtest/guide.lua",
+    "games/golden_era_playtest/mods/era_playtest/init.lua",
+    "games/golden_era_playtest/mods/era_playtest/mod.conf",
+    "games/golden_era_playtest/playtest-sources.json"
+  ],
+  "runtime_changed_details": {
+    "games/golden_era_playtest/mods/elepower/elepower_farming/machines/harvester.lua": {
+      "0.1.4": {
+        "size": 8117,
+        "sha256": "3176de38c9972a0b8e17b8a235c391e7493d6f05e143362de111ce03fcfdf06a",
+        "mode": 420
+      },
+      "0.1.5": {
+        "size": 8316,
+        "sha256": "f28ef46a268e86d5013222c151a91ef629dafe5f5059e669b5aaa945a1591b7a",
+        "mode": 420
+      }
+    },
+    "games/golden_era_playtest/mods/era_playtest/guide.lua": {
+      "0.1.4": {
+        "size": 7405,
+        "sha256": "e4494e69d14ae65d7b21bf4481727a1b61ef7317e29ebfdde216347c23b37c2a",
+        "mode": 420
+      },
+      "0.1.5": {
+        "size": 8626,
+        "sha256": "d203731b316d3ab6761fb9c92253c483940c1a37518484e0e7f2169d9f4a177e",
+        "mode": 420
+      }
+    },
+    "games/golden_era_playtest/mods/era_playtest/init.lua": {
+      "0.1.4": {
+        "size": 11536,
+        "sha256": "12348246c5750b919c03dd4aca176bc053f6224662de201af64aca27cde3d9d5",
+        "mode": 420
+      },
+      "0.1.5": {
+        "size": 11964,
+        "sha256": "7505327c437012ecdaa3c52a172128ba9c4b6fd669e3bf1eae9bec229557c4db",
+        "mode": 420
+      }
+    },
+    "games/golden_era_playtest/mods/era_playtest/mod.conf": {
+      "0.1.4": {
+        "size": 242,
+        "sha256": "6fc6a7d93efb6f0f9ffb7b1d90e96f60c41e349be112871c5b504534ea8c70b7",
+        "mode": 420
+      },
+      "0.1.5": {
+        "size": 260,
+        "sha256": "8a43d39dd645321dfb6e8f717cbfa423912b2a571810c49c3e6112a4583a89c9",
+        "mode": 420
+      }
+    },
+    "games/golden_era_playtest/playtest-sources.json": {
+      "0.1.4": {
+        "size": 4160,
+        "sha256": "a1e505863d2d580cb75b53280c9fe1e7e39a44a574ca29397b5f6005e87cc0ae",
+        "mode": 420
+      },
+      "0.1.5": {
+        "size": 4250,
+        "sha256": "ff3a5c769cc7e1c8c0cc446b8e66cbaa59642903aa29646771abac8322839554",
+        "mode": 420
+      }
+    }
+  },
+  "archived_elepower_helper_sha256": "e7c962847d303896a90ab78a748c1450b51bfa84325cabd51482ee068a7d1fcd",
+  "official_flathub_app_commit": "2f5005c9ef6135ad0e345de6dd1bc6590da54556d8f492a7d66ead719593d362",
+  "official_engine_binary_sha256": "f9c00d71351b8706e047cca601eac164d2c7f5dc8d10c1df9c9cdf91f432f809",
+  "freedesktop_runtime": "org.freedesktop.Platform/x86_64/26.08",
+  "freedesktop_runtime_commit": "92659297ffdb4f9f14dd1562bd919b48160b0dc42c99653dcfc0688096af41df",
+  "input_game_zip": "dist/golden-era-playtest-0.1.5-windows-test.zip",
+  "input_game_zip_sha256": "662d37939fa27ab2e0f530debdc852b5e090765101d476936301f14682ad168d",
+  "linux_archive": "dist/golden-era-playtest-0.1.5-linux.tar.gz",
+  "linux_archive_sha256": "937e28037d4b041c7514f1bbc80f71307130864ce85f121877574141fa522de2",
+  "linux_archive_bytes": 61922955,
+  "manifest": "dist/golden-era-playtest-0.1.5-linux.tar.gz.manifest.json",
+  "manifest_sha256": "4d684e64cc14c136af8f1489ac2813c639f1d2d463d2cb9a5885e98657bad478",
+  "checksum": "dist/golden-era-playtest-0.1.5-linux.tar.gz.sha256",
+  "checksum_sha256": "8a4a7e9f7f1e8e7027768340e2e0b83cfef886d8f78748b0c1f4995d0c593287",
+  "linux_archive_files": 11865,
+  "archived_harvester_sha256": "f28ef46a268e86d5013222c151a91ef629dafe5f5059e669b5aaa945a1591b7a",
+  "engine_version": "5.17.0",
+  "engine_source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "engine_process_count": 3,
+  "engine_warning_count": 0,
+  "engine_error_count": 0,
+  "attempts": 1,
+  "factory_result": "PASS: exact final archive; official Flathub/LuaJIT binary in matching runtime; stock 2 raw iron -> 4 ingots, selected native recipes and fluid checks",
+  "farming_result": "PASS: exact archived harvester preserves full ItemStack overflow with wear/metadata; native 3x3 planter/harvester/clocked seed return/wheat storage reaches 8 stored wheat and 8 replanted crops, then 16 total wheat and 8 replanted crops after a SQLite process restart without additional seeds or power gifts",
+  "farming_fixture_sha256": "814404a08cdaab56b09bf5de720d8d57c2bf24f119fd03abed38806c59e932a7",
+  "farming_fixture_runner_sha256": "c6ca98dbdac74acdc8ce3fc0e65f8a28073b1110f968784236767fbd453ac67d",
+  "launcher_suite_result": "PASS: Gio dispatch with stub engine; path/version/save checks; ordinary Flatpak transport arguments and narrow read/write grants checked with stub",
+  "unchanged_runtime_coverage": "Storage, machine removal and Pipeworks runtime files are byte-identical to frozen 0.1.4; its recorded exact-archive tests are retained. Those optional scenarios were not repeated for this bounded farming change.",
+  "ordinary_graphical_flatpak_launch": "Not established by this headless archive test; separate parent GUI evidence applies",
+  "engine_installation": "Compatible native engine or official Flatpak installed separately; engine not bundled; first-use network installation not repeated in this cached-runtime test",
+  "validation_command": "python3 tests/linux/run.py dist/golden-era-playtest-0.1.5-linux.tar.gz --flatpak-runtime --farming-smoke"
+}

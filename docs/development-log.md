@@ -682,3 +682,43 @@ The full desktop CI also passes: 24 legacy and 16 active-pack native engine
 processes, fast/reference checks and Unix save guards. Its before/after hash
 record identifies two early guide/fixture edits; all eleven final observed source
 hashes match the frozen 0.1.4 commit. Targeted native stages ran the final fixture.
+
+## Desktop 0.1.5 renewable farming — 2026-10-19
+
+The stock Automatic Harvester removed mature crops before checking output room,
+discarding items that did not fit. Its copied-source output loop now inserts
+normally and emits only the returned leftover above the machine. Native partial
+insertion keeps two of five metadata-bearing copper and emits exactly three,
+plus the complete worn tool. Timing, crop selection, energy and sludge stay
+native. Output overflow remains ordinary loose items; harvesting does not stall.
+
+The native acceptance line uses a buried planter, central water, eight soil
+cells, coal power, native crop/fertilizer callbacks and clocked seed-return tubes.
+It stores eight wheat and replants eight crops, then repeats after a real restart
+to sixteen wheat without new seed or power gifts. All four baseline/repaired
+processes pass with zero diagnostics. Supplied fertilizer bounds test duration;
+this is not a complete human survival run or a natural-growth timing claim.
+
+Fresh workshops include the farm parts and two controls in the existing barrel;
+all 27 native slots fit. Existing barrels remain unchanged. The Farming guide
+explains physical seed supply versus previews, and a seventh craft advancement
+uses the stock awards API without free rewards. The exact registered farm recipes
+and seventeen-target dependency closure pass. An official-client layout capture
+shows all six tabs, text and buttons after a real survival-choice click; its
+observer opens the Farming page through the native API.
+
+Source `cb50e704ce5ba77af79da003bd9fe224941534dc` produces byte-identical game ZIPs.
+The extracted launcher/factory and three official Linux engine processes pass
+without warnings/errors. The exact Windows installer passes every installed hash
+and save/settings preservation, then three official Win64 factory/farming
+processes under Wine, retaining only the documented builtin SHA warnings.
+Native Windows and PowerShell 5.1 remain pending.
+
+All 11,783 game files and 58 project-source files match their recorded inputs.
+Exactly five runtime paths differ from 0.1.4; unchanged storage, removal and
+Pipeworks paths retain that release's executed evidence. Targeted factory,
+automation, farming and archive checks cover this update; the broader CI remains
+recorded separately for 0.1.4, with farming wired into future runs. All 48 older
+artifact/sidecar files are unchanged, and default builders refuse the newly
+registered paths while preserving all 57 current/historical files. Exact hashes
+and limitations are recorded in `docs/releases/0.1.5.json`.

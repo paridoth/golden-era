@@ -69,6 +69,17 @@ refunds because their ownership cannot reliably be inferred. See the
 [Pipeworks findings](../integrations/playtest/pipeworks-notes.md) for the exact
 old-save boundary and the source evidence.
 
+Version 0.1.5 adds a small renewable farming path using the included Elepower
+planter/harvester and Pipeworks routing. The native farm returns seeds, stores
+wheat and replants across restart. Harvester overflow now drops only the actual
+insertion remainder, preserving complete item stacks. A Farming guide page,
+seventh native craft advancement and fresh-workshop parts make the path easy to
+try; existing workshop barrels stay unchanged. The
+[farming notes](../integrations/playtest/farming-notes.md) distinguish the
+supplied test materials, natural growth timing and inherited behavior limits.
+Exact desktop artifacts and scoped checks are in
+[the 0.1.5 record](releases/0.1.5.json).
+
 ## Goal and reference decision
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0
