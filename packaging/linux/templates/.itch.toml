@@ -1,0 +1,4 @@
+[[actions]]
+name = "play"
+path = "start.sh"
+platform = "linux"

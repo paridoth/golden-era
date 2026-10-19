@@ -35,6 +35,7 @@ if core.get_modpath("mcl_core") then
   ele.external.ing.tin_ingot = ""
   ele.external.ing.bronze_ingot = ""
   ele.external.ing.silver_ingot = ""
+  ele.external.ing.steel_block = "elepower_dynamics:steel_block"
   ele.external.ing.mese = "mcl_redstone_torch:redstoneblock"
   ele.external.ing.mese_crystal = "mcl_redstone:redstone"
   ele.external.ing.mese_crystal_fragment = "mcl_redstone:redstone"
@@ -66,6 +67,10 @@ local have_cg = craftguide and craftguide.register_craft
 '''
     if _replace(craft, old, new):
         changed.append("elepower: expose machine recipes in Mineclonia craft guide")
+
+    wireless = path / "elepower_wireless/crafting.lua"
+    if _replace(wireless, '"group:color_red"', 'epi.group_color_red'):
+        changed.append("elepower: use the game-specific dye group for wireless cards")
 
     fusion = path / "elepower_nuclear/machines/fusion_reactor.lua"
     old = '''        local leftovers = 0

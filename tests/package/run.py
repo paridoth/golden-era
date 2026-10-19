@@ -15,8 +15,9 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser(description=__doc__)
+version = json.loads((ROOT/'packaging/playtest/release.json').read_text())['version']
 parser.add_argument('archive', nargs='?', type=Path,
-                    default=ROOT/'dist/golden-era-playtest-0.1.0-windows-test.zip')
+                    default=ROOT/'dist'/('golden-era-playtest-'+version+'-windows-test.zip'))
 args = parser.parse_args()
 spec = importlib.util.spec_from_file_location('package_verify', ROOT/'packaging/playtest/packager.py')
 packager = importlib.util.module_from_spec(spec)

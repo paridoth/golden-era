@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "name": "PowerShell",
+  "version": "7.6.7",
+  "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.7/powershell-7.6.7-linux-x64.tar.gz",
+  "sha256": "6896f9e3a6b0a354bf470835a96da76d2f801cd50dcf047ad7c4563bf93bf431",
+  "size": 75913191,
+  "release_page": "https://github.com/PowerShell/PowerShell/releases/tag/v7.6.7",
+  "cache": "references/cache/windows-bootstrap/powershell-7.6.7-linux-x64.tar.gz",
+  "tool_root": "tools/powershell-7.6.7",
+  "scope": "Developer test tool only, never redistributed in game packages; PowerShell 7/Linux tests the exact bootstrap script but is not native Windows PowerShell 5.1 validation."
+}

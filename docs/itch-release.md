@@ -1,10 +1,11 @@
-# Golden Era 0.1.0: itch.io tester release
+# Golden Era 0.1.1: itch.io tester release
 
-Shareable artifact: `dist/golden-era-playtest-0.1.0-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.0-windows-test.zip`.
+Shareable artifact: `dist/golden-era-playtest-0.1.1-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.1-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.1-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.0`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.1`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -52,11 +53,13 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.0-windows.exe`.
-It installs automatically, creates a shortcut and starts the game. First launch
+**Windows test instructions:** open `golden-era-playtest-0.1.1-windows.exe`.
+It installs automatically, creates a shortcut and starts the game. New players
+choose the supplied workshop or a survival start without workshop tools/materials.
+Existing players retain their position and inventory. First launch
 needs internet to download the official Luanti engine
-(about 18MB), with a checksum check. Close the welcome panel to play.
-`/packhelp` shows instructions, `/workshop` returns to the factory, and `/explore`
+(about 18MB), with a checksum check.
+`/factoryguide` explains early progression, `/packhelp` shows workshop instructions, `/workshop` returns to the factory, and `/explore`
 returns to survival terrain. Saves are kept in
 `%LOCALAPPDATA%\GoldenEraPlaytest`, outside the installed game folder.
 
@@ -91,10 +94,12 @@ game file manifest remains valid. `/S` installs without launching the game.
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.0-windows-test.zip
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.1-windows-test.zip
 python3 tests/package/run.py
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.0-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.1-windows.exe
+python3 scripts/package-linux.py
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.1-linux.tar.gz --launcher-only
 ```
 
 The explicit fetch option restores missing hash-verified model-source inputs.

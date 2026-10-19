@@ -1,0 +1,2 @@
+# New players choose once; changing this does not reset existing players.
+era_playtest_start_mode (Starting path for new players) enum ask ask,workshop,survival

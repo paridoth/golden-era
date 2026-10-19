@@ -1,0 +1,24 @@
+Golden Era 0.1.1 final Linux release validation
+Artifact: golden-era-playtest-0.1.1-linux.tar.gz
+Artifact bytes: 61898359
+Artifact SHA256: 55f55752378cdd58ef358070d942f720cc06d6b4a985e18f4104516bd0290678
+Base game ZIP SHA256: 85d7b5e6651ca6b575c6045d5b678424eea4b56e1f5b3cabdd2351e543cf5391
+Full internal/external SHA256 manifests, normalized modes/ownership/timestamps, and no links: PASS
+
+Golden Era Linux archive validation
+SHA256: 55f55752378cdd58ef358070d942f720cc06d6b4a985e18f4104516bd0290678
+Files: 11859
+PASS: actual Gio desktop launcher dispatch from a folder containing spaces
+PASS: path quoting, engine version checks, first save, settings preservation, and wrong-game refusal
+PASS: Flatpak backend selects current app ID and grants only game read/save write paths (stub transport)
+
+Factory baseline: docs/evidence/2026-10-19/linux-package-smoke.txt
+That baseline is a DIFFERENT staging artifact, SHA256 935437f5ff510947d8cf26bcbd302f9422c145677ea1fdbc25941aefa9c64290.
+It passed the full 114-second stock factory under official Flathub Luanti 5.17.0/LuaJIT in Freedesktop26.08 runtime with zero warnings/errors.
+Only these game source files differ between that baseline and this final artifact:
+games/golden_era_playtest/mods/era_playtest/guide.lua
+games/golden_era_playtest/mods/era_playtest/init.lua
+games/golden_era_playtest/mods/era_playtest/onboarding.lua
+All upstream machinery/mod game files are byte-identical to the baseline.
+Final launcher/manifest/desktop checks were rerun; ordinary graphical Flatpak launch and native Windows remain unverified.
+See the separate final native packaged-engine factory evidence for validation of the exact final game ZIP.

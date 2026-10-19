@@ -14,7 +14,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLE = "GoldenEra-Playtest"
-VERSION = "0.1.0"
+VERSION = json.loads((ROOT / "packaging/playtest/release.json").read_text())["version"]
 GAME_ID = "golden_era_playtest"
 MANIFEST = "docs/FILE-MANIFEST.json"
 ZIP_TIME = (1980, 1, 1, 0, 0, 0)
@@ -152,7 +152,8 @@ def _collect_project(project_revision, payloads):
              "integrations/playtest", "packaging/playtest/packager.py", "packaging/playtest/source-supplements.lock.json",
              "packaging/playtest/source-supplements", "packaging/playtest/templates",
              "scripts/package-installer.py", "packaging/playtest/installer.py", "packaging/playtest/installer.nsi",
-             "packaging/playtest/nsis-toolchain.lock.json", "packaging/playtest/nsis-LICENSE.txt"]
+             "packaging/playtest/nsis-toolchain.lock.json", "packaging/playtest/nsis-LICENSE.txt",
+             "packaging/playtest/release.json", "scripts/package-linux.py", "packaging/linux"]
     for relative in paths:
         source = ROOT / relative
         files = _files(source) if source.is_dir() else [source]

@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "app_id": "org.luanti.luanti",
+  "tested_version": "5.17.0",
+  "minimum_version": "5.17.0",
+  "remote": "https://dl.flathub.org/repo/",
+  "flatpakref": "https://dl.flathub.org/repo/appstream/org.luanti.luanti.flatpakref",
+  "observed_date": "2026-10-19",
+  "flathub_app_commit_x86_64": "2f5005c9ef6135ad0e345de6dd1bc6590da54556d8f492a7d66ead719593d362",
+  "flathub_manifest_commit": "6c2543c9a017b58fe2576230aa54e7088fc64fe6",
+  "flathub_manifest_url": "https://raw.githubusercontent.com/flathub/org.luanti.luanti/6c2543c9a017b58fe2576230aa54e7088fc64fe6/org.luanti.luanti.yaml",
+  "flathub_manifest_sha256": "4fe1d7072dd33f8eaf2fd9f4a8395da419a98e3da5ba47a8d6ce8b807ede723d",
+  "engine_source_commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "runtime": "org.freedesktop.Platform/26.08",
+  "engine_redistributed": false,
+  "policy": "Use a compatible installed engine; installation is an explicit tester action and follows signed Flathub stable. This launcher never updates or downgrades an installed engine automatically.",
+  "flatpakref_sha256": "d55b576f43a63d4b70f3011f49d379f8ce69c20873ddbefca88f6b222383523a"
+}

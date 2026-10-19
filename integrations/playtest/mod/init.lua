@@ -15,10 +15,6 @@ local function right_facedir(direction)
  end
  error("No filter orientation")
 end
-local function item_id(options)
- for _,name in ipairs(options) do if core.registered_items[name] then return name end end
- error("Missing starter item: "..table.concat(options,", "))
-end
 function era_playtest.build_fixture(base,owner)
  local positions={generator=at(base,-3,0,0),cell=at(base,-1,0,0),pulverizer=at(base,1,0,0),
   furnace=at(base,5,0,0),output=at(base,9,0,0),drawer=at(base,9,0,3),tank=at(base,7,0,3),
@@ -72,14 +68,17 @@ local function help(name)
   "Right-click machines to see their inventories. Use the Elepower Tome for machine help, "..
   "and the inventory recipe guide to find crafts. Drawers accept items by right-clicking; "..
   "left-click their front to take items out. Extra alloy furnaces and a fluid tank are ready to experiment with.\n\n"..
-  "/workshop returns here. /explore takes you to the survival spawn. Press K to toggle flight. "..
-  "This world uses survival item quantities with damage disabled. /gamemode creative enables the full item catalog.\n\n"..
+  "/workshop returns here. /explore takes you to the survival spawn. "..
+  "This world uses survival item quantities with damage disabled. In the single-player workshop, "..
+  "K toggles flight and /gamemode creative enables the full item catalog. Server players need the appropriate privileges.\n\n"..
   "This first pack uses existing Luanti equivalents for Revelation-style technology, logistics and storage. "..
   "Build, explore and report what gets in your way; we will tune recipes and add systems as we play."
  core.show_formspec(name,"era_playtest:help","formspec_version[4]size[12,9]"..
   "label[0.5,0.5;Golden Era — Playtest Workshop]textarea[0.5,1.1;11,6.6;;;"..
-  core.formspec_escape(text).."]button_exit[4,8;4,0.7;close;Let's play]")
+  core.formspec_escape(text).."]button[0.5,8;3.6,0.7;factory_guide;First factory guide]"..
+  "button_exit[8,8;3.5,0.7;close;Let's play]")
 end
+era_playtest.show_workshop_help = help
 core.register_chatcommand("packhelp",{description="Show playtest workshop instructions",func=function(name) help(name);return true end})
 local function workshop(name,first)
  core.emerge_area(at(origin,-8,-2,-5),at(origin,14,5,9),function(_,_,remaining)
@@ -99,8 +98,9 @@ local function workshop(name,first)
   end)
  end)
 end
+era_playtest.visit_workshop = workshop
 core.register_chatcommand("workshop",{description="Return to the playtest workshop",func=function(name) workshop(name,false);return true,"Loading workshop..." end})
-core.register_chatcommand("explore",{description="Travel to the survival spawn",func=function(name)
+local function explore(name)
  local player=core.get_player_by_name(name);if not player then return false,"Player is offline." end
  local target=core.deserialize(player:get_meta():get_string("era_playtest_surface")) or mcl_spawn.get_world_spawn_pos(player)
  core.emerge_area(vector.subtract(target,16),vector.add(target,16),function(_,_,remaining)
@@ -110,27 +110,9 @@ core.register_chatcommand("explore",{description="Travel to the survival spawn",
   end)
  end)
  return true,"Returning to survival terrain. /workshop brings you back."
-end})
-core.register_on_joinplayer(function(player)
- if core.settings:get_bool("era_playtest_no_welcome",false) then return end
- local name=player:get_player_name()
- core.after(1,function()
-  local current=core.get_player_by_name(name);if not current then return end
-  local meta=current:get_meta()
-  local first=meta:get_int("era_playtest_joined")~=1
-  if first then
-   meta:set_string("era_playtest_surface",core.serialize(current:get_pos()))
-   assert(mcl_gamemode.set_gamemode(current,"survival"))
-   assert(not core.is_creative_enabled(name),"Playtest starts with survival inventory quantities")
-   local inv=current:get_inventory()
-   for _,item in ipairs({item_id({"mcl_tools:pick_diamond","mcl_core:pick_diamond"}),
-    item_id({"mcl_tools:axe_diamond","mcl_core:axe_diamond"}),"mcl_torches:torch 32"}) do
-    local stack=ItemStack(item)
-    if core.registered_items[stack:get_name()] and inv:room_for_item("main",stack) then inv:add_item("main",stack) end
-   end
-   local privs=core.get_player_privs(name);privs.fly=true;privs.fast=true;privs.server=true;privs.give=true
-   core.set_player_privs(name,privs);meta:set_int("era_playtest_joined",1)
-  end
-  if first then workshop(name,true) end
- end)
-end)
+end
+era_playtest.return_to_surface = explore
+core.register_chatcommand("explore",{description="Travel to the survival spawn",func=explore})
+
+dofile(core.get_modpath("era_playtest").."/guide.lua")
+dofile(core.get_modpath("era_playtest").."/onboarding.lua")

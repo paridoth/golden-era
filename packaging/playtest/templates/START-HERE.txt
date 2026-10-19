@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.0
+GOLDEN ERA — FACTORY PLAYTEST 0.1.1
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -25,26 +25,32 @@ Official engine downloads: https://www.luanti.org/en/downloads/
 
 PLAY
 
-The first launch generates a fresh survival world and starter workshop. Allow
-around a minute for initial world generation. Close the welcome panel to play.
+The first launch generates a fresh world. Choose the supplied workshop to try
+machinery with tools and spare materials, or choose survival to gather your own
+materials without granted supplies. Damage is disabled in both paths. Existing
+players keep their position and inventory. Allow time for initial world generation.
 
 W/A/S/D move, mouse looks, Space jumps, I opens inventory.
 Right-click machines to open them. Left-click digs or takes items from drawers.
 K toggles flight. J toggles fast movement; E activates fast movement.
 
 /packhelp   Workshop instructions
+/factoryguide   Early survival and machinery guide
+/startchoice    Reopen the starting choice before choosing a path
 /workshop   Return to the workshop
 /explore    Return to your original survival spawn
 /gamemode creative   Full item catalog for building experiments
 /gamemode survival   Ordinary item quantities again
 
-The supplied coal generator powers a cell, Pulverizer and furnace. Two raw iron
+The optional supplied coal generator powers a cell, Pulverizer and furnace. Two raw iron
 become four ingots, delivered through tubes into the output barrel. The first
 batch takes about two minutes. The front-left barrel holds spare materials and
 parts. Use the Elepower Tome and inventory recipe guide to learn more.
 
-Damage is disabled. The extra alloy furnaces can be wired with the supplied
-conduits. Explore, build and report anything broken or confusing.
+The factory guide explains the hand-cranked grindstone, coal-fired alloys,
+electronics, first power and item routing. Six crafting milestones use the
+existing advancement system (/awards). The extra workshop alloy furnaces can
+be wired with the supplied conduits. Explore, build and report confusing parts.
 
 SAVES AND FEEDBACK
 

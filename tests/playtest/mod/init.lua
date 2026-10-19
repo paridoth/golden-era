@@ -54,15 +54,49 @@ local function check_craft(name)
  end
  assert(tested,"No normal selected recipe: "..name)
 end
+local function check_pcb_etching()
+ -- A consumable fixture checks the upstream right-click transformation and its
+ -- ten-use acid limit. This does not claim these boards were gathered in play.
+ local pos=p(13,8)
+ local inventory=core.create_detached_inventory("era_etching_smoke",{})
+ inventory:set_size("main",4)
+ local player={get_player_name=function() return actor end,get_inventory=function() return inventory end}
+ local pointed={type="node",under=pos,above=vector.offset(pos,0,1,0)}
+ core.set_node(pos,{name="mcl_core:water_source"})
+ local acid=core.registered_items["elepower_dynamics:acidic_compound"].on_place(ItemStack("elepower_dynamics:acidic_compound"),player,pointed)
+ assert(acid:is_empty(),"Etching consumes one acidic compound")
+ eq(core.get_node(pos).name,"elepower_dynamics:etching_acid_source","Water becomes stock etching acid")
+ local blank=ItemStack("elepower_dynamics:pcb_blank 11")
+ for _=1,10 do blank=core.registered_items["elepower_dynamics:pcb_blank"].on_place(blank,player,pointed) end
+ eq(blank:get_count(),1,"Ten etches consume ten blank boards")
+ assert(inventory:contains_item("main","elepower_dynamics:pcb 10"),"Ten etched PCB enter player inventory")
+ eq(core.get_node(pos).name,"mcl_core:water_source","Acid reverts to water after ten etches")
+ local before=blank:to_string()
+ blank=core.registered_items["elepower_dynamics:pcb_blank"].on_place(blank,player,pointed)
+ eq(blank:to_string(),before,"Water cannot etch an eleventh PCB")
+ core.remove_node(pos)
+end
 local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
  eq(xcompat.gameid,"mineclonia","Mineclonia compatibility selected")
+ dofile(core.get_modpath("era_playtest_smoke").."/progression.lua")()
  for _,name in ipairs({"elepower_machines:generator","elepower_machines:power_cell_0","elepower_machines:pulverizer","elepower_machines:furnace",
-  "elepower_dynamics:conduit","pipeworks:tube_1","pipeworks:mese_filter","fluid_tanks:tank","drawers:oakwood1"}) do
+  "elepower_dynamics:conduit","pipeworks:tube_1","pipeworks:mese_filter","fluid_tanks:tank","drawers:oakwood1",
+  "elepower_machines:grindstone","elepower_machines:crank","elepower_machines:coal_alloy_furnace",
+  "elepower_machines:machine_block","elepower_dynamics:steel_block"}) do
   assert(core.registered_nodes[name],"Missing selected playable node: "..name)
   check_craft(name)
  end
+ for _,name in ipairs({"basic_materials:motor","basic_materials:empty_spool","basic_materials:copper_wire",
+  "elepower_dynamics:brass_gear","elepower_dynamics:lead_gear","elepower_dynamics:wound_copper_coil",
+  "elepower_dynamics:pcb_blank","elepower_dynamics:chip","elepower_dynamics:capacitor",
+  "elepower_dynamics:acidic_compound","elepower_dynamics:integrated_circuit","elepower_wireless:card"}) do check_craft(name) end
+ eq(ele.external.ing.steel_block,"elepower_dynamics:steel_block","Native steel block mapping")
+ local miner=assert(core.get_all_craft_recipes("elepower_mining:miner_core"),"Miner core recipe exists")[1]
+ local steel_blocks=0
+ for _,name in ipairs(miner.items) do if name=="elepower_dynamics:steel_block" then steel_blocks=steel_blocks+1 end end
+ eq(steel_blocks,4,"Mining recipe retains its four stock steel blocks")
  for _,name in ipairs({"mcl_core:coal_lump","mcl_raw_ores:raw_iron","elepower_dynamics:iron_dust"}) do
   assert(core.registered_items[name],"Missing industrial input/output: "..name)
  end
@@ -70,6 +104,7 @@ local function run()
   assert(core.forceload_block(p(x,z),true),"Activate workshop mapblocks without a connected player")
  end end
  local positions=era_playtest.build_fixture(p(0),actor)
+ check_pcb_etching()
  local generator,pulverizer,furnace,barrel,tank=positions.generator,positions.pulverizer,positions.furnace,positions.output,positions.tank
  eq(core.get_meta(generator):get_int("storage"),0,"Generator starts without injected power")
  eq(core.get_meta(pulverizer):get_int("storage"),0,"Pulverizer starts without injected power")

@@ -1,0 +1,53 @@
+{
+  "version": "0.1.1",
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.1-windows.exe",
+      "size_bytes": 66497347,
+      "sha256": "cb7955373f0bf3d2d0101b4186fe2eeb38ab1b67fb6b0e0daf34d073dc1cdeb5",
+      "installed_files": 11868
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.1-linux.tar.gz",
+      "size_bytes": 61898359,
+      "sha256": "55f55752378cdd58ef358070d942f720cc06d6b4a985e18f4104516bd0290678",
+      "files": 11859
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.1-windows-test.zip",
+      "size_bytes": 69901254,
+      "sha256": "85d7b5e6651ca6b575c6045d5b678424eea4b56e1f5b3cabdd2351e543cf5391",
+      "files": 11858
+    }
+  },
+  "engine": "Luanti 5.17.0 reference; Windows official ZIP verified on first download, Linux installed native/official Flatpak",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "changes": [
+    "New-player workshop/survival choice; no workshop tools or materials on survival path",
+    "Five-page first-factory guide and six native crafting advancements",
+    "Restore native steel-block ingredients and Mineclonia wireless dye mapping",
+    "Windows incomplete engine-cache recovery with atomic promotion; quoted paths",
+    "Linux launcher, desktop entry and official Flatpak installation reference"
+  ],
+  "validation": {
+    "stock_factory": "PASS 26 selected crafts, 15-target reachability, 10-use PCB etching, fluid conservation and two raw iron to four ingots",
+    "survival_materials": "PASS native generated ore mining/pickup, furnace steel and plastic, hand grinding and coal alloying; detached actor and supplied fixtures, not human progression",
+    "packaged_factory": "PASS clean final game ZIP extraction through native launcher with external fresh save",
+    "linux_runtime": "PASS official Flathub engine/LuaJIT stock factory from staging package; final machinery files match and final launcher/manifests pass",
+    "onboarding": "PASS real Linux client clicks both choices, checks actual destinations, kit rules, saved inventories and positions on restart",
+    "windows_bootstrap": "PASS exact inline command under portable PowerShell 7 on Linux; fresh, corrupt/missing cache, checksum rejection, concurrent promotion and save preservation",
+    "windows_native": "Pending; Wine checks are tracked separately if available",
+    "controller": "Separate opt-in Linux custom engine prototype; not part of these releases",
+    "windows_installer_wine": "PASS actual frozen x86 NSIS under repository-local Wine 9 WoW64: all 11868 installed files match, desktop/Start Menu targets correct, repeated installation retains world/settings sentinels; not native Windows"
+  },
+  "limitations": [
+    "Native Windows and ordinary graphical Flatpak launch need device testing",
+    "No complete human survival playthrough or all-machine interoperability claim",
+    "Known inherited Mineclonia craft-width warnings on first graphical join",
+    "First workshop preparation can take about 22 seconds in the measured native GUI test",
+    "Unsigned Windows installer; Linux requires compatible Luanti or Flatpak installation"
+  ],
+  "previous_release": "0.1.0 artifacts preserved byte for byte"
+}

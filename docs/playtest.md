@@ -18,7 +18,15 @@ client. It creates a persistent world at
 survival inventory quantities and damage disabled. Close the game normally to
 save. Relaunch with the same command to continue. No system packages are installed.
 
-New players arrive at a supplied workshop above the terrain. It contains a
+New players choose once between a supplied workshop and a survival start at the
+natural spawn. Survival grants no workshop tools or materials; the stock Elepower
+mod still supplies its help book. The workshop choice grants the existing diamond
+tools and torches and enables experiment privileges in single-player. Server
+guests keep their configured privileges. Neither choice clears an
+inventory. Existing 0.1.0 players keep their position, inventory and workshop.
+`/startchoice` reopens an unfinished choice.
+
+The optional supplied workshop above the terrain contains a
 coal-fired generator, power cell, Pulverizer, powered furnace, tubes, filter
 injectors and blinking controls. Coal and two raw iron start the first batch.
 The blinking controls pulse the injectors to move dust into the furnace and
@@ -29,6 +37,8 @@ The extra alloy furnaces are ready for the player to wire into power.
 The first batch takes roughly two minutes with the supplied stock generator.
 
 - `/packhelp` shows workshop instructions.
+- `/factoryguide` explains unpowered grinding/alloying, electronics, first power and item routing.
+- `/awards` includes six native factory crafting milestones. These do not grant free items.
 - `/workshop` returns to the workshop without resetting it.
 - `/explore` returns to the player's original survival spawn.
 - **K** toggles flight; fast movement is available with **J**.
@@ -39,8 +49,9 @@ The first batch takes roughly two minutes with the supplied stock generator.
 
 Drawers accept items by right-clicking their front and dispense by left-clicking.
 The workshop starts once per world; later joins preserve the player's position
-and all workshop changes. The game exposes local development privileges so the
-player can experiment freely.
+and all workshop changes. In single-player, the workshop path grants local development privileges for experiments.
+The survival path does not add those privileges; single-player/server ownership
+may independently grant privileges through Luanti.
 
 ## What is included
 
@@ -78,8 +89,25 @@ game-ID mapping; Elepower's Mineclonia item/metal mappings and recipe-guide hook
 Mesecons' dye table/piston compatibility; and fluid insertion remainder fixes.
 Source checkouts stay clean. Patch helpers reject unexpected source text.
 
+See [the audited survival route](../integrations/playtest/survival-notes.md) for
+material acquisition, early machine ordering, recipe reachability and test limits.
+The generator can power a processor before the later Power Cell is available.
+
 The headless smoke checks selected crafting, fluid accounting and the actual
 stock industrial line using normal timers, power ABMs and tube routing. It is a
 quick regression guard for the playable build. Ordinary graphical play remains
 the primary way to find the next feature or compatibility issue; it does not
 establish that every included upstream machine has been exercised.
+
+## Desktop release and onboarding checks
+
+The active package version is tracked in `packaging/playtest/release.json`.
+Windows EXEs and Linux archives are built separately without replacing 0.1.0.
+See [sharing instructions](itch-release.md) and [Linux setup](linux-release.md).
+
+`python3 tests/playtest/gui.py --fetch-tools` renders and clicks both start choices
+in a repository-local Xvfb desktop, then restarts each world. It checks real player
+inventories and saved positions. The helper downloads only the hash-locked GUI
+test packages into `tools/`; no system packages or user worlds are changed.
+It requires the local graphical client, Pillow with XCB, xauth, X11 and XTest.
+The isolated display is :97 and the test port is 30212.

@@ -33,10 +33,10 @@ elif [ -x /Applications/Luanti.app/Contents/MacOS/luanti ]; then
   GE_ENGINE=/Applications/Luanti.app/Contents/MacOS/luanti
 elif [ -x /Applications/Minetest.app/Contents/MacOS/minetest ]; then
   GE_ENGINE=/Applications/Minetest.app/Contents/MacOS/minetest
-elif command -v flatpak >/dev/null 2>&1 && flatpak info net.minetest.Minetest >/dev/null 2>&1; then
+elif command -v flatpak >/dev/null 2>&1 && flatpak info org.luanti.luanti >/dev/null 2>&1; then
   exec flatpak run --filesystem="$GE_ROOT:ro" --filesystem="$GE_DATA" \
     --env=LUANTI_GAME_PATH="$LUANTI_GAME_PATH" --env=LUANTI_USER_PATH="$LUANTI_USER_PATH" \
-    net.minetest.Minetest --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
+    org.luanti.luanti --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
     --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@"
 else
   printf '%s\n' 'Install Luanti 5.17.0 from https://www.luanti.org/en/downloads/ then run start.sh again.' >&2

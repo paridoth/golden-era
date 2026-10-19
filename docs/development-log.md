@@ -494,3 +494,61 @@ package were asserted. Existing unit/source checks and syntax/whitespace checks
 passed. Native Windows/PowerShell and itch app execution remain for the tester;
 only the game runtime was executed on Linux. No itch project/upload/publication
 was performed. [Upload guide and page text](itch-release.md) are ready.
+
+## Desktop playtest 0.1.1 — 2026-10-19
+
+The user authorized autonomous work and then explicitly restricted the platform
+scope to Windows and Linux. Shield/Android work stopped before any toolchain
+installation; only ignored download metadata remained. Current scope is also
+recorded in AGENTS.md.
+
+Added a first-join choice between the supplied workshop and gathering materials
+at the natural spawn. The survival path adds no tools/materials or development
+privileges; Elepower still supplies its own help book. The workshop kit is issued
+once, and its operator privileges are limited to single-player. Returning 0.1.0
+players retain their position and inventory. A five-page first-factory guide and
+six crafting milestones reuse the existing recipe guide, Tome and awards system.
+The guide starts with unpowered grinding/alloying; a Power Cell comes later.
+
+Pinned-source and real-engine checks found two compatibility gaps: native Steel
+Block was absent from Elepower's material mapping, weakening later recipes, and
+Wireless Control Chip used an empty Mineclonia dye group. Bounded assembled-copy
+patches restore upstream ingredient semantics. Expanded stock tests check 26
+craft outputs, fifteen-target recipe reachability, ten PCB etches per acid source,
+fluid conservation and the ordinary two-raw-iron-to-four-ingot factory. Separate
+v7 tests harvest generated ores through native dig/pickup callbacks and process
+steel, plastic, manual ore doubling and brass. Those tests use a detached actor
+and supplied device fixtures; they do not establish human progression pacing.
+
+Actual Linux client tests use authenticated repository-local Xvfb displays and
+real X11 mouse events. Both choices, initial destinations, kit rules, inventory
+persistence and reconnect positions passed. A strengthened destination assertion
+initially failed because it assumed terrain preparation would finish in three
+seconds. Waiting for readiness passed; one measured workshop generation took
+22 seconds. This exposed a useful next UX change. Existing inherited first-join
+Mineclonia craft-width warnings remain distinct from zero-warning headless
+factory/resource runs.
+
+The Windows bootstrap now quarantines an incomplete engine cache and promotes a
+verified download with Directory.Move, preventing nested cache directories.
+Actual PowerShell 7/.NET tests on Linux exercise the exact batch inline command:
+fresh/partial cache, checksum and missing-executable rejection, special path
+characters, concurrent promotion and unchanged saves/settings. This does not
+replace native Windows PowerShell/cmd/desktop testing.
+
+Linux releases include a native/Flatpak launcher, version checks, a relocatable
+desktop entry and the official installation reference. The current app identifier
+is org.luanti.luanti. The official Flathub 5.17.0 engine ran the stock factory
+under its matching runtime with LuaJIT, while final artifact manifests/launcher
+checks passed separately. The Linux archive bundles no host-dependent engine.
+Windows and Linux 0.1.1 candidates, hashes and exact validation limits are in
+[release metadata](releases/0.1.1.json). The final game ZIP passed its own clean
+extraction/real-launcher factory test. Original 0.1.0 EXE/ZIP hashes are unchanged.
+
+An optional copied-engine controller prototype translates normalized SDL gamepad
+input into native modal-menu mouse/key events. A real SDL virtual controller
+moved/split/quick-transferred server inventory stacks, activated a GUI button,
+rebound a controller key and reopened inventory. The unmodified engine failed
+the same first transfer as expected. This separately built Linux development
+engine is optional, lacks development-build audio/HTTP, and is not part of the
+Windows/Linux stock-engine packages. See controller-support.md for scope.

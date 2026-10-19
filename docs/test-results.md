@@ -567,3 +567,20 @@ PE/DLL layout was inspected. No Windows runtime is available here, so native
 batch/PowerShell, graphical Windows play and itch app launch remain unverified.
 The earlier Linux graphical readiness check does not establish those results.
 All 50 existing unit tests, Lua/Python/shell syntax and whitespace checks passed.
+
+## Desktop 0.1.1 validation — 2026-10-19
+
+The release record is [0.1.1](releases/0.1.1.json). Executed checks and their limits:
+
+- `scripts/test.sh`: existing 50 unit/reference/model checks plus onboarding event tests and generated-data validation.
+- `tests/playtest/run.py`: 26 selected craft outputs, fifteen-target reachability with machine gates, steel-block counts, ten-use PCB etching, stock power/timer/tube flow and fluid conservation.
+- `tests/survival/run.py`: generated v7 metals, native dig/drop/pickup, stock furnace/grindstone/coal-alloy processing; detached actor and supplied fixtures, not a human playthrough.
+- `tests/playtest/gui.py`: real Linux client renders/clicks both choices, reaches each intended destination, preserves real player inventory/position through restart; inherited Mineclonia craft-width warnings documented in logs.
+- `tests/package/run.py`: final 0.1.1 ZIP extracted cleanly; real launcher uses fresh external data and loads the extracted game, then completes the stock factory without warnings/errors.
+- `tests/linux/run.py`: final archive manifest/hash and launcher checks including actual Gio dispatch; actual official Flathub engine/runtime factory run uses a separately identified staging archive with identical upstream machinery files.
+- `tests/windows/run.py`: exact batch inline PowerShell under pinned PowerShell 7/Linux, including failure and concurrent-promotion cases. This is not Windows cmd/PowerShell 5.1 execution.
+- `tests/desktop/test_gamepad.py` and `run_native.py`: optional custom Linux engine policy/isolation/UBSan and real SDL controller/native inventory events; baseline stock engine fails as expected. No physical-controller or Windows custom-engine result is claimed.
+
+Evidence and three onboarding screenshots are under `docs/evidence/2026-10-19/`.
+Native Windows install/game startup, ordinary graphical Flatpak launch, all
+included machines and human survival resource pacing remain explicit limits.

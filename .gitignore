@@ -9,6 +9,7 @@ __pycache__/
 # Retain only intentional migration/restore evidence logs.
 !/handoff/evidence/*.log
 !/docs/evidence/2026-10-18/*.log
+!/docs/evidence/2026-10-19/*.log
 
 # Original modpack files are local reference inputs, never game distribution.
 /references/cache/

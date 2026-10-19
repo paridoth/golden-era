@@ -13,7 +13,7 @@ import urllib.request
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = "0.1.0"
+VERSION = json.loads((ROOT / "packaging/playtest/release.json").read_text())["version"]
 DEFAULT_ARCHIVE = ROOT / f"dist/golden-era-playtest-{VERSION}-windows-test.zip"
 DEFAULT_OUTPUT = ROOT / f"dist/golden-era-playtest-{VERSION}-windows.exe"
 LOCK = ROOT / "packaging/playtest/nsis-toolchain.lock.json"
@@ -91,7 +91,8 @@ def file_records(directory):
 def support_files(destination, archive):
     destination.mkdir()
     sources = ["scripts/package-installer.py", "packaging/playtest/installer.py", "packaging/playtest/installer.nsi",
-               "packaging/playtest/nsis-toolchain.lock.json", "packaging/playtest/nsis-LICENSE.txt"]
+               "packaging/playtest/nsis-toolchain.lock.json", "packaging/playtest/nsis-LICENSE.txt",
+               "packaging/playtest/release.json"]
     for relative in sources:
         target = destination / "source" / relative
         target.parent.mkdir(parents=True, exist_ok=True)

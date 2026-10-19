@@ -1,0 +1,9 @@
+Exact Windows bootstrap PowerShell/.NET filesystem regression
+PowerShell 7.6.7 / Linux; cmd.exe and native Windows PowerShell 5.1 are not executed
+Official tool archive SHA256: 6896f9e3a6b0a354bf470835a96da76d2f801cd50dcf047ad7c4563bf93bf431
+Inline command SHA256: 1523150bf203e2580114ce868eaff63d94952dbee054566d9da7cf54f2a2409e
+PASS: fresh verified download, extraction, direct engine promotion, special characters/spaces in paths, and staging cleanup
+PASS: incomplete cache quarantined intact and replaced without nesting; tester saves/settings preserved
+PASS: wrong checksum fails before cache replacement; no engine executable promoted
+PASS: archive with missing engine executable fails before replacement and cleans staging
+PASS: two concurrent fresh promotions complete without nesting, corruption, or leftover staging

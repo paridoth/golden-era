@@ -1,0 +1,34 @@
+Golden Era — Linux Playtest
+
+1. Extract the entire archive somewhere you want to keep the game.
+2. If Luanti 5.17.0 or newer is not installed, open Install Luanti.flatpakref.
+   Your software manager handles installation. Flatpak support and internet are
+   required for this method; the first install may download a large runtime.
+3. Open Play Golden Era.desktop. Your desktop may ask you to allow launching it.
+   Terminal alternative: sh ./start.sh
+
+The launcher opens your local singleplayer world. New players choose the supplied
+workshop or a survival start without workshop tools or materials. Use /factoryguide
+for the early machinery path, /packhelp for workshop instructions, /workshop to
+visit the factory, and /explore for survival terrain. Existing players keep their
+position and inventory.
+
+Future sessions: open Play Golden Era.desktop again. Keep the extracted folder;
+moving its complete contents is safe. Saves and settings are separate:
+  ~/.local/share/golden-era-playtest/
+or $XDG_DATA_HOME/golden-era-playtest/ if configured. Replacing the game folder
+with an update does not overwrite those saves. Back up this data folder first.
+
+No engine binary is bundled. The launcher uses a compatible installed Luanti or
+the official org.luanti.luanti Flatpak. It never installs or updates software on
+normal startup. Explicit terminal installation: sh ./start.sh --install-engine
+
+To inspect engine selection without creating a world: sh ./start.sh --check
+Advanced: GOLDEN_ERA_ENGINE=/absolute/path/to/luanti sh ./start.sh
+Advanced: GOLDEN_ERA_DATA_DIR=/absolute/path/to/saves sh ./start.sh
+
+Logs: ~/.local/share/golden-era-playtest/logs/client.log
+
+Source, game credits, licenses and provenance are included under docs/, licenses/
+and source/. This is an early test build; native engine 5.17.0 is the tested
+reference. Later compatible engine versions are accepted but are not verified.

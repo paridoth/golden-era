@@ -17,6 +17,32 @@ small automated boot/industrial-flow regression and preserve working worlds.
 The detailed reference/parity pathway below remains background for selective
 future adaptations and the earlier custom prototype.
 
+## Desktop playtest 0.1.1 — 2026-10-19
+
+The active targets are Windows and Linux. The user explicitly canceled the
+Shield/Android prototype and authorized continued autonomous work across useful
+components. Frozen 0.1.0 artifacts remain available.
+
+Version 0.1.1 adds a one-time workshop/survival choice, a first-factory guide and
+six stock advancement triggers. Existing players keep their state. The survival
+path grants no workshop tools/materials; the stock Elepower help book remains.
+Operator/testing privileges are granted only in single-player workshop starts.
+Steel-block and wireless dye compatibility fixes preserve stock recipe costs.
+
+Windows EXE and Linux archive candidates are recorded in
+[release metadata](releases/0.1.1.json). Linux uses an installed native Luanti or
+the official Flatpak. Native crafting/resource acquisition, packaged factory
+flow, real Linux onboarding/destination/restart checks and the exact Windows
+PowerShell bootstrap have separate evidence and clearly stated limits. Human
+survival pacing and native Windows startup remain to be played.
+
+Next work is a Pipeworks autocrafter feeding Storage Drawers: check material and
+replacement-item conservation, blocked outputs and restart recovery. Also make
+slow first-workshop preparation visible and resumable after a disconnect.
+The experimental [desktop controller engine](controller-support.md) is separate
+from these stock-engine releases; physical controllers and a custom Windows
+binary remain unverified.
+
 ## Goal and reference decision
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0

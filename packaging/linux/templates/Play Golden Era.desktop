@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Play Golden Era
+Comment=Start the Golden Era factory playtest
+Exec=sh -c "exec \\"\\$(dirname \\"\\$1\\")/start.sh\\"" golden-era %k
+Icon=applications-games
+Terminal=false
+Categories=Game;Simulation;
+StartupNotify=false

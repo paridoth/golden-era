@@ -16,8 +16,10 @@ and stock progression; exact Revelation recipes/systems will be added as play
 reveals the priorities. The earlier custom factory remains available separately.
 
 For sharing with a tester, see [the itch.io release guide](docs/itch-release.md).
-The Windows test ZIP has a fresh-save launcher and includes source, credits and
-license notices.
+The Windows EXE installs and launches automatically. A separate Linux archive
+uses an installed Luanti engine or the official Flatpak. Both include source,
+credits and license notices. New players can choose a supplied workshop or
+survival progression; `/factoryguide` explains the early machinery.
 
 ## Earlier native factory and reference work
 
@@ -175,5 +177,6 @@ remaining burn or items cannot be dug normally. A Factory Wrench can
 Original project code and documentation use GPL-3.0-or-later, except for preserved
 third-party notices and evidence. The four original placeholder textures use
 CC0-1.0. See [LICENSE](LICENSE), [texture NOTICE](mods/era_core/textures/NOTICE.md)
-and the upstream notices. The inherited media audit is incomplete; no public
-binary/game distribution has been prepared or cleared.
+and the upstream notices. The inherited media audit has limits documented in the packaged notices.
+Local tester packages retain source, credits and licenses; their validation and
+distribution limits are recorded in the release guide.

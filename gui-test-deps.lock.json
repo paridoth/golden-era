@@ -1,0 +1,23 @@
+[
+  {
+    "name": "xvfb",
+    "version": "2:21.1.12-1ubuntu1.8",
+    "filename": "xvfb_21.1.12-1ubuntu1.8_amd64.deb",
+    "sha256": "712429d9342c7d6cef63afb33ccfcd2bd477a69371b5c9941a9c6dde31a4cd3c",
+    "size": 876860
+  },
+  {
+    "name": "xserver-common",
+    "version": "2:21.1.12-1ubuntu1.8",
+    "filename": "xserver-common_21.1.12-1ubuntu1.8_all.deb",
+    "sha256": "5720e7995c3b546927046f63bb4a344773b27850379c4b2694edf279025ad772",
+    "size": 34794
+  },
+  {
+    "name": "libxfont2",
+    "version": "1:2.0.6-1+deb13u1build0.24.04.2",
+    "filename": "libxfont2_2.0.6-1+deb13u1build0.24.04.2_amd64.deb",
+    "sha256": "e2ed49a20ccff6ffa52719a6cd118538e24c434d9035acd7fb736e7e4f8d6485",
+    "size": 93972
+  }
+]
