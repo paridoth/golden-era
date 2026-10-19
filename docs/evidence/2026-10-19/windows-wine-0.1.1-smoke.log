@@ -1,0 +1,33 @@
+Command: python3 tests/windows-native/run.py --engine-smoke --launcher-smoke --keep-prefix
+Fresh isolated Wine prefix; original frozen 0.1.1 Windows EXE was executed unchanged.
+
+Actual Windows installer compatibility smoke under Wine 9 / Linux
+This does not establish native Windows, Windows PowerShell 5.1, SmartScreen, or real GPU behavior.
+Installer SHA256: cb7955373f0bf3d2d0101b4186fe2eeb38ab1b67fb6b0e0daf34d073dc1cdeb5
+PASS: isolated 64-bit Wine prefix; all user special folders remain inside repository test directory
+PASS: actual x86 NSIS release installed silently under WoW64; 11868 installed files match release SHA256 manifest
+PASS: desktop and Start Menu shortcuts target the installed batch launcher; no Linux menu builder used
+PASS: silent reinstall preserves existing world/settings bytes
+PASS: official hash-pinned Win64 Luanti 5.17.0 / LuaJIT completed the installed stock factory smoke under Wine
+2026-10-19 05:15:21: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+Official engine diagnostics: 107 warning lines; 0 error lines. Full output remains in engine-factory.log when --keep-prefix is used.
+First warning: 2026-10-19 05:13:15: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+PASS: actual installed start.bat via Wine cmd.exe, GUI choice observer assertions
+PASS: actual installed start.bat via Wine cmd.exe, GUI reconnect observer assertions
+Test workspace: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/windows-wine-d5hvxbcm
+GUI choice engine diagnostics: 86 warnings, 0 errors; 8 non-builtin-path warnings.
+  1 x /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+  2 x Switching to SQLite3 is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+  1 x /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+  1 x Switching to SQLite3 or PostgreSQL is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+  1 x /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+  2 x [mcl_inventory] craft width for player Tester is 0
+GUI reconnect engine diagnostics: 84 warnings, 0 errors; 6 non-builtin-path warnings.
+  1 x /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+  2 x Switching to SQLite3 is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+  1 x /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+  1 x Switching to SQLite3 or PostgreSQL is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+  1 x /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+Known builtin-path warning: https://github.com/luanti-org/luanti/issues/17607
+Wine developer tools are not redistributed; package and prefix paths remain local.
+No native Windows PowerShell 5.1, first-download, SmartScreen or hardware graphics claim is made.

@@ -1,0 +1,68 @@
+Command: python3 tests/windows-native/run.py --world-creation-smoke
+
+Actual Windows installer compatibility smoke under Wine 9 / Linux
+This does not establish native Windows, Windows PowerShell 5.1, SmartScreen, or real GPU behavior.
+Installer SHA256: cb7955373f0bf3d2d0101b4186fe2eeb38ab1b67fb6b0e0daf34d073dc1cdeb5
+Workspace: fresh isolated prefix
+PASS: isolated 64-bit Wine prefix; all user special folders remain inside repository test directory
+PASS: actual x86 NSIS release installed silently under WoW64; 11868 installed files match release SHA256 manifest
+PASS: desktop and Start Menu shortcuts target the installed batch launcher; no Linux menu builder used
+PASS: silent reinstall preserves existing world/settings bytes
+OBSERVED: frozen 0.1.1 block redirection under Wine cmd.exe writes 1/5 world.mt keys; native CMD behavior is not inferred
+PASS: current exact world creation block writes all five SQLite keys through Wine cmd.exe with spaces/& in GE_DATA
+PASS: both world creation blocks preserve existing world.mt bytes
+Test workspace: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/windows-wine-4j8m99p2
+
+frozen-0.1.1.cmd
+SHA256: 6cc064421d372835419b4a49d91eb975ec372a887379d9a9a0ca7f9aba50c652
+@echo off
+if not exist "%GE_DATA%\worlds\playtest\world.mt" (
+  >"%GE_DATA%\worlds\playtest\world.mt" (
+    echo gameid = golden_era_playtest
+    echo backend = sqlite3
+    echo player_backend = sqlite3
+    echo auth_backend = sqlite3
+    echo mod_storage_backend = sqlite3
+  )
+)
+
+
+frozen-0.1.1-world.mt
+SHA256: 23fc9f0ee26a6d04a8e76d759b2ec9ee6de633e1671a94711451206a6b715e55
+gameid = golden_era_playtest
+
+
+frozen-0.1.1.log
+SHA256: 7b512951204b290ae7a9a03a87b2c5f68eba0584beef60d14bfd7c82859ac8e9
+002c:err:wineboot:process_run_key Error running cmd L"C:\\windows\\system32\\winemenubuilder.exe -a -r" (126).
+backend = sqlite3
+player_backend = sqlite3
+auth_backend = sqlite3
+mod_storage_backend = sqlite3
+
+
+current.cmd
+SHA256: 1bdbe2fd14e42e2c4ced822a7a1e6cc7f7a390cde61fa398ef54030c9fd0d569
+@echo off
+if not exist "%GE_DATA%\worlds\playtest\world.mt" (
+  >"%GE_DATA%\worlds\playtest\world.mt" echo gameid = golden_era_playtest
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo player_backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo auth_backend = sqlite3
+  >>"%GE_DATA%\worlds\playtest\world.mt" echo mod_storage_backend = sqlite3
+)
+
+
+current-world.mt
+SHA256: 583125a7f9c8daddb076a1856bd9b24be570c6d9d5bc3801d30980c5159dcb34
+gameid = golden_era_playtest
+backend = sqlite3
+player_backend = sqlite3
+auth_backend = sqlite3
+mod_storage_backend = sqlite3
+
+
+current.log
+SHA256: b77bb45d1e1d776bb4ffbe0897d4061169761668fe2725dceee444bec560b5dc
+002c:err:wineboot:process_run_key Error running cmd L"C:\\windows\\system32\\winemenubuilder.exe -a -r" (126).
+

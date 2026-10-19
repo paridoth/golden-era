@@ -40,14 +40,17 @@
     "windows_bootstrap": "PASS exact inline command under portable PowerShell 7 on Linux; fresh, corrupt/missing cache, checksum rejection, concurrent promotion and save preservation",
     "windows_native": "Pending; Wine checks are tracked separately if available",
     "controller": "Separate opt-in Linux custom engine prototype; not part of these releases",
-    "windows_installer_wine": "PASS actual frozen x86 NSIS under repository-local Wine 9 WoW64: all 11868 installed files match, desktop/Start Menu targets correct, repeated installation retains world/settings sentinels; not native Windows"
+    "windows_installer_wine": "PASS actual frozen x86 NSIS under repository-local Wine 9 WoW64: all 11868 installed files match, desktop/Start Menu targets correct, repeated installation retains world/settings sentinels; not native Windows",
+    "windows_engine_wine": "PASS official pinned Win64 Luanti 5.17.0/LuaJIT against installed game: stock factory, recipes and fluid conservation; 107 known builtin-path SHA warnings, zero errors",
+    "windows_launcher_wine": "PASS actual installed start.bat through Wine cmd.exe, graphical workshop click and reconnect preserving choice/inventory/position; cached engine skips PowerShell download"
   },
   "limitations": [
     "Native Windows and ordinary graphical Flatpak launch need device testing",
     "No complete human survival playthrough or all-machine interoperability claim",
     "Known inherited Mineclonia craft-width warnings on first graphical join",
     "First workshop preparation can take about 22 seconds in the measured native GUI test",
-    "Unsigned Windows installer; Linux requires compatible Luanti or Flatpak installation"
+    "Unsigned Windows installer; Linux requires compatible Luanti or Flatpak installation",
+    "Wine cmd block redirection wrote only the game ID in fresh world.mt, leaving old file backends; explicit per-line redirection is verified for 0.1.2. Native CMD behavior remains unverified."
   ],
   "previous_release": "0.1.0 artifacts preserved byte for byte"
 }

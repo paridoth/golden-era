@@ -1,0 +1,102 @@
+0194:err:winediag:ntlm_check_version ntlm_auth was not found. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+0194:err:ntlm:ntlm_LsaApInitializePackage no NTLM support, expect problems
+2026-10-19 05:17:00: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-10-19 05:17:00: WARNING[ServerStart]: Switching to SQLite3 is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector2.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\strict.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\serialize.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\misc_helpers.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\init.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\constants.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\item_s.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\item.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\register.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\register.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\after.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\metatable.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\mod_storage.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\item_entity.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\deprecated.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\misc_s.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\misc.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\privileges.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\auth.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\chatcommands.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\chat.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\information_formspecs.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\static_spawn.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\detached_inventory.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\falling.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\features.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\voxelarea.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\forceloading.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\hud.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\knockback.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\async.lua"
+2026-10-19 05:17:00: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\death_screen.lua"
+2026-10-19 05:17:10: ACTION[ServerStart]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+2026-10-19 05:17:14: WARNING[ServerStart]: /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+2026-10-19 05:17:14: WARNING[ServerStart]: Switching to SQLite3 or PostgreSQL is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+2026-10-19 05:17:14: WARNING[ServerStart]: /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+2026-10-19 05:17:14: WARNING[ServerStart]: Switching to SQLite3 is advised, please read https://docs.luanti.org/for-server-hosts/database-backends.
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector2.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\strict.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\serialize.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\misc_helpers.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\metatable.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\async\game.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\constants.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\item_s.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\misc_s.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\features.lua"
+2026-10-19 05:17:14: WARNING[ServerStart]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\voxelarea.lua"
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:17:14: ACTION[ServerStart]: World at [C:\users\josh\AppData\Local\GoldenEraPlaytest\worlds\playtest]
+2026-10-19 05:17:14: ACTION[ServerStart]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30000.
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector2.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\strict.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\serialize.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\misc_helpers.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\emerge\init.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\constants.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\item_s.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\misc_s.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\features.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\game\voxelarea.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\register.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\emerge\register.lua"
+2026-10-19 05:17:14: WARNING[Emerge-0]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\emerge\env.lua"
+2026-10-19 05:17:18: ACTION[Server]: Tester [127.0.0.1] joins game. List of players: Tester
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\math.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\vector2.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\strict.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\serialize.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\misc_helpers.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\pause_menu\init.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\register.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\menu.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\pause_menu\register.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\init.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\settingtypes.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\dlg_change_mapgen_flags.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\dlg_settings.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\components.lua"
+2026-10-19 05:17:18: WARNING[Main]: No SHA256 known for builtin file "C:\users\josh\AppData\Local\GoldenEraPlaytest\engine-5.17.0\bin\..\builtin\common\settings\shadows_component.lua"
+2026-10-19 05:17:18: ACTION[Main]: CHAT: # Server: version: 5.17.0 | game: Golden Era: stock mod playtest | uptime: 3s | max lag: 0.172s | clients: Tester
+2026-10-19 05:17:18: ACTION[Main]: CHAT: *** Tester joined the game.
+2026-10-19 05:17:21: ACTION[Server]: ONBOARDING GUI RECONNECT PASS workshop
+2026-10-19 05:17:21: ACTION[Main]: CHAT: *** Server shutting down in 1s.
+2026-10-19 05:17:22: ACTION[Server]: Tester leaves game. List of players: 
+2026-10-19 05:17:22: ACTION[ServerStop]: Server: Shutting down
+0194:err:ole:CoUninitialize Mismatched CoUninitialize
