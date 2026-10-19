@@ -1,5 +1,10 @@
 # Golden Era 0.1.2: itch.io tester release
 
+The storage audit found two inherited issues after these package checks: removing
+upgrades from an overfilled drawer can lose excess items, and an explosion at a
+drawer controller can raise a Lua error. Fixes are being validated for 0.1.3.
+Keep this frozen build as a fallback while that update is prepared.
+
 Shareable artifact: `dist/golden-era-playtest-0.1.2-windows.exe`.
 ZIP fallback: `dist/golden-era-playtest-0.1.2-windows-test.zip`.
 Linux: `dist/golden-era-playtest-0.1.2-linux.tar.gz`; see [Linux setup](linux-release.md).

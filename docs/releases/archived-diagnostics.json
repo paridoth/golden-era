@@ -1,0 +1,18 @@
+{
+  "category": "archived_diagnostics",
+  "public_release": false,
+  "frozen": true,
+  "description": "Historical 0.1.0 diagnostic/prototype archives retained for provenance. These are not recommended tester downloads or validated public releases. Their paths and sidecars are reserved to prevent accidental replacement.",
+  "artifacts": {
+    "game.zip": {
+      "artifact": "dist/golden-era-playtest-0.1.0-game.zip",
+      "size_bytes": 69774544,
+      "sha256": "db2e9691ce211e299928af39b7b277cdc066f45a67da46008eea2b3ee244b71b"
+    },
+    "linux.tar.gz": {
+      "artifact": "dist/golden-era-playtest-0.1.0-linux.tar.gz",
+      "size_bytes": 61857670,
+      "sha256": "f5bc99dc8125331cae0680360b86cd1c339da6e0215a53ed678572a3111ec68c"
+    }
+  }
+}

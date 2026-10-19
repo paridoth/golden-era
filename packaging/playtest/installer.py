@@ -184,6 +184,7 @@ def build(archive=DEFAULT_ARCHIVE, output=DEFAULT_OUTPUT, fetch=False):
         raise InstallerError("Installer output must be an .exe")
     game_packager = packager()
     try:
+        game_packager.check_release_output(output)
         game_packager.verify_package(archive, archive.with_suffix(".manifest.json"))
     except game_packager.PackageError as error:
         raise InstallerError(str(error)) from error
@@ -216,6 +217,10 @@ def build(archive=DEFAULT_ARCHIVE, output=DEFAULT_OUTPUT, fetch=False):
             differences = sorted(name for name in actual.keys() | expected.keys() | plugins.keys()
                                  if actual.get(name) != (expected | plugins).get(name))
             raise InstallerError("Compiled installer payload mismatch: " + ", ".join(differences[:10]))
+        try:
+            game_packager.check_release_output(output)
+        except game_packager.PackageError as error:
+            raise InstallerError(str(error)) from error
         staged.replace(output)
     record = {"format": 1, "version": VERSION, "artifact": output.name,
               "size_bytes": output.stat().st_size, "sha256": sha(output),

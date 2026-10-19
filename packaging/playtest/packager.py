@@ -28,6 +28,63 @@ class PackageError(Exception):
     pass
 
 
+def _artifact_outputs(path):
+    """Actual artifact/sidecar names written by the three package builders."""
+    path = Path(path)
+    if path.suffix.lower() == ".zip":
+        return path, path.with_suffix(".manifest.json"), path.with_suffix(".zip.sha256")
+    if path.suffix.lower() == ".exe":
+        return path, path.with_suffix(".exe.manifest.json"), path.with_suffix(".exe.sha256")
+    if path.name.lower().endswith(".tar.gz"):
+        return path, path.with_suffix(path.suffix + ".manifest.json"), path.with_suffix(path.suffix + ".sha256")
+    return (path,)
+
+
+def check_release_output(output):
+    """Refuse any artifact/sidecar alias of a path registered in docs/releases."""
+    root = ROOT.resolve()
+
+    def inside(path):
+        path = Path(path).resolve()
+        if not path.is_relative_to(root):
+            raise PackageError("Release output paths must stay inside the repository")
+        return path
+
+    def artifacts(value):
+        if isinstance(value, dict):
+            if "artifact" in value:
+                name = value["artifact"]
+                if not isinstance(name, str):
+                    raise PackageError("Registered artifact paths must be strings")
+                name = _safe_name(name)
+                if not PurePosixPath(name).name:
+                    raise PackageError("Registered artifact paths must name a file")
+                yield name
+            for child in value.values():
+                yield from artifacts(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from artifacts(child)
+
+    planned = tuple(inside(path) for path in _artifact_outputs(output))
+    protected = {}
+    for record in sorted((root / "docs/releases").glob("*.json")):
+        try:
+            names = list(artifacts(json.loads(record.read_text())))
+            if not names:
+                raise PackageError("Release record has no artifact paths")
+            for name in names:
+                for path in _artifact_outputs(root / name):
+                    protected[inside(path)] = record.relative_to(root).as_posix()
+        except (OSError, ValueError, PackageError) as error:
+            raise PackageError("Cannot read frozen release record " + record.name + ": " + str(error)) from error
+    for destination in planned:
+        for reserved, record in protected.items():
+            if destination == reserved or (destination.exists() and reserved.exists() and destination.samefile(reserved)):
+                raise PackageError("Frozen release output " + destination.relative_to(root).as_posix() +
+                                   " is registered in " + record + "; use --output with a different path or select a new release version")
+
+
 @dataclass
 class Payload:
     data: bytes
@@ -301,6 +358,7 @@ def build_package(output=None, overlays=(), fetch_supplements=False):
     output = Path(output or ROOT / "dist" / ("golden-era-playtest-" + VERSION + "-windows-test.zip")).absolute()
     if output.suffix.lower() != ".zip" or not output.resolve().is_relative_to(ROOT.resolve()):
         raise PackageError("ZIP output must be inside the repository")
+    check_release_output(output)
     assembly = _module("playtest_package_assembly", ROOT / "integrations/playtest/assembly.py")
     try:
         sources = assembly.verify_sources(fetch=False)
@@ -380,6 +438,7 @@ Archive entries use a fixed timestamp and normalized executable modes.
                 info.compress_type = zipfile.ZIP_DEFLATED
                 archive.writestr(info, payload.data, compresslevel=9)
         verify_package(staged)
+        check_release_output(output)
         staged.replace(output)
     finally:
         if staged.exists():

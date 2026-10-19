@@ -54,5 +54,9 @@
     "No full human survival playthrough, every-machine compatibility or performance claim",
     "Optional custom-engine controller prototype remains separate"
   ],
-  "previous_releases": "Frozen 0.1.0 Windows EXE/ZIP and 0.1.1 Windows EXE/ZIP/Linux archive match recorded SHA256; older artifacts preserved"
+  "previous_releases": "Frozen 0.1.0 Windows EXE/ZIP and 0.1.1 Windows EXE/ZIP/Linux archive match recorded SHA256; older artifacts preserved",
+  "known_issues": [
+    "Confirmed after release validation: removing capacity upgrades from a drawer above its reduced capacity can lose overflow because Mineclonia ignores item_drop without a player. Fix in progress for0.1.3.",
+    "Confirmed after release validation: a Mineclonia explosion affecting a drawer controller reaches an unavailable default API and raises a Lua error. Fix in progress for0.1.3."
+  ]
 }

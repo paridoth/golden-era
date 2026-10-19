@@ -80,11 +80,19 @@ def verify_package(path):
 
 
 def build_package(game_zip=None, output=None):
+    game_zip = Path(game_zip or ROOT / "dist" / ("golden-era-playtest-" + base.VERSION + "-windows-test.zip")).resolve()
+    if output is None:
+        with zipfile.ZipFile(game_zip) as archive:
+            version = json.loads(archive.read(BUNDLE + "/" + MANIFEST))["version"]
+        output = ROOT / "dist" / ("golden-era-playtest-" + version + "-linux.tar.gz")
+    output = Path(output).absolute()
+    if not output.name.endswith(".tar.gz") or not output.resolve().is_relative_to(ROOT.resolve()):
+        raise PackageError("Linux output must be a .tar.gz inside the repository")
+    base.check_release_output(output)
     engine_reference = json.loads((ROOT / "packaging/linux/engine-reference.json").read_text())
     install_reference = ROOT / "packaging/linux/templates/Install Luanti.flatpakref"
     if _sha(install_reference.read_bytes()) != engine_reference["flatpakref_sha256"]:
         raise PackageError("Bundled official Flatpak installation reference differs from its recorded SHA256")
-    game_zip = Path(game_zip or ROOT / "dist" / ("golden-era-playtest-" + base.VERSION + "-windows-test.zip")).resolve()
     base.verify_package(game_zip, game_zip.with_suffix(".manifest.json"))
     digest = _sha(game_zip.read_bytes())
     payloads = {}
@@ -98,9 +106,6 @@ def build_package(game_zip=None, output=None):
             entry = original[relative]
             payloads[relative] = base.Payload(archive.read(info), stat.S_IMODE(info.external_attr >> 16), entry["provenance"])
     version = original_manifest["version"]
-    output = Path(output or ROOT / "dist" / ("golden-era-playtest-" + version + "-linux.tar.gz")).absolute()
-    if not output.name.endswith(".tar.gz") or not output.resolve().is_relative_to(ROOT.resolve()):
-        raise PackageError("Linux output must be a .tar.gz inside the repository")
     revision = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
 
     def add(name, source, executable=False):
@@ -140,6 +145,7 @@ def build_package(game_zip=None, output=None):
                     entry.mode = payload.mode
                     entry.size = len(payload.data)
                     archive.addfile(entry, io.BytesIO(payload.data))
+        base.check_release_output(output)
         staged.replace(output)
     finally:
         staged.unlink(missing_ok=True)

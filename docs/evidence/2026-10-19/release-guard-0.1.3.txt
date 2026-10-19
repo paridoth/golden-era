@@ -1,0 +1,10 @@
+Actual frozen 0.1.2 CLI overwrite refusal; no release build requested.
+PASS: scripts/package-playtest.py --output dist/golden-era-playtest-0.1.2-windows-test.zip
+PLAYTEST PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.2-windows-test.zip is registered in docs/releases/0.1.2.json; use --output with a different path or select a new release version
+PASS: scripts/package-installer.py --archive dist/golden-era-playtest-0.1.2-windows-test.zip --output dist/golden-era-playtest-0.1.2-windows.exe
+WINDOWS SETUP FAILED: Frozen release output dist/golden-era-playtest-0.1.2-windows.exe is registered in docs/releases/0.1.2.json; use --output with a different path or select a new release version
+PASS: scripts/package-linux.py --game-zip dist/golden-era-playtest-0.1.2-windows-test.zip
+LINUX PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.2-linux.tar.gz is registered in docs/releases/0.1.2.json; use --output with a different path or select a new release version
+PASS: scripts/package-playtest.py --output dist/golden-era-playtest-0.1.2-linux.tar.gz.zip
+PLAYTEST PACKAGE FAILED: Frozen release output dist/golden-era-playtest-0.1.2-linux.tar.gz.manifest.json is registered in docs/releases/0.1.2.json; use --output with a different path or select a new release version
+PASS: all nine actual frozen artifact/manifest/checksum files retain their SHA256; sidecar-only collision created no ZIP.
