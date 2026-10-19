@@ -1,0 +1,22 @@
+survival choice: PASS
+survival reconnect: PASS
+workshop choice: PASS
+workshop reconnect: PASS
+Actual client rendering, X11 mouse clicks, real PlayerRef inventory and restart persistence checked; no user world modified.
+Test launcher: /home/josh/Projects/Minecraft golden era/golden-era-luanti/tests/linux/flatpak-client.sh; SHA256 aaf57175a8ef712ea79c0bb221ad4e89a493cea591db3e061ce0e67c5c4490c7
+
+survival choice: 2 warning lines; 0 error lines
+2026-10-19 05:53:44: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:53:44: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:53:46: ACTION[Server]: ONBOARDING GUI CHOOSER READY survival
+2026-10-19 05:53:49: ACTION[Server]: ONBOARDING GUI CHOICE PASS survival
+survival reconnect: 0 warning lines; 0 error lines
+2026-10-19 05:54:10: ACTION[Server]: ONBOARDING GUI RECONNECT PASS survival
+workshop choice: 2 warning lines; 0 error lines
+2026-10-19 05:54:26: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:54:26: WARNING[Server]: [mcl_inventory] craft width for player GUITester is 0
+2026-10-19 05:54:28: ACTION[Server]: ONBOARDING GUI CHOOSER READY workshop
+2026-10-19 05:54:29: ACTION[Server]: ONBOARDING GUI LOADING HUD PASS workshop
+2026-10-19 05:54:32: ACTION[Server]: ONBOARDING GUI CHOICE PASS workshop
+workshop reconnect: 0 warning lines; 0 error lines
+2026-10-19 05:54:53: ACTION[Server]: ONBOARDING GUI RECONNECT PASS workshop

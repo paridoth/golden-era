@@ -93,4 +93,120 @@ local have_cg = craftguide and craftguide.register_craft
 '''
     if _replace(fusion, old, new):
         changed.append("elepower: conserve multi-buffer fusion fluid input")
+
+    machine = path / "elepower_papi/machine.lua"
+    old = '''local function can_dig(pos, player)
+    local meta = core.get_meta(pos)
+    local inv = meta:get_inventory()
+    return inv:is_empty("dst") and inv:is_empty("src")
+end
+'''
+    new = '''-- Golden Era: scratch output snapshots and ghost filters are not items.
+local function owned_inventory_list(name)
+    return name ~= "dst_tmp" and name ~= "layout"
+end
+
+local function can_dig(pos, player)
+    local inv = core.get_meta(pos):get_inventory()
+    for name in pairs(inv:get_lists()) do
+        if owned_inventory_list(name) and not inv:is_empty(name) then
+            return false
+        end
+    end
+    return true
+end
+
+-- The upgrade UI owns a detached copy until it closes. Its shared drop_lock flag
+-- can be cleared by another editor leaving; use connected players' UI positions.
+local function being_modified(pos)
+    for _, player in ipairs(core.get_connected_players()) do
+        local target = core.string_to_pos(player:get_meta():get_string("soldering"))
+        if target and vector.equals(target, pos) then return true end
+    end
+    return false
+end
+
+-- Mineclonia delegates node removal to on_blast and ignores its return value.
+-- Its fallback dig_node refuses occupied machines, then bulk deletion loses them.
+local function mineclonia_on_blast(pos, intensity, do_drop)
+    if being_modified(pos) then return end
+    local node = core.get_node(pos)
+    local def = core.registered_nodes[node.name]
+    local meta = core.get_meta(pos)
+    local oldmetadata = meta:to_table()
+    local drops = {}
+    if do_drop ~= false then
+        for _, item in ipairs(core.get_node_drops(node, "")) do
+            drops[#drops + 1] = ItemStack(item)
+        end
+        -- Keep the native charge/components representation on the machine only.
+        if def.preserve_metadata then
+            def.preserve_metadata(pos, node, oldmetadata.fields, drops)
+        end
+        for name, list in pairs(oldmetadata.inventory) do
+            if owned_inventory_list(name) then
+                for _, item in ipairs(list) do
+                    local stack = ItemStack(item)
+                    if not stack:is_empty() then drops[#drops + 1] = stack end
+                end
+            end
+        end
+    end
+    -- remove_node runs Elepower's after_destruct network invalidation.
+    core.remove_node(pos)
+    if def.after_dig_node then
+        def.after_dig_node(pos, node, oldmetadata, nil)
+    end
+    for _, stack in ipairs(drops) do core.add_item(pos, stack) end
+end
+'''
+    if _replace(machine, old, new):
+        changed.append("elepower: protect every owned machine inventory and preserve native Mineclonia blast drops")
+    old = '''    -- Prevent digging when there's items inside
+    if not nodedef.can_dig then nodedef.can_dig = can_dig end
+'''
+    new = old + '''
+    if mcl then
+        local original_can_dig = nodedef.can_dig
+        nodedef.can_dig = function(pos, player)
+            return not being_modified(pos) and original_can_dig(pos, player)
+        end
+    end
+
+    -- Preserve explicit callbacks and other games' native explosion behavior.
+    if mcl and not nodedef.on_blast then
+        nodedef.on_blast = mineclonia_on_blast
+    end
+'''
+    if _replace(machine, old, new):
+        changed.append("elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks")
+
+    soldering = path / "elepower_tools/soldering.lua"
+    old = '''minetest.register_on_leaveplayer(function(player)
+    local umeta = player:get_meta()
+    local soldering = umeta:get_string("soldering")
+    if soldering == "" then return end
+    local pos = minetest.string_to_pos(soldering)
+    local meta = minetest.get_meta(pos)
+    if meta:get_int("drop_lock") == 1 then meta:set_int("drop_lock", 0) end
+    umeta:set_string("soldering", "")
+end)
+'''
+    new = '''-- Golden Era: a reconnected player has no surviving upgrade formspec.
+local function clear_soldering(player)
+    local umeta = player:get_meta()
+    local soldering = umeta:get_string("soldering")
+    if soldering == "" then return end
+    local pos = minetest.string_to_pos(soldering)
+    if pos then
+        local meta = minetest.get_meta(pos)
+        if meta:get_int("drop_lock") == 1 then meta:set_int("drop_lock", 0) end
+    end
+    umeta:set_string("soldering", "")
+end
+minetest.register_on_leaveplayer(clear_soldering)
+minetest.register_on_joinplayer(clear_soldering)
+'''
+    if _replace(soldering, old, new):
+        changed.append("elepower: clear stale soldering locks when their editor reconnects")
     return changed

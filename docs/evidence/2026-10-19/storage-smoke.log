@@ -1,0 +1,171 @@
+Golden Era storage regression: pinned baseline vs copied repairs; native callbacks, world item entities, real Mineclonia explosions and process restarts
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/baseline/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/baseline/games/golden_era_playtest/playtest-sources.json
+
+BASELINE: only Drawers restored to exact pinned 5c8aa86 sources; known losses/crash are asserted and caught safely
+Variant: baseline; phase: checkpoint
+2026-10-19 05:57:16: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:57:19: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/baseline/world]
+2026-10-19 05:57:19: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: Concrete native recipes verified: 26 (wood/stick/drawer groups use real pinned Mineclonia items)
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: first iron preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: first iron commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 3 preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 3 commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 5 preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 5 commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 7 preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: warm iron 7 commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: moved connected controller neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: moved disconnected controller neighborhood scans=1
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: new copper preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: new copper commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: disconnected preflight neighborhood scans=1
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: reconnected iron preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: reconnected iron commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: respawned visual iron preflight neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: respawned visual iron commit neighborhood scans=5
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: new four-compartment drawer preflight neighborhood scans=7
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: new four-compartment drawer commit neighborhood scans=7
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: BASELINE: exactly 2696 overflow iron lost; retained 2304 manually recovered
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: BASELINE: native piston restores 130 coal into metadata over an empty visual; next insertion erases that 130
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: BASELINE: dummy dig loses 130 coal and upgrade; sneaking full-inventory dig drops only 3/130 coal
+2026-10-19 05:57:21: ACTION[Server]: Explosion at (24,200,24) with strength 16 and radius 28
+2026-10-19 05:57:21: WARNING[Server]: Undeclared global variable "default" accessed at .../golden_era_playtest/mods/drawers/lua/controller.lua:374
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: BASELINE expected real explosion error caught: .../golden_era_playtest/mods/drawers/lua/controller.lua:374: attempt to index global 'default' (a nil value)
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: saved cache seed preflight neighborhood scans=7
+2026-10-19 05:57:21: ACTION[Server]: Storage smoke: saved cache seed commit neighborhood scans=7
+2026-10-19 05:57:21: ACTION[Server]: ERA STORAGE SMOKE PASS: CHECKPOINT: native baseline reproduced repeated scans, 2696 lost overflow iron, native piston/dig losses, wear loss and actual explosion crash
+2026-10-19 05:57:21: ACTION[Main]: Server: Shutting down
+
+baseline checkpoint: process exited successfully
+Variant: baseline; phase: resume
+2026-10-19 05:57:34: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:57:37: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/baseline/world]
+2026-10-19 05:57:37: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:57:39: ACTION[Server]: Storage smoke: reloaded stale disconnected cache neighborhood scans=1
+2026-10-19 05:57:39: ACTION[Server]: Storage smoke: reconnected after restart preflight neighborhood scans=7
+2026-10-19 05:57:39: ACTION[Server]: Storage smoke: reconnected after restart commit neighborhood scans=7
+2026-10-19 05:57:39: ACTION[Server]: ERA STORAGE SMOKE PASS: COMPLETE: process restart rejects stale disconnected cache; reconnect resumes native deposits and preserves 7 iron, 11 copper and the four-compartment drawer
+2026-10-19 05:57:39: ACTION[Main]: Server: Shutting down
+
+baseline resume: process exited successfully
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: elepower: protect every owned machine inventory and preserve native Mineclonia blast drops
+Runtime-copy patch: elepower: register Mineclonia-only blast lifecycle without replacing custom callbacks
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: preserve native immobility under Mineclonia pistons
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: reindex moved controllers after native metadata restoration
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/repaired/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/repaired/games/golden_era_playtest/playtest-sources.json
+
+Variant: repaired; phase: checkpoint
+2026-10-19 05:57:52: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:57:54: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/repaired/world]
+2026-10-19 05:57:54: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: Concrete native recipes verified: 26 (wood/stick/drawer groups use real pinned Mineclonia items)
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: first iron preflight neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: first iron commit neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 3 preflight neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 3 commit neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 5 preflight neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 5 commit neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 7 preflight neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: warm iron 7 commit neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: moved connected controller neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: moved disconnected controller neighborhood scans=1
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: new copper preflight neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: new copper commit neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: disconnected preflight neighborhood scans=1
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: reconnected iron preflight neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: reconnected iron commit neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: respawned visual iron preflight neighborhood scans=5
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: respawned visual iron commit neighborhood scans=0
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: new four-compartment drawer preflight neighborhood scans=7
+2026-10-19 05:57:56: ACTION[Server]: Storage smoke: new four-compartment drawer commit neighborhood scans=7
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: All 5000 iron conserved: 2304 retained plus 2696 recoverable overflow in bounded stacks; upgrades and item locks retain native behavior
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: Native Mineclonia piston respects drawer immobility and preserves all 130 stored + 1 offered coal
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: Automatic dummy dig and sneaking full-inventory dig each recover all 130 coal, upgrade and drawer
+2026-10-19 05:57:57: ACTION[Server]: Explosion at (24,200,24) with strength 16 and radius 28
+2026-10-19 05:57:57: ACTION[Server]: Explosion at (24,200,24) with strength 16 and radius 28
+2026-10-19 05:57:57: ACTION[Server]: Explosion at (24,200,24) with strength 16 and radius 28
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: Actual Mineclonia blasts preserve ordinary drawer contents/upgrades, controller metadata/wear and neighboring barrel inventory; do_drop=false honored
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: saved cache seed preflight neighborhood scans=7
+2026-10-19 05:57:57: ACTION[Server]: Storage smoke: saved cache seed commit neighborhood scans=7
+2026-10-19 05:57:57: ACTION[Server]: ERA STORAGE SMOKE PASS: CHECKPOINT: all 5000 iron recovered; native dig/explosion spills preserved; controller explosion preserves worn metadata stack and adjacent barrel; warm deposits avoid rescans; disconnect/reconnect and visual invalidation work
+2026-10-19 05:57:57: ACTION[Main]: Server: Shutting down
+
+repaired checkpoint: process exited successfully
+Variant: repaired; phase: resume
+2026-10-19 05:58:09: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:58:12: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/storage-debug-qoek6qk5/repaired/world]
+2026-10-19 05:58:12: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30214.
+2026-10-19 05:58:14: ACTION[Server]: Storage smoke: reloaded stale disconnected cache neighborhood scans=1
+2026-10-19 05:58:14: ACTION[Server]: Storage smoke: reconnected after restart preflight neighborhood scans=7
+2026-10-19 05:58:14: ACTION[Server]: Storage smoke: reconnected after restart commit neighborhood scans=0
+2026-10-19 05:58:14: ACTION[Server]: ERA STORAGE SMOKE PASS: COMPLETE: process restart rejects stale disconnected cache; reconnect resumes native deposits and preserves 7 iron, 11 copper and the four-compartment drawer
+2026-10-19 05:58:14: ACTION[Main]: Server: Shutting down
+
+repaired resume: process exited successfully

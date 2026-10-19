@@ -98,11 +98,11 @@ def _populate(game, selected):
     for source in sorted((mineclonia / "mods").iterdir()):
         (mods / source.name).symlink_to(source, target_is_directory=source.is_dir())
     # Stock modpacks stay whole, including their documentation, assets and licenses.
-    for name in ("pipeworks", "basic_materials", "fakelib", "drawers"):
+    for name in ("pipeworks", "basic_materials", "fakelib"):
         if (mods / name).exists():
             raise AssemblyError("Duplicate Mineclonia/modpack name: " + name)
         (mods / name).symlink_to(ROOT / "upstream" / name, target_is_directory=True)
-    for name in ("xcompat", "elepower", "fluid_lib", "mesecons"):
+    for name in ("xcompat", "elepower", "fluid_lib", "mesecons", "drawers"):
         if (mods / name).exists():
             raise AssemblyError("Duplicate Mineclonia/modpack name: " + name)
         shutil.copytree(ROOT / "upstream" / name, mods / name, ignore=shutil.ignore_patterns(".git"))
@@ -115,6 +115,7 @@ def _populate(game, selected):
     patches.extend(_patch_module("elepower", mods / "elepower"))
     patches.extend(_patch_module("fluid_lib", mods / "fluid_lib"))
     patches.extend(_patch_module("mesecons", mods / "mesecons"))
+    patches.extend(_patch_module("drawers", mods / "drawers"))
     starter = ROOT / "integrations/playtest/mod"
     if not (starter / "mod.conf").is_file():
         raise AssemblyError("Missing era_playtest integration mod")

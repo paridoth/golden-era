@@ -1,6 +1,7 @@
-# Golden Era Playtest 0.1.0: third-party notices
+# Golden Era Playtest: third-party notices
 
-Prepared 2026-10-18. Paths below are relative to the extracted
+Prepared 2026-10-18; packaging text reviewed 2026-10-19.
+Paths below are relative to the extracted
 `GoldenEra-Playtest/` directory.
 
 This is a native Luanti game assembled from existing free-software projects.

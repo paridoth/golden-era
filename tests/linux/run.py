@@ -33,7 +33,11 @@ def main():
     parser.add_argument("--engine", type=Path, default=ROOT / "upstream/luanti/bin/luanti")
     parser.add_argument("--flatpak-runtime", action="store_true", help="Run official engine in repo-isolated Flatpak runtime")
     parser.add_argument("--launcher-only", action="store_true", help="Skip the 114-second real factory simulation")
+    parser.add_argument("--storage-smoke", action="store_true", help="Also run repaired native storage callbacks and restart against the extracted game")
+    parser.add_argument("--removal-smoke", action="store_true", help="Also check machine mining/blast inventory preservation against the extracted game")
     args = parser.parse_args()
+    if (args.storage_smoke or args.removal_smoke) and args.launcher_only:
+        parser.error("--storage-smoke/--removal-smoke require the real engine; omit --launcher-only")
     checked = packager.verify_package(args.archive)
     report = ["Golden Era Linux archive validation", "SHA256: " + checked["sha256"], "Files: " + str(checked["files"])]
     base = ROOT / "runtime/tests"
@@ -171,6 +175,58 @@ def main():
             assert "ERA PLAYTEST SMOKE FAIL" not in result.stdout
             assert not any(message in result.stdout for message in ("ERROR[", "WARNING["))
             report.append("PASS: complete real 2 raw iron -> 4 ingots stock factory via Linux launcher, with extracted game and fresh external save")
+            if args.storage_smoke:
+                # Nest the independent save within the existing narrow Flatpak
+                # data grant. Keep the factory world and its observer separate.
+                storage_data = actual_data / "storage-regression"
+                storage_world = storage_data / "worlds/playtest"
+                observer = storage_world / "worldmods/era_storage_smoke"
+                shutil.copytree(ROOT / "tests/storage/mod", observer)
+                storage_source = observer / "init.lua"
+                storage_source.write_text('core.register_on_mods_loaded(function() local p=core.get_modpath("drawers"); assert(p:sub(1, #'
+                    + expected + ') == ' + expected + ', "Drawers must load from extracted Linux archive") end)\n' + storage_source.read_text())
+                (storage_data / "settings.conf").write_text((bundle / "defaults/playtest.conf").read_text() +
+                    "\nport = 30216\nmg_name = singlenode\nmcl_singlenode_mapgen = false\n"
+                    "era_playtest_no_welcome = true\nmax_forceloaded_blocks = 32\nera_storage_baseline = false\n")
+                storage_env = real_env.copy()
+                storage_env["GOLDEN_ERA_DATA_DIR"] = str(storage_data)
+                for phase, marker in (("checkpoint", "CHECKPOINT:"), ("resume", "COMPLETE:")):
+                    result = subprocess.run([str(launcher), "--server"], env=storage_env, text=True,
+                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+                    report.append("Storage phase: " + phase)
+                    report.append(result.stdout)
+                    (base / "linux-package-smoke.txt").write_text("\n".join(report) + "\n")
+                    if result.returncode or "ERA STORAGE SMOKE PASS: " + marker not in result.stdout:
+                        print(result.stdout, file=sys.stderr)
+                    assert result.returncode == 0, "Linux storage engine failed"
+                    assert "ERA STORAGE SMOKE PASS: " + marker in result.stdout, "Missing storage checkpoint"
+                    assert "ERA STORAGE SMOKE FAIL" not in result.stdout
+                    assert not any(message in result.stdout for message in ("ERROR[", "WARNING["))
+                report.append("PASS: extracted Linux game storage conservation, real blasts, controller cache changes and process restart through its launcher")
+            if args.removal_smoke:
+                removal_data = actual_data / "machine-removal-regression"
+                observer = removal_data / "worlds/playtest/worldmods/era_machine_removal"
+                shutil.copytree(ROOT / "tests/machine-removal/mod", observer)
+                removal_source = observer / "init.lua"
+                removal_source.write_text('core.register_on_mods_loaded(function() local p=core.get_modpath("elepower_papi"); assert(p:sub(1, #'
+                    + expected + ') == ' + expected + ', "Elepower must load from extracted Linux archive") end)\n' + removal_source.read_text())
+                (removal_data / "settings.conf").write_text((bundle / "defaults/playtest.conf").read_text() +
+                    "\nport = 30216\nmg_name = singlenode\nmcl_singlenode_mapgen = false\n"
+                    "era_playtest_no_welcome = true\nmax_forceloaded_blocks = 32\nera_removal_baseline = false\n")
+                removal_env = real_env.copy()
+                removal_env["GOLDEN_ERA_DATA_DIR"] = str(removal_data)
+                result = subprocess.run([str(launcher), "--server"], env=removal_env, text=True,
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+                report.append("Machine removal regression")
+                report.append(result.stdout)
+                (base / "linux-package-smoke.txt").write_text("\n".join(report) + "\n")
+                if result.returncode or "ERA MACHINE REMOVAL PASS:" not in result.stdout:
+                    print(result.stdout, file=sys.stderr)
+                assert result.returncode == 0, "Linux machine removal engine failed"
+                assert result.stdout.count("ERA MACHINE REMOVAL PASS:") == 1, "Missing/duplicate machine removal completion"
+                assert "ERA MACHINE REMOVAL FAIL" not in result.stdout
+                assert not any(message in result.stdout for message in ("ERROR[", "WARNING["))
+                report.append("PASS: extracted Linux game protects occupied machine slots and preserves native blast items without scratch/ghost duplicates")
     evidence = base / "linux-package-smoke.txt"
     evidence.write_text("\n".join(report) + "\n")
     print("\n".join(report))

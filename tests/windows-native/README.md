@@ -25,6 +25,33 @@ installed game and existing stock-factory/recipe smoke, using a disposable world
 
     python3 tests/windows-native/run.py --engine-smoke
 
+For a release containing the storage repairs, also run the installed game through
+the native storage checkpoint and resume fixtures in a second disposable SQLite
+world:
+
+    python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.3-windows.exe --engine-smoke --storage-smoke
+
+`--storage-smoke` requires `--engine-smoke`. It copies `tests/storage/mod` into the
+private Wine fixture and uses the same verified official Win64 executable and
+installed game, without assembling or patching a substitute game. It forces the
+repaired mode, requires both checkpoint and resume PASS markers in separate engine
+processes, refuses engine errors and warnings outside the documented builtin SHA
+category, and records each phase's warning and Wine diagnostic counts. The older
+frozen releases do not contain these repairs and are not expected to pass it.
+Storage command/server logs remain under `runtime/tests/windows-wine-logs` after
+the prefix is cleaned. This checks the gameplay callbacks and SQLite restart;
+native Windows validation and the full PowerShell launcher remain separate.
+
+`--removal-smoke` also requires `--engine-smoke` and runs
+`tests/machine-removal/mod` against the installed game in its own fresh SQLite
+world on port 30225. It selects `era_removal_baseline=false`, records the copied
+fixture's SHA256, requires exactly one `ERA MACHINE REMOVAL PASS:` marker, and
+refuses FAIL markers, engine errors and warnings outside the same builtin SHA
+category. It preserves command and server logs and counts Wine diagnostics
+separately. Both optional repair checks can run together:
+
+    python3 tests/windows-native/run.py --installer dist/golden-era-playtest-0.1.3-windows.exe --engine-smoke --storage-smoke --removal-smoke
+
 To additionally run the actual installed batch launcher through Wine's cmd.exe,
 click the real first-join workshop chooser, and reconnect to verify saved
 choice/inventory/position, use:

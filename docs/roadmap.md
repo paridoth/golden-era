@@ -51,6 +51,14 @@ The experimental [desktop controller engine](controller-support.md) is separate
 from these stock-engine releases; physical controllers and a custom Windows
 binary remain unverified.
 
+Version 0.1.3 addresses native Drawers item loss and the controller's explosion
+crash, with a baseline/repaired conservation and restart regression. It also
+repairs controller caching while testing disconnected paths, and protects frozen
+package outputs from replacement. Native storage recipes and controller deposit/
+manual retrieval behavior are documented in the
+[storage guide](../integrations/playtest/storage-notes.md). Further compatibility
+work follows concrete stock-mod defects and player feedback.
+
 ## Goal and reference decision
 
 Build a native Luanti game that reproduces the selected FTB Revelation 3.7.0

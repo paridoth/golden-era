@@ -627,3 +627,43 @@ PowerShell path remains separate from those executed checks.
 
 Evidence uses `0.1.2` filenames under `evidence/2026-10-19/`, plus
 `automation-smoke.log`. Frozen 0.1.0/0.1.1 artifacts remain unchanged.
+
+## Desktop 0.1.3 storage source checks — 2026-10-19
+
+`tests/storage/run.py` compares the exact pinned Drawers baseline with the
+assembled compatibility copy across four native engine processes. The baseline
+asserts its known overflow/dig losses, wear loss and caught real explosion error;
+its sole expected warning names `default`. Both repaired processes pass without
+warnings or errors. Checks account for 5,000 iron through actual bounded item
+entities and native pickup/front retrieval, preserve full-inventory/dummy-digger
+spills, exercise real Mineclonia explosions, and verify controller cache behavior
+through trim changes, visual removal/respawn and a deliberately stale saved cache.
+All registered Drawers recipes resolve with concrete native ingredients.
+Actual Mesecons movement forces controller reindexing by origin. Native Mineclonia
+pistons reproduce a 130-item overwrite in the baseline; repaired drawers retain
+the upstream immobility policy and preserve all 130 plus one offered item.
+
+The test uses detached inventory actors and supplied device fixtures; it does
+not establish real PlayerRef digging or survival resource pacing. Its direct
+controller tube callbacks are complemented by the existing normal-timer,
+clocked-injector/tube/autocrafting restart scenario, which also passes against
+the patched Drawers copy. Evidence: [storage](evidence/2026-10-19/storage-smoke.log)
+and [automation](evidence/2026-10-19/automation-0.1.3-smoke.log).
+
+`scripts/test.sh` includes the two source-copy isolation/idempotence/anchor checks
+and seventeen frozen-release output checks. The latter cover all three package
+formats, companion collisions, aliases, initial refusal and promotion-time
+rechecking. Actual refusal commands leave all frozen 0.1.2 artifact/sidecar
+hashes unchanged; verification of those packages remains available.
+
+`tests/machine-removal/run.py` compares pinned Elepower callbacks with the copied
+repair in two native processes. Both pass with no warnings/errors. Actual mining
+refuses occupied repair-tool/card slots; native custom guards remain. Real
+Mineclonia explosions preserve all owned input/output stacks, tool wear and item
+metadata, while excluding scratch output and ghost filters. The emitted machine
+retains charge and components; native placement restores its charge and upgraded
+capacity. Destruction/dig/network callbacks run once, and no-drop blasts emit no
+items. Active-editor, shared-flag and stale/rejoining editor checks use fixture
+player metadata. They do not establish multiplayer UI safety or a real PlayerRef
+mining session. Four additional source-copy/anchor tests join the fast suite.
+See [removal evidence](evidence/2026-10-19/machine-removal-0.1.3-smoke.log).

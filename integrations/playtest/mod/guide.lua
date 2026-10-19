@@ -16,10 +16,10 @@ local pages={
  {title="First power",text="Build a Coal-fired Generator, conduits and a Pulverizer. Connect conduits to the machines and add coal to the generator. Use the existing recipe guide for lead, wire, coils and machine blocks.\n\n"..
   "The generator can power a processor directly through conduits. Power cells are a later storage upgrade. A single stock generator supplies power slowly, so give machines time to work.\n\n"..
   "The Pulverizer turns raw iron into two iron dust. Smelt the dust into iron ingots. An ordinary furnace can smelt dust while you work toward an electrically powered furnace.\n\n"..
-  "Right-click a machine to inspect its input, output, fuel and energy. The supplied workshop demonstrates the powered line and takes about two minutes for its first two raw iron."},
+  "Right-click a machine to inspect its input, output, fuel and energy. Empty its item slots, including tools and cards, before mining it. Drain fluid buffers before moving fluid machines. The supplied workshop demonstrates the powered line and takes about two minutes for its first two raw iron."},
  {title="Automation",text="Begin with one processing step and a nearby storage container. Pipeworks tubes and filter-injectors can move items between compatible machines.\n\n"..
   "The workshop uses Mesecons blinking controls to pulse filter-injectors. Follow the tube direction and watch which inventory each filter extracts from. Build a short route before expanding it.\n\n"..
-  "Storage Drawers hold bulk materials. Right-click the front to store items; left-click the front to take items out. The recipe guide includes drawer upgrades and controllers.\n\n"..
+  "Storage Drawers hold bulk materials. Right-click the front to store items; left-click to retrieve a stack, or sneak to retrieve one item. E + left-click toggles the item-type lock. Connect drawers or trim to a controller for bulk deposits, including Pipeworks input; retrieve from drawer fronts. The recipe guide includes upgrades and controllers.\n\n"..
   "Pipeworks autocrafters need output room for both products and returned containers. Crafting conduits from copper wire returns empty spools. Filter the conduits into storage and collect or route the spools separately; a full output pauses crafting.\n\n"..
   "Try fluid tanks and ducts, better generation, powered tools or mining machines next. Build one addition at a time and check that the previous line still works."},
 }

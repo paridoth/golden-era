@@ -9,4 +9,6 @@ python3 scripts/setup-playtest.py --no-fetch 2>&1 | tee tools/ci-evidence/playte
 python3 tests/playtest/run.py 2>&1 | tee tools/ci-evidence/playtest.log
 python3 tests/survival/run.py 2>&1 | tee tools/ci-evidence/survival.log
 python3 tests/automation/run.py 2>&1 | tee tools/ci-evidence/automation.log
+python3 tests/storage/run.py 2>&1 | tee tools/ci-evidence/storage.log
+python3 tests/machine-removal/run.py 2>&1 | tee tools/ci-evidence/machine-removal.log
 python3 tests/linux/test_save_guard.py 2>&1 | tee tools/ci-evidence/launcher-save-guard.log

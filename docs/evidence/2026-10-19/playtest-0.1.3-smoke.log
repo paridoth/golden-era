@@ -1,0 +1,36 @@
+Golden Era existing-mod pack smoke; stock power ABMs, node timers and Pipeworks routing
+Runtime-copy patch: xcompat/src/gameid.lua: golden_era_playtest = "mineclonia"
+Runtime-copy patch: elepower: declare the upstream documentation mod name
+Runtime-copy patch: elepower: Mineclonia material mappings and native tin/bronze/silver
+Runtime-copy patch: elepower: load Mineclonia craft guide before machine recipes
+Runtime-copy patch: elepower: expose machine recipes in Mineclonia craft guide
+Runtime-copy patch: elepower: use the game-specific dye group for wireless cards
+Runtime-copy patch: elepower: conserve multi-buffer fusion fluid input
+Runtime-copy patch: fluid_lib: report partial-insertion leftovers without losing fluid
+Runtime-copy patch: fluid_lib: conserve multi-buffer liquid insertion
+Runtime-copy patch: mesecons: iterate Mineclonia's named dye color table
+Runtime-copy patch: mesecons: update Mineclonia piston stopper groups through override_item
+Runtime-copy patch: drawers: drop recoverable Mineclonia overflow when removing capacity upgrades
+Runtime-copy patch: drawers: preserve automatic dig/explosion spills with dummy or sneaking diggers
+Runtime-copy patch: drawers: refuse worn stacks rather than discarding their wear
+Runtime-copy patch: drawers: use Mineclonia's controller explosion/drop contract without the default API
+Runtime-copy patch: drawers: validate the native controller cache's array of drawer slots
+Runtime-copy patch: drawers: invalidate controller paths on topology changes and world reload
+Runtime-copy patch: drawers: invalidate cached paths on spawn_visuals
+Runtime-copy patch: drawers: invalidate cached paths on remove_visuals
+Runtime-copy patch: drawers: refuse storage access through removed visual objects
+Ready: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/playtest-smoke-2laxqm6z/games/golden_era_playtest
+Sources and patches: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/playtest-smoke-2laxqm6z/games/golden_era_playtest/playtest-sources.json
+
+2026-10-19 05:52:28: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 05:52:30: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/playtest-smoke-2laxqm6z/world]
+2026-10-19 05:52:30: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30202.
+2026-10-19 05:52:31: ACTION[Server]: Survival recipe reachability: 15 factory targets derive from gathered vanilla materials and generated Elepower ores; stock grind/alloy steps unlock powered solder/compress and the later cell. Counts and travel are not modeled.
+2026-10-19 05:54:24: ACTION[Server]: ERA PLAYTEST SMOKE PASS: playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume
+2026-10-19 05:54:24: ACTION[Main]: Server: Shutting down
+

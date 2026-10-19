@@ -5,6 +5,8 @@ tools/root/usr/bin/lua5.1 tests/unit/test_ledger.lua
 tools/root/usr/bin/lua5.1 tests/unit/test_thermal_model.lua
 tools/root/usr/bin/lua5.1 tests/playtest/test_onboarding.lua .
 python3 tests/package/test_release_guard.py
+python3 tests/storage/test_patch.py
+python3 tests/machine-removal/test_patch.py
 python3 tests/unit/test_reference.py
 python3 tests/unit/test_thermal_reference.py
 python3 tests/unit/test_thermal_catalog.py

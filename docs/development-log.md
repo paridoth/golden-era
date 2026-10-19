@@ -577,3 +577,49 @@ Linux and official Flathub client GUI checks passed choices and saved state.
 Windows has actual installer/Win64/batch/GUI compatibility evidence under Wine;
 native Windows and PowerShell 5.1 remain pending. The optional controller engine
 remains separate, and frozen 0.1.0/0.1.1 artifacts are preserved.
+
+## Desktop 0.1.3 storage repairs — 2026-10-19
+
+Native storage checks reproduced item loss when capacity upgrades were removed
+from an overfilled drawer and when a dummy or sneaking full-inventory digger
+caused automatic spills. Drawers called Mineclonia's player drop-key function,
+whose behavior does not match an automatic spill. A copied-source patch uses
+bounded world item entities for those paths. The regression recovers every one
+of 5,000 iron through actual entities and native pickup/front callbacks.
+
+An actual Mineclonia explosion also reproduced a controller crash at the missing
+`default` API. The compatibility branch emits full ItemStacks, honors the native
+no-drop flag and removes its own node. Worn or metadata-bearing controller source
+stacks survive; native name/count drawers refuse worn stackable payloads.
+
+The controller's cache validator expected a shape its own indexer never produced.
+Repairing it eliminates repeated warm neighborhood scans. Construction,
+destruction, visual changes and controller reload invalidate cached paths, with
+disconnect/reconnect and stale-cache restart assertions. Upstream checkouts and
+player worlds remain unchanged. The storage regression joins normal CI; the
+existing real-tube/autocrafting restart scenario passes with the new hooks.
+Native piston tests also reproduce a separate visual/metadata overwrite that
+loses drawer contents; the copy mirrors Drawers' existing immobility rule for
+Mineclonia pistons. Movable controllers track the origin of their absolute cache
+so Mesecons metadata restoration cannot keep a route from an old position.
+
+All package builders now refuse registered frozen artifact and sidecar paths,
+including aliases, before work and again before promotion. Seventeen fast checks
+cover each builder and collision behavior. Version 0.1.3 is selected for the next
+build; previous artifacts retain their recorded bytes.
+
+Elepower removal checks found that the default mining guard omitted the Energy
+Density Reconstructor's tool and Wireless Control Station's card. It now checks
+owned item lists while excluding internal output snapshots and ghost filters.
+Mineclonia explosions previously erased a full processor after ordinary digging
+was refused. A native blast callback preserves full payload ItemStacks and the
+existing charged/upgraded machine item, while honoring no-drop blasts and normal
+network cleanup. The native drop/place round-trip restores 1,200 charge and the
+hardened capacitor's 3,200 capacity.
+
+Machines cannot be removed while a connected player edits their upgrades. Join
+cleanup clears stale editor state, and one editor's shared flag cleanup cannot
+unlock another active editor. Source-based fixtures cover this lock behavior;
+the upstream shared detached upgrade inventory remains a multiplayer review
+limit. These changes preserve the stock fluid behavior: drain fluids before
+ordinary relocation. No fluid-state item format was added.

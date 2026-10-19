@@ -54,6 +54,11 @@ The first batch takes roughly two minutes with the supplied stock generator.
   `/gamemode survival` returns to ordinary item quantities.
 
 Drawers accept items by right-clicking their front and dispense by left-clicking.
+Sneak while retrieving to take one item; **E + left-click** toggles the item-type
+lock. Connect drawers with trim to a controller for bulk deposits, including
+Pipeworks input. Retrieve items from the individual drawer fronts. See the
+[storage guide](../integrations/playtest/storage-notes.md) for native recipes,
+capacity upgrades and controller behavior.
 The workshop starts once per world; later joins preserve the player's position
 and all workshop changes. In single-player, the workshop path grants local development privileges for experiments.
 The survival path does not add those privileges; single-player/server ownership
@@ -92,8 +97,14 @@ the smoke test uses a temporary world on 30202.
 
 Bounded compatibility changes apply only to assembled source copies: xcompat's
 game-ID mapping; Elepower's Mineclonia item/metal mappings and recipe-guide hook;
-Mesecons' dye table/piston compatibility; and fluid insertion remainder fixes.
+Mesecons' dye table/piston compatibility; fluid insertion remainder fixes; and
+Drawers' Mineclonia spill/explosion handling and controller cache invalidation.
+Elepower machines also protect their owned inventory slots during mining and
+preserve full item stacks through Mineclonia's explosion callback.
 Source checkouts stay clean. Patch helpers reject unexpected source text.
+Empty machine item slots before mining, including a reconstructor's tool and a
+wireless station's card. See [machine removal](../integrations/playtest/removal-notes.md)
+for inventory, upgrade-menu and fluid behavior.
 
 See [the audited survival route](../integrations/playtest/survival-notes.md) for
 material acquisition, early machine ordering, recipe reachability and test limits.
@@ -120,5 +131,6 @@ The isolated display is :97 and the test port is 30212.
 
 `scripts/ci.sh` now checks the active stock-mod pack as well as the earlier custom
 prototype: factory flow, survival material acquisition, autocrafting/drawer restart
-and current Unix launcher save guards. Graphical checks and Windows bootstrap/Wine
+and storage conservation/restart checks, plus current Unix launcher save guards.
+Graphical checks and Windows bootstrap/Wine
 checks remain separate because they need their respective local developer tools.
