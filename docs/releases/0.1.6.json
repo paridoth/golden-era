@@ -1,0 +1,60 @@
+{
+  "version": "0.1.6",
+  "source_revision": "5f050c0a8670d2c0e2fafc3e16ae168e24ca12c5",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.6-windows.exe",
+      "size_bytes": 66529614,
+      "sha256": "6f029d296662715dc053fea492a813a79875ca9f85b35755ec0b099ce2bc8615",
+      "installed_files": 11877
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.6-linux.tar.gz",
+      "size_bytes": 61931888,
+      "sha256": "aa9767f2cf529d9f1b1eb7fc43c3cc8bcf7adb8e0aa5021f0eba38b6d3e1c0d0",
+      "files": 11868
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.6-windows-test.zip",
+      "size_bytes": 69939942,
+      "sha256": "ef8c880f0a63b3e07edf4188b5426ac42a05c323155800bd864a08628989465d",
+      "files": 11867
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.6 (pre-release)",
+  "changes": [
+    "/packversion prints version, source revision, clean/development state and engine; assembly records build-info.json once and the game never invokes Git",
+    "Elepower machine state button cycles the stored state IDs in sorted order instead of indexing an unordered subset",
+    "Linux launcher reports data-folder and engine failures with log pointers and reaps the engine on interruption, including under Flatpak",
+    "Factory guide adds a Trees page for the small-oak planter/harvester/vacuum layout"
+  ],
+  "validation": {
+    "fast_suite": "PASS scripts/test.sh: unit, reference, model, onboarding, build identity, launcher error and patch checks",
+    "full_ci": "PASS scripts/ci.sh at the source revision: setup, 24-process engine integration, playtest assembly and smoke, survival, automation, storage, storage controller, machine removal, machine state, Pipeworks removal, farming and launcher save guard",
+    "github_ci": "PASS GitHub Actions 'Build and engine tests' on main at the source revision",
+    "packaged_zip": "PASS package verify and smoke: full factory through the extracted launcher with a fresh external save; packaged build-info reports the source revision with dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP; ordinary-user PE manifest checked",
+    "linux_archive": "PASS archive verify and tests/linux/run.py: desktop launcher dispatch from a path with spaces, path quoting, version checks, first save, settings preservation, wrong-game refusal, stubbed Flatpak permissions and the real 2 raw iron to 4 ingots factory via the launcher"
+  },
+  "limitations": [
+    "Native Windows, PowerShell 5.1, SmartScreen and hardware graphics/audio remain unverified",
+    "No Wine install/startup run was repeated for 0.1.6; the installer was verified by extraction only",
+    "Linux archive tests used the native engine; the official Flatpak runtime was not exercised (permissions checked with a stub)",
+    "No human survival session; 0.1.5 limitations on farm fixtures, harvester overflow and inherited mod behavior still apply"
+  ],
+  "evidence_directory": "docs/evidence/2026-10-19/",
+  "runtime_changes_from_0.1.5": [
+    "build-info.json (added)",
+    "mods/era_playtest/build.lua (added)",
+    "mods/elepower/elepower_papi/machine.lua",
+    "mods/era_playtest/guide.lua",
+    "mods/era_playtest/init.lua",
+    "playtest-sources.json"
+  ],
+  "save_compatibility": "No node names, inventory lists or storage schema changed; stored machine state IDs keep their meaning and only the button's next-state order changed"
+}

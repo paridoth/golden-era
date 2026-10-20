@@ -1,24 +1,19 @@
-# Golden Era 0.1.5: itch.io tester release
+# Golden Era 0.1.6: itch.io tester release
 
-Version 0.1.5 adds a guided renewable wheat farm using the existing Elepower
-planter/harvester and Pipeworks filters. New workshops include both machines,
-seeds, soil, bone meal, a wheat item for selector setup and two blinking controls.
-The Farming guide page explains the layout and real seed supply; crafting a
-harvester adds a seventh native advancement. Existing worlds retain their barrels.
+Version 0.1.6 adds `/packversion` for bug reports, fixes the Elepower machine
+state button cycling out of order, reports Linux launcher failures clearly and
+adds a Trees page to `/factoryguide`. Everything from 0.1.5, including the guided
+wheat farm and harvester overflow repair, remains included. Keep your save-data
+folder when updating. Previous builds remain frozen as historical fallbacks.
+The installer is also attached to the GitHub pre-release
+https://github.com/paridoth/golden-era/releases/tag/v0.1.6.
 
-The harvester now inserts what fits and drops only actual overflow above itself,
-keeping complete item stacks. Native coal-powered tests verify seed return,
-wheat storage and replanting across restart. Earlier drawer, controller, machine
-and Pipeworks repairs remain included. Filters still resist piston movement;
-mine, place and reconfigure them to relocate. Keep your save-data folder when
-updating. Previous builds remain frozen as historical fallbacks.
-
-Shareable artifact: `dist/golden-era-playtest-0.1.5-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.5-windows-test.zip`.
-Linux: `dist/golden-era-playtest-0.1.5-linux.tar.gz`; see [Linux setup](linux-release.md).
+Shareable artifact: `dist/golden-era-playtest-0.1.6-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.6-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.6-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.5`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.6`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -66,7 +61,7 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.5-windows.exe`.
+**Windows test instructions:** open `golden-era-playtest-0.1.6-windows.exe`.
 It installs automatically, creates a shortcut and starts the game. New players
 choose the supplied workshop or a survival start without workshop tools/materials.
 Existing players retain their position and inventory. Workshop preparation shows
@@ -104,7 +99,7 @@ separate PowerShell 7/Linux evidence. Wine is a compatibility check on Linux.
 The three final Windows engine processes each retained 107 documented builtin
 SHA warnings, with zero other engine warnings or errors. The three official Linux
 engine processes had zero warnings or errors. Their raw evidence is retained in
-[the release record](releases/0.1.5.json).
+[the 0.1.5 release record](releases/0.1.5.json); 0.1.6 checks are in [its record](releases/0.1.6.json).
 Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
 for a Windows tester. Exact bootstrap/save-preflight commands run separately under
 PowerShell 7 on Linux; their scope and hashes are retained in the evidence.
@@ -121,12 +116,12 @@ game file manifest remains valid. `/S` installs without launching the game.
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.5-windows-test.zip
-python3 tests/package/run.py dist/golden-era-playtest-0.1.5-windows-test.zip
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.6-windows-test.zip
+python3 tests/package/run.py dist/golden-era-playtest-0.1.6-windows-test.zip
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.5-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.6-windows.exe
 python3 scripts/package-linux.py
-python3 tests/linux/run.py dist/golden-era-playtest-0.1.5-linux.tar.gz --flatpak-runtime --farming-smoke
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.6-linux.tar.gz --flatpak-runtime --farming-smoke
 ```
 
 Frozen outputs are protected: select a new version in
