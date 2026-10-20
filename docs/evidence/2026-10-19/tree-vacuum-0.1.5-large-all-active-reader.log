@@ -1,0 +1,10 @@
+2026-10-19 07:23:58: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:24:01: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-0.1.5-62at7rjw/reader-world]
+2026-10-19 07:24:01: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:24:13: ACTION[Server]: ERA TREE READER: {"barrel":["mcl_core:stick 5","mcl_trees:tree_oak 10"],"ground":[{"item":"mcl_trees:sapling_oak","pos":{"x":-3.0871999263763428,"y":209.70156860351562,"z":-3.8893001079559326}},{"item":"mcl_trees:sapling_oak","pos":{"x":4.1020002365112305,"y":208.70156860351562,"z":-3.1180000305175781}}],"harvester":null,"newly_emitted":null,"packets":[{"item":"mcl_tools:pick_iron 1 4321 \"\\u0001era_tree\\u0002vacuum owned tool\\u0003\"","pos":{"x":49.66392333433032,"y":200,"z":0}},{"item":"mcl_copper:copper_ingot 5 321 \"\\u0001era_tree\\u0002vacuum owned copper\\u0003\"","pos":{"x":49.66392333433032,"y":200,"z":0}}],"planter":["mcl_trees:sapling_oak 11"]}
+2026-10-19 07:24:13: ACTION[Main]: Server: Shutting down

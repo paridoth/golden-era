@@ -1,0 +1,4809 @@
+{
+  "scope": "Read-only MTS v4 static parse; potential nodes before per-node/slice probabilities, schematic rotation and native callbacks. No engine run or machine simulation.",
+  "format_source": "Luanti src/mapgen/mg_schematic.cpp:280-351 and src/mapnode.cpp:612-660",
+  "oak_source": "Mineclonia mcl_core/nodes_trees.lua:7-18: classic weight 90%; large_1..4 weight 2.5% each.",
+  "non_v6_profile": "Elepower treecutter.lua:1050-1058: range=2, range_up=4, range_down=0 relative to main-stem top.",
+  "rows": [
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_balloon.mts",
+      "sha256": "bc34ef866ad09db4506c8b29724050339221c92eb49c6ae0c4ce163d96a64801",
+      "size": [
+        5,
+        7,
+        5
+      ],
+      "slices": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 5,
+      "potential_leaves": 70,
+      "center_top": 4,
+      "leaves_below_top": [
+        {
+          "x": 1,
+          "y": 3,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 46,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "3": 20,
+        "4": 20,
+        "5": 21,
+        "2": 4,
+        "6": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_classic.mts",
+      "sha256": "aeb8b0bba7ef2b97a4977e976be09a97818cdc48491a586843e136a69df4d4dc",
+      "size": [
+        5,
+        8,
+        5
+      ],
+      "slices": [
+        127,
+        63,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 6,
+      "potential_leaves": 54,
+      "center_top": 5,
+      "leaves_below_top": [
+        {
+          "x": 1,
+          "y": 4,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 107,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 34,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "4": 20,
+        "5": 20,
+        "6": 9,
+        "7": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_classic_bee_nest.mts",
+      "sha256": "d3831b3b2b6cb693006b464d0edf7078c23d23655f35f0f030daf986095a9ab6",
+      "size": [
+        5,
+        8,
+        5
+      ],
+      "slices": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 6,
+      "potential_leaves": 47,
+      "center_top": 5,
+      "leaves_below_top": [
+        {
+          "x": 1,
+          "y": 4,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 31,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "4": 16,
+        "5": 20,
+        "6": 6,
+        "7": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_large_1.mts",
+      "sha256": "cc023429a2275fd11a90327b63e2ecbcf5635cf8590953722d3a8fd8ebcb1d76",
+      "size": [
+        7,
+        13,
+        7
+      ],
+      "slices": [
+        127,
+        63,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 14,
+      "potential_leaves": 182,
+      "center_top": 8,
+      "leaves_below_top": [
+        {
+          "x": 3,
+          "y": 6,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 113,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 87,
+      "logs_outside_main_stem_and_nonv6_profile": [
+        {
+          "x": 3,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 0
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 6
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 6
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 0
+        }
+      ],
+      "leaves_by_y": {
+        "6": 21,
+        "7": 35,
+        "8": 35,
+        "9": 37,
+        "10": 25,
+        "5": 11,
+        "11": 13,
+        "12": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_large_2.mts",
+      "sha256": "6a9a233672a9829da412fe66f09e166a761235e3a7f0a7d89be33b857ebe6143",
+      "size": [
+        9,
+        14,
+        9
+      ],
+      "slices": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 16,
+      "potential_leaves": 274,
+      "center_top": 9,
+      "leaves_below_top": [
+        {
+          "x": 3,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 192
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 192
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 255,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 192
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 110,
+          "param2": 192
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        }
+      ],
+      "leaves_inside_nonv6_profile": 76,
+      "logs_outside_main_stem_and_nonv6_profile": [
+        {
+          "x": 3,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 127,
+          "param2": 0
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 0
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 127,
+          "param2": 0
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 0
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 127,
+          "param2": 0
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 0
+        }
+      ],
+      "leaves_by_y": {
+        "8": 55,
+        "9": 59,
+        "10": 45,
+        "7": 40,
+        "11": 27,
+        "6": 30,
+        "5": 13,
+        "12": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_large_3.mts",
+      "sha256": "9215d9c8336c61edd59bee9440d8ddfa96832e986a710d30cbf88ca735331de5",
+      "size": [
+        7,
+        14,
+        7
+      ],
+      "slices": [
+        127,
+        63,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        99,
+        99,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 12,
+      "potential_leaves": 142,
+      "center_top": 11,
+      "leaves_below_top": [
+        {
+          "x": 3,
+          "y": 7,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 18,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "7": 24,
+        "8": 24,
+        "9": 36,
+        "10": 24,
+        "6": 12,
+        "11": 12,
+        "5": 4,
+        "12": 5,
+        "13": 1
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_large_4.mts",
+      "sha256": "cc61bf492599ef9ebf1c0eae584cd8e7d1430ecdeffc2029cb1722c4f430bcb4",
+      "size": [
+        9,
+        13,
+        9
+      ],
+      "slices": [
+        127,
+        63,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 16,
+      "potential_leaves": 199,
+      "center_top": 9,
+      "leaves_below_top": [
+        {
+          "x": 4,
+          "y": 7,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 6,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 7,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 8,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 160
+        }
+      ],
+      "leaves_inside_nonv6_profile": 63,
+      "logs_outside_main_stem_and_nonv6_profile": [
+        {
+          "x": 1,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "z": 4,
+          "name": "mcl_trees:tree_oak",
+          "prob": 255,
+          "param2": 12
+        }
+      ],
+      "leaves_by_y": {
+        "7": 39,
+        "8": 50,
+        "9": 40,
+        "6": 23,
+        "10": 25,
+        "11": 13,
+        "5": 4,
+        "12": 5
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_swamp.mts",
+      "sha256": "dd087c3e19989e7e659ad5870bd670cce3728ad07c623a64b557ae3ebdd3927b",
+      "size": [
+        7,
+        8,
+        7
+      ],
+      "slices": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 6,
+      "potential_leaves": 122,
+      "center_top": 5,
+      "leaves_below_top": [
+        {
+          "x": 1,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 101,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 101,
+          "param2": 160
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 101,
+          "param2": 160
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 5,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 101,
+          "param2": 160
+        }
+      ],
+      "leaves_inside_nonv6_profile": 74,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "5": 48,
+        "4": 24,
+        "6": 25,
+        "7": 25
+      }
+    },
+    {
+      "file": "upstream/mineclonia/mods/ITEMS/mcl_core/schematics/mcl_core_oak_v6.mts",
+      "sha256": "2f7fe87bda9494a72fdac6cde484580faf64ffa5e1efd8f3d79fa468c8b46913",
+      "size": [
+        5,
+        7,
+        5
+      ],
+      "slices": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "potential_logs": 5,
+      "potential_leaves": 65,
+      "center_top": 4,
+      "leaves_below_top": [
+        {
+          "x": 1,
+          "y": 3,
+          "z": 0,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 1,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 2,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 64
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 96
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 3,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "z": 4,
+          "name": "mcl_trees:leaves_oak",
+          "prob": 127,
+          "param2": 128
+        }
+      ],
+      "leaves_inside_nonv6_profile": 51,
+      "logs_outside_main_stem_and_nonv6_profile": [],
+      "leaves_by_y": {
+        "3": 14,
+        "4": 16,
+        "5": 18,
+        "6": 17
+      }
+    }
+  ]
+}

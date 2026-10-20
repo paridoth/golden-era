@@ -1,0 +1,355 @@
+{
+	"actor" : "era_state_audit",
+	"default_iteration" : 
+	[
+		{
+			"group" : "toggle",
+			"id" : 1,
+			"label" : "\u001b(T@elepower)Always off\u001bE"
+		},
+		{
+			"group" : "mesecons",
+			"id" : 2,
+			"label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE"
+		},
+		{
+			"group" : "mesecons",
+			"id" : 3,
+			"label" : "\u001b(T@elepower)Disable by Mesecons signal\u001bE"
+		},
+		{
+			"group" : "toggle",
+			"id" : 0,
+			"label" : "\u001b(T@elepower)Always on\u001bE"
+		}
+	],
+	"devices" : 
+	[
+		{
+			"api_control" : false,
+			"name" : "elepower_farming:planter",
+			"pos" : 
+			{
+				"x" : 3,
+				"y" : 200,
+				"z" : 0
+			},
+			"sequence" : 
+			[
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 0,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 1,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 2,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 3,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 4,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 5,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 6,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 7,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 8,
+					"state" : 0,
+					"timer_started" : false
+				}
+			],
+			"supported_groups" : 
+			{
+				"mesecons" : true,
+				"toggle" : true
+			}
+		},
+		{
+			"api_control" : false,
+			"name" : "elepower_farming:harvester",
+			"pos" : 
+			{
+				"x" : 6,
+				"y" : 200,
+				"z" : 0
+			},
+			"sequence" : 
+			[
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 0,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 1,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 2,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 3,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 4,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 5,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 6,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 7,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 8,
+					"state" : 0,
+					"timer_started" : false
+				}
+			],
+			"supported_groups" : 
+			{
+				"mesecons" : true,
+				"toggle" : true
+			}
+		},
+		{
+			"api_control" : false,
+			"name" : "elepower_machines:generator",
+			"pos" : 
+			{
+				"x" : 9,
+				"y" : 200,
+				"z" : 0
+			},
+			"sequence" : 
+			[
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 0,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 1,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 2,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 3,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 4,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 5,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 6,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Enable by Mesecons signal\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 7,
+					"state" : 2,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 8,
+					"state" : 0,
+					"timer_started" : false
+				}
+			],
+			"supported_groups" : 
+			{
+				"mesecons" : true,
+				"toggle" : true
+			}
+		},
+		{
+			"api_control" : true,
+			"name" : "era_state_audit:toggle_generator",
+			"pos" : 
+			{
+				"x" : 12,
+				"y" : 200,
+				"z" : 0
+			},
+			"sequence" : 
+			[
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 0,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 1,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 2,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 3,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 4,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 5,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 6,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 7,
+					"state" : 0,
+					"timer_started" : false
+				},
+				{
+					"default_label" : "\u001b(T@elepower)Always on\u001bE",
+					"formspec_tooltip" : "\u001b(T@elepower)Always on\u001bE\n\u001b(T@elepower)Press to toggle\u001bE",
+					"press" : 8,
+					"state" : 0,
+					"timer_started" : false
+				}
+			],
+			"supported_groups" : 
+			{
+				"mesecons" : false,
+				"toggle" : true
+			}
+		}
+	],
+	"manual_state_writes" : 0,
+	"manual_timer_calls" : 0
+}

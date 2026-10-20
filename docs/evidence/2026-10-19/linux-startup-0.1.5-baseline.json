@@ -1,0 +1,24 @@
+{
+  "scope": "Copied current Linux launcher with harmless local engine/zenity stubs; no actual graphical engine, ports, user data or system changes",
+  "fixture": "runtime/tests/desktop failure audit mza2ljdr",
+  "results": [
+    {
+      "case": "data-path-is-file",
+      "exit_code": 1,
+      "stdout": "Golden Era engine: native\nLuanti 5.17.0 (audit stub)\nSaves: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/desktop failure audit mza2ljdr/data-path-is-file\n",
+      "stderr": "mkdir: cannot create directory \u2018/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/desktop failure audit mza2ljdr/data-path-is-file\u2019: Not a directory\nmkdir: cannot create directory \u2018/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/desktop failure audit mza2ljdr/data-path-is-file\u2019: Not a directory\nmkdir: cannot create directory \u2018/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/desktop failure audit mza2ljdr/data-path-is-file\u2019: Not a directory\n",
+      "error_dialog_called": false,
+      "client_log_exists": false
+    },
+    {
+      "case": "client-start-fails",
+      "exit_code": 42,
+      "stdout": "Golden Era engine: native\nLuanti 5.17.0 (audit stub)\nSaves: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/desktop failure audit mza2ljdr/client-start-fails\n",
+      "stderr": "Audit stub: client initialization failed before logfile creation\n",
+      "error_dialog_called": false,
+      "client_log_exists": false
+    }
+  ],
+  "source_revision": "cb50e704ce5ba77af79da003bd9fe224941534dc",
+  "launcher_sha256": "f9a407eadabc30b9de8e7faae4030ffa5a65fe168868830d7ece2c7cb420544e"
+}

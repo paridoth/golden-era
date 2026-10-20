@@ -52,6 +52,8 @@ function core.log(level,text)logs[#logs+1]={level=level,text=text} end
 local world_storage=meta()
 function core.get_mod_storage()return world_storage end
 function core.get_modpath(name)assert(name=="era_playtest");return root.."/integrations/playtest/mod" end
+function core.get_game_info()return {path=root.."/runtime/tests/no-build-record"} end
+function core.get_version()return {project="Luanti",string="test-engine"} end
 local emerge_error
 function core.emerge_area(a,b,callback)
  if emerge_error then error(emerge_error) end

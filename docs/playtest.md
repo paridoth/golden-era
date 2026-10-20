@@ -48,7 +48,10 @@ catalog while retaining the same world.
 The first batch takes roughly two minutes with the supplied stock generator.
 
 - `/packhelp` shows workshop instructions.
-- `/factoryguide` explains unpowered grinding/alloying, electronics, first power, item routing and a small wheat farm.
+- `/packversion` prints the running pack version, build identity and engine version
+  for a bug report. Development assemblies say when local source changes exist.
+- `/factoryguide` explains unpowered grinding/alloying, electronics, first power,
+  item routing, a small wheat farm and a controlled small-oak harvesting layout.
 - `/awards` includes seven native factory crafting milestones. These do not grant free items.
 - `/workshop` returns to the workshop without resetting it.
 - `/explore` returns to the player's original survival spawn.

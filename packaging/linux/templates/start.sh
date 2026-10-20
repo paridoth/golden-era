@@ -87,26 +87,112 @@ fi
 printf '%s\n' "Golden Era engine: $GE_BACKEND" "$(printf '%s\n' "$GE_VERSION" | sed -n '1p')" "Saves: $GE_DATA"
 [ "$GE_CHECK" = 0 ] || exit 0
 
-mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs" "$GE_DATA/engine-user"
-[ -f "$GE_DATA/settings.conf" ] || cp "$GE_ROOT/defaults/playtest.conf" "$GE_DATA/settings.conf"
+if [ "$GE_BACKEND" = flatpak ]; then
+  case "$GE_ROOT$GE_DATA" in *:*) fail 'Flatpak cannot use this game/save path because it contains a colon. Move the game or choose another GOLDEN_ERA_DATA_DIR.' ;; esac
+fi
+if [ ! -f "$GE_DATA/settings.conf" ]; then
+  if [ -e "$GE_DATA/settings.conf" ] || [ -L "$GE_DATA/settings.conf" ]; then
+    fail "The settings path is not a readable settings file: $GE_DATA/settings.conf. Move it aside or choose a different GOLDEN_ERA_DATA_DIR."
+  fi
+  [ -f "$GE_ROOT/defaults/playtest.conf" ] && [ -r "$GE_ROOT/defaults/playtest.conf" ] ||
+    fail "The game defaults are missing or unreadable: $GE_ROOT/defaults/playtest.conf. Extract the complete game archive again."
+fi
+mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs" "$GE_DATA/engine-user" ||
+  fail "Could not create the save folders in: $GE_DATA. Check this path, its write permissions and available disk space, or choose a different GOLDEN_ERA_DATA_DIR."
+if [ ! -f "$GE_DATA/settings.conf" ]; then
+  (set -C; cat "$GE_ROOT/defaults/playtest.conf" > "$GE_DATA/settings.conf") ||
+    fail "Could not create settings at: $GE_DATA/settings.conf. Check write permissions and available disk space. Existing files were not replaced."
+fi
 if [ ! -f "$GE_DATA/worlds/playtest/world.mt" ]; then
-  cat > "$GE_DATA/worlds/playtest/world.mt" <<'WORLD'
+  (
+    set -C
+    cat > "$GE_DATA/worlds/playtest/world.mt" <<'WORLD'
 gameid = golden_era_playtest
 backend = sqlite3
 player_backend = sqlite3
 auth_backend = sqlite3
 mod_storage_backend = sqlite3
 WORLD
+  ) || fail "Could not create world metadata at: $GE_DATA/worlds/playtest/world.mt. Check write permissions and available disk space. Existing files were not replaced."
 fi
 LUANTI_GAME_PATH="$GE_ROOT/games"
 LUANTI_USER_PATH="$GE_DATA/engine-user"
 export LUANTI_GAME_PATH LUANTI_USER_PATH
+# Reap the engine on deliberate launcher interruption without reporting a crash.
+# TERM also works for children inheriting a noninteractive shell's ignored INT.
+# Preserve stdin before the asynchronous command redirects it to /dev/null.
+exec 3<&0
+GE_CHILD=
+GE_INSTANCE_FILE=
 if [ "$GE_BACKEND" = flatpak ]; then
-  case "$GE_ROOT$GE_DATA" in *:*) fail 'Flatpak cannot use this game/save path because it contains a colon. Move the game or choose another GOLDEN_ERA_DATA_DIR.' ;; esac
-  exec flatpak run --filesystem="$GE_ROOT:ro" --filesystem="$GE_DATA" \
+  GE_INSTANCE_FILE=$(mktemp "$GE_DATA/logs/flatpak-instance.XXXXXX") ||
+    fail "Could not create Flatpak launch metadata in: $GE_DATA/logs. Check write permissions and available disk space."
+fi
+clear_instance_file() {
+  if [ -n "$GE_INSTANCE_FILE" ]; then rm -f -- "$GE_INSTANCE_FILE"; fi
+}
+stop_engine() {
+  trap '' INT TERM HUP
+  if [ -n "$GE_CHILD" ]; then
+    if [ "$GE_BACKEND" = flatpak ]; then
+      # The outer bwrap monitor does not forward TERM to the game. Enter only
+      # this launch's default private PID namespace, leaving its monitor alive.
+      GE_TRIES=0
+      GE_STOPPED=0
+      while kill -0 "$GE_CHILD" 2>/dev/null && [ "$GE_TRIES" -lt 50 ]; do
+        GE_INSTANCE=
+        IFS= read -r GE_INSTANCE < "$GE_INSTANCE_FILE" || true
+        case "$GE_INSTANCE" in
+          ''|*[!0-9]*) ;;
+          *)
+            # An expired numeric instance ID can be interpreted as a host PID.
+            # Verify its immutable namespace identity before sending anything.
+            if flatpak enter "$GE_INSTANCE" /usr/bin/sh -c '
+              actual=$(sed -n "s/^instance-id=//p" /.flatpak-info 2>/dev/null)
+              [ "$actual" = "$1" ] || exit 1
+              kill -TERM -1
+            ' golden-era-stop "$GE_INSTANCE" 2>/dev/null; then
+              GE_STOPPED=1
+              break
+            fi ;;
+        esac
+        GE_TRIES=$((GE_TRIES + 1))
+        sleep 0.1
+      done
+      if [ "$GE_STOPPED" = 0 ] && kill -0 "$GE_CHILD" 2>/dev/null; then
+        printf '%s\n' 'Could not request a normal Flatpak shutdown within 5 seconds. The game was left running; close its window normally to save. No forced shutdown was sent.' >&2
+        clear_instance_file
+        exit "$1"
+      fi
+    else
+      kill -TERM "$GE_CHILD" 2>/dev/null || true
+    fi
+    wait "$GE_CHILD" 2>/dev/null || true
+  fi
+  clear_instance_file
+  exit "$1"
+}
+trap 'stop_engine 130' INT
+trap 'stop_engine 143' TERM
+trap 'stop_engine 129' HUP
+if [ "$GE_BACKEND" = flatpak ]; then
+  flatpak run --instance-id-fd=4 --filesystem="$GE_ROOT:ro" --filesystem="$GE_DATA" \
     --env=LUANTI_GAME_PATH="$LUANTI_GAME_PATH" --env=LUANTI_USER_PATH="$LUANTI_USER_PATH" \
     "$GE_APP" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@"
+    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@" <&3 3<&- 4>"$GE_INSTANCE_FILE" &
+else
+  "$GE_ENGINE" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
+    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@" <&3 3<&- &
 fi
-exec "$GE_ENGINE" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-  --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@"
+GE_CHILD=$!
+exec 3<&-
+GE_STATUS=0
+wait "$GE_CHILD" || GE_STATUS=$?
+trap - INT TERM HUP
+clear_instance_file
+if [ "$GE_STATUS" != 0 ]; then
+  if [ -f "$GE_DATA/logs/client.log" ]; then
+    fail "The game exited with status $GE_STATUS. A client log is available at: $GE_DATA/logs/client.log. It may be from an earlier session if startup failed before updating it. For more detail, run sh ./start.sh from the game folder in a terminal."
+  fi
+  fail "The game exited with status $GE_STATUS before a client log was available. Run sh ./start.sh from the game folder in a terminal to see the startup error. Save folder: $GE_DATA."
+fi

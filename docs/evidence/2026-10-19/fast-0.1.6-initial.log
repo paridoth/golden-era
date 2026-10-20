@@ -1,0 +1,139 @@
+PASS energy conservation and capacity
+PASS producer consumes exactly one fuel and pauses when full
+PASS producer without fuel
+PASS insufficient energy preserves pending work
+PASS output overflow consumes no energy or input
+PASS empty input consumes nothing
+PASS recipe completion spends exact cost
+PASS no duplicate results with caller inventory accounting
+PASS two consumers share producer without creating energy
+PASS network connect disconnect reconnect
+PASS ledger copied at save boundary resumes exact work
+PASS reject fractional and negative RF
+PASS reject non-finite RF and recipe values
+UNIT PASS: 13 tests
+PASS machine rate thresholds use integer ramp
+PASS dynamo rate thresholds and full-buffer minimum
+PASS no water preserves unconsumed coal
+PASS no fuel preserves unconverted water
+PASS coal and water become separate persistent credits
+PASS one coal drains to 24000 RF and carries water credit
+PASS charcoal uses 16000 RF
+PASS signed overshoot is carried into both next batches
+PASS full storage dissipates minimum generation and debits credits
+PASS copying persisted credits preserves exact continuation
+PASS invalid resource bounds fail before mutation
+THERMAL MODEL UNIT PASS: 11 tests
+ONBOARDING PASS: survival/legacy saves; one-time kit; visible loading; pending resume; session isolation; cancellation/error/retry; stale travel callbacks; guide and craft milestones
+Build identity command tests passed
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.180s
+
+OK
+Current Linux launcher startup diagnostics
+Copied source template; harmless native/Flatpak/dialog stubs only; no engine, ports or profile writes.
+Source SHA256: 9ff8097c7469fd1c7f76bf86708950347b1f93288958189c1db534f32ae2bf5f
+
+test_check_is_read_only_with_missing_defaults (__main__.LaunchErrors.test_check_is_read_only_with_missing_defaults) ... ok
+test_dangling_settings_link_is_not_followed (__main__.LaunchErrors.test_dangling_settings_link_is_not_followed) ... ok
+test_existing_settings_and_world_are_preserved_without_defaults (__main__.LaunchErrors.test_existing_settings_and_world_are_preserved_without_defaults) ... ok
+test_flatpak_child_keeps_launcher_stdin (__main__.LaunchErrors.test_flatpak_child_keeps_launcher_stdin) ... ok
+test_flatpak_failure_current_log (__main__.LaunchErrors.test_flatpak_failure_current_log) ... ok
+test_flatpak_failure_stale_log (__main__.LaunchErrors.test_flatpak_failure_stale_log) ... ok
+test_flatpak_failure_without_log (__main__.LaunchErrors.test_flatpak_failure_without_log) ... ok
+test_flatpak_hangup_reaps_engine_without_crash_dialog (__main__.LaunchErrors.test_flatpak_hangup_reaps_engine_without_crash_dialog) ... ok
+test_flatpak_terminate_reaps_engine_without_crash_dialog (__main__.LaunchErrors.test_flatpak_terminate_reaps_engine_without_crash_dialog) ... ok
+test_foreign_save_refuses_before_defaults_engine_or_any_writes (__main__.LaunchErrors.test_foreign_save_refuses_before_defaults_engine_or_any_writes) ... ok
+test_headless_failure_uses_stderr_without_a_dialog (__main__.LaunchErrors.test_headless_failure_uses_stderr_without_a_dialog) ... ok
+test_missing_defaults_reports_complete_archive_instruction (__main__.LaunchErrors.test_missing_defaults_reports_complete_archive_instruction) ... ok
+test_native_child_keeps_launcher_stdin (__main__.LaunchErrors.test_native_child_keeps_launcher_stdin) ... ok
+test_native_failure_current_log (__main__.LaunchErrors.test_native_failure_current_log) ... ok
+test_native_failure_stale_log (__main__.LaunchErrors.test_native_failure_stale_log) ... ok
+test_native_failure_without_log (__main__.LaunchErrors.test_native_failure_without_log) ... ok
+test_native_interrupt_reaps_engine_without_crash_dialog (__main__.LaunchErrors.test_native_interrupt_reaps_engine_without_crash_dialog) ... ok
+test_native_terminate_reaps_engine_without_crash_dialog (__main__.LaunchErrors.test_native_terminate_reaps_engine_without_crash_dialog) ... ok
+test_save_path_file_reports_initialization_error (__main__.LaunchErrors.test_save_path_file_reports_initialization_error) ... ok
+test_settings_directory_is_refused_without_copying_into_it (__main__.LaunchErrors.test_settings_directory_is_refused_without_copying_into_it) ... ok
+test_settings_write_failure_is_reported (__main__.LaunchErrors.test_settings_write_failure_is_reported) ... ok
+test_success_and_argument_forwarding_flatpak (__main__.LaunchErrors.test_success_and_argument_forwarding_flatpak) ... ok
+test_success_and_argument_forwarding_native (__main__.LaunchErrors.test_success_and_argument_forwarding_native) ... ok
+test_world_metadata_write_failure_is_reported (__main__.LaunchErrors.test_world_metadata_write_failure_is_reported) ... ok
+test_xmessage_fallback (__main__.LaunchErrors.test_xmessage_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 2.198s
+
+OK
+
+Evidence: /home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/linux-launch-errors.txt
+test_all_three_formats_and_companions_are_reserved (__main__.ReleaseGuardTests.test_all_three_formats_and_companions_are_reserved) ... ok
+test_alternate_apis_reach_their_normal_pipeline (__main__.ReleaseGuardTests.test_alternate_apis_reach_their_normal_pipeline) ... ok
+test_alternate_output_with_existing_unregistered_files_remains_allowed (__main__.ReleaseGuardTests.test_alternate_output_with_existing_unregistered_files_remains_allowed) ... ok
+test_exe_api_rejects_default_before_input_verification_or_toolchain (__main__.ReleaseGuardTests.test_exe_api_rejects_default_before_input_verification_or_toolchain) ... ok
+test_exe_registration_during_compile_blocks_promotion (__main__.ReleaseGuardTests.test_exe_registration_during_compile_blocks_promotion) ... ok
+test_explicit_sidecar_collision_is_rejected_by_zip_api_before_assembly (__main__.ReleaseGuardTests.test_explicit_sidecar_collision_is_rejected_by_zip_api_before_assembly) ... ok
+test_hardlinked_sidecar_alias_is_refused (__main__.ReleaseGuardTests.test_hardlinked_sidecar_alias_is_refused) ... ok
+test_legacy_nested_and_list_records (__main__.ReleaseGuardTests.test_legacy_nested_and_list_records) ... ok
+test_linux_api_rejects_default_from_input_version_before_assembly (__main__.ReleaseGuardTests.test_linux_api_rejects_default_from_input_version_before_assembly) ... ok
+test_linux_registration_during_build_blocks_promotion (__main__.ReleaseGuardTests.test_linux_registration_during_build_blocks_promotion) ... ok
+test_malformed_or_escaping_registry_fails_closed (__main__.ReleaseGuardTests.test_malformed_or_escaping_registry_fails_closed) ... ok
+test_missing_registered_file_is_still_reserved (__main__.ReleaseGuardTests.test_missing_registered_file_is_still_reserved) ... ok
+test_parent_directory_and_symlink_aliases (__main__.ReleaseGuardTests.test_parent_directory_and_symlink_aliases) ... ok
+test_tiny_alternate_zip_build_and_verification_succeed (__main__.ReleaseGuardTests.test_tiny_alternate_zip_build_and_verification_succeed) ... ok
+test_zip_api_rejects_default_before_assembly_or_download (__main__.ReleaseGuardTests.test_zip_api_rejects_default_before_assembly_or_download) ... ok
+test_zip_manifest_collision_with_frozen_linux_and_exe (__main__.ReleaseGuardTests.test_zip_manifest_collision_with_frozen_linux_and_exe) ... ok
+test_zip_registration_during_build_blocks_promotion (__main__.ReleaseGuardTests.test_zip_registration_during_build_blocks_promotion) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.088s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.023s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.295s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.144s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.178s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.027s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.073s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.053s
+
+OK
+CRAFTING CATALOG PASS: 23 material declarations and 16 recipes match reviewed source inputs
+RF MODEL PASS: sourced basic RF/water parameters match native definitions
+SURVIVAL MODEL PASS: three ores, five scatters, eight dust cooking and six pulverizing records

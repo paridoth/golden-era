@@ -2,6 +2,7 @@
 import importlib.util
 import json
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -27,6 +28,29 @@ def _git(source, *arguments):
     return subprocess.check_output(
         ["git", "-C", str(source), *arguments], text=True, stderr=subprocess.STDOUT
     ).strip()
+
+
+def _build_info(root):
+    """Record the source state once, without timestamps or parent-repo guesses."""
+    version = json.loads((root / "packaging/playtest/release.json").read_text())["version"]
+    if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:[-+][A-Za-z0-9.-]+)?", version):
+        raise AssemblyError("Invalid playtest release version")
+    info = {"version": version, "revision": None, "dirty": None, "source": "source_snapshot"}
+    # An exported source tree can live inside another Git checkout. Only the
+    # project's own .git directory/file may supply its build identity.
+    if not (root / ".git").exists():
+        return info
+    try:
+        if pathlib.Path(_git(root, "rev-parse", "--show-toplevel")).resolve() != root.resolve():
+            return info
+        revision = _git(root, "rev-parse", "HEAD")
+        if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", revision):
+            return info
+        dirty = bool(_git(root, "status", "--porcelain", "--untracked-files=all"))
+    except (OSError, subprocess.CalledProcessError):
+        return info
+    info.update(revision=revision, dirty=dirty, source="git")
+    return info
 
 
 def verify_sources(fetch=False):
@@ -131,12 +155,16 @@ def _populate(game, selected):
     if original.count("title = Mineclonia") != 1:
         raise AssemblyError("Pinned Mineclonia game title changed")
     (game / "game.conf").write_text(original.replace("title = Mineclonia", "title = Golden Era: stock mod playtest", 1))
+    # Stored outside the symlinked development mod; each assembled game keeps
+    # its own identity, which the runtime reads without invoking Git.
+    (game / "build-info.json").write_text(json.dumps(_build_info(ROOT), indent=2) + "\n")
     manifest = {
         "gameid": GAME_ID,
         "purpose": "Isolated Mineclonia + stock Elepower/Pipeworks/Drawers/Mesecons playtest",
         "sources": selected,
         "runtime_copy_patches": patches,
         "custom_mods": ["era_playtest"],
+        "build_info": "build-info.json",
     }
     (game / "playtest-sources.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest

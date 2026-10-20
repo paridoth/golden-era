@@ -1,0 +1,13 @@
+{
+  "mode": "trees",
+  "actual_survival_chooser_click": true,
+  "form_selected_by": "observer uses native integration API after real choice; no tab/chat click claim",
+  "guide_page": 7,
+  "guide_sha256": "ceaa50d28d873520ae7687c399d66c843184daa51af4e171228827598ab51357",
+  "help_sha256": "029253eed28edc3d5cad1d2f432571cbca3861a5f030adae66f39c5c61e7fddb",
+  "harness_sha256": "5b9a1b3f8318af2b453859953d5925c5611817e776ca34a3278737592e6d59cd",
+  "probe_sha256": "040bc2af5541da1d1163549239f7257ce25aff45453ad88ae62231da51a959b6",
+  "engine": "official Flathub Luanti 5.17.0 via repo-only matching runtime, software Xvfb/null audio",
+  "warnings": 2,
+  "errors": 0
+}

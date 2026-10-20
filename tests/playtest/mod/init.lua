@@ -76,10 +76,55 @@ local function check_pcb_etching()
  eq(blank:to_string(),before,"Water cannot etch an eleventh PCB")
  core.remove_node(pos)
 end
+local function check_build_identity()
+ local file=assert(io.open(core.get_game_info().path.."/build-info.json","rb"),"Assembled build identity exists")
+ local text=file:read("*a");file:close()
+ local expected=assert(core.parse_json(text),"Build identity is valid JSON")
+ local actual=assert(era_playtest.build_info,"Runtime build identity exists")
+ for _,field in ipairs({"version","revision","dirty","source"}) do
+  eq(actual[field],expected[field],"Runtime uses assembled build identity: "..field)
+ end
+ assert(type(actual.version)=="string" and actual.version~="","Pack version exists")
+ local command=assert(core.registered_chatcommands.packversion,"Version command registered")
+ assert(not command.privs or next(command.privs)==nil,"Version command requires no elevated privileges")
+ local ok,message=command.func(actor,"")
+ assert(ok and type(message)=="string","Version command succeeds without elevated privileges")
+ eq(message,era_playtest.format_packversion(),"Version command uses runtime build identity")
+ assert(message:find(actual.version,1,true),"Version command contains running pack version")
+ assert(message:find(core.get_version().string,1,true),"Version command contains running engine version")
+ if actual.revision then assert(message:find(actual.revision,1,true),"Version command contains full source revision") end
+ local show=core.show_formspec
+ local captured
+ core.show_formspec=function(name,formname,formspec)
+  eq(name,actor,"Workshop help target");eq(formname,"era_playtest:help","Workshop help form")
+  captured=formspec
+ end
+ era_playtest.show_workshop_help(actor)
+ core.show_formspec=show
+ assert(captured and captured:find(core.formspec_escape(actual.version),1,true),"Workshop help identifies running pack version")
+ core.log("action","ERA PLAYTEST BUILD: "..message)
+end
+local function check_machine_buttons(generator)
+ local sender={get_player_name=function()return actor end}
+ local targets={generator,p(11,7),p(12,7)}
+ core.set_node(targets[2],{name="elepower_farming:planter"})
+ core.set_node(targets[3],{name="elepower_farming:harvester"})
+ for _,pos in ipairs(targets) do
+  local meta=core.get_meta(pos)
+  local receive=assert(core.registered_nodes[core.get_node(pos).name].on_receive_fields)
+  eq(meta:get_int("state"),0,"Fresh machine default remains Always on")
+  for press=1,4 do
+   receive(pos,"",{cyclestate=true},sender)
+   eq(meta:get_int("state"),press%4,"Actual machine button reaches every native state")
+  end
+ end
+ core.log("action","ERA PLAYTEST BUTTONS: generator/planter/harvester callbacks cycle on/off/signal modes and return to Always on")
+end
 local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
  eq(xcompat.gameid,"mineclonia","Mineclonia compatibility selected")
+ check_build_identity()
  dofile(core.get_modpath("era_playtest_smoke").."/progression.lua")()
  for _,name in ipairs({"elepower_machines:generator","elepower_machines:power_cell_0","elepower_machines:pulverizer","elepower_machines:furnace",
   "elepower_dynamics:conduit","pipeworks:tube_1","pipeworks:mese_filter","fluid_tanks:tank","drawers:oakwood1",
@@ -105,6 +150,7 @@ local function run()
   assert(core.forceload_block(p(x,z),true),"Activate workshop mapblocks without a connected player")
  end end
  local positions=era_playtest.build_fixture(p(0),actor)
+ check_machine_buttons(positions.generator)
  check_pcb_etching()
  local generator,pulverizer,furnace,barrel,tank=positions.generator,positions.pulverizer,positions.furnace,positions.output,positions.tank
  eq(core.get_meta(generator):get_int("storage"),0,"Generator starts without injected power")

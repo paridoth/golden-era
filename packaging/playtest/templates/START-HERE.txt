@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.5
+GOLDEN ERA — FACTORY PLAYTEST 0.1.6
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -39,6 +39,7 @@ In the single-player workshop, K toggles flight. J toggles fast movement;
 E activates fast movement. Server players need the appropriate privileges.
 
 /packhelp   Workshop instructions
+/packversion   Version and build details for a bug report
 /factoryguide   Early survival and machinery guide
 /startchoice    Reopen the starting choice before choosing a path
 /workshop   Return to the workshop
@@ -60,6 +61,8 @@ be wired with the supplied conduits. Explore, build and report confusing parts.
 New workshops include a planter, harvester, seeds, soil, bone meal, one wheat
 for filter setup and two blinking controls in the supplies barrel. Follow the
 Farming guide page to build a small seed-return line.
+The Trees page explains one oak-harvesting cycle using the same machines and
+an Adjustable Vacuum Tube. Keep spare saplings: their drops are random.
 Existing worlds keep their barrels unchanged; use recipes or the workshop's
 creative catalog to try the new machinery without replacing your save.
 
@@ -74,7 +77,7 @@ ZIP with a later build. The game package contains no existing player world.
 If an existing save has the wrong game ID or lacks its world.mt, the launcher
 leaves it untouched and asks you to choose another data folder or restore it.
 
-For a bug report, send the build number, what you did, what you expected, what
+For a bug report, copy /packversion, then send what you did, what you expected, what
 happened, and a screenshot if useful. The client log is logs/client.log inside
 the save-data folder. Review logs before sharing them.
 

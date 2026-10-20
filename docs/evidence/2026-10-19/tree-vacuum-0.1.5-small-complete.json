@@ -1,0 +1,22 @@
+{
+	"bone_used" : 3,
+	"control_packets" : 2,
+	"control_recovered" : true,
+	"cuts" : 1,
+	"decay_nodes" : 19,
+	"generated" : 
+	{
+		"mcl_trees:sapling_oak" : 1,
+		"mcl_trees:tree_oak" : 6
+	},
+	"grown_leaves" : 52,
+	"grown_logs" : 6,
+	"harvest_leaf_nodes" : 33,
+	"initial_saplings" : 9,
+	"plantings" : 2,
+	"remaining_leaves" : 0,
+	"remaining_logs" : 0,
+	"returned_sapling_replant" : true,
+	"stage" : "checkpoint",
+	"started" : 2
+}

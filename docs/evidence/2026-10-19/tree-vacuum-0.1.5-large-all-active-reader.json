@@ -1,0 +1,55 @@
+{
+	"barrel" : 
+	[
+		"mcl_core:stick 5",
+		"mcl_trees:tree_oak 10"
+	],
+	"ground" : 
+	[
+		{
+			"item" : "mcl_trees:sapling_oak",
+			"pos" : 
+			{
+				"x" : -3.0871999263763428,
+				"y" : 209.70156860351562,
+				"z" : -3.8893001079559326
+			}
+		},
+		{
+			"item" : "mcl_trees:sapling_oak",
+			"pos" : 
+			{
+				"x" : 4.1020002365112305,
+				"y" : 208.70156860351562,
+				"z" : -3.1180000305175781
+			}
+		}
+	],
+	"harvester" : null,
+	"newly_emitted" : null,
+	"packets" : 
+	[
+		{
+			"item" : "mcl_tools:pick_iron 1 4321 \"\\u0001era_tree\\u0002vacuum owned tool\\u0003\"",
+			"pos" : 
+			{
+				"x" : 49.66392333433032,
+				"y" : 200,
+				"z" : 0
+			}
+		},
+		{
+			"item" : "mcl_copper:copper_ingot 5 321 \"\\u0001era_tree\\u0002vacuum owned copper\\u0003\"",
+			"pos" : 
+			{
+				"x" : 49.66392333433032,
+				"y" : 200,
+				"z" : 0
+			}
+		}
+	],
+	"planter" : 
+	[
+		"mcl_trees:sapling_oak 11"
+	]
+}

@@ -1,0 +1,145 @@
+{
+	"checkpoint" : 
+	{
+		"active" : false,
+		"elapsed" : 1.3999999761581421,
+		"gametime" : 14,
+		"timeout" : 1.5
+	},
+	"created_after_deactivation" : 
+	[
+		{
+			"item" : "mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"",
+			"pos" : 
+			{
+				"x" : 2,
+				"y" : 201,
+				"z" : 2
+			}
+		},
+		{
+			"item" : "mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"",
+			"pos" : 
+			{
+				"x" : 2,
+				"y" : 201,
+				"z" : 2
+			}
+		}
+	],
+	"created_gametime" : 8,
+	"earliest_resume" : 
+	{
+		"elapsed" : 1.3999999761581421,
+		"gametime" : 14,
+		"table_initialized" : false,
+		"timeout" : 1.5
+	},
+	"events" : 
+	[
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.8000000715255737,
+			"gametime" : 5,
+			"phase" : 0,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.3999999761581421,
+			"gametime" : 6,
+			"phase" : 0,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : 
+			[
+				{
+					"count" : 1,
+					"item" : "mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"",
+					"metadata" : "owned tool",
+					"name" : "mcl_tools:pick_iron",
+					"wear" : 4321
+				},
+				{
+					"count" : 5,
+					"item" : "mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"",
+					"metadata" : "owned copper",
+					"name" : "mcl_copper:copper_ingot",
+					"wear" : 321
+				}
+			],
+			"elapsed" : 9.3999996185302734,
+			"gametime" : 16,
+			"phase" : 1,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.3999999761581421,
+			"gametime" : 17,
+			"phase" : 1,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.8000000715255737,
+			"gametime" : 19,
+			"phase" : 1,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 2,
+			"gametime" : 21,
+			"phase" : 1,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.2000000476837158,
+			"gametime" : 22,
+			"phase" : 1,
+			"table_initialized" : true
+		},
+		{
+			"after" : null,
+			"before" : null,
+			"elapsed" : 1.3999999761581421,
+			"gametime" : 23,
+			"phase" : 1,
+			"table_initialized" : true
+		}
+	],
+	"final_fields" : 
+	[
+		{
+			"count" : 5,
+			"item" : "mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"",
+			"metadata" : "owned copper",
+			"name" : "mcl_copper:copper_ingot",
+			"wear" : 321
+		},
+		{
+			"count" : 1,
+			"item" : "mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"",
+			"metadata" : "owned tool",
+			"name" : "mcl_tools:pick_iron",
+			"wear" : 4321
+		}
+	],
+	"final_packets" : 0,
+	"first_fixture_globalstep" : 
+	{
+		"gametime" : 14,
+		"logical_table_initialized" : true
+	},
+	"retained" : true
+}

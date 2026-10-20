@@ -26,6 +26,10 @@ local pages={
   "Bury the planter below the soil layer with water directly above it. Drag a wheat seed into the upper center layout slot: it selects a 3x3 patch with eight soil blocks around that water. The layout is a preview; put real seeds in the lower supply inventory.\n\n"..
   "Power both machines through conduits and face the harvester toward the field at crop height. Configure one filter for wheat seeds and another for wheat. Return seeds to the planter; send wheat to a drawer or barrel. Place a Mesecons blinking control beside each filter after configuration.\n\n"..
   "New workshop supplies include seeds, a wheat item and two controls. The harvester drops overflow above itself; collect loose items before they expire. Sludge is a byproduct: drain its buffer periodically so it has room to keep harvesting."},
+ {title="Trees",text="Try one oak at a time with the same powered planter and harvester. Put the planter two blocks below the sapling space, with one dirt block between them. Keep the surrounding planting area stone. Select an oak sapling in the upper center layout slot and put real spare saplings in the lower supply slots.\n\n"..
+  "Place the harvester four blocks from the sapling, at sapling height and facing it. A glass block eight blocks directly above the sapling space limits the tested layout to a small oak; leave room around it for the canopy. Unrestricted large oaks can leave branches beyond the cutter's reach.\n\n"..
+  "Route the cutter's output into a barrel. Place an Adjustable Vacuum Tube two blocks beside the sapling at ground level, set its radius to 8 and connect it to that output line. A sapling-only filter with a blinking control can return saplings from the barrel to the planter's real supply.\n\n"..
+  "Start with one cycle: after planting, use the planter's state button to select Always off. Let the cutter work and the remaining leaves decay, then enable planting again. Sapling drops are random; keep a reserve. The cutter produces logs and ordinary leaf drops, not leaf blocks. Use shears separately to gather leaves for plastic."},
 }
 era_playtest.factory_guide_pages=pages
 

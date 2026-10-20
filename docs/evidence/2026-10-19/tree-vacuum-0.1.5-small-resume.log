@@ -1,0 +1,14 @@
+2026-10-19 07:21:51: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:21:53: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/world]
+2026-10-19 07:21:53: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:22:00: ACTION[Server]: Tree audit: Native archived paths: game=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest; Elepower=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/elepower/elepower_farming; Pipeworks=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/pipeworks
+2026-10-19 07:22:00: ACTION[Server]: Tree audit: Restart recovered 2 logical payloads with complete metadata/wear; no new items, power or fertilizer granted
+2026-10-19 07:22:10: ACTION[Server]: Tree audit: Native planter placed one sapling; total counted plantings=2; source now=0
+2026-10-19 07:22:10: ACTION[Server]: Tree audit: Final ledger={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6}; counted plantings=2; returned sapling replant=true; pending control fully delivered after native capacity recovery
+2026-10-19 07:22:10: ACTION[Server]: ERA TREE AUDIT PASS: COMPLETE: saved exact vacuum logical stacks recovered after full destination freed; stock replant opportunity=true; source game unchanged; no universal large-oak or leaf-block claim
+2026-10-19 07:22:10: ACTION[Main]: Server: Shutting down

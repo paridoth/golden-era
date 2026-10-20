@@ -1,0 +1,14 @@
+2026-10-19 07:23:32: ACTION[Main]: [mcl_villages]: Loaded 0 points of interest in 0 ms
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:23:35: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world]
+2026-10-19 07:23:35: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:23:35: ACTION[Server]: Vacuum early audit: Earliest fixture after(0): logical table=false; source=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/pipeworks
+2026-10-19 07:23:35: ACTION[Server]: Vacuum early audit: First fixture globalstep after stock Pipeworks: table=true
+2026-10-19 07:23:37: ACTION[Server]: Vacuum early audit: Actual engine timer: {"after":null,"before":[{"count":1,"item":"mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"","metadata":"owned tool","name":"mcl_tools:pick_iron","wear":4321},{"count":5,"item":"mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"","metadata":"owned copper","name":"mcl_copper:copper_ingot","wear":321}],"elapsed":9.3999996185302734,"gametime":16,"phase":1,"table_initialized":true}
+2026-10-19 07:23:45: ACTION[Server]: Vacuum early audit: Final native restart fields=[{"count":5,"item":"mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"","metadata":"owned copper","name":"mcl_copper:copper_ingot","wear":321},{"count":1,"item":"mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"","metadata":"owned tool","name":"mcl_tools:pick_iron","wear":4321}]
+2026-10-19 07:23:45: ACTION[Server]: ERA VACUUM EARLY AUDIT PASS: COMPLETE: early forceload/ordinary overdue native activation retained all6 owned items; inspect actual first timer table state, conditional preinitialization edge is not assumed
+2026-10-19 07:23:45: ACTION[Main]: Server: Shutting down

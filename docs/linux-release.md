@@ -52,6 +52,10 @@ default to `$XDG_DATA_HOME/golden-era-playtest` or
 `~/.local/share/golden-era-playtest`, separate from the extracted release.
 `GOLDEN_ERA_DATA_DIR` overrides this path. Existing settings/world metadata are
 kept on subsequent launches. Back up that data directory before updating.
+If startup fails while preparing the data folder or running the engine, the
+launcher reports the failure through its existing desktop dialog when available
+and through terminal output. An engine failure points to the client log when
+one exists; otherwise it gives a terminal command for capturing the error.
 Before creating settings, logs or save files, both Unix launchers check the
 existing world's final case-sensitive `gameid`. Foreign, missing or ambiguous
 IDs are refused with existing files untouched. Known world databases without

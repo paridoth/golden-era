@@ -1,6 +1,7 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- A one-time starter workshop; all production, routing and storage use upstream mods.
 era_playtest = {}
+dofile(core.get_modpath("era_playtest").."/build.lua")
 local storage = core.get_mod_storage()
 local origin = vector.new(0,200,0)
 local function at(base,x,y,z) return vector.add(base,{x=x,y=y,z=z}) end
@@ -80,7 +81,8 @@ local function help(name)
   "This first pack uses existing Luanti equivalents for Revelation-style technology, logistics and storage. "..
   "Build, explore and report what gets in your way; we will tune recipes and add systems as we play."
  core.show_formspec(name,"era_playtest:help","formspec_version[4]size[12,9]"..
-  "label[0.5,0.5;Golden Era — Playtest Workshop]textarea[0.5,1.1;11,6.6;;;"..
+  "label[0.5,0.5;"..core.formspec_escape("Golden Era "..era_playtest.build_info.version.." — Playtest Workshop")..
+  "]textarea[0.5,1.1;11,6.6;;;"..
   core.formspec_escape(text).."]button[0.5,8;3.6,0.7;factory_guide;First factory guide]"..
   "button_exit[8,8;3.5,0.7;close;Let's play]")
 end

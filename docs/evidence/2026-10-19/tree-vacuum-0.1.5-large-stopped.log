@@ -1,0 +1,26 @@
+2026-10-19 07:13:33: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:13:35: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-0.1.5-62at7rjw/world]
+2026-10-19 07:13:35: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:13:38: ACTION[Server]: Tree audit: Native archived paths: game=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-0.1.5-62at7rjw/games/golden_era_playtest; Elepower=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-0.1.5-62at7rjw/games/golden_era_playtest/mods/elepower/elepower_farming; Pipeworks=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-0.1.5-62at7rjw/games/golden_era_playtest/mods/pipeworks
+2026-10-19 07:13:38: ACTION[Server]: Tree audit: Fixture start:9 physical saplings (1 retained selector +8 supply),64 bone meal,4 coal, zero injected energy; native clocks/timers enabled
+2026-10-19 07:13:58: ACTION[Server]: Tree audit: Progress age=20 stage=plant logs=0 leaves=0 generated=null planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:14:06: ACTION[Server]: Tree audit: Native planter placed one sapling; total counted plantings=1; source now=7
+2026-10-19 07:14:08: ACTION[Server]: Tree audit: Native oak growth actual nodes: logs=16,leaves=271; counted supplied bone meal used=6
+2026-10-19 07:14:08: WARNING[Server]: Server: Maximum lag peaked at 1.04676 (steplen=0.05)
+2026-10-19 07:14:18: ACTION[Server]: Tree audit: Stock cutter actual drops=["mcl_core:stick 1","mcl_trees:sapling_oak","mcl_trees:sapling_oak","mcl_core:stick 1","mcl_core:stick 1","mcl_trees:sapling_oak","mcl_core:stick 2","mcl_trees:sapling_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak"]; total cut count=1
+2026-10-19 07:14:18: ACTION[Server]: Tree audit: After actual native cutter: remaining logs=6,leaves=195; immediate leaf rolls=76
+2026-10-19 07:14:18: ACTION[Server]: Tree audit: Progress age=40 stage=decay logs=6 leaves=195 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":4,"mcl_trees:tree_oak":10} planter=7 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:14:33: ACTION[Server]:  takes stuff from barrel at (5,200,0)
+2026-10-19 07:14:38: ACTION[Server]: Tree audit: Progress age=60 stage=decay logs=6 leaves=187 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=7 farm packets=1 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:14:58: ACTION[Server]: Tree audit: Progress age=80 stage=decay logs=6 leaves=183 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=11 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:15:18: ACTION[Server]: Tree audit: Progress age=100 stage=decay logs=6 leaves=181 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=11 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:15:38: ACTION[Server]: Tree audit: Progress age=120 stage=decay logs=6 leaves=179 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=11 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:15:59: ACTION[Server]: Tree audit: Progress age=140 stage=decay logs=6 leaves=179 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=11 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:16:19: ACTION[Server]: Tree audit: Progress age=160 stage=decay logs=6 leaves=178 generated={"mcl_core:stick":5,"mcl_trees:sapling_oak":6,"mcl_trees:tree_oak":10} planter=11 farm packets=0 ctrl packets/ground/stored=2/0/0
+INFO: signal_handler(): Ctrl-C pressed, shutting down.
+2026-10-19 07:16:34: ACTION[Main]: Server: Shutting down

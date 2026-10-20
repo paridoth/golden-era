@@ -1,0 +1,14 @@
+2026-10-19 07:23:04: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:23:07: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world]
+2026-10-19 07:23:07: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:23:07: ACTION[Server]: Vacuum early audit: Earliest fixture after(0): logical table=false; source=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/pipeworks
+2026-10-19 07:23:07: ACTION[Server]: Vacuum early audit: First fixture globalstep after stock Pipeworks: table=true
+2026-10-19 07:23:15: ACTION[Server]: Vacuum early audit: Provided full owned stacks only after native vacuum block became inactive: [{"item":"mcl_copper:copper_ingot 5 321 \"\\u0001era_vacuum_early\\u0002owned copper\\u0003\"","pos":{"x":2,"y":201,"z":2}},{"item":"mcl_tools:pick_iron 1 4321 \"\\u0001era_vacuum_early\\u0002owned tool\\u0003\"","pos":{"x":2,"y":201,"z":2}}]
+2026-10-19 07:23:21: ACTION[Server]: Vacuum early audit: Checkpoint pending ordinary timer and inactive block: {"active":false,"elapsed":1.3999999761581421,"gametime":14,"timeout":1.5}
+2026-10-19 07:23:21: ACTION[Server]: ERA VACUUM EARLY AUDIT PASS: CHECKPOINT: real stacks saved in an inactive vacuum block with its ordinary timer pending; no timer callback invoked by fixture
+2026-10-19 07:23:21: ACTION[Main]: Server: Shutting down

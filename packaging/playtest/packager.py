@@ -160,7 +160,7 @@ def _upstream_origin(relative):
         names = {"pipeworks", "basic_materials", "fakelib", "xcompat", "elepower", "fluid_lib", "mesecons", "drawers"}
         if parts[1] in names:
             return parts[1], "/".join(parts[2:])
-    if relative == "playtest-sources.json":
+    if relative in {"playtest-sources.json", "build-info.json"}:
         return "generated", "integrations/playtest/assembly.py"
     return "mineclonia", relative
 

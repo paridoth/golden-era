@@ -1,0 +1,44 @@
+{
+  "source_commit": "cb50e704ce5ba77af79da003bd9fe224941534dc",
+  "pins": {
+    "luanti": {
+      "url": "https://github.com/luanti-org/luanti.git",
+      "commit": "c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+      "release": "5.17.0"
+    },
+    "mineclonia": {
+      "url": "https://codeberg.org/mineclonia/mineclonia.git",
+      "commit": "20d5bbca48ffbeeb7cc6b008bdcebc9ab595b3d1",
+      "release": "0.124.0"
+    },
+    "elepower": {
+      "url": "https://github.com/LunaSquee/elepower.git",
+      "commit": "c37fe7bc3fc52a05e03507ca35cba2c8e5b3e330"
+    },
+    "xcompat": {
+      "url": "https://github.com/mt-mods/xcompat.git",
+      "commit": "758684dac8875d06d8c1565e323ee52c9d4daf7f"
+    },
+    "pipeworks": {
+      "url": "https://github.com/mt-mods/pipeworks.git",
+      "commit": "5dfd572eacee4c3c1ed8b827f4a67c46b022b242"
+    }
+  },
+  "files": {
+    "upstream/elepower/elepower_compat/init.lua": "b01760b49bd3f2600684128f3ddb51218991eb0c55f5dfa79afa8e45a0466a9f",
+    "upstream/elepower/elepower_compat/mods/xcompat.lua": "93f2431d32618a998c375de55feb62e79e844587b90e3742158b672aeb416fef",
+    "upstream/xcompat/src/materials/mineclonia.lua": "a3ae0c5d2e965c134958556502e7ff75c042b79c62969cb63618fefb6ffbde70",
+    "upstream/elepower/elepower_farming/machines/planter.lua": "ce4bdc36add7745afa045de916270a7c48977bbc202ef67e140bf14b57751f24",
+    "upstream/elepower/elepower_farming/treecutter.lua": "fe6e898149280cbb8942188384ac881a6bceea0f93cdacd101ae79170a4f923d",
+    "upstream/pipeworks/tubes/vacuum.lua": "f06e6856b03fcd1a443ce2c434c4efe63abd9f8a6d313367903dd73719f808c8",
+    "upstream/pipeworks/crafts.lua": "3f0fc9ff7000ac5df43af297f57d8f522798fc1928f62916919810d6d1ea5b6a",
+    "upstream/pipeworks/item_transport.lua": "f916d3d55297018932149251858549990b440684fd5c37b29f1b9e42d13a1032",
+    "upstream/mineclonia/mods/ITEMS/mcl_trees/api.lua": "fe4f42d901cb0248e442777c6abe6464ca4eb033da2f0b6067b7edc48468161d",
+    "upstream/mineclonia/mods/ITEMS/mcl_trees/abms.lua": "a3ae5084fbf66d6c2f2764ea1c54966508067b4d60bcf47bc1aab1915b2193b0",
+    "upstream/mineclonia/mods/ITEMS/mcl_trees/functions.lua": "12565fef453b1dfc6939e54d4836529a0c33b0258741b133793879f19113956c",
+    "upstream/mineclonia/mods/ITEMS/mcl_core/nodes_trees.lua": "1f0ded40f54c42f53ba49a47a99f22ae57da878bc777eff2dbe6dfcd832a2c64",
+    "upstream/mineclonia/mods/ENTITIES/mcl_item_entity/init.lua": "d0c14ecba501f1edfaf7b8e7b895b3748e28f4a889176a421d3404b8a99c93ae"
+  },
+  "engine_runs": 0,
+  "tracked_edits": 0
+}

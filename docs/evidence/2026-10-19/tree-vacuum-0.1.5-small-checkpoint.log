@@ -1,0 +1,31 @@
+2026-10-19 07:17:31: ACTION[Main]: [mcl_villages]: World was upgraded or is pristine.
+ _                   _   _ 
+| |_   _  __ _ _ __ | |_(_)
+| | | | |/ _` | '_ \| __| |
+| | |_| | (_| | | | | |_| |
+|_|\__,_|\__,_|_| |_|\__|_|  ___ 5.17.0
+2026-10-19 07:17:33: ACTION[Main]: World at [/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/world]
+2026-10-19 07:17:33: ACTION[Main]: Server for gameid="golden_era_playtest" listening on 127.0.0.1:30236.
+2026-10-19 07:17:35: ACTION[Server]: Tree audit: Native archived paths: game=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest; Elepower=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/elepower/elepower_farming; Pipeworks=/home/josh/Projects/Minecraft golden era/golden-era-luanti/runtime/tests/tree-native-small-0.1.5-nlg150s6/games/golden_era_playtest/mods/pipeworks
+2026-10-19 07:17:36: ACTION[Server]: Tree audit: Small-oak setup uses an actual glass ceiling8 nodes above the sapling; native growth selection/clearance untouched
+2026-10-19 07:17:36: ACTION[Server]: Tree audit: Fixture start:9 physical saplings (1 retained selector +8 supply),64 bone meal,4 coal, zero injected energy; native clocks/timers enabled
+2026-10-19 07:17:56: ACTION[Server]: Tree audit: Progress age=20 stage=plant logs=0 leaves=0 generated=null planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:18:04: ACTION[Server]: Tree audit: Native planter placed one sapling; total counted plantings=1; source now=7
+2026-10-19 07:18:05: ACTION[Server]: Tree audit: Native oak growth actual nodes: logs=6,leaves=52; counted supplied bone meal used=3
+2026-10-19 07:18:15: ACTION[Server]: Tree audit: Stock cutter actual drops=["mcl_trees:sapling_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak","mcl_trees:tree_oak"]; total cut count=1
+2026-10-19 07:18:15: ACTION[Server]: Tree audit: After actual native cutter: remaining logs=0,leaves=19; immediate leaf rolls=33
+2026-10-19 07:18:16: ACTION[Server]: Tree audit: Progress age=40 stage=decay logs=0 leaves=19 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=7 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:18:20: ACTION[Server]:  takes stuff from barrel at (5,200,0)
+2026-10-19 07:18:36: ACTION[Server]: Tree audit: Progress age=60 stage=decay logs=0 leaves=14 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=7 farm packets=1 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:18:56: ACTION[Server]: Tree audit: Progress age=80 stage=decay logs=0 leaves=13 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:19:16: ACTION[Server]: Tree audit: Progress age=100 stage=decay logs=0 leaves=7 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:19:37: ACTION[Server]: Tree audit: Progress age=120 stage=decay logs=0 leaves=5 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:19:57: ACTION[Server]: Tree audit: Progress age=140 stage=decay logs=0 leaves=4 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:20:17: ACTION[Server]: Tree audit: Progress age=160 stage=decay logs=0 leaves=2 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:20:37: ACTION[Server]: Tree audit: Progress age=181 stage=decay logs=0 leaves=2 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:20:57: ACTION[Server]: Tree audit: Progress age=201 stage=decay logs=0 leaves=2 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:21:17: ACTION[Server]: Tree audit: Progress age=221 stage=decay logs=0 leaves=1 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:21:38: ACTION[Server]: Tree audit: Progress age=241 stage=decay logs=0 leaves=1 generated={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6} planter=8 farm packets=0 ctrl packets/ground/stored=2/0/0
+2026-10-19 07:21:39: ACTION[Server]: Tree audit: Actual generated ledger={"mcl_trees:sapling_oak":1,"mcl_trees:tree_oak":6}; native decay nodes=19; physical returned sapling reserve=1; pending owned control packets=2
+2026-10-19 07:21:39: ACTION[Server]: ERA TREE AUDIT PASS: CHECKPOINT: exact archived game; counted native oak/coal/timers/leaf decay; vacuum→storage/physical sapling reserve; full destination retains exact copper/tool logical payloads
+2026-10-19 07:21:39: ACTION[Main]: Server: Shutting down

@@ -20,6 +20,7 @@ The Windows EXE installs and launches automatically. A separate Linux archive
 uses an installed Luanti engine or the official Flatpak. Both include source,
 credits and license notices. New players can choose a supplied workshop or
 survival progression; `/factoryguide` explains the early machinery.
+Use `/packversion` to identify the running build when reporting a problem.
 Windows and Linux are the active delivery targets. Release hashes, source
 revisions and executed checks are retained under [release records](docs/releases/).
 The optional custom-engine controller experiment is separate from these builds.

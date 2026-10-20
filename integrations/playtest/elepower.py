@@ -95,6 +95,50 @@ local have_cg = craftguide and craftguide.register_craft
         changed.append("elepower: conserve multi-buffer fusion fluid input")
 
     machine = path / "elepower_papi/machine.lua"
+    old = '''local function switch_state(pos, state_def)
+    local meta = core.get_meta(pos)
+    local state = meta:get_int("state")
+    local states = {}
+    for id, state in pairs(ele.default.states) do
+        if state_def[state.e] then states[#states + 1] = id end
+    end
+
+    if #states == 0 then return end
+
+    state = state + 1
+    if state >= #states then state = 0 end
+    state = states[state + 1]
+    meta:set_int("state", state)
+
+    ele.helpers.start_timer(pos)
+end
+'''
+    new = '''local function switch_state(pos, state_def)
+    local meta = core.get_meta(pos)
+    local state = meta:get_int("state")
+    local states = {}
+    for id, state in pairs(ele.default.states) do
+        if state_def[state.e] then states[#states + 1] = id end
+    end
+
+    if #states == 0 then return end
+
+    -- Golden Era: stored IDs are not indexes into an unordered subset.
+    table.sort(states)
+    local next_state = states[1]
+    for index, id in ipairs(states) do
+        if id == state then
+            next_state = states[index % #states + 1]
+            break
+        end
+    end
+    meta:set_int("state", next_state)
+
+    ele.helpers.start_timer(pos)
+end
+'''
+    if _replace(machine, old, new):
+        changed.append("elepower: cycle every supported machine state in native ID order")
     old = '''local function can_dig(pos, player)
     local meta = core.get_meta(pos)
     local inv = meta:get_inventory()

@@ -1,0 +1,230 @@
+{
+  "release_tested": "0.1.5",
+  "source_commit": "cb50e704ce5ba77af79da003bd9fe224941534dc",
+  "archive_sha256": "662d37939fa27ab2e0f530debdc852b5e090765101d476936301f14682ad168d",
+  "engine": "pinned native Luanti5.17.0 c0e6812b1a4260bb25a1f606f70f55f4962bb97d",
+  "all_extracted_game_files_unchanged": true,
+  "verified_game_file_count": 11783,
+  "tracked_edits": 0,
+  "scope": "Ignored worldmods with supplied fixtures/detached configuration actor; normal native machine/power/growth/decay/vacuum callbacks and stock routing. No manually invoked production timers/ABMs, no RNG/drop replacement, no human full-survival or endless-farm claim.",
+  "small_oak": {
+    "result": "checkpoint/restart PASS; zero diagnostics",
+    "coordinates_relative_sapling": {
+      "dirt": [
+        0,
+        -1,
+        0
+      ],
+      "planter": [
+        0,
+        -2,
+        0
+      ],
+      "harvester": [
+        0,
+        0,
+        4
+      ],
+      "harvester_faces": "toward sapling, negativeZ",
+      "glass": [
+        0,
+        8,
+        0
+      ],
+      "adjustable_vacuum": [
+        2,
+        0,
+        0
+      ],
+      "vacuum_radius": 8,
+      "barrel": [
+        5,
+        0,
+        4
+      ]
+    },
+    "layout_slot": 5,
+    "one_plantable_dirt_site": true,
+    "native_bone_meal_consumed": 3,
+    "grown_nodes": {
+      "logs": 6,
+      "leaves": 52
+    },
+    "harvested_logs_stored": 6,
+    "cutter_leaf_rolls": 33,
+    "cutter_saplings": 1,
+    "native_natural_leaf_decay_rolls": 19,
+    "actual_natural_decay_items": 0,
+    "one_returned_sapling_replanted_after_restart": true,
+    "original_spare_saplings_preserved": 7,
+    "stock_off_state_configuration": "Known metadata state1 delimited measured cycles. Separate native callback audit confirms0.1.5 button defect; repair/validation required before presenting Always off UI guidance.",
+    "original_physical_selector_preserved": 1
+  },
+  "vacuum_full_destination": {
+    "result": "all6 original items conserved with wear/metadata;2 logical packets persisted across restart and delivered after native capacity recovery",
+    "payloads": [
+      {
+        "item": "mcl_copper:copper_ingot",
+        "count": 5,
+        "wear": 321,
+        "metadata": "vacuum owned copper"
+      },
+      {
+        "item": "mcl_tools:pick_iron",
+        "count": 1,
+        "wear": 4321,
+        "metadata": "vacuum owned tool"
+      }
+    ],
+    "removed_filler_cobble_saved": 128
+  },
+  "large_oak": {
+    "result": "observed partial native harvest; stopped cleanly after boundary clear, no full-cycle PASS claimed",
+    "bone_meal_consumed": 6,
+    "grown_logs": 16,
+    "grown_leaves": 271,
+    "logs_stored": 10,
+    "branch_logs_remaining_at_last_main_sample": 6,
+    "cutter_leaf_rolls": 76,
+    "cutter_saplings": 4,
+    "cutter_sticks": 5,
+    "extra_actual_natural_decay_saplings": 2,
+    "physical_planter_saplings": 11,
+    "physical_selector_in_vault": 1,
+    "saved_world_saplings": [
+      {
+        "item": "mcl_trees:sapling_oak",
+        "pos": {
+          "x": -3.0871999263763428,
+          "y": 209.70156860351562,
+          "z": -3.8893001079559326
+        }
+      },
+      {
+        "item": "mcl_trees:sapling_oak",
+        "pos": {
+          "x": 4.1020002365112305,
+          "y": 208.70156860351562,
+          "z": -3.118000030517578
+        }
+      }
+    ],
+    "newly_emitted_during_reader": [],
+    "ledger": "9 supplied+6 actual generated\u22121 planted =14 physical saplings =11 planter+1 vault+2 world. Both world entities are above vacuum Y208.5 maximum reach. No loss.",
+    "warning": "Native growth maximum-lag peak1.04676s retained; not zero diagnostics."
+  },
+  "early_activation": {
+    "result": "checkpoint/restart PASS, zero diagnostics; conditional preinitialization loss not reproduced",
+    "setup": "Real items created after vacuum block became inactive; ordinary timer saved elapsed1.4/timeout1.5; inactive game time advanced6s. Earliest after(0) forceload used on resume.",
+    "observed_order": "Earliest after(0) sees no logical table; stock first globalstep initializes it; actual engine overdue timer elapsed9.4s sees initialized table.",
+    "retained_items": 6,
+    "wear_metadata_exact": true,
+    "production_repair_recommended": false
+  },
+  "boundaries": [
+    "Small natural-decay sample rolled zero items, so it does not claim naturally decayed sapling capture; separate real-entity vacuum control proves the native item API.",
+    "Leaf blocks still require manual shears; no automated plastic claim.",
+    "Sapling returns are random; keep reserves.",
+    "Unrestricted large oaks retain branches/canopy and can strand drops above a ground vacuum.",
+    "One measured controlled cycle plus returned-sapling replant; no indefinite unattended endurance claim.",
+    "Exact0.1.5 state-button defect is confirmed; Always off guidance requires the new copied-source repair/validation. No production changes made by this audit."
+  ],
+  "raw_sources": {
+    "tree-vacuum-0.1.5-small-fixture.lua": "runtime/tests/tree-native-small-0.1.5-nlg150s6/world/worldmods/era_tree_audit/init.lua",
+    "tree-vacuum-0.1.5-small-mod.conf": "runtime/tests/tree-native-small-0.1.5-nlg150s6/world/worldmods/era_tree_audit/mod.conf",
+    "tree-vacuum-0.1.5-small-runner.py": "runtime/tests/tree-native-small-0.1.5-nlg150s6/run.py",
+    "tree-vacuum-0.1.5-small-config.conf": "runtime/tests/tree-native-small-0.1.5-nlg150s6/test.conf",
+    "tree-vacuum-0.1.5-small-checkpoint.log": "runtime/tests/tree-native-small-0.1.5-nlg150s6/checkpoint.stdout",
+    "tree-vacuum-0.1.5-small-resume.log": "runtime/tests/tree-native-small-0.1.5-nlg150s6/resume.stdout",
+    "tree-vacuum-0.1.5-small-checkpoint.json": "runtime/tests/tree-native-small-0.1.5-nlg150s6/world/tree-audit-checkpoint.json",
+    "tree-vacuum-0.1.5-small-complete.json": "runtime/tests/tree-native-small-0.1.5-nlg150s6/world/tree-audit-complete.json",
+    "tree-vacuum-0.1.5-large-fixture.lua": "runtime/tests/tree-native-0.1.5-62at7rjw/world/worldmods/era_tree_audit/init.lua",
+    "tree-vacuum-0.1.5-large-stopped.log": "runtime/tests/tree-native-0.1.5-62at7rjw/checkpoint.stdout",
+    "tree-vacuum-0.1.5-large-reader-fixture.lua": "runtime/tests/tree-native-0.1.5-62at7rjw/reader-world/worldmods/era_tree_audit/init.lua",
+    "tree-vacuum-0.1.5-large-all-active-reader.log": "runtime/tests/tree-native-0.1.5-62at7rjw/reader-all-active.stdout",
+    "tree-vacuum-0.1.5-large-all-active-reader.json": "runtime/tests/tree-native-0.1.5-62at7rjw/reader-world/reader.json",
+    "tree-vacuum-0.1.5-early-fixture.lua": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world/worldmods/era_vacuum_early_audit/init.lua",
+    "tree-vacuum-0.1.5-early-mod.conf": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world/worldmods/era_vacuum_early_audit/mod.conf",
+    "tree-vacuum-0.1.5-early-runner.py": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/run.py",
+    "tree-vacuum-0.1.5-early-config.conf": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/test.conf",
+    "tree-vacuum-0.1.5-early-checkpoint.log": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/checkpoint.stdout",
+    "tree-vacuum-0.1.5-early-resume.log": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/resume.stdout",
+    "tree-vacuum-0.1.5-early-checkpoint.json": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world/probe-0.json",
+    "tree-vacuum-0.1.5-early-complete.json": "runtime/tests/vacuum-early-native-0.1.5-rpwji9bj/world/probe-1.json",
+    "tree-vacuum-0.1.5-source-inputs.json": "runtime/tests/tree-audit-0.1.5-7mdee2_9/inputs.json",
+    "tree-vacuum-0.1.5-inspect-schematics.py": "runtime/tests/tree-audit-0.1.5-7mdee2_9/inspect_schematics.py",
+    "tree-vacuum-0.1.5-schematic-summary.json": "runtime/tests/tree-audit-0.1.5-7mdee2_9/schematic-summary.json",
+    "machine-state-0.1.5-baseline-fixture.lua": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/world/worldmods/era_state_audit/init.lua",
+    "machine-state-0.1.5-baseline-mod.conf": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/world/worldmods/era_state_audit/mod.conf",
+    "machine-state-0.1.5-baseline-runner.py": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/run.py",
+    "machine-state-0.1.5-baseline-config.conf": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/test.conf",
+    "machine-state-0.1.5-baseline.log": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/native.stdout",
+    "machine-state-0.1.5-baseline.json": "runtime/tests/machine-state-native-0.1.5-gcz0zobd/world/state-audit.json"
+  },
+  "state_button": {
+    "observed_defect": true,
+    "result": "Native configuration baseline complete; zero diagnostics. This is a reproduced defect, not a gameplay acceptance PASS.",
+    "actual_four_state_devices": {
+      "elepower_farming:planter": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      "elepower_farming:harvester": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      "elepower_machines:generator": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ]
+    },
+    "toggle_only_stock_api_control": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "default_pairs_iteration": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "unreachable_actual_stock_states": [
+      1,
+      3
+    ],
+    "callback_input": "Fresh default0, then8 actual registered cyclestate presses from unprotected named actor, with normal engine timer refresh for tooltip records. No direct state writes/timer invocations.",
+    "actual_generator_groups": {
+      "mesecons": true,
+      "toggle": true
+    },
+    "guide_review": "Tree geometry/routes/roof/manual-shears/randomness claims match native evidence. Always off button guidance requires new copied-source fix and validation."
+  }
+}
