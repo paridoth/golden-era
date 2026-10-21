@@ -44,5 +44,20 @@
   "drawers": {
     "url": "https://github.com/minetest-mods/drawers.git",
     "commit": "5c8aa86f481852cc59b678023193135d5ab9963d"
+  },
+  "logistica": {
+    "url": "https://github.com/ZenonSeth/logistica.git",
+    "commit": "39bcf68a0480a9344ced078633a950bb89e5964f",
+    "release": "2.0.13"
+  },
+  "mcl_extra_structures": {
+    "url": "https://codeberg.org/mt-mods/mcl_extra_structures.git",
+    "commit": "d8cbaac3c6a1c1c4c3b6ac8df983a32ea9c59cf9",
+    "release": "1.5.0"
+  },
+  "travelnet": {
+    "url": "https://github.com/mt-mods/travelnet.git",
+    "commit": "8aa7126fe2bf2ee7d0d0655545b05def487e227a",
+    "release": "2024-12-15"
   }
 }
