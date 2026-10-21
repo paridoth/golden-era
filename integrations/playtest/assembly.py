@@ -131,7 +131,9 @@ def _populate(game, selected):
                  "logistica", "mcl_extra_structures", "travelnet", "magicalities"):
         if (mods / name).exists():
             raise AssemblyError("Duplicate Mineclonia/modpack name: " + name)
-        shutil.copytree(ROOT / "upstream" / name, mods / name, ignore=shutil.ignore_patterns(".git"))
+        # Newer mods ship developer test worlds/fixtures; they are not game content.
+        ignored = (".git", "test") if name in ("logistica", "travelnet") else (".git",)
+        shutil.copytree(ROOT / "upstream" / name, mods / name, ignore=shutil.ignore_patterns(*ignored))
     source = mods / "xcompat/src/gameid.lua"
     original = source.read_text()
     if original.count(ALIAS_BEFORE) != 1:
