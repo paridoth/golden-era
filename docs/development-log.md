@@ -722,3 +722,22 @@ recorded separately for 0.1.4, with farming wired into future runs. All 48 older
 artifact/sidecar files are unchanged, and default builders refuse the newly
 registered paths while preserving all 57 current/historical files. Exact hashes
 and limitations are recorded in `docs/releases/0.1.5.json`.
+
+## Desktop 0.1.7 development — new systems and manual — 2026-10-21
+
+A ContentDB survey picked existing mods for Revelation's missing pillars.
+Logistica 2.0.13 (storage network, recursive autocrafting), Travelnet and
+Extra Structures 1.5.0 support Mineclonia directly. Magicalities (2020, MIT on
+ContentDB, no upstream license file) was written for Minetest Game and is
+ported through `integrations/playtest/magicalities.py`: item names, GUI and
+sound helpers, Mineclonia digging groups and tool dig speeds, bookshelf
+inventory, dye groups, guide book items and a generated MIT notice. Upstream's
+1e-8 book tower ratio made research notes unobtainable; 1e-4 yields about
+three towers per 384x384 area. Logistica now uses Mineclonia liquid textures
+under this game's ID.
+
+`tests/mod-trial/run.py` boots a disposable v7 world and reports item
+obtainability (grid, arcane, cauldron and wand recipes), grouped warnings and
+generated crystal/tower counts: all candidate items obtainable, zero errors.
+The factory smoke still passes. A real client capture shows the 11-tab manual.
+No human has used the storage network, teleporters, research or spells yet.

@@ -15,4 +15,5 @@ python3 tests/machine-removal/run.py 2>&1 | tee tools/ci-evidence/machine-remova
 python3 tests/machine-state/run.py 2>&1 | tee tools/ci-evidence/machine-state.log
 python3 tests/pipeworks-removal/run.py 2>&1 | tee tools/ci-evidence/pipeworks-removal.log
 python3 tests/farming/run.py 2>&1 | tee tools/ci-evidence/farming.log
+python3 tests/mod-trial/run.py 2>&1 | tee tools/ci-evidence/mod-trial.log
 python3 tests/linux/test_save_guard.py 2>&1 | tee tools/ci-evidence/launcher-save-guard.log

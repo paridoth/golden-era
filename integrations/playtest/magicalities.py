@@ -25,6 +25,33 @@ ITEMS = {
     "group:color_black": "group:unicolor_black",
     "group:color_white": "group:unicolor_white",
 }
+MIT_NOTICE = """Magicalities by IcyDiamond (evert), https://git.icynet.eu/evert/magicalities
+Code and media are declared MIT on ContentDB (content.luanti.org/packages/IcyDiamond/magicalities).
+The upstream repository contains no license file; this text records those declared terms.
+Golden Era's Mineclonia compatibility changes are GPL-3.0-or-later.
+
+MIT License
+
+Copyright (c) IcyDiamond (evert)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 HELPERS = ("gui_bg_img", "gui_bg", "gui_slots", "get_hotbar_bg",
            "node_sound_wood_defaults", "node_sound_glass_defaults")
 
@@ -83,4 +110,6 @@ def apply(path: Path) -> list[str]:
         raise ValueError("Unmapped Minetest Game item in book.txt")
     book.write_text(text)
     changed.append("magicalities: findable research towers, Mineclonia bookshelf inventory and guide book item names")
+    (path / "LICENSE.txt").write_text(MIT_NOTICE)
+    changed.append("magicalities: add the MIT terms declared on ContentDB, since upstream ships no license file")
     return changed

@@ -164,7 +164,7 @@ def _populate(game, selected):
     (game / "build-info.json").write_text(json.dumps(_build_info(ROOT), indent=2) + "\n")
     manifest = {
         "gameid": GAME_ID,
-        "purpose": "Isolated Mineclonia + stock Elepower/Pipeworks/Drawers/Mesecons playtest",
+        "purpose": "Isolated Mineclonia + stock Elepower/Pipeworks/Drawers/Mesecons/Logistica/Travelnet/Magicalities playtest",
         "sources": selected,
         "runtime_copy_patches": patches,
         "custom_mods": ["era_playtest"],

@@ -29,10 +29,10 @@ human created those pixels or reproducing protected mod content.
 | Elepower | MIT project license; retain local notices/assets | `upstream/elepower/LICENSE`, mod-local notices |
 | fluid_lib | MIT project license; retain submod notices | `upstream/fluid_lib/LICENSE`, submod notices |
 | Storage Drawers | MIT code/textures, CC-BY-3.0 sound files, CC0 translations | `upstream/drawers/LICENSE.txt` with per-file authors |
-| Logistica (trial) | LGPL-2.1 code, CC-BY-SA-3.0 media (ContentDB) | `upstream/logistica/LICENSE` |
-| Extra Structures (trial) | GPL-3.0-or-later code and media (ContentDB) | `upstream/mcl_extra_structures/LICENSE.md`, `CREDITS.md` |
-| Travelnet (trial) | GPL-3.0 code, CC0 models/textures by VanessaE (README) | `upstream/travelnet/LICENSE`, `README.md` |
-| Magicalities (trial) | MIT code and media declared on ContentDB by IcyDiamond (evert); the repository has no license file | none upstream; a packaged release must add the MIT text and attribution |
+| Logistica | LGPL-2.1 code, CC-BY-SA-3.0 media (ContentDB) | `upstream/logistica/LICENSE` |
+| Extra Structures | GPL-3.0-or-later code and media (ContentDB) | `upstream/mcl_extra_structures/LICENSE.md`, `CREDITS.md` |
+| Travelnet | GPL-3.0 code, CC0 models/textures by VanessaE (README) | `upstream/travelnet/LICENSE`, `README.md` |
+| Magicalities | MIT code and media declared on ContentDB by IcyDiamond (evert); the repository has no license file | none upstream; assembly writes `mods/magicalities/LICENSE.txt` with the declared MIT terms |
 
 Mineclonia's LEGAL.md attributes Pixel Perfection textures to XSSheep and Pixel
 Perfection Legacy to Nova Wostra (CC-BY-SA-4.0), glazed terracotta to

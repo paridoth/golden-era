@@ -47,6 +47,8 @@ refilled on update; craft the parts or use the single-player workshop's creative
 catalog while retaining the same world.
 The first batch takes roughly two minutes with the supplied stock generator.
 
+- `/manual` (or `/factoryguide`) opens the Golden Era Manual: progression, power, automation,
+  farming, trees, Logistica storage, Travelnet, extra structures and Magicalities magic.
 - `/packhelp` shows workshop instructions.
 - `/packversion` prints the running pack version, build identity and engine version
   for a bug report. Development assemblies say when local source changes exist.

@@ -157,7 +157,8 @@ def _upstream_origin(relative):
     if len(parts) >= 3 and parts[0] == "mods":
         if parts[1] == "era_playtest":
             return "project", "integrations/playtest/mod/" + "/".join(parts[2:])
-        names = {"pipeworks", "basic_materials", "fakelib", "xcompat", "elepower", "fluid_lib", "mesecons", "drawers"}
+        names = {"pipeworks", "basic_materials", "fakelib", "xcompat", "elepower", "fluid_lib", "mesecons", "drawers",
+                 "logistica", "mcl_extra_structures", "travelnet", "magicalities"}
         if parts[1] in names:
             return parts[1], "/".join(parts[2:])
     if relative in {"playtest-sources.json", "build-info.json"}:
