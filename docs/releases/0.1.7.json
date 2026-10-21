@@ -1,0 +1,54 @@
+{
+  "version": "0.1.7",
+  "source_revision": "c20db6974e0aae44e535806ed29fdb9a2a4fe7a0",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.7-windows.exe",
+      "size_bytes": 68557946,
+      "sha256": "6fbe496ad2bf1bf2da9d72f413c7ac73da20eab317edbc3bd5a3f74f2e3a5cd0",
+      "installed_files": 12509
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.7-linux.tar.gz",
+      "size_bytes": 63654056,
+      "sha256": "5869829195e838017e954780a86414bb36aad41f14708cf1626d4ec4c7921163",
+      "files": 12500
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.7-windows-test.zip",
+      "size_bytes": 72144814,
+      "sha256": "76964b988cc8e39f8336e5f818f147d978b8bcc7370d02e1e111c03dfd100a5d",
+      "files": 12499
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.7 (pre-release)",
+  "changes": [
+    "Logistica 2.0.13: demand-driven storage network, access point search and recursive autocrafting",
+    "Travelnet: teleporter boxes and elevators",
+    "Extra Structures 1.5.0: oases, pyramids, ruins, graveyards, camps, obelisks and ice towers in new terrain",
+    "Magicalities (2020) ported from Minetest Game to Mineclonia: crystals, wands, research, arcane table, cauldron; book towers made findable and the declared MIT notice added",
+    "/factoryguide becomes the Golden Era Manual (also /manual) with Storage, Travel, Exploring and Magic pages"
+  ],
+  "validation": {
+    "full_ci": "PASS scripts/ci.sh at 09aaf3f: setup, 24-process engine integration, playtest, survival, automation, storage, storage controller, machine removal, machine state, Pipeworks removal, farming, launcher save guard and the new mod trial",
+    "final_source_change": "c20db69 only omits Logistica/Travelnet test fixtures from assembly; fast suite, mod trial, package smoke and Linux factory reran at c20db69",
+    "mod_trial": "PASS every candidate item obtainable (crafting grid, Logistica lava furnace, Magicalities arcane/cauldron/wand); zero engine warnings or errors; crystals in all six elements and book towers generate in a 384x384 v7 area",
+    "manual_gui": "PASS official Linux client capture of the Magic page with 11 scrolling tabs and no texture errors",
+    "packaged_zip": "PASS verify and smoke: full factory through the extracted launcher with a fresh save; build-info reports c20db69 dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "linux_archive": "PASS archive verify and tests/linux/run.py including the real 2 raw iron to 4 ingots factory"
+  },
+  "limitations": [
+    "No human has used the storage network, teleporters, research, spells or found an extra structure",
+    "Magicalities balance was designed for Minetest Game; its license is MIT as declared on ContentDB, with no upstream license file",
+    "Logistica's farming and woodcutter machines overlap Elepower's planter/harvester; both remain enabled",
+    "Native Windows, SmartScreen and hardware graphics remain unverified; no Wine run for this version",
+    "Linux tests used the native engine; the official Flatpak runtime was only checked with a stub"
+  ],
+  "save_compatibility": "Existing 0.1.6 worlds keep all nodes and inventories; new mods only add content. Extra structures, crystals and towers appear only in newly generated terrain"
+}
