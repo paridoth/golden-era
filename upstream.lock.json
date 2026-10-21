@@ -59,5 +59,11 @@
     "url": "https://github.com/mt-mods/travelnet.git",
     "commit": "8aa7126fe2bf2ee7d0d0655545b05def487e227a",
     "release": "2024-12-15"
+  },
+  "magicalities": {
+    "url": "https://git.icynet.eu/evert/magicalities.git",
+    "commit": "b89d49caf2c499533ab959320186972feb3c42cf",
+    "release": "2020-01-22",
+    "license": "MIT (declared on ContentDB; no license file upstream)"
   }
 }

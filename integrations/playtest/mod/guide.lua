@@ -30,6 +30,19 @@ local pages={
   "Place the harvester four blocks from the sapling, at sapling height and facing it. A glass block eight blocks directly above the sapling space limits the tested layout to a small oak; leave room around it for the canopy. Unrestricted large oaks can leave branches beyond the cutter's reach.\n\n"..
   "Route the cutter's output into a barrel. Place an Adjustable Vacuum Tube two blocks beside the sapling at ground level, set its radius to 8 and connect it to that output line. A sapling-only filter with a blinking control can return saplings from the barrel to the planter's real supply.\n\n"..
   "Start with one cycle: after planting, use the planter's state button to select Always off. Let the cutter work and the remaining leaves decay, then enable planting again. Sapling drops are random; keep a reserve. The cutter produces logs and ordinary leaf drops, not leaf blocks. Use shears separately to gather leaves for plastic."},
+ {title="Storage",text="Logistica builds an item network that delivers items only when something asks for them. Start with its Lava Furnace: clay, obsidian, iron ingots and two empty buckets. Fill it with lava. It turns sand plus ice or snow into Silverin, and Silverin plus iron into Silverin plates.\n\n"..
+  "Plates, Silverin circuits and optic cable make a Network Controller and an Access Point. Connect storage and machines to the controller with optic cable. The Access Point searches everything on the network, and its Recursive Crafting Upgrade crafts missing ingredients for you.\n\n"..
+  "Craft the Logistica Guide Book (sand, paper, sand in a column) for every machine and upgrade. Drawers and barrels still work; use whichever suits your base."},
+ {title="Travel",text="Travelnet boxes teleport you between stations. Craft one with glass down both sides and iron ingot, block of redstone, iron ingot down the middle.\n\n"..
+  "Place it, right-click, then name the station and a network. All of your stations with the same network name connect. Punch a box to refresh its station list, then right-click it to travel.\n\n"..
+  "The Elevator (iron ingots and glass) links boxes stacked above each other on different floors."},
+ {title="Exploring",text="Newly generated terrain can contain extra structures: desert oases, brick pyramids, birch forest temple ruins, graveyards, loggers' camps, sandstone obelisks and ice towers. Some hold loot.\n\n"..
+  "Areas you have already visited do not change, so travel into new land to find them.\n\n"..
+  "Rare wooden book towers stand in grassland. Their Wise Bookshelves matter for magic; see the Magic page."},
+ {title="Magic",text="Magic starts underground. Elemental crystals grow on cave floors and ceilings above the deepslate, in six elements: air, earth, fire, water, light and dark.\n\n"..
+  "Craft a Steel-Capped Wand from a steel cap (iron ingots), a wand core (two sticks) and any crystal. Right-click crystals with the wand to tap their elements. Use the wand on a bookshelf to get the Magicalities guide book.\n\n"..
+  "Craft a Table from eight logs; it is your Research Table. Use the wand on a second, empty Table to make an Arcane Table for magical crafting. Research unlocks most recipes: right-click Wise Bookshelves in book towers for research notes, then research at the table with the guide book, ink and quill, and paper.\n\n"..
+  "The Cauldron (iron blocks) needs fire beneath it and water inside. It makes Tellium for magical tools and Transterra for reshaping the world. The guide book explains each step."}
 }
 era_playtest.factory_guide_pages=pages
 
@@ -40,7 +53,7 @@ function era_playtest.show_factory_guide(name,page)
  local tabs={}
  for _,entry in ipairs(pages) do tabs[#tabs+1]=core.formspec_escape(entry.title) end
  core.show_formspec(name,"era_playtest:factory_guide",
-  "formspec_version[4]size[14,10]label[0.5,0.45;Golden Era — Your first factory]"..
+  "formspec_version[4]size[14,10]label[0.5,0.45;Golden Era Manual]"..
   "tabheader[0.5,1.65;factory_page;"..table.concat(tabs,",")..";"..page..";false;false]"..
   "textarea[0.5,2.1;13,6.1;;;"..core.formspec_escape(selected.text).."]"..
   "button[0.5,8.8;3,0.7;workshop_help;Workshop help]"..
@@ -49,6 +62,9 @@ function era_playtest.show_factory_guide(name,page)
 end
 
 core.register_chatcommand("factoryguide",{description="Read the early survival and factory progression guide",func=function(name)
+ era_playtest.show_factory_guide(name,1);return true
+end})
+core.register_chatcommand("manual",{description="Open the Golden Era Manual",func=function(name)
  era_playtest.show_factory_guide(name,1);return true
 end})
 core.register_on_player_receive_fields(function(player,formname,fields)

@@ -15,7 +15,7 @@ DEFAULT_DESTINATION = ROOT / "runtime/playtest/games" / GAME_ID
 SOURCES = (
     "luanti", "mineclonia", "pipeworks", "basic_materials", "xcompat", "fakelib",
     "mesecons", "elepower", "fluid_lib", "drawers",
-    "logistica", "mcl_extra_structures", "travelnet",
+    "logistica", "mcl_extra_structures", "travelnet", "magicalities",
 )
 ALIAS_BEFORE = 'local game_alias = {\n    mineclone2 = "mineclonia",\n}\n'
 ALIAS_AFTER = 'local game_alias = {\n    mineclone2 = "mineclonia",\n    golden_era_playtest = "mineclonia",\n}\n'
@@ -128,7 +128,7 @@ def _populate(game, selected):
             raise AssemblyError("Duplicate Mineclonia/modpack name: " + name)
         (mods / name).symlink_to(ROOT / "upstream" / name, target_is_directory=True)
     for name in ("xcompat", "elepower", "fluid_lib", "mesecons", "drawers", "pipeworks",
-                 "logistica", "mcl_extra_structures", "travelnet"):
+                 "logistica", "mcl_extra_structures", "travelnet", "magicalities"):
         if (mods / name).exists():
             raise AssemblyError("Duplicate Mineclonia/modpack name: " + name)
         shutil.copytree(ROOT / "upstream" / name, mods / name, ignore=shutil.ignore_patterns(".git"))
@@ -143,6 +143,8 @@ def _populate(game, selected):
     patches.extend(_patch_module("mesecons", mods / "mesecons"))
     patches.extend(_patch_module("drawers", mods / "drawers"))
     patches.extend(_patch_module("pipeworks", mods / "pipeworks"))
+    patches.extend(_patch_module("logistica", mods / "logistica"))
+    patches.extend(_patch_module("magicalities", mods / "magicalities"))
     starter = ROOT / "integrations/playtest/mod"
     if not (starter / "mod.conf").is_file():
         raise AssemblyError("Missing era_playtest integration mod")
