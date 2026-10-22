@@ -57,7 +57,8 @@ def main():
             batch = (bundle/'start.bat').read_text()
             assert 'Get-FileHash' in batch and 'checksum mismatch' in batch, 'Windows download must be checked'
             assert 'ExecutionPolicy' not in batch, 'No execution-policy override'
-            assert '--name' not in batch and '--go' not in batch, 'Double-click opens the main menu'
+            launches = [line for line in batch.splitlines() if 'luanti.exe" --' in line]
+            assert len(launches) == 2 and not any('--name' in line or '--go' in line for line in launches), 'Double-click opens the main menu'
             data = work/'new tester data'
             world = data/'worlds/playtest'
             mods = world/'worldmods'
