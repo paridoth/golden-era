@@ -20,4 +20,15 @@ To try the result, set `texture_path` in the save folder's `settings.conf` to
 the output folder, or copy it into the engine's `textures` folder and choose it
 under Content in the main menu.
 
-Mod textures (Elepower, Drawers, Logistica, Magicalities) are not mapped yet.
+`integrations/playtest/textures/mods112.py` maps BDcraft-style mod patches onto
+Golden Era's mods: Thermal Expansion and Thermal Foundation onto Elepower
+machines, ores, ingots, metal blocks and lead tools, and Storage Drawers onto
+Drawers. Add the patches after the base pack, for example:
+
+```sh
+python3 integrations/playtest/textures/convert.py "PureBDcraft 32x MC112.zip" Sphax_CoFHCore_32x.zip Sphax_ThermalFoundation_32x.zip Sphax_ThermalExpansion_32x.zip "Sphax Storage Drawers 32x MC112.zip" --output ~/Textures/converted --name golden_era_sphax
+```
+
+Elepower dusts, gears and plates are tinted in code from one image, so they
+keep their own look. Logistica, Pipeworks, Travelnet and Magicalities are not
+mapped yet.
