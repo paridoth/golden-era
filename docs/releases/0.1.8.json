@@ -1,0 +1,56 @@
+{
+  "version": "0.1.8",
+  "source_revision": "d9a4410eb1c68168dcd3610e154845b5da5d068a",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.8-windows.exe",
+      "size_bytes": 68534631,
+      "sha256": "f983029901621520d2ee37516e6d53e146fb7429a5d5704b8cad10084123ff5f",
+      "installed_files": 12514
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.8-linux.tar.gz",
+      "size_bytes": 63644224,
+      "sha256": "f7a20cd445c41bd832d5d4b993b7fb294380b818b27d768c246f2ce8296336d4",
+      "files": 12505
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.8-windows-test.zip",
+      "size_bytes": 72129274,
+      "sha256": "077580bef1634b4138a6a980d744f6ea3c5d30e65844f82de4524066da3bf6e8",
+      "files": 12504
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.8 (pre-release)",
+  "changes": [
+    "Launchers open the Luanti main menu instead of the playtest world; --go or --server arguments keep the old direct launch",
+    "LAN play: the menu's Host Server listens on the default port 30000 for the home network; joining players get fly and fast",
+    "Minecraft-style keys: E toggles the inventory and closes other screens; Left Ctrl is sprint (Aux1)",
+    "Existing settings are upgraded once: the localhost-only bind and port 30200 are dropped and missing key/menu defaults added",
+    "Farm-animal herds (cow, sheep, pig, chicken) are placed on grass in newly generated terrain",
+    "Original CC0 Golden Era menu header replaces Mineclonia's; the game title is now Golden Era"
+  ],
+  "validation": {
+    "github_ci": "PASS scripts/ci.sh on GitHub Actions at d9a4410 (run 39728554864) and 4f6e960 (run 39729403733)",
+    "fast_suite": "PASS scripts/test.sh at d9a4410",
+    "final_source_change": "4f6e960 only narrows a package-test assertion; tests are not packaged",
+    "packaged_zip": "PASS verify and smoke: full factory through the extracted launcher with a fresh save; build-info reports d9a4410 dirty=false and game.conf title Golden Era",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "windows_launcher": "PASS tests/windows/run.py under pinned PowerShell 7.6.7, including the one-time settings upgrade",
+    "linux_archive": "PASS tests/linux/run.py --flatpak-runtime --farming-smoke including the real farm cycle and restart",
+    "menu_gui": "PASS official Linux client screenshot of the main menu with the Golden Era header; the Windows engine under Wine lists the playtest world when the worlds link exists",
+    "animals": "PASS client probe: sheep, chicken and pig herds near spawn in new terrain; farm animals did not despawn"
+  },
+  "limitations": [
+    "The Windows menu finds the existing world through a directory junction that Wine cannot create; only a symlink stand-in was checked",
+    "LAN hosting and joining between two machines have not been tested; Windows Firewall may prompt on first host",
+    "Load times at Starting server and Media are unchanged",
+    "Native Windows, SmartScreen and hardware graphics remain unverified"
+  ],
+  "save_compatibility": "Existing 0.1.7 worlds and inventories are kept and listed in the menu as playtest; herds appear only in newly generated terrain"
+}
