@@ -162,7 +162,7 @@ def _populate(game, selected):
     original = (mineclonia / "game.conf").read_text()
     if original.count("title = Mineclonia") != 1:
         raise AssemblyError("Pinned Mineclonia game title changed")
-    (game / "game.conf").write_text(original.replace("title = Mineclonia", "title = Golden Era: stock mod playtest", 1))
+    (game / "game.conf").write_text(original.replace("title = Mineclonia", "title = Golden Era", 1))
     # Stored outside the symlinked development mod; each assembled game keeps
     # its own identity, which the runtime reads without invoking Git.
     (game / "build-info.json").write_text(json.dumps(_build_info(ROOT), indent=2) + "\n")

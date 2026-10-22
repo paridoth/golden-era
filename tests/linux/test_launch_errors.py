@@ -412,7 +412,9 @@ class LaunchErrors(unittest.TestCase):
             child = int(self.ready.read_text())
             monitor = int((self.work / "monitor.pid").read_text())
             os.kill(process.pid, signal.SIGTERM)
-            process.wait(timeout=8)
+            # Fifty failed enter attempts each start the Python fixture; a busy
+            # machine took 9.7 seconds, so allow well beyond the nominal 5.
+            process.wait(timeout=20)
             self.assertEqual(process.returncode, 143)
             self.assertFalse(self.stopped.exists())
             os.kill(child, 0)
