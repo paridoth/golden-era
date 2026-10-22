@@ -38,6 +38,16 @@ Drawers. Add the patches after the base pack, for example:
 python3 integrations/playtest/textures/convert.py "PureBDcraft 32x MC112.zip" Sphax_CoFHCore_32x.zip Sphax_ThermalFoundation_32x.zip Sphax_ThermalExpansion_32x.zip "Sphax Storage Drawers 32x MC112.zip" --output ~/Textures/converted --name golden_era_sphax
 ```
 
+Refined Storage maps onto Logistica's controller, access point, mass storage,
+autocrafter, crafting supplier, item monitor and wireless access pad, and
+Thaumcraft onto Magicalities' tables, cauldron, crystals, book, quill, tellium
+ingot and tools, and element symbols. Add those patches after the others:
+
+```sh
+python3 integrations/playtest/textures/convert.py "PureBDcraft 32x MC112.zip" Sphax_CoFHCore_32x.zip Sphax_ThermalFoundation_32x.zip Sphax_ThermalExpansion_32x.zip "Sphax Storage Drawers 32x MC112.zip" Sphax_32x_Refined_Storage_MC1.12_V1.6.zip Sphax32x_Thaumcraft_MC1.12.zip --output ~/Textures/converted --name golden_era_sphax
+```
+
 Elepower dusts, gears and plates are tinted in code from one image, so they
-keep their own look. Logistica, Pipeworks, Travelnet and Magicalities are not
-mapped yet.
+keep their own look, as do Logistica's cables, injectors, requesters and
+wireless parts, which are shaped pieces with no full-block counterpart.
+Pipeworks and Travelnet are not mapped.

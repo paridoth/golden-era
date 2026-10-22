@@ -71,6 +71,11 @@ class Convert(unittest.TestCase):
             strip = io.BytesIO()
             Image.new("RGBA", (32, 128), (1, 2, 3, 255)).save(strip, "PNG")
             archive.writestr("assets/" + mods112.ELEPOWER["elepower_furnace_active.png"], strip.getvalue())
+            base, cutout = mods112.LOGISTICA["logistica_access_point_front.png"]
+            archive.writestr("assets/" + base, png(4))
+            light = io.BytesIO()
+            Image.new("RGBA", (16, 16), (0, 0, 0, 0)).save(light, "PNG")
+            archive.writestr("assets/" + cutout, light.getvalue())
         return path
 
     def test_converts_outside_and_refuses_repository(self):
@@ -84,6 +89,9 @@ class Convert(unittest.TestCase):
             self.assertEqual(Image.open(made / "mcl_core_stonebrick_mossy.png").mode, "RGBA")
             self.assertTrue((made / "bucket.png").is_file())
             self.assertEqual(Image.open(made / "elepower_furnace_active.png").size, (32, 32))
+            with Image.open(made / "logistica_access_point_front.png") as layered:
+                self.assertEqual(layered.size, (32, 32), "Cutouts are scaled onto their base")
+            self.assertIn(" + ", (made / "conversion-report.txt").read_text())
             self.assertIn("Do not redistribute", (made / "description.txt").read_text())
             refused = subprocess.run([sys.executable, str(CONVERT), str(pack), "--output", str(ROOT / "runtime")],
                                      capture_output=True, text=True)

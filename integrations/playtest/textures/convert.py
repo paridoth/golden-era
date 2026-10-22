@@ -82,17 +82,21 @@ def main():
     files = {}
     for pack in packs:
         files.update({name: pack for name in pack.names})
-    for texture, source in sorted(mods112.MAPPINGS.items()):
-        name = "assets/" + source
-        if name not in files:
-            missing.append(name)
+    for texture, layers in sorted(mods112.MAPPINGS.items()):
+        names = ["assets/" + source for source in ((layers,) if isinstance(layers, str) else layers)]
+        absent = [name for name in names if name not in files]
+        if absent:
+            missing += absent
             continue
-        image = Image.open(io.BytesIO(files[name].read(name))).convert("RGBA")
-        if image.height > image.width:
-            # Animated 1.12 textures are vertical strips; Golden Era's are still images.
-            image = image.crop((0, 0, image.width, image.width))
+        image = None
+        for name in names:
+            layer = Image.open(io.BytesIO(files[name].read(name))).convert("RGBA")
+            if layer.height > layer.width:
+                # Animated 1.12 textures are vertical strips; Golden Era's are still images.
+                layer = layer.crop((0, 0, layer.width, layer.width))
+            image = layer if image is None else Image.alpha_composite(image, layer.resize(image.size, Image.NEAREST))
         image.save(target / texture)
-        written[texture] = name
+        written[texture] = " + ".join(names)
     (target / "description.txt").write_text(
         "Converted locally from the tester's own Minecraft 1.12 resource packs for personal use. "
         "Do not redistribute.\n")
