@@ -92,7 +92,7 @@ def launcher_smoke(work, env, wine64, data, app, localappdata, version, report):
         for phase in ('choice', 'reconnect'):
             log.unlink(missing_ok=True)
             output = (evidence / (phase + '.log')).open('w')
-            client = subprocess.Popen([str(wine64), 'cmd.exe', '/d', '/c', batch], env=env, cwd=work,
+            client = subprocess.Popen([str(wine64), 'cmd.exe', '/d', '/c', batch, '--go'], env=env, cwd=work,
                                       stdout=output, stderr=subprocess.STDOUT)
             try:
                 if phase == 'choice':

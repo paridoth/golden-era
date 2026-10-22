@@ -57,7 +57,7 @@ def main():
             batch = (bundle/'start.bat').read_text()
             assert 'Get-FileHash' in batch and 'checksum mismatch' in batch, 'Windows download must be checked'
             assert 'ExecutionPolicy' not in batch, 'No execution-policy override'
-            assert '--name Tester' in batch and '--name Josh' not in batch, 'Fresh tester identity'
+            assert '--name' not in batch and '--go' not in batch, 'Double-click opens the main menu'
             data = work/'new tester data'
             world = data/'worlds/playtest'
             mods = world/'worldmods'

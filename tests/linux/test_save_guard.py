@@ -117,7 +117,7 @@ def main():
             group = work / ("linux" if "/linux/" in template else "shared unix")
             bundle = group / "game with spaces [qa] ' $"
             (bundle / "defaults").mkdir(parents=True)
-            (bundle / "defaults/playtest.conf").write_bytes(b"# packaged defaults\nviewing_range = 60\n")
+            (bundle / "defaults/playtest.conf").write_bytes(b"# packaged defaults\nviewing_range = 60\ngolden_era_settings = 2\n")
             launcher = bundle / "start.sh"
             shutil.copyfile(ROOT / template, launcher)
             launcher.chmod(0o755)
@@ -167,7 +167,7 @@ def main():
                     (folder / "engine-user").mkdir()
                     (folder / "engine-user/engine-state").write_bytes(b"keep engine state\n")
                 if accepted:
-                    (folder / "settings.conf").write_bytes(b"# tester preferences\nviewing_range = 44\n")
+                    (folder / "settings.conf").write_bytes(b"# tester preferences\nviewing_range = 44\ngolden_era_settings = 2\n")
                     expected = (folder / "settings.conf").read_bytes(), (world / "world.mt").read_bytes(), (world / "map.sqlite").read_bytes()
                 launch(folder, accepted)
                 if accepted:

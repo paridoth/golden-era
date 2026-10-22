@@ -74,8 +74,8 @@ def main():
     tool, lock = powershell(args.fetch_tool)
     batch = args.batch.read_text()
     matches = re.findall(r'^\s*powershell\.exe\s+-NoProfile\s+-Command\s+"(.*)"\s*$', batch, re.M)
-    assert len(matches) == 2, "Expected exact save preflight and engine bootstrap commands"
-    preflight, command = matches
+    assert len(matches) == 3, "Expected exact save preflight, settings upgrade and engine bootstrap commands"
+    preflight, upgrade, command = matches
     assert batch.index(preflight) < batch.index('mkdir'), "Save validation must precede every launcher write"
     assert "[IO.Directory]::Move" in command and "finally" in command
     fixtures = {"/valid.zip": payload(), "/missing.zip": payload(False)}
@@ -205,6 +205,28 @@ def main():
                 assert {path.relative_to(orphan).as_posix() for path in orphan.rglob('*') if path.is_dir()} == directories
             report.append("PASS: read-only save preflight accepts new/correct saves and final game ID; comments stay comments; grouped/multiline names containing # or empty names refuse without writes")
             report.append("PASS: foreign/missing/case-mismatched IDs and all nine orphan markers, including a saved LevelDB map.db directory, refuse without creating or changing files/directories")
+
+            # The one-time 0.1.8 settings upgrade keeps tester lines and their own key choices.
+            settings_root = work / "settings upgrade [qa] ' $"
+            (settings_root / "game/defaults").mkdir(parents=True)
+            (settings_root / "data").mkdir()
+            (settings_root / "game/defaults/playtest.conf").write_bytes(
+                (ROOT / "packaging/playtest/templates/defaults/playtest.conf").read_bytes())
+            settings = settings_root / "data/settings.conf"
+            settings.write_bytes(b"# personal settings\r\nviewing_range = 44\r\nbind_address = 127.0.0.1\r\n"
+                                 b"port = 30200\r\nkeymap_aux1 = SYSTEM_SCANCODE_9\r\n")
+            upgrade_env = env.copy()
+            upgrade_env.update(GE_ROOT=str(settings_root / "game") + "/", GE_DATA=str(settings_root / "data"))
+            for attempt in ("first", "repeat"):
+                result = subprocess.run([str(tool), "-NoProfile", "-NonInteractive", "-Command", upgrade],
+                                        env=upgrade_env, text=True, capture_output=True, timeout=30)
+                assert result.returncode == 0, result.stderr
+                lines = settings.read_text().splitlines()
+                assert lines == ["# personal settings", "viewing_range = 44", "keymap_aux1 = SYSTEM_SCANCODE_9",
+                                 "menu_last_game = golden_era_playtest", "keymap_inventory = SYSTEM_SCANCODE_8|GAMEPAD_BUTTON_3",
+                                 "default_privs = interact, shout, fly, fast", "golden_era_settings = 2"], attempt + ": " + repr(lines)
+                assert not (settings_root / "data/settings.conf.new").exists()
+            report.append("PASS: settings upgrade removes local-only binding, adds menu/key/LAN defaults once, and keeps tester choices")
 
             data, initial, local = case("fresh")
             result = run(local)

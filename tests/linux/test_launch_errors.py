@@ -70,7 +70,7 @@ class LaunchErrors(unittest.TestCase):
         self.bundle = self.work / "game [qa] ' $ &"
         (self.bundle / "defaults").mkdir(parents=True)
         self.defaults = self.bundle / "defaults/playtest.conf"
-        self.defaults.write_text("# packaged defaults\nviewing_range = 60\n")
+        self.defaults.write_text("# packaged defaults\nviewing_range = 60\nkeymap_inventory = SYSTEM_SCANCODE_8\ngolden_era_settings = 2\n")
         self.launcher = self.bundle / "start.sh"
         shutil.copyfile(SOURCE, self.launcher)
         self.launcher.chmod(0o755)
@@ -126,7 +126,7 @@ class LaunchErrors(unittest.TestCase):
 
     def no_engine_launch(self):
         calls = [json.loads(line) for line in self.calls.read_text().splitlines()] if self.calls.exists() else []
-        self.assertFalse(any("--go" in call for call in calls), calls)
+        self.assertFalse(any("--logfile" in call for call in calls), calls)
 
     def test_save_path_file_reports_initialization_error(self):
         self.data.write_bytes(b"keep existing file\x00\xff")
@@ -218,6 +218,25 @@ class LaunchErrors(unittest.TestCase):
         self.assertEqual((world / "world.mt").read_bytes(), metadata)
         self.assertFalse(self.dialogs.exists())
 
+    def test_old_settings_are_upgraded_once_for_lan_and_keys(self):
+        settings = self.data / "settings.conf"
+        self.data.mkdir()
+        settings.write_bytes(b"# player settings\nbind_address = 127.0.0.1\nport = 30200\nviewing_range = 44\n")
+        for attempt in ("first", "repeat"):
+            result = self.launch()
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(settings.read_text(), "# player settings\nviewing_range = 44\n"
+                             "keymap_inventory = SYSTEM_SCANCODE_8\ngolden_era_settings = 2\n", attempt)
+        self.assertFalse((self.data / "settings.conf.new").exists())
+
+    def test_menu_opens_without_arguments(self):
+        result = self.launch()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        calls = [json.loads(line) for line in self.calls.read_text().splitlines()]
+        launch = next(call for call in calls if "--logfile" in call)
+        self.assertNotIn("--world", launch)
+        self.assertNotIn("--go", launch)
+
     def test_check_is_read_only_with_missing_defaults(self):
         self.defaults.unlink()
         result = self.launch("--check")
@@ -252,7 +271,7 @@ class LaunchErrors(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertFalse(self.dialogs.exists())
         calls = [json.loads(line) for line in self.calls.read_text().splitlines()]
-        launch = next(call for call in calls if "--go" in call)
+        launch = next(call for call in calls if "--logfile" in call)
         self.assertEqual(launch[-2:], ["--server", "--quiet"])
         self.assertEqual(launch[launch.index("--world") + 1], str(self.data / "worlds/playtest"))
         self.assertEqual((self.data / "settings.conf").read_bytes(), self.defaults.read_bytes())

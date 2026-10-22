@@ -97,11 +97,26 @@ if [ ! -f "$GE_DATA/settings.conf" ]; then
   [ -f "$GE_ROOT/defaults/playtest.conf" ] && [ -r "$GE_ROOT/defaults/playtest.conf" ] ||
     fail "The game defaults are missing or unreadable: $GE_ROOT/defaults/playtest.conf. Extract the complete game archive again."
 fi
-mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs" "$GE_DATA/engine-user" ||
+mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs" ||
   fail "Could not create the save folders in: $GE_DATA. Check this path, its write permissions and available disk space, or choose a different GOLDEN_ERA_DATA_DIR."
 if [ ! -f "$GE_DATA/settings.conf" ]; then
   (set -C; cat "$GE_ROOT/defaults/playtest.conf" > "$GE_DATA/settings.conf") ||
     fail "Could not create settings at: $GE_DATA/settings.conf. Check write permissions and available disk space. Existing files were not replaced."
+fi
+# 0.1.8 opens LAN hosting and adds menu and Minecraft-style key defaults once; other tester settings stay.
+if [ -r "$GE_ROOT/defaults/playtest.conf" ] &&
+  ! awk '$0 == "golden_era_settings = 2" { found = 1 } END { exit !found }' "$GE_DATA/settings.conf"; then
+  awk '
+    FILENAME == ARGV[1] {
+      if ($0 != "bind_address = 127.0.0.1" && $0 != "port = 30200") print
+      key = $0; sub(/^[ \t]*/, "", key); sub(/[ \t]*=.*/, "", key); have[key] = 1; next
+    }
+    { key = $0; sub(/ =.*/, "", key) }
+    key ~ /^(menu_last_game|keymap_inventory|keymap_aux1|default_privs)$/ && !(key in have) { print }
+    END { print "golden_era_settings = 2" }
+  ' "$GE_DATA/settings.conf" "$GE_ROOT/defaults/playtest.conf" > "$GE_DATA/settings.conf.new" &&
+    cat "$GE_DATA/settings.conf.new" > "$GE_DATA/settings.conf" && rm -f "$GE_DATA/settings.conf.new" ||
+    fail "Could not update settings at: $GE_DATA/settings.conf. Check write permissions and available disk space."
 fi
 if [ ! -f "$GE_DATA/worlds/playtest/world.mt" ]; then
   (
@@ -116,8 +131,13 @@ WORLD
   ) || fail "Could not create world metadata at: $GE_DATA/worlds/playtest/world.mt. Check write permissions and available disk space. Existing files were not replaced."
 fi
 LUANTI_GAME_PATH="$GE_ROOT/games"
-LUANTI_USER_PATH="$GE_DATA/engine-user"
+# The save folder is the engine user folder, so the main menu lists the playtest world.
+LUANTI_USER_PATH="$GE_DATA"
 export LUANTI_GAME_PATH LUANTI_USER_PATH
+# No arguments opens the main menu; arguments such as --go or --server use the playtest world.
+if [ "$#" -gt 0 ]; then
+  set -- --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" "$@"
+fi
 # Reap the engine on deliberate launcher interruption without reporting a crash.
 # TERM also works for children inheriting a noninteractive shell's ignored INT.
 # Preserve stdin before the asynchronous command redirects it to /dev/null.
@@ -178,11 +198,9 @@ trap 'stop_engine 129' HUP
 if [ "$GE_BACKEND" = flatpak ]; then
   flatpak run --instance-id-fd=4 --filesystem="$GE_ROOT:ro" --filesystem="$GE_DATA" \
     --env=LUANTI_GAME_PATH="$LUANTI_GAME_PATH" --env=LUANTI_USER_PATH="$LUANTI_USER_PATH" \
-    "$GE_APP" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@" <&3 3<&- 4>"$GE_INSTANCE_FILE" &
+    "$GE_APP" --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" "$@" <&3 3<&- 4>"$GE_INSTANCE_FILE" &
 else
-  "$GE_ENGINE" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@" <&3 3<&- &
+  "$GE_ENGINE" --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" "$@" <&3 3<&- &
 fi
 GE_CHILD=$!
 exec 3<&-

@@ -69,7 +69,7 @@ def main():
         subprocess.run([str(launcher), "--server"], env=env, check=True, capture_output=True)
         record = json.loads(capture.read_text())
         assert record["game"] == str(bundle / "games")
-        assert record["user"] == str(data / "engine-user")
+        assert record["user"] == str(data)
         assert record["args"][-1] == "--server"
         settings = data / "settings.conf"
         world = data / "worlds/playtest/world.mt"
@@ -126,7 +126,7 @@ def main():
         assert "--filesystem=" + str(bundle) + ":ro" in recorded
         assert "--filesystem=" + str(data) in recorded
         assert "--env=LUANTI_GAME_PATH=" + str(bundle / "games") in recorded
-        assert "--env=LUANTI_USER_PATH=" + str(data / "engine-user") in recorded
+        assert "--env=LUANTI_USER_PATH=" + str(data) in recorded
         assert "--filesystem=home" not in recorded and "--filesystem=host" not in recorded
         report.append("PASS: Flatpak backend selects current app ID and grants only game read/save write paths (stub transport)")
 
@@ -156,7 +156,7 @@ def main():
                 arguments = ["flatpak", "run", "--app-path=" + str(app), "--command=/app/bin/luanti.bin",
                              "--filesystem=" + str(bundle) + ":ro", "--filesystem=" + str(actual_data),
                              "--env=LUANTI_GAME_PATH=" + str(bundle / "games"),
-                             "--env=LUANTI_USER_PATH=" + str(actual_data / "engine-user"),
+                             "--env=LUANTI_USER_PATH=" + str(actual_data),
                              "--env=XDG_CACHE_HOME=" + str(actual_data / "engine-cache"), "org.freedesktop.Platform//26.08"]
                 import shlex
                 shim.write_text("#!/bin/sh\nexec " + " ".join(shlex.quote(value) for value in arguments) + ' "$@"\n')

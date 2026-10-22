@@ -741,3 +741,24 @@ obtainability (grid, arcane, cauldron and wand recipes), grouped warnings and
 generated crystal/tower counts: all candidate items obtainable, zero errors.
 The factory smoke still passes. A real client capture shows the 11-tab manual.
 No human has used the storage network, teleporters, research or spells yet.
+
+## Desktop 0.1.8 development — menu, LAN, keys and animals — 2026-10-21
+
+First human playtest notes: no main menu, no way to share a LAN world, too many
+Esc presses, unknown sprint key, and no animals. Launchers now open the main menu
+(arguments keep the old direct playtest-world launch for tests and dedicated
+servers). Saves are the engine user folder; the portable Windows engine ignores
+`LUANTI_USER_PATH`, so `start.bat` links `engine-5.17.0\worlds` to the save
+folder with a junction. Wine cannot create junctions; the menu listing was
+checked under Wine with an equivalent symlink, and native Windows still needs a
+tester run. A one-time settings upgrade removes `bind_address = 127.0.0.1` and
+port 30200, then adds menu, key and `default_privs` defaults without replacing
+tester choices (PowerShell/.NET and shell tests).
+
+E is the inventory key (Luanti closes any formspec with it) and Left Ctrl is
+Aux1, Mineclonia's sprint. A real client standing four minutes on grass saw
+3 cows and 2 llamas against about 25 monsters: Mineclonia never places animals
+at generation, and mobs_mc's farm biome list uses Minecraft names that do not
+match these biomes. `animals.lua` places one 2-4 animal herd in 70% of new
+chunks with surface grass; animals in the creature category never despawn.
+Load time at "Starting server" and "Media" was not changed.

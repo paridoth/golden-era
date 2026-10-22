@@ -40,9 +40,23 @@ else
   done
 fi
 
-mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs" "$GE_DATA/engine-user"
+mkdir -p "$GE_DATA/worlds/playtest" "$GE_DATA/logs"
 if [ ! -f "$GE_DATA/settings.conf" ]; then
   cp "$GE_ROOT/defaults/playtest.conf" "$GE_DATA/settings.conf"
+fi
+# 0.1.8 opens LAN hosting and adds menu and Minecraft-style key defaults once; other tester settings stay.
+if [ -r "$GE_ROOT/defaults/playtest.conf" ] &&
+  ! awk '$0 == "golden_era_settings = 2" { found = 1 } END { exit !found }' "$GE_DATA/settings.conf"; then
+  awk '
+    FILENAME == ARGV[1] {
+      if ($0 != "bind_address = 127.0.0.1" && $0 != "port = 30200") print
+      key = $0; sub(/^[ \t]*/, "", key); sub(/[ \t]*=.*/, "", key); have[key] = 1; next
+    }
+    { key = $0; sub(/ =.*/, "", key) }
+    key ~ /^(menu_last_game|keymap_inventory|keymap_aux1|default_privs)$/ && !(key in have) { print }
+    END { print "golden_era_settings = 2" }
+  ' "$GE_DATA/settings.conf" "$GE_ROOT/defaults/playtest.conf" > "$GE_DATA/settings.conf.new" &&
+    cat "$GE_DATA/settings.conf.new" > "$GE_DATA/settings.conf" && rm -f "$GE_DATA/settings.conf.new"
 fi
 if [ ! -f "$GE_DATA/worlds/playtest/world.mt" ]; then
   cat > "$GE_DATA/worlds/playtest/world.mt" <<'WORLD'
@@ -54,8 +68,13 @@ mod_storage_backend = sqlite3
 WORLD
 fi
 LUANTI_GAME_PATH="$GE_ROOT/games"
-LUANTI_USER_PATH="$GE_DATA/engine-user"
+# The save folder is the engine user folder, so the main menu lists the playtest world.
+LUANTI_USER_PATH="$GE_DATA"
 export LUANTI_GAME_PATH LUANTI_USER_PATH
+# No arguments opens the main menu; arguments such as --go or --server use the playtest world.
+if [ "$#" -gt 0 ]; then
+  set -- --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" "$@"
+fi
 if [ -n "${GOLDEN_ERA_ENGINE:-}" ]; then
   GE_ENGINE=$GOLDEN_ERA_ENGINE
 elif command -v luanti >/dev/null 2>&1; then
@@ -67,12 +86,10 @@ elif [ -x /Applications/Minetest.app/Contents/MacOS/minetest ]; then
 elif command -v flatpak >/dev/null 2>&1 && flatpak info org.luanti.luanti >/dev/null 2>&1; then
   exec flatpak run --filesystem="$GE_ROOT:ro" --filesystem="$GE_DATA" \
     --env=LUANTI_GAME_PATH="$LUANTI_GAME_PATH" --env=LUANTI_USER_PATH="$LUANTI_USER_PATH" \
-    org.luanti.luanti --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-    --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@"
+    org.luanti.luanti --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" "$@"
 else
   printf '%s\n' 'Install Luanti 5.17.0 from https://www.luanti.org/en/downloads/ then run start.sh again.' >&2
   printf '%s\n' 'Advanced: GOLDEN_ERA_ENGINE can point to a compatible Luanti executable.' >&2
   exit 1
 fi
-exec "$GE_ENGINE" --go --gameid golden_era_playtest --world "$GE_DATA/worlds/playtest" \
-  --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" --name Tester "$@"
+exec "$GE_ENGINE" --config "$GE_DATA/settings.conf" --logfile "$GE_DATA/logs/client.log" "$@"

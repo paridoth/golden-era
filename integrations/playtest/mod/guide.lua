@@ -4,7 +4,8 @@ local pages={
  {title="Getting started",text="Gather materials at the natural spawn. Make wooden tools, a crafting table, stone tools and an ordinary furnace. The inventory recipe guide shows crafting patterns.\n\n"..
   "Collect iron, copper, coal, flint from gravel, and clay for bricks. Elepower adds other ores used later, including lead, tin, silver and zinc. Keep a source of wheat seeds and leaves.\n\n"..
   "The workshop is an optional supplied example. /workshop visits it; /explore returns to your saved natural spawn. Taking its supplies is optional.\n\n"..
-  "Craft the first machines to unlock factory advancements. Use /awards to view your milestones."},
+  "Craft the first machines to unlock factory advancements. Use /awards to view your milestones.\n\n"..
+  "E opens and closes your inventory; E or Esc closes any other screen. Hold Left Ctrl while walking to sprint. K toggles flight and J fast movement. /manual reopens this manual."},
  {title="Metals and alloys",text="Smelt raw iron into iron ingots, then smelt those ingots a second time to make Elepower low carbon steel. This uses an ordinary furnace.\n\n"..
   "Craft an Elepower Grindstone and Hand Crank before powered machines. Place the crank directly above the grindstone. Put a grindable ingredient in the grindstone and right-click the crank to turn it.\n\n"..
   "Craft the Coal-fired Alloy Furnace to make early alloys without electrical power. Its crafting recipe uses brick blocks, two ordinary furnaces and coal. Brass uses copper and silver in this pack.\n\n"..

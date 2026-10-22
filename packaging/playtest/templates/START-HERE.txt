@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.6
+GOLDEN ERA — FACTORY PLAYTEST 0.1.8
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -25,18 +25,33 @@ Official engine downloads: https://www.luanti.org/en/downloads/
 
 PLAY
 
-The first launch generates a fresh world. Choose the supplied workshop to try
-machinery with tools and spare materials, or choose survival to gather your own
-materials without granted supplies. Damage is disabled in both paths. Existing
-players keep their position and inventory. Allow time for initial world generation.
-Preparing the workshop shows a loading message while you keep exploring. Arrival
-is automatic; /cancelworkshop cancels the trip. Disconnecting saves an unfinished
-trip for your next login without granting the starting tools again.
+The launcher opens the main menu with Golden Era selected. Pick the ready-made
+"playtest" world, or press New to make another world, then press Play Game.
+Choose the supplied workshop to try machinery with tools and spare materials,
+or choose survival to gather your own materials without granted supplies.
+Damage is off by default. Existing players keep their position and inventory.
+Allow time for initial world generation. Preparing the workshop shows a loading
+message while you keep exploring. Arrival is automatic; /cancelworkshop cancels
+the trip. Disconnecting saves an unfinished trip for your next login.
 
-W/A/S/D move, mouse looks, Space jumps, I opens inventory.
+W/A/S/D move, mouse looks, Space jumps. E opens and closes the inventory, and E
+or Esc closes any other game screen. Hold Left Ctrl while walking to sprint.
 Right-click machines to open them. Left-click digs or takes items from drawers.
-In the single-player workshop, K toggles flight. J toggles fast movement;
-E activates fast movement. Server players need the appropriate privileges.
+K toggles flight and J toggles fast movement; Left Ctrl flies faster.
+Keys can be changed in Settings > Controls.
+
+PLAY TOGETHER ON YOUR HOME NETWORK (LAN)
+
+Every player installs the same Golden Era version on their own computer.
+Host: in the main menu select a world, tick "Host Server", enter your player
+name and a password, then press Host Game. Windows may ask to allow Luanti
+through the firewall: allow it on private networks. Find your local address
+with "ipconfig" in a Command Prompt (IPv4 Address, for example 192.168.1.20).
+Others: open the Join Game tab, enter the host's address and port 30000
+(or the port shown on the host), choose a different name and password, and
+press Join. Everyone on the server can fly and move fast. The host keeps
+admin rights. Single-player progress is stored separately from your online
+name, so a host joining an existing world starts with a fresh inventory.
 
 /packhelp   Workshop instructions
 /packversion   Version and build details for a bug report

@@ -7,11 +7,19 @@ Golden Era — Linux Playtest
 3. Open Play Golden Era.desktop. Your desktop may ask you to allow launching it.
    Terminal alternative: sh ./start.sh
 
-The launcher opens your local singleplayer world. New players choose the supplied
-workshop or a survival start without workshop tools or materials. Use /factoryguide
+The launcher opens the main menu with Golden Era selected. Pick the ready-made
+"playtest" world or press New, then Play Game. New players choose the supplied
+workshop or a survival start without workshop tools or materials. Use /manual
 for the early machinery path, /packhelp for workshop instructions, /workshop to
 visit the factory, and /explore for survival terrain. Existing players keep their
-position and inventory.
+position and inventory. E opens and closes the inventory and closes other game
+screens; hold Left Ctrl while walking to sprint.
+
+Play together on a home network: everyone installs the same version. The host
+selects a world, ticks "Host Server", and presses Host Game. Others use Join Game
+with the host's local address (shown by "ip addr", for example 192.168.1.20) and
+port 30000. Everyone on the server can fly and move fast.
+sh ./start.sh --server runs the playtest world as a dedicated server instead.
 
 Future sessions: open Play Golden Era.desktop again. Keep the extracted folder;
 moving its complete contents is safe. Saves and settings are separate:

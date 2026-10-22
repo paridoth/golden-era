@@ -32,6 +32,15 @@ until automatic arrival, or use `/cancelworkshop` to stay where you are. Unfinis
 trips resume after reconnecting without another starter kit. See
 [workshop loading](workshop-loading.md) for cancellation and retry behavior.
 
+Packaged launchers open the Luanti main menu with Golden Era selected and the
+ready-made `playtest` world listed. Tick Host Server to play with others on a
+home network; they use Join Game with the host's local address and port 30000.
+Server players receive flight and fast movement by default. E opens and closes
+the inventory and closes other game screens; hold Left Ctrl to sprint. Older
+settings files are upgraded once: the local-only `bind_address` and port 30200
+are removed, and tester choices are kept. `start.sh --server` (or `start.bat
+--go`) still uses the playtest world directly.
+
 The optional supplied workshop above the terrain contains a
 coal-fired generator, power cell, Pulverizer, powered furnace, tubes, filter
 injectors and blinking controls. Coal and two raw iron start the first batch.
