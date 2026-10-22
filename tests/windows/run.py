@@ -17,6 +17,7 @@ import subprocess
 import tarfile
 import tempfile
 import threading
+import time
 import urllib.request
 import zipfile
 
@@ -78,6 +79,9 @@ def main():
     preflight, upgrade, command = matches
     assert batch.index(preflight) < batch.index('mkdir'), "Save validation must precede every launcher write"
     assert "[IO.Directory]::Move" in command and "finally" in command
+    progress = re.findall(r'^start "" /b powershell\.exe -NoProfile -Command "(.*)"\s*$', batch, re.M)
+    assert len(progress) == 1, "Expected one background loading-progress command"
+    progress = progress[0]
     fixtures = {"/valid.zip": payload(), "/missing.zip": payload(False)}
 
     class Handler(BaseHTTPRequestHandler):
@@ -224,9 +228,65 @@ def main():
                 lines = settings.read_text().splitlines()
                 assert lines == ["# personal settings", "viewing_range = 44", "keymap_aux1 = SYSTEM_SCANCODE_9",
                                  "menu_last_game = golden_era_playtest", "keymap_inventory = SYSTEM_SCANCODE_8|GAMEPAD_BUTTON_3",
-                                 "default_privs = interact, shout, fly, fast", "golden_era_settings = 2"], attempt + ": " + repr(lines)
+                                 "default_privs = interact, shout, fly, fast", "golden_era_settings = 2",
+                                 "debug_log_level = info"], attempt + ": " + repr(lines)
                 assert not (settings_root / "data/settings.conf.new").exists()
-            report.append("PASS: settings upgrade removes local-only binding, adds menu/key/LAN defaults once, and keeps tester choices")
+            # 0.1.8 settings gain only the progress log level; a tester's own level stays.
+            for before, after in [(b"viewing_range = 44\r\ngolden_era_settings = 2\r\n",
+                                   ["viewing_range = 44", "golden_era_settings = 2", "debug_log_level = info"]),
+                                  (b"debug_log_level = action\r\ngolden_era_settings = 2\r\n", None)]:
+                settings.write_bytes(before)
+                result = subprocess.run([str(tool), "-NoProfile", "-NonInteractive", "-Command", upgrade],
+                                        env=upgrade_env, text=True, capture_output=True, timeout=30)
+                assert result.returncode == 0, result.stderr
+                if after is None:
+                    assert settings.read_bytes() == before, "A tester's log level was rewritten"
+                else:
+                    assert settings.read_text().splitlines() == after, repr(settings.read_text())
+            report.append("PASS: settings upgrade removes local-only binding, adds menu/key/LAN defaults once, adds the info log level unless chosen, and keeps tester choices")
+
+            # The progress reader shows stages from new log lines only and stops on launcher.stop.
+            progress_data = work / "progress [qa] ' $ &"
+            (progress_data / "logs").mkdir(parents=True)
+            log = progress_data / "logs/client.log"
+            log.write_bytes(b"2026-10-22 01:00:00: ERROR[Main]: earlier session\n")
+            progress_env = env.copy()
+            progress_env.update(GE_DATA=str(progress_data), GE_LOG_START=str(log.stat().st_size))
+            reader = subprocess.Popen([str(tool), "-NoProfile", "-NonInteractive", "-Command", progress],
+                                      env=progress_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stamp = "2026-10-22 01:00:01: "
+            session = ["INFO[ServerStart]: Server: Loading mods: mcl_init fakelib",
+                       "INFO[ServerStart]: pat mcl_core", 'INFO[ServerStart]: Mod "mcl_init" loaded after 5 ms',
+                       'INFO[ServerStart]: Mod "mcl_core" loaded after 900 ms', "INFO[ServerStart]: All mods loaded after 2400 ms",
+                       "INFO[ServerStart]: Server: 9674 media files collected", "INFO[Main]: Connecting to server at 127.0.0.1:1",
+                       "INFO[Main]: Client: Received media announcement: packet size: 1",
+                       "INFO[Main]: Client::afterContentReceived() started", "INFO[Main]: Client::afterContentReceived() done",
+                       "ERROR[Main]: fixture failure", "ACTION[Server]: Server: Shutting down"]
+            with log.open("ab") as handle:
+                for number, line in enumerate(session):
+                    # Split one line across writes, as a running engine may.
+                    data = (stamp + line + "\n").encode()
+                    handle.write(data[:10] if number == 3 else data)
+                    handle.flush()
+                    if number == 3:
+                        time.sleep(0.6)
+                        handle.write(data[10:])
+                        handle.flush()
+                    time.sleep(0.3)
+            time.sleep(1)
+            (progress_data / "logs/launcher.stop").write_text("done\n")
+            out, err = reader.communicate(timeout=30)
+            assert reader.returncode == 0 and not err, err
+            assert not (progress_data / "logs/launcher.stop").exists()
+            shown = [part.strip() for part in out.decode().replace("\n", "\r").split("\r") if part.strip()]
+            final = [part for part in shown if not part.endswith("s") or "seconds" in part or "sounds." in part]
+            assert "earlier session" not in out.decode()
+            for expected in ["Starting the world...", "All 2 mods loaded in 2 seconds.", "Found 9674 textures and sounds.",
+                             "Ready: the world is open. Have fun! This window can stay in the background.",
+                             "Problem: fixture failure", "Saving and closing the world..."]:
+                assert expected in final, expected + " missing from " + repr(shown)
+            assert any(part.startswith("Loading mods: 1 done, now mcl_init...") for part in shown), repr(shown)
+            report.append("PASS: loading progress reads only new log lines, joins split writes, shows each stage and problem, and stops on launcher.stop")
 
             data, initial, local = case("fresh")
             result = run(local)

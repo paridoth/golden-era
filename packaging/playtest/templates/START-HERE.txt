@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.8
+GOLDEN ERA — FACTORY PLAYTEST 0.1.9
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -12,6 +12,9 @@ Windows 10/11 (64 bit): double-click start.bat. The first launch downloads the
 official Luanti 5.17.0 portable engine (~18 MB) from GitHub and verifies SHA-256
 before launching. Internet is needed for that first engine download. Later
 launches use the cached engine. No admin installation or Java is needed.
+The black window that opens with the game shows loading progress, such as each
+mod as it loads, so you can tell it is still working. Leave it open while you
+play; it closes with the game.
 The Windows launcher still needs its first native Windows tester run.
 
 Linux: install Luanti 5.17.0, then run ./start.sh from this folder. The launcher

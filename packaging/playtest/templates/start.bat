@@ -13,7 +13,8 @@ if not exist "%GE_DATA%\worlds\playtest" mkdir "%GE_DATA%\worlds\playtest"
 if not exist "%GE_DATA%\logs" mkdir "%GE_DATA%\logs"
 if not exist "%GE_DATA%\settings.conf" copy /y "%GE_ROOT%defaults\playtest.conf" "%GE_DATA%\settings.conf" >nul
 rem 0.1.8 opens LAN hosting and adds menu and Minecraft-style key defaults once; other tester settings stay.
-powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; try { $path=Join-Path $env:GE_DATA 'settings.conf'; $lines=@([IO.File]::ReadAllLines($path)); if ($lines -cnotcontains 'golden_era_settings = 2') { $defaults=@([IO.File]::ReadAllLines((Join-Path $env:GE_ROOT 'defaults\playtest.conf'))); $kept=@($lines | Where-Object { $_ -cne 'bind_address = 127.0.0.1' -and $_ -cne 'port = 30200' }); foreach ($key in @('menu_last_game','keymap_inventory','keymap_aux1','default_privs')) { if (-not @($kept -cmatch ('^[ \t]*' + $key + '[ \t]*=')).Count) { $kept += @($defaults -cmatch ('^' + $key + ' =')) } }; $kept += 'golden_era_settings = 2'; $temp=$path + '.new'; [IO.File]::WriteAllLines($temp, [string[]]$kept); [IO.File]::Copy($temp, $path, $true); [IO.File]::Delete($temp) } } catch { [Console]::Error.WriteLine($_.Exception.Message); exit 1 }"
+rem The progress window below reads per-mod lines, which need the info log level unless a tester chose another.
+powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; try { $path=Join-Path $env:GE_DATA 'settings.conf'; $lines=@([IO.File]::ReadAllLines($path)); $kept=$lines; $changed=$false; if ($lines -cnotcontains 'golden_era_settings = 2') { $defaults=@([IO.File]::ReadAllLines((Join-Path $env:GE_ROOT 'defaults\playtest.conf'))); $kept=@($lines | Where-Object { $_ -cne 'bind_address = 127.0.0.1' -and $_ -cne 'port = 30200' }); foreach ($key in @('menu_last_game','keymap_inventory','keymap_aux1','default_privs')) { if (-not @($kept -cmatch ('^[ \t]*' + $key + '[ \t]*=')).Count) { $kept += @($defaults -cmatch ('^' + $key + ' =')) } }; $kept += 'golden_era_settings = 2'; $changed=$true }; if (-not @($kept -cmatch '^[ \t]*debug_log_level[ \t]*=').Count) { $kept += 'debug_log_level = info'; $changed=$true }; if ($changed) { $temp=$path + '.new'; [IO.File]::WriteAllLines($temp, [string[]]$kept); [IO.File]::Copy($temp, $path, $true); [IO.File]::Delete($temp) } } catch { [Console]::Error.WriteLine($_.Exception.Message); exit 1 }"
 if errorlevel 1 goto failed
 if not exist "%GE_DATA%\worlds\playtest\world.mt" (
   >"%GE_DATA%\worlds\playtest\world.mt" echo gameid = golden_era_playtest
@@ -36,13 +37,23 @@ if not exist "%GE_DATA%\engine-5.17.0\worlds\playtest\world.mt" (
 set "LUANTI_GAME_PATH=%GE_ROOT%games"
 rem Non-portable engines use this as their user folder, which holds the same worlds.
 set "LUANTI_USER_PATH=%GE_DATA%"
+rem Show loading progress from the new part of the log in this window. The game runs
+rem the same without it; the reader stops when the launcher writes launcher.stop.
+set "GE_LOG_START="
+for %%F in ("%GE_DATA%\logs\client.log") do set "GE_LOG_START=%%~zF"
+if not defined GE_LOG_START set "GE_LOG_START=0"
+del "%GE_DATA%\logs\launcher.stop" 2>nul
+echo Golden Era is starting. Loading progress appears here.
+start "" /b powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; try { $log=Join-Path $env:GE_DATA 'logs\client.log'; $stop=Join-Path $env:GE_DATA 'logs\launcher.stop'; $pos=[int64]$env:GE_LOG_START; $rest=''; $stage=''; $start=Get-Date; $done=0; $width=[Math]::Max(20,[Math]::Min(100,[Console]::BufferWidth)-1); function Show($text,$keep) { $text=$text.PadRight($width).Substring(0,$width); if ($keep) { [Console]::WriteLine([char]13 + $text) } else { [Console]::Write([char]13 + $text) } }; function Stage($text) { $script:stage=$text; $script:start=Get-Date }; while ($true) { $finished=Test-Path -LiteralPath $stop; if (Test-Path -LiteralPath $log) { $stream=[IO.File]::Open($log,'Open','Read','ReadWrite,Delete'); try { if ($stream.Length -lt $pos) { $pos=0 }; $stream.Position=$pos; $reader=New-Object IO.StreamReader($stream); $text=$rest + $reader.ReadToEnd(); $pos=$stream.Length } finally { $stream.Dispose() }; $parts=$text -split [char]10; $rest=$parts[-1]; for ($i=0; $i -lt $parts.Count-1; $i++) { $line=$parts[$i]; if ($line -cmatch 'Server: Loading mods:') { $done=0; Show 'Starting the world...' $true; Stage 'Loading mods' } elseif ($line -cmatch 'Mod \x22([^\x22]+)\x22 loaded after') { $done++; $script:stage='Loading mods: {0} done, now {1}' -f $done,$matches[1] } elseif ($line -cmatch 'All mods loaded after (\d+) ms') { Show ('All {0} mods loaded in {1} seconds.' -f $done,[Math]::Round([int64]$matches[1]/1000)) $true; Stage 'Checking textures and sounds' } elseif ($line -cmatch 'Server: (\d+) media files collected') { Show ('Found {0} textures and sounds.' -f $matches[1]) $true; Stage 'Starting the world' } elseif ($line -cmatch 'Preparing stronghold placement') { Stage 'Placing strongholds' } elseif ($line -cmatch 'Connecting to server at') { Stage 'Connecting to the world' } elseif ($line -cmatch 'Received media announcement') { Stage 'Loading textures and sounds' } elseif ($line -cmatch 'afterContentReceived\(\) started') { Stage 'Preparing blocks and items' } elseif ($line -cmatch 'afterContentReceived\(\) done') { Show 'Ready: the world is open. Have fun! This window can stay in the background.' $true; $stage='' } elseif ($line -cmatch 'Server: Shutting down') { Show 'Saving and closing the world...' $true; $stage='' } elseif ($line -cmatch 'ERROR\[[^\]]*\]: (.*)') { Show ('Problem: ' + $matches[1]) $true } } }; if ($finished) { if ($stage) { Show '' $false; [Console]::Write([char]13) }; [IO.File]::Delete($stop); break }; if ($stage) { Show ('{0}... {1}s' -f $stage,[int]((Get-Date)-$start).TotalSeconds) $false }; Start-Sleep -Milliseconds 250 } } catch { exit 0 }"
 rem No arguments opens the main menu; arguments such as --go or --server use the playtest world.
 if "%~1"=="" (
   "%GE_DATA%\engine-5.17.0\bin\luanti.exe" --config "%GE_DATA%\settings.conf" --logfile "%GE_DATA%\logs\client.log"
 ) else (
   "%GE_DATA%\engine-5.17.0\bin\luanti.exe" --gameid golden_era_playtest --world "%GE_DATA%\worlds\playtest" --config "%GE_DATA%\settings.conf" --logfile "%GE_DATA%\logs\client.log" %*
 )
-if errorlevel 1 goto failed
+set "GE_EXIT=%errorlevel%"
+>"%GE_DATA%\logs\launcher.stop" echo done
+if not "%GE_EXIT%"=="0" goto failed
 exit /b 0
 :worldfailed
 echo.
