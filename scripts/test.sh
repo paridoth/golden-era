@@ -14,6 +14,7 @@ python3 tests/machine-removal/test_patch.py
 python3 tests/machine-state/test_patch.py
 python3 tests/pipeworks-removal/test_patch.py
 python3 tests/farming/test_patch.py
+python3 tests/textures/test_convert.py
 python3 tests/unit/test_reference.py
 python3 tests/unit/test_thermal_reference.py
 python3 tests/unit/test_thermal_catalog.py
