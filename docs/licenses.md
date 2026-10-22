@@ -52,8 +52,9 @@ in project Git; their source URLs/revisions are locked separately.
 The existing-mod playtest retains the full Elepower/fluid_lib/Mesecons trees and
 notices in its assembled copies. Checked compatibility edits are tracked under
 `integrations/playtest/`; unchanged upstream mods remain linked with their own
-notices. The playtest adds no new bitmap/audio assets and incorporates no original
-Minecraft modpack media. The inherited file-by-file release audit remains separate.
+notices. The playtest's only new bitmap is the original CC0 main menu header,
+recorded with its generator in `integrations/playtest/menu/NOTICE.md`; it adds no
+audio and incorporates no original Minecraft modpack media. The inherited file-by-file release audit remains separate.
 
 ## Distribution status and next audit
 

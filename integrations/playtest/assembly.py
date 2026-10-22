@@ -157,6 +157,8 @@ def _populate(game, selected):
             shutil.copytree(source, game / name)
         else:
             shutil.copy2(source, game / name)
+    # The original Golden Era header replaces Mineclonia's; other menu images stay.
+    shutil.copy2(ROOT / "integrations/playtest/menu/header.png", game / "menu/header.png")
     original = (mineclonia / "game.conf").read_text()
     if original.count("title = Mineclonia") != 1:
         raise AssemblyError("Pinned Mineclonia game title changed")
