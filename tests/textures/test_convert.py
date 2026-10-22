@@ -2,7 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Check 1.12 texture names and that converted art never lands in the repository."""
 import io
+import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -13,8 +15,11 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 CONVERT = ROOT / "integrations/playtest/textures/convert.py"
+INSTALL = CONVERT.with_name("install.py")
+PWSH = ROOT / "tools/powershell-7.6.7/pwsh"
 sys.path.insert(0, str(CONVERT.parent))
 import mc112  # noqa: E402
+import install  # noqa: E402
 import mods112  # noqa: E402
 
 
@@ -85,6 +90,77 @@ class Convert(unittest.TestCase):
             self.assertNotEqual(refused.returncode, 0)
             self.assertIn("Refusing", refused.stderr)
             self.assertFalse((ROOT / "runtime/golden_era_converted").exists())
+
+
+class Install(unittest.TestCase):
+    def setUp(self):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        self.temp = Path(temp.name)
+        self.pack = self.temp / "converted/golden_era_test"
+        self.pack.mkdir(parents=True)
+        (self.pack / "description.txt").write_text(install.MARKER + " for personal use.\n")
+        (self.pack / "default_stone.png").write_bytes(png(3))
+        self.data = self.temp / "save"
+        self.data.mkdir()
+        self.settings = self.data / "settings.conf"
+        self.settings.write_text("golden_era_settings = 2\ntexture_path = /old/pack\nfps_max = 60\n")
+
+    def run_install(self, *args):
+        env = dict(os.environ, GOLDEN_ERA_DATA_DIR=str(self.data))
+        return subprocess.run([sys.executable, str(INSTALL), *args], capture_output=True, text=True, env=env)
+
+    def test_install_and_remove(self):
+        result = self.run_install(str(self.pack))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        target = self.data / "textures/golden_era_test"
+        self.assertTrue((target / "default_stone.png").is_file())
+        self.assertEqual(self.settings.read_text(),
+                         "golden_era_settings = 2\nfps_max = 60\ntexture_path = " + str(target) + "\n")
+        self.assertEqual(self.run_install(str(self.pack)).returncode, 0, "Reinstalling replaces the old copy")
+        result = self.run_install("--remove")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.settings.read_text(), "golden_era_settings = 2\nfps_max = 60\n")
+
+    def test_refusals(self):
+        other = self.data / "textures/golden_era_test"
+        other.mkdir(parents=True)
+        (other / "mine.png").write_bytes(png(1))
+        self.assertNotEqual(self.run_install(str(self.pack)).returncode, 0, "Never replace a folder we did not make")
+        self.assertTrue((other / "mine.png").is_file())
+        self.assertNotEqual(self.run_install(str(self.temp)).returncode, 0, "Only converted packs install")
+        result = self.run_install(str(self.pack), "--windows-zip", str(ROOT / "runtime/textures.zip"))
+        self.assertIn("Refusing", result.stderr)
+        self.assertFalse((ROOT / "runtime/textures.zip").exists())
+        self.settings.unlink()
+        self.assertIn("not been started", self.run_install("--remove").stderr)
+
+    def test_windows_zip(self):
+        output = self.temp / "windows.zip"
+        result = self.run_install(str(self.pack), "--windows-zip", str(output))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        with zipfile.ZipFile(output) as archive:
+            self.assertEqual(sorted(archive.namelist()),
+                             ["README.txt", "golden_era_test/default_stone.png", "golden_era_test/description.txt",
+                              "install-textures.bat", "use-default-textures.bat"])
+            batch = archive.read("install-textures.bat").decode()
+        self.assertNotIn("{", batch.split("powershell.exe")[0], "Every placeholder is filled")
+        self.assertIn("\r\n", batch)
+        self.assertIn('xcopy "%~dp0golden_era_test" "%GE_TARGET%\\"', batch)
+        command = re.search(r'powershell\.exe -NoProfile -Command "(.*)"\r\nif errorlevel 1 goto failed', batch).group(1)
+        self.assertEqual(command, install.WINDOWS_SETTINGS)
+        self.assertNotIn('"', command)
+        self.assertNotIn("%", command)
+
+    @unittest.skipUnless(PWSH.is_file(), "pinned PowerShell not extracted")
+    def test_windows_settings_edit(self):
+        env = dict(os.environ, GE_DATA=str(self.data), GE_TARGET="C:\\Users\\me\\golden_era_test")
+        subprocess.run([str(PWSH), "-NoProfile", "-Command", install.WINDOWS_SETTINGS], env=env, check=True)
+        self.assertEqual(self.settings.read_text().splitlines(),
+                         ["golden_era_settings = 2", "fps_max = 60", "texture_path = C:\\Users\\me\\golden_era_test"])
+        del env["GE_TARGET"]
+        subprocess.run([str(PWSH), "-NoProfile", "-Command", install.WINDOWS_SETTINGS], env=env, check=True)
+        self.assertEqual(self.settings.read_text().splitlines(), ["golden_era_settings = 2", "fps_max = 60"])
 
 
 if __name__ == "__main__":

@@ -16,9 +16,18 @@ uploaded. `conversion-report.txt` in the output lists every texture used and
 every table entry the packs did not cover; content added after Minecraft 1.12
 keeps Golden Era's own art.
 
-To try the result, set `texture_path` in the save folder's `settings.conf` to
-the output folder, or copy it into the engine's `textures` folder and choose it
-under Content in the main menu.
+To switch Golden Era to the result, start the game once, close it, then run:
+
+```sh
+python3 integrations/playtest/textures/install.py ~/Textures/converted/golden_era_sphax
+```
+
+It copies the pack into the save folder's `textures` folder and points
+`texture_path` in `settings.conf` at it; `--remove` goes back to Golden Era's own
+textures. For a Windows PC, add `--windows-zip ~/Textures/golden_era_sphax-windows.zip`
+instead: unzip that on the PC and double-click `install-textures.bat`
+(`use-default-textures.bat` undoes it). The installer refuses to replace a
+folder it did not make, and refuses to write the ZIP inside this repository.
 
 `integrations/playtest/textures/mods112.py` maps BDcraft-style mod patches onto
 Golden Era's mods: Thermal Expansion and Thermal Foundation onto Elepower
