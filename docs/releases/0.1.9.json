@@ -1,0 +1,52 @@
+{
+  "version": "0.1.9",
+  "source_revision": "5b1c19bc639526c078218686cb9c0757b71e5aac",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.9-windows.exe",
+      "size_bytes": 68547107,
+      "sha256": "8a28d16bedac19ca8a7d37519f2d509cc9932b346020617fe3ea4fead4986691",
+      "installed_files": 12518
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.9-linux.tar.gz",
+      "size_bytes": 63657311,
+      "sha256": "be16fbab56e60203fb0b477d667e4e7d40a1865b87b87f2ce94950f9bc2a0b30",
+      "files": 12509
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.9-windows-test.zip",
+      "size_bytes": 72143865,
+      "sha256": "f38f69081ddb88c8b44ace7a5ac1e2f8344fbb11573ee8daa08b66116b21859c",
+      "files": 12508
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.9 (pre-release)",
+  "changes": [
+    "The Windows launcher window shows loading progress read from the new part of the log: mods loaded, media found, connection, texture loading, ready, errors and shutdown",
+    "Existing Windows settings gain debug_log_level = info once when no log level is set, so the progress reader has stage lines",
+    "START-HERE.txt explains the black progress window",
+    "Not packaged: a local converter and installer let testers turn their own Minecraft 1.12 texture packs into a personal Luanti texture pack (docs/textures.md); no converted art is distributed"
+  ],
+  "validation": {
+    "github_ci": "PASS scripts/ci.sh on GitHub Actions at 9352f12 (run 39943565643); the 5b1c19b run failed only because the texture tests imported Pillow, which CI lacks",
+    "fast_suite": "PASS scripts/test.sh at 5b1c19b",
+    "final_source_change": "9352f12 only lets the texture tests skip without Pillow for GitHub CI; tests are not packaged",
+    "packaged_zip": "PASS verify and smoke: full factory through the extracted launcher with a fresh save; build-info reports 5b1c19b dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "windows_launcher": "PASS tests/windows/run.py under pinned PowerShell 7.6.7, including the settings upgrade and the progress reader against a simulated log",
+    "windows_batch": "PASS start.bat launch tail under Wine cmd with stand-in engines: success and failure both write launcher.stop",
+    "linux_archive": "PASS tests/linux/run.py --flatpak-runtime --farming-smoke including the real farm cycle and restart"
+  },
+  "limitations": [
+    "The progress reader has run under PowerShell 7 only, not Windows PowerShell 5.1 on real Windows; if it fails it exits silently and the game still starts",
+    "LAN hosting between two machines remains untested",
+    "Native Windows, SmartScreen and hardware graphics remain unverified"
+  ],
+  "save_compatibility": "Existing 0.1.8 worlds, inventories and settings are kept; only the log level line is added when missing"
+}

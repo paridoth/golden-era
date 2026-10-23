@@ -1,19 +1,18 @@
-# Golden Era 0.1.8: itch.io tester release
+# Golden Era 0.1.9: itch.io tester release
 
-Version 0.1.8 opens a Golden Era main menu instead of jumping into the world,
-adds LAN hosting so players on one home network can share a world, uses
-Minecraft-style keys (E for inventory and closing screens, Left Ctrl to sprint)
-and places farm-animal herds in new terrain. Everything from 0.1.7 remains. Keep
+Version 0.1.9 fills the black window behind the game on Windows with loading
+progress, so a long start no longer looks frozen. Everything from 0.1.8 remains:
+the main menu, LAN hosting, Minecraft-style keys and farm-animal herds. Keep
 your save-data folder when updating; the existing world appears in the menu.
 The installer is also attached to the GitHub pre-release
-https://github.com/paridoth/golden-era/releases/tag/v0.1.8.
+https://github.com/paridoth/golden-era/releases/tag/v0.1.9.
 
-Shareable artifact: `dist/golden-era-playtest-0.1.8-windows.exe`.
-ZIP fallback: `dist/golden-era-playtest-0.1.8-windows-test.zip`.
-Linux: `dist/golden-era-playtest-0.1.8-linux.tar.gz`; see [Linux setup](linux-release.md).
+Shareable artifact: `dist/golden-era-playtest-0.1.9-windows.exe`.
+ZIP fallback: `dist/golden-era-playtest-0.1.9-windows-test.zip`.
+Linux: `dist/golden-era-playtest-0.1.9-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The EXE automatically extracts the game to
-`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.8`, adds desktop and Start Menu
+`%LOCALAPPDATA%\GoldenEraPlaytest\app\0.1.9`, adds desktop and Start Menu
 shortcuts, and launches the game. It shows extraction progress without a setup
 wizard. No manual ZIP extraction is needed. Reopen the shortcut to play again.
 Reinstalling keeps saves, settings and the downloaded engine in the parent data
@@ -61,7 +60,7 @@ automation. It is an independent community game pack and is not Minecraft or
 the original FTB Revelation pack. Exact Revelation recipes and additional
 systems remain future work.
 
-**Windows test instructions:** open `golden-era-playtest-0.1.8-windows.exe`.
+**Windows test instructions:** open `golden-era-playtest-0.1.9-windows.exe`.
 It installs automatically, creates a shortcut and opens the main menu; select
 the playtest world and choose Play Game. New players
 choose the supplied workshop or a survival start without workshop tools/materials.
@@ -100,7 +99,7 @@ separate PowerShell 7/Linux evidence. Wine is a compatibility check on Linux.
 The three final Windows engine processes each retained 107 documented builtin
 SHA warnings, with zero other engine warnings or errors. The three official Linux
 engine processes had zero warnings or errors. Their raw evidence is retained in
-[the 0.1.5 release record](releases/0.1.5.json); 0.1.8 checks are in [its record](releases/0.1.8.json).
+[the 0.1.5 release record](releases/0.1.5.json); 0.1.9 checks are in [its record](releases/0.1.9.json).
 Native Windows, Windows PowerShell 5.1, SmartScreen and hardware graphics remain
 for a Windows tester. Exact bootstrap/save-preflight commands run separately under
 PowerShell 7 on Linux; their scope and hashes are retained in the evidence.
@@ -117,12 +116,12 @@ game file manifest remains valid. `/S` installs without launching the game.
 ```sh
 python3 scripts/setup-playtest.py
 python3 scripts/package-playtest.py --fetch-supplements
-python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.8-windows-test.zip
-python3 tests/package/run.py dist/golden-era-playtest-0.1.8-windows-test.zip
+python3 scripts/package-playtest.py --verify dist/golden-era-playtest-0.1.9-windows-test.zip
+python3 tests/package/run.py dist/golden-era-playtest-0.1.9-windows-test.zip
 python3 scripts/package-installer.py --fetch-toolchain
-python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.8-windows.exe
+python3 scripts/package-installer.py --verify dist/golden-era-playtest-0.1.9-windows.exe
 python3 scripts/package-linux.py
-python3 tests/linux/run.py dist/golden-era-playtest-0.1.8-linux.tar.gz --flatpak-runtime --farming-smoke
+python3 tests/linux/run.py dist/golden-era-playtest-0.1.9-linux.tar.gz --flatpak-runtime --farming-smoke
 ```
 
 Frozen outputs are protected: select a new version in
