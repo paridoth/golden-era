@@ -11,7 +11,10 @@ import tempfile
 import unittest
 import zipfile
 
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:  # CI has no Pillow; the converter checks then skip, the rest still run.
+    Image = None
 
 ROOT = Path(__file__).resolve().parents[2]
 CONVERT = ROOT / "integrations/playtest/textures/convert.py"
@@ -24,6 +27,8 @@ import mods112  # noqa: E402
 
 
 def png(color):
+    if Image is None:
+        return b"\x89PNG stand-in %d" % color
     data = io.BytesIO()
     Image.new("P", (32, 32), color).save(data, "PNG")
     return data.getvalue()
@@ -61,6 +66,7 @@ class ModMappings(unittest.TestCase):
             self.assertNotIn(tinted, mods112.MAPPINGS)
 
 
+@unittest.skipIf(Image is None, "Pillow is not installed")
 class Convert(unittest.TestCase):
     def pack(self, folder):
         path = folder / "pack.zip"
