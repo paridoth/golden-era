@@ -10,7 +10,7 @@ python3 scripts/play-playtest.py
 It combines Mineclonia, the full Elepower technology pack, Pipeworks, fluid
 tanks/ducts, Storage Drawers and Mesecons. Version 0.1.7 development adds the
 Logistica storage network, Travelnet, Extra Structures and a Mineclonia port of
-the Magicalities magic mod; `/manual` opens the in-game Golden Era Manual. Version 0.1.8 opens a main menu with LAN hosting, uses E for the inventory and Left Ctrl to sprint, and places farm animal herds in new terrain. A supplied workshop lets you operate
+the Magicalities magic mod; `/manual` opens the in-game Golden Era Manual. Version 0.1.8 opens a main menu with LAN hosting, uses E for the inventory and Left Ctrl to sprint, and places farm animal herds in new terrain. Version 0.1.9 shows loading progress in the Windows launcher window, and testers who own Minecraft 1.12 texture packs can convert them locally (see docs/textures.md). A supplied workshop lets you operate
 and expand a factory immediately; `/packhelp`, `/workshop` and `/explore` are
 available in-game. See [playtest instructions](docs/playtest.md) for controls,
 the persistent world location and current coverage. This uses native equivalents
