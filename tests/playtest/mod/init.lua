@@ -124,6 +124,26 @@ local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
  eq(xcompat.gameid,"mineclonia","Mineclonia compatibility selected")
+ eq(#era_playtest.goals,10,"Every starter goal item and reward exists in the assembled game")
+ for _,goal in ipairs(era_playtest.goals) do
+  assert(goal.group or core.registered_items[goal.item],"Starter goal item: "..goal.id)
+ end
+ assert(core.registered_chatcommands.goals,"Goals command registered")
+ -- Real inventory semantics: a log counts through its group, rewards land in the inventory.
+ local goal_inv=core.create_detached_inventory("era_goals_probe",{})
+ goal_inv:set_size("main",32)
+ goal_inv:add_item("main","mcl_trees:tree_birch")
+ goal_inv:add_item("main","mcl_tools:pick_stone")
+ local fields,hud={},nil
+ local goal_player={get_player_name=function() return actor end,get_inventory=function() return goal_inv end,
+  get_pos=function() return vector.zero() end,
+  get_meta=function() return {get_int=function(_,k) return fields[k] or 0 end,set_int=function(_,k,v) fields[k]=v end} end,
+  hud_add=function(_,def) hud=def.text;return 1 end,hud_change=function(_,_,_,text) hud=text end,hud_remove=function() hud=nil end}
+ era_playtest.advance_goals(goal_player)
+ eq(fields.era_playtest_goals,2,"A birch log and a stone pickaxe complete the first two goals")
+ assert(goal_inv:contains_item("main","mcl_core:apple 3") and goal_inv:contains_item("main","mcl_torches:torch 8"),"Goal rewards reach the inventory")
+ assert(hud and hud:find("Smelt an iron ingot",1,true),"The screen line shows the third goal")
+ core.log("action","ERA PLAYTEST GOALS: ten starter goals registered; log group, crafted tool and rewards work with a real inventory")
  check_build_identity()
  dofile(core.get_modpath("era_playtest_smoke").."/progression.lua")()
  for _,name in ipairs({"elepower_machines:generator","elepower_machines:power_cell_0","elepower_machines:pulverizer","elepower_machines:furnace",

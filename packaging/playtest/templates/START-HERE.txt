@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.10
+GOLDEN ERA — FACTORY PLAYTEST 0.1.11
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation
@@ -61,6 +61,7 @@ once first, then host it.
 /packhelp   Workshop instructions
 /packversion   Version and build details for a bug report
 /factoryguide   Early survival and machinery guide
+/goals   Ten starter goals with small rewards; hide the on-screen goal here
 /startchoice    Reopen the starting choice before choosing a path
 /workshop   Return to the workshop
 /explore    Return to your original survival spawn

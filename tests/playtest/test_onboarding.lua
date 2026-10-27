@@ -22,7 +22,7 @@ local function player(name,previous)
  function p:hud_add(definition)local id=self.next_hud;self.next_hud=id+1;self.huds[id]=definition;return id end
  function p:hud_remove(id)self.huds[id]=nil end
  function p:get_inventory()
-  return {room_for_item=function()return true end,
+  return {room_for_item=function()return true end,get_list=function()return {} end,contains_item=function()return false end,
    add_item=function(_,_,item)self.items[#self.items+1]=item.raw end}
  end
  players[name]=p
@@ -46,6 +46,7 @@ function core.register_on_generated()end
 function core.register_on_shutdown()end
 function core.register_on_mods_loaded()end
 function core.register_globalstep()end
+function core.register_on_craft()end
 function core.after(_,callback)timers[#timers+1]=callback end
 function core.serialize(value)return value end
 function core.deserialize(value)return value~="" and value or nil end
@@ -76,6 +77,8 @@ awards={registered_awards={}}
 function awards.register_achievement(id,definition)assert(not awards.registered_awards[id]);awards.registered_awards[id]=definition end
 function awards.show_to(name)forms[name]={name="awards:awards"} end
 dofile(root.."/integrations/playtest/mod/init.lua")
+-- Starter goals have their own test; keep their screen line out of these HUD checks.
+for i=#era_playtest.goals,1,-1 do era_playtest.goals[i]=nil end
 local fixture_builds,fixture_error=0,false
 era_playtest.build_fixture=function()
  fixture_builds=fixture_builds+1

@@ -5,6 +5,7 @@ local pages={
   "Collect iron, copper, coal, flint from gravel, and clay for bricks. Elepower adds other ores used later, including lead, tin, silver and zinc. Keep a source of wheat seeds and leaves.\n\n"..
   "The workshop is an optional supplied example. /workshop visits it; /explore returns to your saved natural spawn. Taking its supplies is optional.\n\n"..
   "Craft the first machines to unlock factory advancements. Use /awards to view your milestones.\n\n"..
+  "/goals lists ten starter goals with small rewards; the current one shows at the right of the screen.\n\n"..
   "E opens and closes your inventory; E or Esc closes any other screen. Hold Left Ctrl while walking to sprint. K toggles flight and J fast movement. /manual reopens this manual."},
  {title="Metals and alloys",text="Smelt raw iron into iron ingots, then smelt those ingots a second time to make Elepower low carbon steel. This uses an ordinary furnace.\n\n"..
   "Craft an Elepower Grindstone and Hand Crank before powered machines. Place the crank directly above the grindstone. Put a grindable ingredient in the grindstone and right-click the crank to turn it.\n\n"..
@@ -58,7 +59,8 @@ function era_playtest.show_factory_guide(name,page)
   "tabheader[0.5,1.65;factory_page;"..table.concat(tabs,",")..";"..page..";false;false]"..
   "textarea[0.5,2.1;13,6.1;;;"..core.formspec_escape(selected.text).."]"..
   "button[0.5,8.8;3,0.7;workshop_help;Workshop help]"..
-  "button[4,8.8;3,0.7;advancements;Advancements]"..
+  "button[3.8,8.8;3,0.7;advancements;Advancements]"..
+  "button[7.1,8.8;3,0.7;goals;Starter goals]"..
   "button_exit[10.5,8.8;3,0.7;close;Continue]")
 end
 
@@ -77,7 +79,8 @@ core.register_on_player_receive_fields(function(player,formname,fields)
  if fields.quit then return true end
  if fields.factory_page then era_playtest.show_factory_guide(name,fields.factory_page)
  elseif fields.workshop_help then era_playtest.show_workshop_help(name)
- elseif fields.advancements then awards.show_to(name,name,nil,false) end
+ elseif fields.advancements then awards.show_to(name,name,nil,false)
+ elseif fields.goals then era_playtest.show_goals(name) end
  return true
 end)
 
