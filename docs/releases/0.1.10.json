@@ -1,0 +1,53 @@
+{
+  "version": "0.1.10",
+  "source_revision": "60838d08d6c5b31245635feb2669d470fc363497",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.10-windows.exe",
+      "size_bytes": 68551511,
+      "sha256": "7df21572c6080616aa6d8eeabda3ec993e35b8b7dc0fc11cd26f4cbe85bf5fcd",
+      "installed_files": 12524
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.10-linux.tar.gz",
+      "size_bytes": 63658844,
+      "sha256": "0a0ef8d3e412123d4f5df347343bb111a0225590556958ff7711871ccc0b1b98",
+      "files": 12515
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.10-windows-test.zip",
+      "size_bytes": 72152136,
+      "sha256": "82f26ca7cbb90dc8cccd0495621114718de294edb4b01d98659c07affc8cb6a7",
+      "files": 12514
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "itch_published": false,
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.10 (pre-release)",
+  "changes": [
+    "The Windows installer removes older Golden Era app folders that hold no worlds or settings, and keeps them while the game is running",
+    "Hosting a world from the menu continues as the single-player character (inventory, armor, experience, position) and hands progress back to single player",
+    "New terrain: village spacing 34 -> 20; graveyards, obelisks, logger camps, birch ruins, oases, ice towers and brick pyramids at about a third of their spacing",
+    "About one in three containers filled by world generation gains one stack of Elepower parts; electronics and machines are rarer than ingots and conduit"
+  ],
+  "validation": {
+    "github_ci": "PASS scripts/ci.sh on GitHub Actions at 60838d0 (run 40560074156)",
+    "fast_suite": "PASS scripts/test.sh at 60838d0, including CHARACTER PASS and WORLD PASS",
+    "world_generation": "Real engine, seed 20261027, mg v7, within 800 nodes of spawn: village pieces 53 (0.1.9) -> 117, extra-structure pieces 1 -> 11 at the tuned spacing; 2 of 6 generated containers held parts",
+    "character_handover": "Real engine: items, worn armor, experience and position moved from singleplayer to a menu host and back",
+    "packaged_zip": "PASS verify and smoke: full factory through the extracted launcher with a fresh save; build-info reports 60838d0 dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "windows_native_wine": "PASS tests/windows-native/run.py on the release EXE: silent install under WoW64, saves preserved, old versions kept while the game runs and removed by the next install",
+    "windows_launcher": "PASS tests/windows/run.py",
+    "linux_archive": "PASS tests/linux/run.py --flatpak-runtime --farming-smoke including the real farm cycle and restart"
+  },
+  "limitations": [
+    "LAN hosting between two machines remains untested, including the character hand-over over a real network",
+    "Native Windows, SmartScreen and hardware graphics remain unverified for this version (0.1.9's progress window and textures were confirmed on real Windows)",
+    "Structure and loot changes apply only to terrain generated after updating"
+  ],
+  "save_compatibility": "Existing 0.1.9 worlds, inventories and settings are kept; a world must be opened alone once with 0.1.10 before hosting it brings the single-player character over"
+}
