@@ -442,7 +442,21 @@ def main():
                     data / 'worlds/playtest/map.sqlite': b'tester world fixture; do not open as sqlite\n'}
         for path, content in sentinel.items():
             path.write_bytes(content)
+        # Older versions: a plain old install is removed; folders holding a world,
+        # lacking the game, or left half-removed earlier are handled safely.
+        old_versions = {name: data / 'app' / name for name in ('0.0.1', '0.0.2', '0.0.3', '.removing-0.0.4')}
+        for name, folder in old_versions.items():
+            (folder / 'games/golden_era_playtest').mkdir(parents=True)
+            (folder / 'start.bat').write_text('@echo off\r\n')
+            (folder / 'games/golden_era_playtest/game.conf').write_text('title = Golden Era\n')
+        (old_versions['0.0.2'] / 'worlds/mine').mkdir(parents=True)
+        (old_versions['0.0.2'] / 'worlds/mine/map.sqlite').write_bytes(b'world kept inside an old app folder\n')
+        (old_versions['0.0.3'] / 'games/golden_era_playtest/game.conf').unlink()
         run([str(wine), str(installer), '/S'], 'install', timeout=120)
+        gone = [name for name, folder in old_versions.items() if not folder.exists()]
+        if sorted(gone) != ['.removing-0.0.4', '0.0.1'] or any(path.name.startswith('.removing-') for path in (data / 'app').iterdir()):
+            raise RuntimeError('Old version cleanup removed the wrong folders: ' + repr(sorted(gone)))
+        report.append('PASS: installer removed the older plain install and a half-removed leftover; kept an old folder holding a world and one without the game')
         app = data / 'app' / record['version']
         for name, info in record['files'].items():
             path = app / name
@@ -466,6 +480,31 @@ def main():
             if path.read_bytes() != content:
                 raise RuntimeError('Reinstall changed tester data: ' + str(path))
         report.append('PASS: silent reinstall preserves existing world/settings bytes')
+        engine_bin = data / 'engine-5.17.0/bin'
+        if not engine_bin.exists():
+            # A running game holds the engine open, so cleanup waits for a later install.
+            engine_bin.mkdir(parents=True)
+            shutil.copy2(target / 'usr/lib/x86_64-linux-gnu/wine/x86_64-windows/ping.exe', engine_bin / 'luanti.exe')
+            later = data / 'app/0.0.5'
+            (later / 'games/golden_era_playtest').mkdir(parents=True)
+            (later / 'start.bat').write_text('@echo off\r\n')
+            (later / 'games/golden_era_playtest/game.conf').write_text('title = Golden Era\n')
+            game = subprocess.Popen([str(wine64), str(engine_bin / 'luanti.exe'), '-n', '120', '127.0.0.1'], env=env, cwd=work,
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            try:
+                time.sleep(5)
+                run([str(wine), str(installer), '/S'], 'reinstall-running', timeout=120)
+                if not later.exists():
+                    raise RuntimeError('Old version cleanup ran while the game was running')
+            finally:
+                game.kill()
+                game.wait(10)
+                subprocess.run([str(server), '-w'], env=env, timeout=60)
+            run([str(wine), str(installer), '/S'], 'reinstall-stopped', timeout=120)
+            if later.exists():
+                raise RuntimeError('Old version cleanup did not run after the game stopped')
+            shutil.rmtree(data / 'engine-5.17.0')
+            report.append('PASS: old versions are kept while the game runs and removed by the next install after it stops')
         if args.world_creation_smoke:
             world_creation_smoke(work, env, wine64, app, report)
         if args.engine_smoke:

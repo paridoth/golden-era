@@ -1,4 +1,4 @@
-GOLDEN ERA — FACTORY PLAYTEST 0.1.9
+GOLDEN ERA — FACTORY PLAYTEST 0.1.10
 
 An early voxel survival and automation playtest built from existing Luanti mods.
 This is an independent community game pack, not Minecraft or the FTB Revelation

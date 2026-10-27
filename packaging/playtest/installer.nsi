@@ -1,7 +1,8 @@
 ; Golden Era's per-user Windows self-extracting launcher.
 ; Build inputs are supplied by scripts/package-installer.py. This script never
 ; removes the data directory: saves, settings and the downloaded engine belong
-; to start.bat and live outside the versioned application directory.
+; to start.bat and live outside the versioned application directory. Only older
+; app\<version> folders are removed after a successful install.
 
 Unicode true
 !include "LogicLib.nsh"
@@ -93,6 +94,7 @@ Section "Install"
   IfErrors 0 +2
     DetailPrint "The Start Menu shortcut could not be created."
   ClearErrors
+  Call RemoveOldVersions
   SetErrorLevel 0
   Goto install_done
 
@@ -102,6 +104,48 @@ install_failed:
   Abort
 install_done:
 SectionEnd
+
+; Older app\<version> folders are only game files; saves live in the parent
+; folder. A folder is removed only when it has the launcher and game, holds no
+; worlds or settings, and can be renamed, which Windows refuses while the old
+; version has files open. Nothing is removed while the game is running.
+Function RemoveOldVersions
+  StrCpy $5 "$LOCALAPPDATA\GoldenEraPlaytest"
+  ${If} ${FileExists} "$5\engine-5.17.0\bin\luanti.exe"
+    ClearErrors
+    FileOpen $4 "$5\engine-5.17.0\bin\luanti.exe" a
+    ${If} ${Errors}
+      DetailPrint "Golden Era is running; older versions are kept for now."
+      Return
+    ${EndIf}
+    FileClose $4
+  ${EndIf}
+  FindFirst $0 $1 "$5\app\*"
+  ${DoWhile} $1 != ""
+    StrCpy $2 "$5\app\$1"
+    StrCpy $3 $1 10
+    ${If} $3 == ".removing-"
+      ; Left over from an earlier removal that could not finish.
+      RMDir /r "$2"
+    ${ElseIf} $1 != "."
+    ${AndIf} $1 != ".."
+    ${AndIf} $1 != "${GE_VERSION}"
+    ${AndIf} ${FileExists} "$2\start.bat"
+    ${AndIf} ${FileExists} "$2\games\golden_era_playtest\game.conf"
+    ${AndIfNot} ${FileExists} "$2\worlds\*.*"
+    ${AndIfNot} ${FileExists} "$2\settings.conf"
+      ClearErrors
+      Rename "$2" "$5\app\.removing-$1"
+      ${IfNot} ${Errors}
+        RMDir /r "$5\app\.removing-$1"
+        DetailPrint "Removed the older Golden Era $1 files."
+      ${EndIf}
+    ${EndIf}
+    FindNext $0 $1
+  ${Loop}
+  FindClose $0
+  ClearErrors
+FunctionEnd
 
 Function .onInstSuccess
   IfSilent launch_done
