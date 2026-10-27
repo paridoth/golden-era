@@ -202,5 +202,6 @@ era_playtest.return_to_surface = explore
 core.register_chatcommand("explore",{description="Travel to the survival spawn",func=explore})
 
 dofile(core.get_modpath("era_playtest").."/guide.lua")
+dofile(core.get_modpath("era_playtest").."/character.lua")
 dofile(core.get_modpath("era_playtest").."/onboarding.lua")
 dofile(core.get_modpath("era_playtest").."/animals.lua")

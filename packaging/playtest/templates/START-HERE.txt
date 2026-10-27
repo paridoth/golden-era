@@ -53,8 +53,10 @@ with "ipconfig" in a Command Prompt (IPv4 Address, for example 192.168.1.20).
 Others: open the Join Game tab, enter the host's address and port 30000
 (or the port shown on the host), choose a different name and password, and
 press Join. Everyone on the server can fly and move fast. The host keeps
-admin rights. Single-player progress is stored separately from your online
-name, so a host joining an existing world starts with a fresh inventory.
+admin rights. The host continues as their single-player character: items,
+armor, experience and position carry over, and progress made while hosting
+returns to single player. For a world last played before 0.1.10, open it alone
+once first, then host it.
 
 /packhelp   Workshop instructions
 /packversion   Version and build details for a bug report
