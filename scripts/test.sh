@@ -6,6 +6,7 @@ tools/root/usr/bin/lua5.1 tests/unit/test_thermal_model.lua
 tools/root/usr/bin/lua5.1 tests/playtest/test_onboarding.lua .
 tools/root/usr/bin/lua5.1 tests/playtest/test_build.lua .
 tools/root/usr/bin/lua5.1 tests/playtest/test_character.lua .
+tools/root/usr/bin/lua5.1 tests/playtest/test_world.lua .
 python3 tests/playtest/test_build_info.py
 python3 tests/linux/test_launch_errors.py
 python3 tests/package/test_release_guard.py

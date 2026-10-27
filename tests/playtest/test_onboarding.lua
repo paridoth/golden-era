@@ -44,6 +44,7 @@ function core.register_on_leaveplayer(callback)leaves[#leaves+1]=callback end
 function core.register_on_player_receive_fields(callback)receivers[#receivers+1]=callback end
 function core.register_on_generated()end
 function core.register_on_shutdown()end
+function core.register_on_mods_loaded()end
 function core.register_globalstep()end
 function core.after(_,callback)timers[#timers+1]=callback end
 function core.serialize(value)return value end
