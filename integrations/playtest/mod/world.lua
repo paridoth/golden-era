@@ -8,28 +8,30 @@ local FACTORY_PARTS={
  {itemstring="elepower_dynamics:nickel_ingot",weight=6,amount_min=1,amount_max=4},
  {itemstring="elepower_dynamics:steel_ingot",weight=5,amount_min=1,amount_max=4},
  {itemstring="elepower_dynamics:conduit",weight=8,amount_min=4,amount_max=12},
- {itemstring="elepower_dynamics:wound_copper_coil",weight=6,amount_min=1,amount_max=3},
- {itemstring="elepower_dynamics:capacitor",weight=5,amount_min=1,amount_max=2},
- {itemstring="elepower_dynamics:chip",weight=4,amount_min=1,amount_max=2},
- {itemstring="elepower_dynamics:silicon_wafer",weight=3,amount_min=1,amount_max=2},
- {itemstring="elepower_dynamics:pcb",weight=3},
- {itemstring="elepower_dynamics:battery",weight=3},
- {itemstring="elepower_dynamics:pv_cell",weight=2,amount_min=1,amount_max=2},
- {itemstring="elepower_dynamics:servo_valve",weight=2},
+ {itemstring="elepower_dynamics:wound_copper_coil",weight=4,amount_min=1,amount_max=3},
+ {itemstring="elepower_dynamics:capacitor",weight=3,amount_min=1,amount_max=2},
+ {itemstring="elepower_dynamics:chip",weight=2,amount_min=1,amount_max=2},
+ {itemstring="elepower_dynamics:silicon_wafer",weight=1,amount_min=1,amount_max=2},
+ {itemstring="elepower_dynamics:pcb",weight=2},
+ {itemstring="elepower_dynamics:battery",weight=2},
+ {itemstring="elepower_dynamics:pv_cell",weight=1,amount_min=1,amount_max=2},
+ {itemstring="elepower_dynamics:servo_valve",weight=1},
  {itemstring="elepower_machines:generator",weight=1},
 }
 
 -- Every generated container (structures, villages, dungeons, mineshafts) is
--- filled through mcl_loot.fill_inventory; add up to two stacks of parts there.
+-- filled through mcl_loot.fill_inventory; about one in three gets one stack of
+-- parts there. Ingots and conduit are common, electronics and machines rare.
 function era_playtest.add_factory_loot(loot,registered_items)
- local parts={}
+ local parts,total={},0
  for _,part in ipairs(FACTORY_PARTS) do
-  if registered_items[part.itemstring] then parts[#parts+1]=part end
+  if registered_items[part.itemstring] then parts[#parts+1]=part;total=total+part.weight end
  end
- local pool={stacks_min=0,stacks_max=2,items=parts}
+ local pool={stacks_min=1,stacks_max=1,items=parts}
+ parts[#parts+1]={nothing=true,weight=2*total}
  local fill=loot.fill_inventory
  loot.fill_inventory=function(inv,listname,items,pr)
-  if listname=="main" and #parts>0 then
+  if listname=="main" and total>0 then
    local random=pr or PcgRandom(math.random(0,2147483647))
    local combined={}
    for i,item in ipairs(items) do combined[i]=item end

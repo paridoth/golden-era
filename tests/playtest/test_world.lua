@@ -15,9 +15,9 @@ mcl_levelgen={build_random_spread_placement=function(f,r,spacing,separation,salt
   ["mcl_levelgen:desert_pyramids"]={placement={spacing=32,salt=14357617}}}}
 dofile(root.."/integrations/playtest/mod/worldgen.lua")
 local sets=mcl_levelgen.registered_structure_sets
-eq(sets["mcl_villages:villages"].placement.spacing,24,"Villages are closer together")
-eq(sets["mcl_extra_structures:graveyards"].placement.spacing,40,"Graveyards are four times as common")
-eq(sets["mcl_extra_structures:graveyards"].placement.separation,10,"Separation halves too")
+eq(sets["mcl_villages:villages"].placement.spacing,16,"Villages are closer together")
+eq(sets["mcl_extra_structures:graveyards"].placement.spacing,28,"Graveyards are about eight times as common")
+eq(sets["mcl_extra_structures:graveyards"].placement.separation,7,"Separation shrinks too")
 eq(sets["mcl_extra_structures:brick_pyramids"].placement.spread,"triangular","Spread type is kept")
 eq(sets["mcl_extra_structures:ice_towers"].placement.spacing,70,"A changed upstream set is left alone")
 eq(sets["mcl_levelgen:desert_pyramids"].placement.spacing,32,"Unlisted structures keep their rate")
@@ -29,8 +29,19 @@ era_playtest={}
 dofile(root.."/integrations/playtest/mod/world.lua")
 local filled
 local loot={fill_inventory=function(_,listname,items) filled={listname=listname,items=items} end,
- get_loot=function(pool) eq(pool.stacks_max,2,"At most two stacks of parts");return {"elepower_dynamics:lead_ingot 3"} end}
+ get_loot=function(pool)
+  eq(pool.stacks_max,1,"At most one stack of parts")
+  local last=pool.items[#pool.items]
+  eq(last.nothing,true,"Most containers get no parts");eq(last.weight,20,"Two in three rolls are empty")
+  return {"elepower_dynamics:lead_ingot 3"} end}
 era_playtest.add_factory_loot(loot,{["elepower_dynamics:lead_ingot"]={}})
+
+-- Without any registered parts nothing is appended.
+local none={fill_inventory=function(_,_,items) filled={items=items} end,get_loot=function() error("no roll without parts") end}
+era_playtest.add_factory_loot(none,{})
+none.fill_inventory(nil,"main",{"mcl_core:apple"},{})
+eq(#filled.items,1,"No parts registered, nothing added")
+
 local original={"mcl_core:gold_ingot 2"}
 loot.fill_inventory(nil,"main",original,{})
 eq(#filled.items,2,"Factory parts are added to the container")
