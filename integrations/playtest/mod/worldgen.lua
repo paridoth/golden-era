@@ -4,10 +4,10 @@
 -- game API, so it only replaces placements of known structure sets. Each entry
 -- is the upstream spacing, separation, salt and spread, then Golden Era's
 -- spacing and separation. Extra structures end up about eight times as common
--- and villages about four times.
+-- and villages about three times.
 local R=mcl_levelgen.build_random_spread_placement
 local CLOSER={
- ["mcl_villages:villages"]={34,8,10387312,"linear",16,4},
+ ["mcl_villages:villages"]={34,8,10387312,"linear",20,5},
  ["mcl_extra_structures:graveyards"]={80,20,451148140,"linear",28,7},
  ["mcl_extra_structures:sandstone_obelisk"]={80,20,1728818693,"linear",28,7},
  ["mcl_extra_structures:loggers_camps"]={80,20,3941881656,"linear",28,7},

@@ -15,7 +15,7 @@ mcl_levelgen={build_random_spread_placement=function(f,r,spacing,separation,salt
   ["mcl_levelgen:desert_pyramids"]={placement={spacing=32,salt=14357617}}}}
 dofile(root.."/integrations/playtest/mod/worldgen.lua")
 local sets=mcl_levelgen.registered_structure_sets
-eq(sets["mcl_villages:villages"].placement.spacing,16,"Villages are closer together")
+eq(sets["mcl_villages:villages"].placement.spacing,20,"Villages are closer together")
 eq(sets["mcl_extra_structures:graveyards"].placement.spacing,28,"Graveyards are about eight times as common")
 eq(sets["mcl_extra_structures:graveyards"].placement.separation,7,"Separation shrinks too")
 eq(sets["mcl_extra_structures:brick_pyramids"].placement.spread,"triangular","Spread type is kept")
