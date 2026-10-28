@@ -88,6 +88,17 @@ an Adjustable Vacuum Tube. Keep spare saplings: their drops are random.
 Existing worlds keep their barrels unchanged; use recipes or the workshop's
 creative catalog to try the new machinery without replacing your save.
 
+NEW IN 0.1.11
+
+Bigger chests (copper to diamond) connect to tubes. A jetpack, charged in a
+power cell, flies while you hold jump and glides while you hold sneak. A
+smeltery built from seared bricks melts ores into double metal, mixes bronze,
+invar, electrum and brass, and pours ingots, blocks and tool parts through a
+faucet (right-click or redstone) onto a casting table or basin. Tool parts
+assemble into pickaxes, axes, shovels and swords: the head metal sets mining
+level and speed, the binding and handle add durability. The factory guide has
+Smeltery, Casting and Tools pages.
+
 SAVES AND FEEDBACK
 
 Windows saves/logs: %LOCALAPPDATA%\GoldenEraPlaytest
@@ -104,6 +115,7 @@ happened, and a screenshot if useful. The client log is logs/client.log inside
 the save-data folder. Review logs before sharing them.
 
 This is an early single-player playtest, not a complete Revelation recreation.
-Exact Revelation recipes, AE2, Tinkers and Thaumcraft remain future additions.
+Exact Revelation recipes, AE2, Thaumcraft and most of Tinkers remain future
+additions.
 Credits and license notices are in docs/THIRD-PARTY-NOTICES.md and the game mods.
 Source/provenance information is included under docs/ and source/.
