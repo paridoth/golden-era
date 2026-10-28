@@ -62,6 +62,7 @@ once first, then host it.
 /packversion   Version and build details for a bug report
 /factoryguide   Early survival and machinery guide
 /goals   Ten starter goals with small rewards; hide the on-screen goal here
+/lookinfo   Turn the block name, mod and power line at the top of the screen off or on
 /startchoice    Reopen the starting choice before choosing a path
 /workshop   Return to the workshop
 /explore    Return to your original survival spawn
