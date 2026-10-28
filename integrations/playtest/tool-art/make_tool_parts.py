@@ -87,8 +87,37 @@ def sword_blade():
         px[(5 + i, 9 - i)] = SHINE
     return px
 
+def hammer_head():
+    # A heavy block across the top of the handle, square to it.
+    fill = set()
+    for x in range(16):
+        for y in range(16):
+            u, v = ((x - 10.5) + (y - 4.5)) / 1.414, ((x - 10.5) - (y - 4.5)) / 1.414
+            if abs(u) <= 5.6 and abs(v) <= 2.4:
+                fill.add((x, y))
+    return outline(fill)
+
+def excavator_head():
+    fill = set()
+    for x in range(6, 16):
+        for y in range(0, 10):
+            if math.hypot(x - 11.3, y - 4.2) <= 4.4 or (x - y == 3 and 7 <= x <= 9):
+                fill.add((x, y))
+    return outline(fill)
+
+def broad_axe_head():
+    fill = set()
+    for x in range(16):
+        for y in range(16):
+            blade = (x - 6) ** 2 / 16 + (y - 5) ** 2 / 24 <= 1 and x <= 9
+            neck = 9 <= x <= 12 and 2 <= y <= 6 and x + y <= 15
+            if blade or neck:
+                fill.add((x, y))
+    return outline(fill)
+
 PARTS = {"pick_head": pick_head, "axe_head": axe_head, "shovel_head": shovel_head,
-         "sword_blade": sword_blade, "binding": binding, "rod": rod}
+         "sword_blade": sword_blade, "binding": binding, "rod": rod,
+         "hammer_head": hammer_head, "excavator_head": excavator_head, "broad_axe_head": broad_axe_head}
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)

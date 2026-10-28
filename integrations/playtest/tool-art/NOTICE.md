@@ -1,6 +1,6 @@
 # Original tool-part sprites
 
-The six greyscale 16x16 `era_playtest_part_*.png` files in
+The nine greyscale 16x16 `era_playtest_part_*.png` files in
 `../mod/textures/` are drawn by `make_tool_parts.py` from shapes defined in
 that script; no external font or image pixels are used. Rerunning
 `python3 make_tool_parts.py` reproduces them. The game tints them per metal
@@ -15,6 +15,9 @@ and https://creativecommons.org/publicdomain/zero/1.0/ .
 | --- | --- |
 | `era_playtest_part_axe_head.png` | `42fd48f8d06222db0a44eef2b5302736b6195e885a27883d82d9844776cdf96a` |
 | `era_playtest_part_binding.png` | `013389ad83e55169fde0a606f02e8203dd69c09368561ebd8fa0cb665c3ab9ee` |
+| `era_playtest_part_broad_axe_head.png` | `0f75cfab7def1baa0937caa3737e8a127f4abc5fcb09ac97fbea2b3e87c267af` |
+| `era_playtest_part_excavator_head.png` | `ca155defad44b220c15568c4cde5ce53f059c0b25c67237cbb174725da505656` |
+| `era_playtest_part_hammer_head.png` | `2e3d0cc791887f4fc54cedd5511161933d724385253afa63a2c13de89907ba48` |
 | `era_playtest_part_pick_head.png` | `882bcea3d4d13c67463d79e60a6a9e3a3818e8f96070373be85f963217fb66b4` |
 | `era_playtest_part_rod.png` | `3165b86ae3eae40e7ab895a932d60e723a4ccbac0ce513a75371ee7ddfb7cb86` |
 | `era_playtest_part_shovel_head.png` | `85d3d1d06079ecb57d2a91c7ce657163970ffbd6e1e92996533d8e68d7038c96` |

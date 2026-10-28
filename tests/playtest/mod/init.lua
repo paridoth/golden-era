@@ -308,6 +308,47 @@ local function run()
         assert(factor>1,"A bronze binding adds durability")
         local worn=tdef.after_use(ItemStack(pick),nil,{name="mcl_core:stone"},{wear=1000})
         eq(worn:get_wear(),math.ceil(1000/factor),"Wear is divided by the durability multiplier")
+        -- Area tools, dug by a stand-in player looking down.
+        local smith_inv=core.create_detached_inventory("era_toolsmith",{})
+        smith_inv:set_size("main",32)
+        local function digger(stack)
+         local held=ItemStack(stack)
+         return {is_player=function() return true end,get_player_name=function() return "toolsmith" end,
+          get_wielded_item=function() return ItemStack(held) end,set_wielded_item=function(_,s) held=ItemStack(s) return true end,
+          get_look_dir=function() return vector.new(0,-1,0) end,get_player_control=function() return {} end,
+          get_pos=function() return vector.offset(sbase,0,8,0) end,get_inventory=function() return smith_inv end,
+          get_wield_index=function() return 1 end,get_wield_list=function() return "main" end,
+          get_meta=function() return core.get_meta(sbase) end,held=function() return held end}
+        end
+        local area_grid={"era_playtest:part_hammer_head_iron","","","era_playtest:part_binding_iron","","","mcl_core:stick","",""}
+        assert(core.get_craft_result({method="normal",width=3,items=area_grid}).item:get_name():match("^era_playtest:hammer_cast_"),"A hammer head, binding and stick have a recipe")
+        local floor=vector.offset(sbase,0,6,8)
+        for dx=-2,2 do for dz=-2,2 do core.set_node(vector.offset(floor,dx,0,dz),{name="mcl_core:stone"}) end end
+        core.set_node(vector.offset(floor,1,0,1),{name="mcl_core:obsidian"})
+        local hammer=digger(era_playtest.assemble_tool("hammer",area_grid))
+        core.node_dig(floor,core.get_node(floor),hammer)
+        local cleared=0
+        for dx=-1,1 do for dz=-1,1 do if core.get_node(vector.offset(floor,dx,0,dz)).name=="air" then cleared=cleared+1 end end end
+        eq(cleared,8,"An iron hammer mines the 3x3 square except obsidian")
+        eq(core.get_node(vector.offset(floor,1,0,1)).name,"mcl_core:obsidian","Obsidian needs a diamond-level tool and stays")
+        eq(core.get_node(vector.offset(floor,2,0,0)).name,"mcl_core:stone","Blocks outside the square stay")
+        assert(hammer.held():get_wear()>0,"Each block wears the hammer")
+        local trunk=vector.offset(floor,0,1,5)
+        for y=0,4 do core.set_node(vector.offset(trunk,0,y,0),{name="mcl_trees:tree_oak"}) end
+        core.set_node(vector.offset(trunk,1,3,0),{name="mcl_trees:tree_oak"})
+        core.set_node(vector.offset(trunk,0,5,0),{name="mcl_trees:leaves_oak"})
+        local wall=vector.offset(trunk,3,0,0)
+        for y=0,2 do core.set_node(vector.offset(wall,0,y,0),{name="mcl_trees:tree_oak"}) end
+        local axe_grid={"era_playtest:part_broad_axe_head_iron","","","era_playtest:part_binding_iron","","","mcl_core:stick","",""}
+        local lumber=digger(era_playtest.assemble_tool("lumberaxe",axe_grid))
+        core.node_dig(trunk,core.get_node(trunk),lumber)
+        local left=0
+        for y=0,4 do if core.get_node(vector.offset(trunk,0,y,0)).name~="air" then left=left+1 end end
+        eq(left,0,"A lumber axe fells the whole trunk")
+        eq(core.get_node(vector.offset(trunk,1,3,0)).name,"air","and its branch")
+        eq(core.get_node(vector.offset(trunk,0,5,0)).name,"mcl_trees:leaves_oak","Leaves are left to decay")
+        core.node_dig(wall,core.get_node(wall),lumber)
+        eq(core.get_node(vector.offset(wall,0,1,0)).name,"mcl_trees:tree_oak","A leafless log wall loses only the chopped log")
         smeltery_cast_ok=true
        end) end)
       end) end)
@@ -351,7 +392,7 @@ local function run()
     assert(inv(pulverizer):is_empty("src") and inv(pulverizer):is_empty("dst"),"Pulverizer batch is complete and extracted")
     assert(inv(furnace):is_empty("src") and inv(furnace):is_empty("dst"),"Furnace batch is complete and extracted")
     assert(inv(generator):get_stack("src",1):get_count()<8,"Stock generator consumed coal")
-    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; a smeltery melts raw iron into double metal, mixes bronze, and a faucet casts both into ingots, shown on the table, also on redstone power; a pickaxe head cast and parts assemble into a pickaxe; selected recipes craft and water overflow/drain conserves volume")
+    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; a smeltery melts raw iron into double metal, mixes bronze, and a faucet casts both into ingots, shown on the table, also on redstone power; a pickaxe head cast and parts assemble into a pickaxe; a hammer mines 3x3 and a lumber axe fells a tree; selected recipes craft and water overflow/drain conserves volume")
    elseif core.get_us_time()-started>150*1000000 then
     error("Workshop timeout: generator="..core.get_meta(generator):get_string("infotext").."; pulverizer="..core.get_meta(pulverizer):get_string("infotext").."; furnace="..core.get_meta(furnace):get_string("infotext").."; output="..stored:to_string())
    else core.after(0.2,poll) end

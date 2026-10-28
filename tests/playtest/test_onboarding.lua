@@ -52,7 +52,9 @@ function core.register_craftitem()end
 function core.register_entity()end
 function core.register_lbm()end
 function core.register_craft_predict()end
-mcl_tools={register_set=function() end}
+function core.register_on_dignode()end
+mcl_tools={register_set=function() end,tool_place_funcs={},
+ commondefs={pick={groups={}},shovel={groups={}},axe={groups={}}}}
 function core.register_craft()end
 function core.after(_,callback)timers[#timers+1]=callback end
 function core.serialize(value)return value end
