@@ -3,7 +3,7 @@
 -- bricks; a ring of seared bricks around an air interior, on a seared floor,
 -- with a controller in the wall forms the smeltery. Lava buckets fuel it and
 -- it melts ores (double), ingots, nuggets and blocks into stored molten metal
--- measured in mB, 144 per ingot. Casting the metal back out comes separately.
+-- measured in mB, 144 per ingot. casting.lua pours it back out.
 local INGOT,MAX_SIDE,MAX_LAYERS=144,7,8
 local PER_BLOCK=8*INGOT -- molten capacity per interior block
 local LAVA_SECONDS=150
@@ -19,11 +19,28 @@ metal("gold","Gold",{["mcl_core:gold_ingot"]=INGOT,["mcl_core:gold_nugget"]=16,[
  ["mcl_raw_ores:raw_gold"]=2*INGOT,["mcl_core:stone_with_gold"]=2*INGOT,["mcl_deepslate:deepslate_with_gold"]=2*INGOT})
 metal("copper","Copper",{["mcl_copper:copper_ingot"]=INGOT,["mcl_copper:block"]=9*INGOT,["mcl_copper:raw_copper"]=2*INGOT,
  ["mcl_copper:stone_with_copper"]=2*INGOT,["mcl_deepslate:deepslate_with_copper"]=2*INGOT})
-for _,m in ipairs({"tin","lead","nickel","zinc"}) do
- metal(m,m:gsub("^%l",string.upper),{["elepower_dynamics:"..m.."_ingot"]=INGOT,["elepower_dynamics:"..m.."_lump"]=2*INGOT})
+for _,m in ipairs({"tin","lead","nickel","zinc","silver"}) do
+ local e="elepower_dynamics:"..m
+ metal(m,m:gsub("^%l",string.upper),{[e.."_ingot"]=INGOT,[e.."_lump"]=2*INGOT,[e.."_block"]=9*INGOT})
 end
-metal("silver","Silver",{["moreores:silver_ingot"]=INGOT,["moreores:silver_lump"]=2*INGOT})
+metal("silver","Silver",{["moreores:silver_ingot"]=INGOT,["moreores:silver_lump"]=2*INGOT,["moreores:silver_block"]=9*INGOT})
 era_playtest.smeltery_melts=MELTS
+-- Cast products per metal: the first registered ingot and block.
+local PRODUCTS={iron={ingot={"mcl_core:iron_ingot"},block={"mcl_core:ironblock"}},
+ gold={ingot={"mcl_core:gold_ingot"},block={"mcl_core:goldblock"}},
+ copper={ingot={"mcl_copper:copper_ingot"},block={"mcl_copper:block"}}}
+for _,m in ipairs({"tin","lead","nickel","zinc","silver"}) do
+ PRODUCTS[m]={ingot={"elepower_dynamics:"..m.."_ingot","moreores:"..m.."_ingot"},block={"elepower_dynamics:"..m.."_block","moreores:"..m.."_block"}}
+end
+function era_playtest.smeltery_product(metal_name,shape)
+ for _,item in ipairs((PRODUCTS[metal_name] or {})[shape] or {}) do
+  if core.registered_items[item] then return item end
+ end
+end
+function era_playtest.metal_label(metal_name)
+ for _,melt in pairs(MELTS) do if melt.metal==metal_name then return melt.label end end
+ return metal_name
+end
 
 local function seared(pos) return core.get_item_group(core.get_node(pos).name,"seared")>0 end
 local function air(pos) return core.get_node(pos).name=="air" end
@@ -55,12 +72,34 @@ function era_playtest.smeltery_scan(pos)
  local layers=1
  while layers<MAX_LAYERS and layer_ok(inside.y+layers) do layers=layers+1 end
  local w,d=max.x-min.x+1,max.z-min.z+1
- return {width=w,depth=d,layers=layers,volume=w*d*layers}
+ return {width=w,depth=d,layers=layers,volume=w*d*layers,min=min,max=vector.offset(max,0,layers-1,0)}
 end
 
 local function molten(meta) return core.deserialize(meta:get_string("molten")) or {} end
 local function total(pool) local sum=0 for _,amount in pairs(pool) do sum=sum+amount end return sum end
 era_playtest.smeltery_molten=molten
+-- The metal a faucet pours: the chosen one while any is left, otherwise the first by name.
+function era_playtest.smeltery_selected(meta)
+ local pool=molten(meta)
+ local chosen=meta:get_string("selected")
+ if (pool[chosen] or 0)>0 then return chosen end
+ local names={}
+ for name,amount in pairs(pool) do if amount>0 then names[#names+1]=name end end
+ table.sort(names)
+ return names[1]
+end
+-- Take amount mB of the poured metal; returns the metal or nil when there is not enough.
+function era_playtest.smeltery_drain(pos,amount)
+ local meta=core.get_meta(pos)
+ local name=era_playtest.smeltery_selected(meta)
+ local pool=molten(meta)
+ if not name or pool[name]<amount then return nil,name end
+ pool[name]=pool[name]-amount
+ if pool[name]==0 then pool[name]=nil end
+ meta:set_string("molten",core.serialize(pool))
+ era_playtest.smeltery_tick(pos,0)
+ return name
+end
 
 local function formspec(pos,shape,reason,pool,fuel)
  local meta=core.get_meta(pos)
@@ -76,24 +115,28 @@ local function formspec(pos,shape,reason,pool,fuel)
  local names={}
  for name in pairs(pool) do names[#names+1]=name end
  table.sort(names)
- for _,name in ipairs(names) do
-  local label=name
-  for _,melt in pairs(MELTS) do if melt.metal==name then label=melt.label;break end end
-  lines[#lines+1]=label..": "..string.format("%.1f",pool[name]/INGOT).." ingots ("..pool[name].." mB)"
+ local selected=era_playtest.smeltery_selected(meta)
+ local buttons={}
+ for i,name in ipairs(names) do
+  local mark=name==selected and "> " or "  "
+  lines[#lines+1]=mark..era_playtest.metal_label(name)..": "..string.format("%.1f",pool[name]/INGOT).." ingots ("..pool[name].." mB)"
+  if i<=6 then buttons[#buttons+1]="button["..(0.375+(i-1)*1.85)..",YPOUR;1.75,0.6;select_"..name..";"..era_playtest.metal_label(name).."]" end
  end
  lines[#lines+1]="Heat: "..math.ceil(fuel).." s of lava left"
  local rows=math.max(1,math.ceil(slots/8))
  local slot_bg=mcl_formspec and mcl_formspec.get_itemslot_bg_v4 or function() return "" end
  local y=0.75+rows*1.25+0.3
  return table.concat({
-  "formspec_version[4]size[11.75,"..(y+7.75).."]",
+  "formspec_version[4]size[11.75,"..(y+8.65).."]",
   "label[0.375,0.375;Smeltery Controller]",
   slots>0 and slot_bg(0.375,0.75,math.min(slots,8),rows) or "",
   slots>0 and "list[context;melt;0.375,0.75;8,"..rows..";]" or "",
   "label[10.4,0.375;Lava]",slot_bg(10.4,0.75,1,1),"list[context;fuel;10.4,0.75;1,1;]",
   "textarea[0.375,"..y..";11,2.3;;;"..core.formspec_escape(table.concat(lines,"\n")).."]",
-  slot_bg(0.375,y+2.6,9,3),"list[current_player;main;0.375,"..(y+2.6)..";9,3;9]",
-  slot_bg(0.375,y+6.55,9,1),"list[current_player;main;0.375,"..(y+6.55)..";9,1;]",
+  (#buttons>0 and "label[0.375,"..(y+2.35)..";Faucets pour (> above):]" or ""),
+  (table.concat(buttons):gsub("YPOUR",tostring(y+2.6))),
+  slot_bg(0.375,y+3.5,9,3),"list[current_player;main;0.375,"..(y+3.5)..";9,3;9]",
+  slot_bg(0.375,y+7.45,9,1),"list[current_player;main;0.375,"..(y+7.45)..";9,1;]",
   "listring[context;melt]listring[current_player;main]",
  })
 end
@@ -182,6 +225,13 @@ core.register_node("era_playtest:smeltery_controller",{description="Smeltery Con
  end,
  on_timer=function(pos,elapsed) era_playtest.smeltery_tick(pos,math.min(elapsed,5));return true end,
  on_punch=function(pos) era_playtest.smeltery_tick(pos,0) end,
+ on_receive_fields=function(pos,_,fields,sender)
+  if sender and core.is_protected(pos,sender:get_player_name()) then return end
+  for field in pairs(fields) do
+   local name=field:match("^select_(.+)$")
+   if name then core.get_meta(pos):set_string("selected",name);era_playtest.smeltery_tick(pos,0) end
+  end
+ end,
  allow_metadata_inventory_put=allow_put,
  allow_metadata_inventory_move=function(pos,from_list,_,to_list,_,count,player)
   if from_list~=to_list then return 0 end
