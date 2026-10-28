@@ -145,7 +145,7 @@ establish that every included upstream machine has been exercised.
 
 The active package version is tracked in `packaging/playtest/release.json`.
 Windows EXEs and Linux archives are built separately without replacing 0.1.0.
-See [sharing instructions](itch-release.md) and [Linux setup](linux-release.md).
+See [sharing instructions](github-release.md) and [Linux setup](linux-release.md).
 
 `python3 tests/playtest/gui.py --fetch-tools` renders and clicks both start choices
 in a repository-local Xvfb desktop, then restarts each world. It checks real player

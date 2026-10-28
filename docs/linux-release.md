@@ -27,10 +27,6 @@ databases and private developer files stay excluded.
 Tester instructions: extract the complete archive, open `Install Luanti.flatpakref`
 if a compatible engine is absent, and then open `Play Golden Era.desktop`.
 The desktop may require “Allow Launching”. A terminal fallback is `sh ./start.sh`.
-The itch desktop app can install `.tar.gz` archives and invoke the included
-`.itch.toml` play action; its engine prerequisite still applies. This integration
-follows itch.io's [archive compatibility guidance](https://itch.io/docs/itch/integrating/compatibility-policy.html)
-and [launcher action format](https://itch.io/docs/itch/integrating/manifest-actions.html).
 `sh ./start.sh --install-engine` explicitly installs the official Flatpak into
 the tester's user installation; normal startup never changes installed software.
 Flatpak must already be supported by the distribution, and its first installation

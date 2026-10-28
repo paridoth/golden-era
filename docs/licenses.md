@@ -68,7 +68,7 @@ entire trees MIT. It includes the pinned 22i Blender source archive linked by
 Mineclonia's model license. Exact correspondence to every downstream B3D/export
 modification remains unverified and is stated in the package notices.
 Engine binaries and DLLs are excluded; the Windows launcher fetches the official
-hash-pinned engine separately. See [the release guide](itch-release.md).
+hash-pinned engine separately. See [the release guide](github-release.md).
 
 No proprietary Minecraft/mod code, textures, sounds, models or jars were
 incorporated into the custom slice according to the handoff and inspected

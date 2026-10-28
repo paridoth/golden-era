@@ -493,7 +493,7 @@ Fresh external world creation and loading every game module from the extracted
 package were asserted. Existing unit/source checks and syntax/whitespace checks
 passed. Native Windows/PowerShell and itch app execution remain for the tester;
 only the game runtime was executed on Linux. No itch project/upload/publication
-was performed. [Upload guide and page text](itch-release.md) are ready.
+was performed. [Upload guide and page text](github-release.md) are ready.
 
 ## Desktop playtest 0.1.1 — 2026-10-19
 

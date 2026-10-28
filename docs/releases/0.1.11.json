@@ -1,0 +1,57 @@
+{
+  "version": "0.1.11",
+  "source_revision": "23647ce0ae05daf2175a32b1239f78e49b8765dc",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.11-windows.exe",
+      "size_bytes": 68577425,
+      "sha256": "89c67986643f3a75dc04bee6e870852a8a9f96bab5c9c6f6133fee9821e761c0",
+      "installed_files": 12552
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.11-linux.tar.gz",
+      "size_bytes": 63704081,
+      "sha256": "edf04b1c15f40cae16290b6b90ff383a1fe0f73f1c1f07c80953a2614a9c7cb8",
+      "files": 12543
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.11-windows-test.zip",
+      "size_bytes": 72206472,
+      "sha256": "372e7cded8fcf98dd7a367e447d84fb95a77f771a4b661138160db0ace6ebd8c",
+      "files": 12542
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "distribution": "GitHub releases only; itch.io dropped (user direction, 2026-10-28)",
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.11 (pre-release; installer labelled 'Windows installer (start here)' and linked at the top of the notes)",
+  "changes": [
+    "Ten ordered starter goals with small rewards; /goals lists them",
+    "Look-at info line with block name, mod and stored power; /lookinfo toggles it",
+    "Copper, iron, gold and diamond chests connected to Pipeworks tubes and filter-injectors",
+    "Elepower-charged jetpack: hold jump to fly, sneak to glide",
+    "Seared-brick smeltery: ore doubling, lava fuel, bronze/invar/electrum/brass alloys",
+    "Casting: drain, faucet (right-click, Mineclonia redstone or Mesecons), casting table and basin with a visible stream and cast items",
+    "Tinkers-style tools: casts from stone tools, string and sticks; heads, bindings and rods assemble into pickaxes, axes, shovels and swords; original CC0 part sprites"
+  ],
+  "validation": {
+    "github_ci": "PASS scripts/ci.sh on GitHub Actions at c1a7c47 (run 40681455836); 23647ce changes only START-HERE.txt",
+    "fast_suite": "PASS scripts/test.sh at 23647ce, including SMELTERY PASS",
+    "packaged_zip": "PASS verify and smoke: full factory, jetpack charging, smeltery melting/alloying/casting (also on redstone) and tool assembly through the extracted launcher with a fresh save; build-info reports 23647ce dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "windows_native_wine": "PASS tests/windows-native/run.py on the release EXE: silent install under WoW64 (12552 files match), shortcuts, saves preserved, old versions kept while the game runs and removed by the next install",
+    "windows_launcher": "PASS tests/windows/run.py",
+    "linux_archive": "PASS tests/linux/run.py --flatpak-runtime --farming-smoke including the real farm cycle and restart",
+    "published_assets": "The three downloaded GitHub release assets match the SHA-256 values above",
+    "real_client": "Smeltery stream, cast items on the table and basin, tool/part/cast icons and the assembled tool tooltip were seen in a real client before packaging"
+  },
+  "limitations": [
+    "LAN hosting between two machines remains untested",
+    "Native Windows, SmartScreen and hardware graphics remain unverified for this version",
+    "Tools: metal parts only, no modifiers, no Tool Station; extra durability applies to mining, not sword hits; the stock uses line shows the head's base value",
+    "Jetpack flight and tool use were exercised by automated tests, not hand-played in a client"
+  ],
+  "save_compatibility": "Existing 0.1.10 worlds, inventories and settings are kept"
+}

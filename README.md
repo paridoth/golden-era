@@ -17,7 +17,10 @@ the persistent world location and current coverage. This uses native equivalents
 and stock progression; exact Revelation recipes/systems will be added as play
 reveals the priorities. The earlier custom factory remains available separately.
 
-For sharing with a tester, see [the itch.io release guide](docs/itch-release.md).
+**Testers on Windows:** download the installer (`golden-era-playtest-<version>-windows.exe`,
+labelled "Windows installer (start here)") from the
+[latest release](https://github.com/paridoth/golden-era/releases) and open it.
+For building and publishing releases, see [the release guide](docs/github-release.md).
 The Windows EXE installs and launches automatically. A separate Linux archive
 uses an installed Luanti engine or the official Flatpak. Both include source,
 credits and license notices. New players can choose a supplied workshop or
@@ -90,7 +93,7 @@ python3 tests/playtest/run.py
 `./scripts/ci.sh` also runs the survival material, native automation, storage and
 machine-removal regressions. These use disposable worlds. See
 [playtest instructions](docs/playtest.md) for the active game and
-[the release guide](docs/itch-release.md) for packaging.
+[the release guide](docs/github-release.md) for packaging.
 
 The following bootstrap and custom-factory commands preserve the original
 prototype and its independent worlds.
