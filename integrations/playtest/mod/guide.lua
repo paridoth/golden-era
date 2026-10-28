@@ -40,7 +40,9 @@ local pages={
   "A Diamond Chest (108) is a Gold Chest between two diamonds, with glass rows above and below. Breaking a chest drops its contents. Pipeworks tubes and filter-injectors connect on every side but the front."},
  {title="Travel",text="Travelnet boxes teleport you between stations. Craft one with glass down both sides and iron ingot, block of redstone, iron ingot down the middle.\n\n"..
   "Place it, right-click, then name the station and a network. All of your stations with the same network name connect. Punch a box to refresh its station list, then right-click it to travel.\n\n"..
-  "The Elevator (iron ingots and glass) links boxes stacked above each other on different floors."},
+  "The Elevator (iron ingots and glass) links boxes stacked above each other on different floors.\n\n"..
+  "The Jetpack (steel ingots, a capacitor, a battery and two wound copper coils) works anywhere in your inventory. Hold jump to fly up; hold sneak while falling to glide down. "..
+  "It uses charge as you fly: put it in a power cell's charge slot to refill it."},
  {title="Exploring",text="Newly generated terrain can contain extra structures: desert oases, brick pyramids, birch forest temple ruins, graveyards, loggers' camps, sandstone obelisks and ice towers. Some hold loot.\n\n"..
   "Areas you have already visited do not change, so travel into new land to find them.\n\n"..
   "Rare wooden book towers stand in grassland. Their Wise Bookshelves matter for magic; see the Magic page."},

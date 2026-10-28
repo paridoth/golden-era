@@ -120,7 +120,7 @@ local function check_machine_buttons(generator)
  end
  core.log("action","ERA PLAYTEST BUTTONS: generator/planter/harvester callbacks cycle on/off/signal modes and return to Always on")
 end
-local chest_route_source,chest_route_target
+local chest_route_source,chest_route_target,jetpack_cell
 local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
@@ -214,6 +214,18 @@ local function run()
  local filter_def=core.registered_nodes["pipeworks:mese_filter"]
  filter_def.mesecons.effector.action_on(route_filter,core.get_node(route_filter))
  chest_route_target=route_target
+ -- Jetpack: crafted from Elepower parts and charged by a real power cell.
+ local s,c="elepower_dynamics:steel_ingot","elepower_dynamics:wound_copper_coil"
+ local jet_grid={s,"elepower_dynamics:capacitor",s,s,"elepower_dynamics:battery",s,c,"",c}
+ local jet_items={}
+ for k,item in ipairs(jet_grid) do jet_items[k]=ItemStack(item) end
+ eq(core.get_craft_result({method="normal",width=3,items=jet_items}).item:get_name(),"era_playtest:jetpack","Jetpack recipe")
+ assert(core.get_item_group("era_playtest:jetpack","ele_tool")>0,"Jetpack is an Elepower tool")
+ jetpack_cell=vector.new(3,200,6)
+ core.set_node(jetpack_cell,{name="elepower_machines:power_cell_0"})
+ core.get_meta(jetpack_cell):set_int("storage",5000)
+ core.get_meta(jetpack_cell):get_inventory():set_stack("src",1,"era_playtest:jetpack")
+ ele.helpers.start_timer(jetpack_cell)
  core.log("action","ERA PLAYTEST LOOKINFO: "..machine_info:gsub("\n"," | ").." ; "..supplies_info:gsub("\n"," | "))
  eq(inv(pulverizer):get_stack("src",1):get_count(),2,"Workshop starts with two raw iron")
  eq(fluid_lib.insert_into_buffer(tank,"buffer","mcl_core:water_source",1000),0,"Full water insertion")
@@ -241,11 +253,13 @@ local function run()
    local stored=inv(barrel):get_stack("main",1)
    if stored:get_name()=="mcl_core:iron_ingot" and stored:get_count()==4 and inv(chest_route_target):contains_item("main","mcl_core:cobble 64") then
     assert(inv(chest_route_source):is_empty("main"),"The diamond chest was emptied by the filter-injector")
+    local jet=inv(jetpack_cell):get_stack("src",1)
+    assert(jet:get_name()=="era_playtest:jetpack" and jet:get_meta():get_int("storage")>0,"A power cell charges the jetpack: "..jet:to_string())
     assert(observed_power and observed_dust and observed_furnace,"Observed native power, dust and furnace processing")
     assert(inv(pulverizer):is_empty("src") and inv(pulverizer):is_empty("dst"),"Pulverizer batch is complete and extracted")
     assert(inv(furnace):is_empty("src") and inv(furnace):is_empty("dst"),"Furnace batch is complete and extracted")
     assert(inv(generator):get_stack("src",1):get_count()<8,"Stock generator consumed coal")
-    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; selected recipes craft and water overflow/drain conserves volume")
+    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; selected recipes craft and water overflow/drain conserves volume")
    elseif core.get_us_time()-started>150*1000000 then
     error("Workshop timeout: generator="..core.get_meta(generator):get_string("infotext").."; pulverizer="..core.get_meta(pulverizer):get_string("infotext").."; furnace="..core.get_meta(furnace):get_string("infotext").."; output="..stored:to_string())
    else core.after(0.2,poll) end

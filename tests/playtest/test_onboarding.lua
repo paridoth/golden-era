@@ -78,6 +78,9 @@ mcl_gamemode={set_gamemode=function(p,mode)p.mode=mode;p.mode_writes=p.mode_writ
 awards={registered_awards={}}
 function awards.register_achievement(id,definition)assert(not awards.registered_awards[id]);awards.registered_awards[id]=definition end
 function awards.show_to(name)forms[name]={name="awards:awards"} end
+ele=ele or {}
+ele.register_tool=ele.register_tool or function()end
+playerphysics=playerphysics or {remove_physics_factor=function()end,add_physics_factor=function()end}
 pipeworks=pipeworks or {}
 pipeworks.after_place=pipeworks.after_place or function()end
 pipeworks.after_dig=pipeworks.after_dig or function()end
