@@ -120,6 +120,7 @@ local function check_machine_buttons(generator)
  end
  core.log("action","ERA PLAYTEST BUTTONS: generator/planter/harvester callbacks cycle on/off/signal modes and return to Always on")
 end
+local chest_route_source,chest_route_target
 local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
@@ -200,6 +201,19 @@ local function run()
  local diamond=vector.new(-2,200,6)
  core.get_meta(diamond):get_inventory():add_item("main","mcl_core:cobble 64")
  assert(table.concat(era_playtest.look_lines(diamond,"en"),"\n"):find("Slots used: 1 / 108",1,true),"Look-at counts diamond chest slots")
+ -- Pipeworks: a pulsed filter-injector pulls the cobble out through a tube into an iron chest.
+ chest_route_source=diamond
+ local route_filter,route_tube,route_target=vector.new(-1,200,6),vector.new(0,200,6),vector.new(1,200,6)
+ local east
+ for n=0,23 do if vector.equals(pipeworks.facedir_to_right_dir(n),{x=1,y=0,z=0}) then east=n;break end end
+ core.set_node(route_filter,{name="pipeworks:mese_filter",param2=east})
+ core.set_node(route_tube,{name="pipeworks:tube_1"})
+ core.set_node(route_target,{name="era_playtest:chest_iron"})
+ for x=-2,1 do pipeworks.scan_for_tube_objects(vector.new(x,200,6)) end
+ assert(core.registered_nodes["era_playtest:chest_iron"].tube.can_insert(route_target,nil,ItemStack("mcl_core:cobble 64")),"Iron chest accepts tube items")
+ local filter_def=core.registered_nodes["pipeworks:mese_filter"]
+ filter_def.mesecons.effector.action_on(route_filter,core.get_node(route_filter))
+ chest_route_target=route_target
  core.log("action","ERA PLAYTEST LOOKINFO: "..machine_info:gsub("\n"," | ").." ; "..supplies_info:gsub("\n"," | "))
  eq(inv(pulverizer):get_stack("src",1):get_count(),2,"Workshop starts with two raw iron")
  eq(fluid_lib.insert_into_buffer(tank,"buffer","mcl_core:water_source",1000),0,"Full water insertion")
@@ -225,12 +239,13 @@ local function run()
    if not inv(pulverizer):is_empty("dst") then observed_dust=true end
    if not inv(furnace):is_empty("src") or core.get_meta(furnace):get_int("src_time")>0 then observed_furnace=true end
    local stored=inv(barrel):get_stack("main",1)
-   if stored:get_name()=="mcl_core:iron_ingot" and stored:get_count()==4 then
+   if stored:get_name()=="mcl_core:iron_ingot" and stored:get_count()==4 and inv(chest_route_target):contains_item("main","mcl_core:cobble 64") then
+    assert(inv(chest_route_source):is_empty("main"),"The diamond chest was emptied by the filter-injector")
     assert(observed_power and observed_dust and observed_furnace,"Observed native power, dust and furnace processing")
     assert(inv(pulverizer):is_empty("src") and inv(pulverizer):is_empty("dst"),"Pulverizer batch is complete and extracted")
     assert(inv(furnace):is_empty("src") and inv(furnace):is_empty("dst"),"Furnace batch is complete and extracted")
     assert(inv(generator):get_stack("src",1):get_count()<8,"Stock generator consumed coal")
-    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; selected recipes craft and water overflow/drain conserves volume")
+    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; selected recipes craft and water overflow/drain conserves volume")
    elseif core.get_us_time()-started>150*1000000 then
     error("Workshop timeout: generator="..core.get_meta(generator):get_string("infotext").."; pulverizer="..core.get_meta(pulverizer):get_string("infotext").."; furnace="..core.get_meta(furnace):get_string("infotext").."; output="..stored:to_string())
    else core.after(0.2,poll) end

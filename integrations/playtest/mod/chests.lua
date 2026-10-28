@@ -1,7 +1,8 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- Larger chests in the spirit of Iron Chests: copper, iron, gold and diamond
 -- tiers with the same slot counts, each made from the previous chest. They
--- reuse Mineclonia's chest model and texture, tinted per tier.
+-- reuse Mineclonia's chest model and texture, tinted per tier, and accept
+-- Pipeworks tubes on every side but the front.
 local TIERS={
  {id="copper",name="Copper Chest",cols=9,rows=5,tint="#c8693c:150",metal="mcl_copper:copper_ingot",from="mcl_chests:chest"},
  {id="iron",name="Iron Chest",cols=9,rows=6,tint="#d6d6d6:170",metal="mcl_core:iron_ingot",from="era_playtest:chest_copper"},
@@ -48,13 +49,20 @@ for _,tier in ipairs(TIERS) do
   selection_box={type="fixed",fixed={-0.4375,-0.5,-0.4375,0.4375,0.375,0.4375}},
   collision_box={type="fixed",fixed={-0.4375,-0.5,-0.4375,0.4375,0.375,0.4375}},
   paramtype="light",paramtype2="facedir",is_ground_content=false,
-  groups={handy=1,pickaxey=1,container=2,deco_block=1,piglin_protected=1},
+  groups={handy=1,pickaxey=1,container=2,deco_block=1,piglin_protected=1,tubedevice=1,tubedevice_receiver=1},
   sounds=mcl_sounds and mcl_sounds.node_sound_metal_defaults() or nil,
   _mcl_hardness=3,_mcl_blast_resistance=6,
   on_construct=function(pos) core.get_meta(pos):get_inventory():set_size("main",slots) end,
   after_place_node=function(pos,_,itemstack)
    core.get_meta(pos):set_string("name",itemstack:get_meta():get_string("name"))
+   pipeworks.after_place(pos)
   end,
+  tube={
+   insert_object=function(pos,_,stack) return core.get_meta(pos):get_inventory():add_item("main",stack) end,
+   can_insert=function(pos,_,stack) return core.get_meta(pos):get_inventory():room_for_item("main",stack) end,
+   input_inventory="main",
+   connect_sides={left=1,right=1,back=1,top=1,bottom=1},
+  },
   on_rightclick=function(pos,_,clicker)
    if not clicker or not clicker:is_player() then return end
    local label=core.get_meta(pos):get_string("name")
@@ -64,7 +72,11 @@ for _,tier in ipairs(TIERS) do
   allow_metadata_inventory_move=function(pos,_,_,_,_,count,player) return allowed(pos,count,player) end,
   allow_metadata_inventory_put=function(pos,_,_,stack,player) return allowed(pos,stack:get_count(),player) end,
   allow_metadata_inventory_take=function(pos,_,_,stack,player) return allowed(pos,stack:get_count(),player) end,
-  after_dig_node=drop,
+  after_dig_node=function(pos,oldnode,oldmetadata,digger)
+   if drop then drop(pos,oldnode,oldmetadata,digger) end
+   pipeworks.after_dig(pos,oldnode,oldmetadata,digger)
+  end,
+  on_rotate=pipeworks.on_rotate,
  })
  local m,c=tier.metal,tier.from
  if tier.id=="diamond" then

@@ -37,7 +37,7 @@ local pages={
   "Plates, Silverin circuits and optic cable make a Network Controller and an Access Point. Connect storage and machines to the controller with optic cable. The Access Point searches everything on the network, and its Recursive Crafting Upgrade crafts missing ingredients for you.\n\n"..
   "Craft the Logistica Guide Book (sand, paper, sand in a column) for every machine and upgrade. Drawers and barrels still work; use whichever suits your base.\n\n"..
   "Bigger chests: surround a chest with eight copper ingots for a Copper Chest (45 slots), a Copper Chest with eight iron ingots for an Iron Chest (54), an Iron Chest with eight gold ingots for a Gold Chest (81). "..
-  "A Diamond Chest (108) is a Gold Chest between two diamonds, with glass rows above and below. Breaking a chest drops its contents."},
+  "A Diamond Chest (108) is a Gold Chest between two diamonds, with glass rows above and below. Breaking a chest drops its contents. Pipeworks tubes and filter-injectors connect on every side but the front."},
  {title="Travel",text="Travelnet boxes teleport you between stations. Craft one with glass down both sides and iron ingot, block of redstone, iron ingot down the middle.\n\n"..
   "Place it, right-click, then name the station and a network. All of your stations with the same network name connect. Punch a box to refresh its station list, then right-click it to travel.\n\n"..
   "The Elevator (iron ingots and glass) links boxes stacked above each other on different floors."},
