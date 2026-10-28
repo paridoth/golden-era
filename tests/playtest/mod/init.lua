@@ -120,7 +120,7 @@ local function check_machine_buttons(generator)
  end
  core.log("action","ERA PLAYTEST BUTTONS: generator/planter/harvester callbacks cycle on/off/signal modes and return to Always on")
 end
-local chest_route_source,chest_route_target,jetpack_cell
+local chest_route_source,chest_route_target,jetpack_cell,smeltery_pos
 local function run()
  eq(core.get_game_info().id,"golden_era_playtest","Isolated playtest game")
  assert(not core.get_modpath("era_thermal"),"Historical prototype must remain separate")
@@ -226,6 +226,26 @@ local function run()
  core.get_meta(jetpack_cell):set_int("storage",5000)
  core.get_meta(jetpack_cell):get_inventory():set_stack("src",1,"era_playtest:jetpack")
  ele.helpers.start_timer(jetpack_cell)
+ -- Smeltery: a real 3x3 structure melts two raw iron and an ingot with lava fuel.
+ local sbase=vector.new(40,200,40)
+ core.emerge_area(vector.offset(sbase,-1,-2,-1),vector.offset(sbase,5,3,5),function(_,_,left)
+  if left>0 then return end
+  checked(function()
+   for x=0,4 do for z=0,4 do for y=-1,2 do core.set_node(vector.offset(sbase,x,y,z),{name="air"}) end end end
+   for x=1,3 do for z=1,3 do core.set_node(vector.offset(sbase,x,-1,z),{name="era_playtest:seared_bricks"}) end end
+   for i=1,3 do
+    for _,o in ipairs({{i,0},{i,4},{0,i},{4,i}}) do core.set_node(vector.offset(sbase,o[1],0,o[2]),{name="era_playtest:seared_bricks"}) end
+   end
+   assert(core.forceload_block(vector.offset(sbase,2,0,2),true),"Activate the smeltery mapblock without a connected player")
+   smeltery_pos=vector.offset(sbase,2,0,0)
+   core.set_node(smeltery_pos,{name="era_playtest:smeltery_controller",param2=0})
+   local sinv=core.get_meta(smeltery_pos):get_inventory()
+   eq(sinv:get_size("melt"),9,"Real smeltery has one slot per interior block")
+   sinv:set_stack("melt",1,"mcl_raw_ores:raw_iron 2")
+   sinv:set_stack("melt",2,"mcl_core:iron_ingot")
+   sinv:set_stack("fuel",1,"mcl_buckets:bucket_lava")
+  end)
+ end)
  core.log("action","ERA PLAYTEST LOOKINFO: "..machine_info:gsub("\n"," | ").." ; "..supplies_info:gsub("\n"," | "))
  eq(inv(pulverizer):get_stack("src",1):get_count(),2,"Workshop starts with two raw iron")
  eq(fluid_lib.insert_into_buffer(tank,"buffer","mcl_core:water_source",1000),0,"Full water insertion")
@@ -253,13 +273,15 @@ local function run()
    local stored=inv(barrel):get_stack("main",1)
    if stored:get_name()=="mcl_core:iron_ingot" and stored:get_count()==4 and inv(chest_route_target):contains_item("main","mcl_core:cobble 64") then
     assert(inv(chest_route_source):is_empty("main"),"The diamond chest was emptied by the filter-injector")
+    assert(smeltery_pos and (era_playtest.smeltery_molten(core.get_meta(smeltery_pos)).iron or 0)==720,"Smeltery melted two raw iron and an ingot into 720 mB: "..(smeltery_pos and core.get_meta(smeltery_pos):get_string("infotext") or "not built"))
+    eq(inv(smeltery_pos):get_stack("fuel",1):get_name(),"mcl_buckets:bucket_empty","Smeltery used the lava bucket")
     local jet=inv(jetpack_cell):get_stack("src",1)
     assert(jet:get_name()=="era_playtest:jetpack" and jet:get_meta():get_int("storage")>0,"A power cell charges the jetpack: "..jet:to_string())
     assert(observed_power and observed_dust and observed_furnace,"Observed native power, dust and furnace processing")
     assert(inv(pulverizer):is_empty("src") and inv(pulverizer):is_empty("dst"),"Pulverizer batch is complete and extracted")
     assert(inv(furnace):is_empty("src") and inv(furnace):is_empty("dst"),"Furnace batch is complete and extracted")
     assert(inv(generator):get_stack("src",1):get_count()<8,"Stock generator consumed coal")
-    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; selected recipes craft and water overflow/drain conserves volume")
+    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; a smeltery melts raw iron into double metal; selected recipes craft and water overflow/drain conserves volume")
    elseif core.get_us_time()-started>150*1000000 then
     error("Workshop timeout: generator="..core.get_meta(generator):get_string("infotext").."; pulverizer="..core.get_meta(pulverizer):get_string("infotext").."; furnace="..core.get_meta(furnace):get_string("infotext").."; output="..stored:to_string())
    else core.after(0.2,poll) end
