@@ -7,13 +7,19 @@
 local INGOT=144
 local SEARED="default_stone_brick.png^[colorize:#3b3633:170"
 -- show: where the held item sits, how big it is and whether it lies flat.
-local SHAPES={["era_playtest:casting_table"]={shape="ingot",amount=INGOT,seconds=3,cast="era_playtest:ingot_cast",
+-- casts: what each cast in a table makes; tools.lua adds the tool-part casts.
+local SHAPES={["era_playtest:casting_table"]={casts={["era_playtest:ingot_cast"]={shape="ingot",amount=INGOT}},seconds=3,
   show={y=0.53,size=0.3,flat=true}},
  ["era_playtest:casting_basin"]={shape="block",amount=9*INGOT,seconds=6,show={y=0.05,size=0.42}}}
 local DISPLAY="era_playtest:cast_display"
 -- Molten colours, laid over lava.
 local COLORS={iron="#d8d8d8",gold="#ffd23c",copper="#e8783c",tin="#dfe8ee",lead="#6b6f8a",nickel="#d9d4a6",
  zinc="#c3cbc4",silver="#eef4ff",bronze="#c98f3e",invar="#b9c2b1",electrum="#f2e36e",brass="#e3b23e",steel="#8c8c8c"}
+era_playtest.metal_colors=COLORS
+-- Let a cast item make shape from amount mB on the casting table.
+function era_playtest.register_table_cast(cast,shape,amount)
+ SHAPES["era_playtest:casting_table"].casts[cast]={shape=shape,amount=amount}
+end
 
 local function objects_near(pos,radius)
  if core.objects_inside_radius then return core.objects_inside_radius(pos,radius) end
@@ -35,7 +41,7 @@ function era_playtest.cast_display_refresh(pos)
  local inv=meta:get_inventory()
  local item=meta:get_string("casting")
  if item=="" then item=inv:get_stack("output",1):get_name() end
- if item=="" and target.cast then item=inv:get_stack("cast",1):get_name() end
+ if item=="" and target.casts then item=inv:get_stack("cast",1):get_name() end
  if item=="" or not core.registered_items[item] then return end
  local obj=core.add_entity(at,DISPLAY)
  if not obj then return end
@@ -91,14 +97,20 @@ function era_playtest.faucet_pour(pos)
  local meta=core.get_meta(below)
  local inv=meta:get_inventory()
  if meta:get_string("casting")~="" or not inv:is_empty("output") then return false,"Take the finished casting out first." end
- if target.cast and inv:get_stack("cast",1):get_name()~=target.cast then return false,"The Casting Table needs an Ingot Cast." end
+ local shape,amount=target.shape,target.amount
+ if target.casts then
+  local cast=target.casts[inv:get_stack("cast",1):get_name()]
+  if not cast then return false,"The Casting Table needs a cast, such as an Ingot Cast." end
+  shape,amount=cast.shape,cast.amount
+ end
+ local label=shape:gsub("_"," ")
  local cmeta=core.get_meta(controller)
  local metal=era_playtest.smeltery_selected(cmeta)
  if not metal then return false,"The smeltery has no molten metal." end
- local product=era_playtest.smeltery_product(metal,target.shape)
- if not product then return false,"Molten "..era_playtest.metal_label(metal).." cannot be cast as a "..target.shape.."." end
- if not era_playtest.smeltery_drain(controller,target.amount) then
-  return false,"Not enough molten "..era_playtest.metal_label(metal)..": a "..target.shape.." needs "..target.amount.." mB."
+ local product=era_playtest.smeltery_product(metal,shape)
+ if not product then return false,"Molten "..era_playtest.metal_label(metal).." cannot be cast as a "..label.."." end
+ if not era_playtest.smeltery_drain(controller,amount) then
+  return false,"Not enough molten "..era_playtest.metal_label(metal)..": a "..label.." needs "..amount.." mB."
  end
  meta:set_string("casting",product)
  meta:set_string("infotext","Cooling: "..core.registered_items[product].description:match("^[^\n]*"))
@@ -136,8 +148,8 @@ local function register_caster(name,def,box)
    local meta=core.get_meta(pos)
    local inv=meta:get_inventory()
    inv:set_size("output",1)
-   if target.cast then inv:set_size("cast",1) end
-   meta:set_string("formspec",caster_formspec(def.description,target.cast))
+   if target.casts then inv:set_size("cast",1) end
+   meta:set_string("formspec",caster_formspec(def.description,target.casts))
   end,
   on_destruct=function(pos) core.after(0,era_playtest.cast_display_refresh,pos) end,
   on_timer=function(pos)
@@ -150,7 +162,7 @@ local function register_caster(name,def,box)
   on_metadata_inventory_take=function(pos) era_playtest.cast_display_refresh(pos) end,
   allow_metadata_inventory_put=function(pos,listname,_,stack,player)
    if protected(pos,player) or listname~="cast" or core.get_meta(pos):get_string("casting")~="" then return 0 end
-   return stack:get_name()==target.cast and 1 or 0
+   return target.casts and target.casts[stack:get_name()] and 1 or 0
   end,
   allow_metadata_inventory_take=function(pos,listname,_,stack,player)
    if protected(pos,player) or (listname=="cast" and core.get_meta(pos):get_string("casting")~="") then return 0 end

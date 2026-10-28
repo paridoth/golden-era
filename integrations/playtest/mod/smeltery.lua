@@ -56,6 +56,9 @@ function era_playtest.smeltery_product(metal_name,shape)
  for _,item in ipairs((PRODUCTS[metal_name] or {})[shape] or {}) do
   if core.registered_items[item] then return item end
  end
+ -- Tool parts from tools.lua.
+ local part="era_playtest:part_"..shape.."_"..metal_name
+ if core.registered_items[part] then return part end
 end
 function era_playtest.metal_label(metal_name)
  for _,melt in pairs(MELTS) do if melt.metal==metal_name then return melt.label end end
