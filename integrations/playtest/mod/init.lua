@@ -204,6 +204,7 @@ core.register_chatcommand("explore",{description="Travel to the survival spawn",
 dofile(core.get_modpath("era_playtest").."/guide.lua")
 dofile(core.get_modpath("era_playtest").."/goals.lua")
 dofile(core.get_modpath("era_playtest").."/lookinfo.lua")
+dofile(core.get_modpath("era_playtest").."/chests.lua")
 dofile(core.get_modpath("era_playtest").."/character.lua")
 dofile(core.get_modpath("era_playtest").."/onboarding.lua")
 dofile(core.get_modpath("era_playtest").."/animals.lua")

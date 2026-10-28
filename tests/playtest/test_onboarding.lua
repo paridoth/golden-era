@@ -47,6 +47,8 @@ function core.register_on_shutdown()end
 function core.register_on_mods_loaded()end
 function core.register_globalstep()end
 function core.register_on_craft()end
+function core.register_node()end
+function core.register_craft()end
 function core.after(_,callback)timers[#timers+1]=callback end
 function core.serialize(value)return value end
 function core.deserialize(value)return value~="" and value or nil end

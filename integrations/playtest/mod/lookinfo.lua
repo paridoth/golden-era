@@ -52,7 +52,7 @@ local function set_text(player,text)
   if huds[name] then player:hud_remove(huds[name]);huds[name]=nil end
  elseif huds[name] then player:hud_change(huds[name],"text",text)
  else
-  huds[name]=player:hud_add({type="text",position={x=0.5,y=0.04},alignment={x=0,y=1},
+  huds[name]=player:hud_add({type="text",position={x=0.5,y=0.16},alignment={x=0,y=1},
    number=0xFFFFFF,size={x=1,y=1},z_index=60,text=text})
  end
 end

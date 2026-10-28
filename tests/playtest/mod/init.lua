@@ -181,6 +181,25 @@ local function run()
  local supplies_info=table.concat(assert(era_playtest.look_lines(positions.supplies,"en")),"\n")
  assert(supplies_info:find("Slots used: %d+ / %d+") and supplies_info:find("[Mineclonia]",1,true),"Look-at shows container use: "..supplies_info)
  eq(era_playtest.look_lines(vector.new(0,202,0),"en"),nil,"Air has no look-at info")
+ -- Tiered chests: slot counts, upgrade recipes and look-at use.
+ local previous="mcl_chests:chest"
+ for i,tier in ipairs(era_playtest.chest_tiers) do
+  local name="era_playtest:chest_"..tier.id
+  local pos=vector.new(-6+i,200,6)
+  core.set_node(pos,{name=name})
+  eq(core.get_meta(pos):get_inventory():get_size("main"),({45,54,81,108})[i],tier.name.." slot count")
+  local m,g=tier.metal,"mcl_core:glass"
+  local grid=tier.id=="diamond" and {g,g,g,m,previous,m,g,g,g} or {m,m,m,m,previous,m,m,m,m}
+  local items={}
+  for k,item in ipairs(grid) do items[k]=ItemStack(item) end
+  local result=core.get_craft_result({method="normal",width=3,items=items})
+  eq(result.item:get_name(),name,tier.name.." is crafted from "..previous)
+  assert(era_playtest.chest_formspec(pos,tier,tier.name):find("main;0.375,0.75;"..tier.cols..","..tier.rows..";",1,true),tier.name.." screen shows every slot")
+  previous=name
+ end
+ local diamond=vector.new(-2,200,6)
+ core.get_meta(diamond):get_inventory():add_item("main","mcl_core:cobble 64")
+ assert(table.concat(era_playtest.look_lines(diamond,"en"),"\n"):find("Slots used: 1 / 108",1,true),"Look-at counts diamond chest slots")
  core.log("action","ERA PLAYTEST LOOKINFO: "..machine_info:gsub("\n"," | ").." ; "..supplies_info:gsub("\n"," | "))
  eq(inv(pulverizer):get_stack("src",1):get_count(),2,"Workshop starts with two raw iron")
  eq(fluid_lib.insert_into_buffer(tank,"buffer","mcl_core:water_source",1000),0,"Full water insertion")
