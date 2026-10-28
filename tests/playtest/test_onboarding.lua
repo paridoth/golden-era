@@ -78,6 +78,10 @@ mcl_gamemode={set_gamemode=function(p,mode)p.mode=mode;p.mode_writes=p.mode_writ
 awards={registered_awards={}}
 function awards.register_achievement(id,definition)assert(not awards.registered_awards[id]);awards.registered_awards[id]=definition end
 function awards.show_to(name)forms[name]={name="awards:awards"} end
+pipeworks=pipeworks or {}
+pipeworks.after_place=pipeworks.after_place or function()end
+pipeworks.after_dig=pipeworks.after_dig or function()end
+pipeworks.on_rotate=pipeworks.on_rotate or function()end
 dofile(root.."/integrations/playtest/mod/init.lua")
 -- Starter goals have their own test; keep their screen line out of these HUD checks.
 for i=#era_playtest.goals,1,-1 do era_playtest.goals[i]=nil end
