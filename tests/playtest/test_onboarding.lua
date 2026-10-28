@@ -49,6 +49,8 @@ function core.register_globalstep()end
 function core.register_on_craft()end
 function core.register_node()end
 function core.register_craftitem()end
+function core.register_entity()end
+function core.register_lbm()end
 function core.register_craft()end
 function core.after(_,callback)timers[#timers+1]=callback end
 function core.serialize(value)return value end

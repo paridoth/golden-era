@@ -2,11 +2,67 @@
 -- Casting in the spirit of Tinkers' Construct: a Seared Drain in a smeltery
 -- wall, a Faucet on the drain's outside and, below the faucet, a Casting
 -- Table (with an Ingot Cast, for ingots) or a Casting Basin (for blocks).
--- Right-clicking the faucet pours the metal chosen on the controller.
+-- Right-clicking the faucet, or powering it with redstone or Mesecons, pours
+-- the metal chosen on the controller. The table and basin show what they hold.
 local INGOT=144
 local SEARED="default_stone_brick.png^[colorize:#3b3633:170"
-local SHAPES={["era_playtest:casting_table"]={shape="ingot",amount=INGOT,seconds=3,cast="era_playtest:ingot_cast"},
- ["era_playtest:casting_basin"]={shape="block",amount=9*INGOT,seconds=6}}
+-- show: where the held item sits, how big it is and whether it lies flat.
+local SHAPES={["era_playtest:casting_table"]={shape="ingot",amount=INGOT,seconds=3,cast="era_playtest:ingot_cast",
+  show={y=0.53,size=0.3,flat=true}},
+ ["era_playtest:casting_basin"]={shape="block",amount=9*INGOT,seconds=6,show={y=0.05,size=0.42}}}
+local DISPLAY="era_playtest:cast_display"
+-- Molten colours, laid over lava.
+local COLORS={iron="#d8d8d8",gold="#ffd23c",copper="#e8783c",tin="#dfe8ee",lead="#6b6f8a",nickel="#d9d4a6",
+ zinc="#c3cbc4",silver="#eef4ff",bronze="#c98f3e",invar="#b9c2b1",electrum="#f2e36e",brass="#e3b23e",steel="#8c8c8c"}
+
+local function objects_near(pos,radius)
+ if core.objects_inside_radius then return core.objects_inside_radius(pos,radius) end
+ local list,i=core.get_objects_inside_radius(pos,radius),0
+ return function() i=i+1;return list[i] end
+end
+
+-- Show the casting, or else the cast, on top of a table or inside a basin.
+function era_playtest.cast_display_refresh(pos)
+ local node=core.get_node(pos)
+ local target=SHAPES[node.name]
+ local at=vector.offset(pos,0,target and target.show.y or 0.3,0)
+ for obj in objects_near(at,0.3) do
+  local ent=obj:get_luaentity()
+  if ent and ent.name==DISPLAY then obj:remove() end
+ end
+ if not target then return end
+ local meta=core.get_meta(pos)
+ local inv=meta:get_inventory()
+ local item=meta:get_string("casting")
+ if item=="" then item=inv:get_stack("output",1):get_name() end
+ if item=="" and target.cast then item=inv:get_stack("cast",1):get_name() end
+ if item=="" or not core.registered_items[item] then return end
+ local obj=core.add_entity(at,DISPLAY)
+ if not obj then return end
+ local size=target.show.size
+ obj:set_properties({wield_item=item,visual_size={x=size,y=size}})
+ if target.show.flat then obj:set_rotation({x=math.pi/2,y=0,z=0}) end
+end
+
+core.register_entity(DISPLAY,{
+ initial_properties={visual="wielditem",wield_item="",visual_size={x=0.3,y=0.3},
+  physical=false,pointable=false,collisionbox={0,0,0,0,0,0},static_save=false},
+ on_activate=function(self) self.object:set_armor_groups({immortal=1}) end,
+})
+
+-- A falling stream of molten metal from the faucet's spout into the target below.
+local function pour_stream(pos,metal,seconds,target)
+ local dir=core.facedir_to_dir(core.get_node(pos).param2)
+ local spout=vector.add(vector.offset(pos,0,-0.15,0),vector.multiply(dir,0.2))
+ local floor=target=="era_playtest:casting_basin" and pos.y-1.25 or pos.y-0.47
+ local speed=4
+ core.add_particlespawner({amount=math.ceil(seconds*60),time=seconds,
+  minpos=vector.offset(spout,-0.04,0,-0.04),maxpos=vector.offset(spout,0.04,0,0.04),
+  minvel={x=0,y=-speed,z=0},maxvel={x=0,y=-speed,z=0},
+  minexptime=(spout.y-floor)/speed,maxexptime=(spout.y-floor)/speed,minsize=2.6,maxsize=3.2,
+  texture="default_lava_flowing_animated.png^[verticalframe:64:0^[colorize:"..(COLORS[metal] or "#ff8800")..":140",
+  glow=13})
+end
 
 -- The controller whose wall contains this drain.
 function era_playtest.drain_controller(pos)
@@ -47,6 +103,9 @@ function era_playtest.faucet_pour(pos)
  meta:set_string("casting",product)
  meta:set_string("infotext","Cooling: "..core.registered_items[product].description:match("^[^\n]*"))
  core.get_node_timer(below):start(target.seconds)
+ -- The stream runs for most of the cooling time; the casting appears when it ends.
+ pour_stream(pos,metal,target.seconds*0.6,core.get_node(below).name)
+ core.after(target.seconds*0.6,era_playtest.cast_display_refresh,below)
  return true
 end
 
@@ -80,11 +139,15 @@ local function register_caster(name,def,box)
    if target.cast then inv:set_size("cast",1) end
    meta:set_string("formspec",caster_formspec(def.description,target.cast))
   end,
+  on_destruct=function(pos) core.after(0,era_playtest.cast_display_refresh,pos) end,
   on_timer=function(pos)
    local meta=core.get_meta(pos)
    meta:get_inventory():set_stack("output",1,meta:get_string("casting"))
    meta:set_string("casting","");meta:set_string("infotext","")
+   era_playtest.cast_display_refresh(pos)
   end,
+  on_metadata_inventory_put=function(pos) era_playtest.cast_display_refresh(pos) end,
+  on_metadata_inventory_take=function(pos) era_playtest.cast_display_refresh(pos) end,
   allow_metadata_inventory_put=function(pos,listname,_,stack,player)
    if protected(pos,player) or listname~="cast" or core.get_meta(pos):get_string("casting")~="" then return 0 end
    return stack:get_name()==target.cast and 1 or 0
@@ -114,8 +177,10 @@ core.register_node("era_playtest:seared_drain",{description="Seared Drain",
  groups={pickaxey=1,seared=1},sounds=mcl_sounds and mcl_sounds.node_sound_stone_defaults() or nil,
  _mcl_hardness=3,_mcl_blast_resistance=9})
 
+-- Pour on a rising redstone or Mesecons signal; the result goes to nobody, so failures stay quiet.
+local function powered_pour(pos) era_playtest.faucet_pour(pos) end
 core.register_node("era_playtest:faucet",{description="Faucet",
- _tt_help="Place on the outside of a Seared Drain, above a casting table or basin.\nRight-click to pour.",
+ _tt_help="Place on the outside of a Seared Drain, above a casting table or basin.\nRight-click or power it with redstone to pour.",
  drawtype="nodebox",node_box={type="fixed",fixed={{-0.25,-0.125,0.125,0.25,0.125,0.5},{-0.25,-0.125,0.125,-0.125,0.25,0.5},{0.125,-0.125,0.125,0.25,0.25,0.5}}},
  tiles={SEARED},paramtype="light",paramtype2="facedir",is_ground_content=false,sunlight_propagates=true,
  groups={pickaxey=1},sounds=mcl_sounds and mcl_sounds.node_sound_stone_defaults() or nil,
@@ -125,7 +190,19 @@ core.register_node("era_playtest:faucet",{description="Faucet",
   local ok,message=era_playtest.faucet_pour(pos)
   if not ok then core.chat_send_player(clicker:get_player_name(),message) end
   return itemstack
- end})
+ end,
+ _mcl_redstone={connects_to=function() return true end,update=function(pos)
+  local meta=core.get_meta(pos)
+  local on=mcl_redstone.get_power(pos)~=0
+  if on and meta:get_int("powered")==0 then powered_pour(pos) end
+  meta:set_int("powered",on and 1 or 0)
+ end},
+ mesecons={effector={action_on=powered_pour}},
+})
+
+-- Displays are not saved with the map, so put them back when a block loads.
+core.register_lbm({name="era_playtest:cast_displays",nodenames={"era_playtest:casting_table","era_playtest:casting_basin"},
+ run_at_every_load=true,action=function(pos) era_playtest.cast_display_refresh(pos) end})
 
 core.register_craftitem("era_playtest:ingot_cast",{description="Ingot Cast",
  _tt_help="Goes in a Casting Table to cast ingots.",inventory_image="default_clay_brick.png^[colorize:#c9a227:150"})

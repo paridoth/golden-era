@@ -274,7 +274,20 @@ local function run()
      core.after(4,function() checked(function()
       eq(core.get_meta(cast_table):get_inventory():get_stack("output",1):get_name(),"elepower_dynamics:bronze_ingot","The table casts a bronze ingot")
       eq(era_playtest.smeltery_molten(core.get_meta(smeltery_pos)).bronze,288,"Bronze casting used 144 mB")
-      smeltery_cast_ok=true
+      local shown
+      for _,obj in ipairs(core.get_objects_inside_radius(vector.offset(cast_table,0,0.53,0),0.3)) do
+       local ent=obj:get_luaentity()
+       if ent and ent.name=="era_playtest:cast_display" then shown=obj:get_properties().wield_item end
+      end
+      eq(shown,"elepower_dynamics:bronze_ingot","The table shows the bronze ingot on top")
+      core.get_meta(cast_table):get_inventory():set_stack("output",1,"")
+      -- A redstone block beside the faucet pours without a player.
+      core.set_node(vector.offset(table_faucet,0,1,0),{name="mcl_redstone_torch:redstoneblock"})
+      core.after(5,function() checked(function()
+       eq(core.get_meta(cast_table):get_inventory():get_stack("output",1):get_name(),"elepower_dynamics:bronze_ingot","Redstone power makes the faucet pour")
+       eq(era_playtest.smeltery_molten(core.get_meta(smeltery_pos)).bronze,144,"The powered pour used 144 mB")
+       smeltery_cast_ok=true
+      end) end)
      end) end)
     end) end)
    end) end)
@@ -315,7 +328,7 @@ local function run()
     assert(inv(pulverizer):is_empty("src") and inv(pulverizer):is_empty("dst"),"Pulverizer batch is complete and extracted")
     assert(inv(furnace):is_empty("src") and inv(furnace):is_empty("dst"),"Furnace batch is complete and extracted")
     assert(inv(generator):get_stack("src",1):get_count()<8,"Stock generator consumed coal")
-    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; a smeltery melts raw iron into double metal, mixes bronze, and a faucet casts both into ingots; selected recipes craft and water overflow/drain conserves volume")
+    finish(true,"playable workshop: stock coal generator/conduits power two raw iron into four ingots; stock Mesecons pulses, filter-injectors and tubes collect all four in barrel; a filter-injector empties a diamond chest into an iron chest; a power cell charges the jetpack; a smeltery melts raw iron into double metal, mixes bronze, and a faucet casts both into ingots, shown on the table, also on redstone power; selected recipes craft and water overflow/drain conserves volume")
    elseif core.get_us_time()-started>150*1000000 then
     error("Workshop timeout: generator="..core.get_meta(generator):get_string("infotext").."; pulverizer="..core.get_meta(pulverizer):get_string("infotext").."; furnace="..core.get_meta(furnace):get_string("infotext").."; output="..stored:to_string())
    else core.after(0.2,poll) end
