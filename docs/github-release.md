@@ -1,8 +1,9 @@
 # Golden Era: GitHub tester releases
 
 Golden Era is shared through GitHub releases only (user direction, 2026-10-28).
-Each version is a pre-release on https://github.com/paridoth/golden-era/releases
-with three files:
+Each version is a full release, marked latest, so
+https://github.com/paridoth/golden-era/releases/latest always opens the newest
+one. It has three files:
 
 - `golden-era-playtest-<version>-windows.exe`, labelled
   **Windows installer (start here)**. The release notes open with a direct
@@ -64,11 +65,11 @@ building a new release. Verification commands are read-only.
 
 ## Publishing
 
-Publishing needs the user's go-ahead. Create the pre-release from the built
+Publishing needs the user's go-ahead. Create the release from the built
 revision, labelling the installer so it stands out:
 
 ```sh
-gh release create v<version> --target <revision> --prerelease \
+gh release create v<version> --target <revision> --latest \
   --title "Golden Era <version>" --notes-file <notes.md> \
   "dist/golden-era-playtest-<version>-windows.exe#Windows installer (start here)" \
   "dist/golden-era-playtest-<version>-windows-test.zip#Windows ZIP fallback" \

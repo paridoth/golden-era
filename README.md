@@ -19,7 +19,7 @@ reveals the priorities. The earlier custom factory remains available separately.
 
 **Testers on Windows:** download the installer (`golden-era-playtest-<version>-windows.exe`,
 labelled "Windows installer (start here)") from the
-[latest release](https://github.com/paridoth/golden-era/releases) and open it.
+[latest release](https://github.com/paridoth/golden-era/releases/latest) and open it.
 For building and publishing releases, see [the release guide](docs/github-release.md).
 The Windows EXE installs and launches automatically. A separate Linux archive
 uses an installed Luanti engine or the official Flatpak. Both include source,

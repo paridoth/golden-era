@@ -26,7 +26,7 @@
   "engine_bundled": false,
   "code_signed": false,
   "distribution": "GitHub releases only; itch.io dropped (user direction, 2026-10-28)",
-  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.11 (pre-release; installer labelled 'Windows installer (start here)' and linked at the top of the notes)",
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.11 (published as a pre-release, then made the full latest release the same day; installer labelled 'Windows installer (start here)' and linked at the top of the notes)",
   "changes": [
     "Ten ordered starter goals with small rewards; /goals lists them",
     "Look-at info line with block name, mod and stored power; /lookinfo toggles it",
