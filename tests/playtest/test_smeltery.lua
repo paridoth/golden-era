@@ -97,4 +97,25 @@ meta:set_string("molten","iron="..(9*8*144-100))
 inv:set_stack("melt",3,stack("mcl_core:iron_ingot",1))
 for _=1,6 do era_playtest.smeltery_tick(controller,1) end
 eq(inv:get_stack("melt",3):is_empty(),false,"No melting past capacity")
-print("SMELTERY PASS: structure size/layers/holes/walls, lava fuel, ore doubling, idle fuel kept, capacity respected")
+
+-- Alloys mix in Elepower's ratios and keep the total volume.
+local pool={copper=288,tin=144}
+eq(era_playtest.smeltery_alloy(pool),true,"Copper and tin mix")
+eq(pool.bronze,432,"Two copper and one tin make three bronze");eq(pool.copper,nil,"Copper used up");eq(pool.tin,nil,"Tin used up")
+pool={copper=144,tin=144}
+era_playtest.smeltery_alloy(pool)
+eq(pool.bronze,216,"Copper limits the bronze");eq(pool.tin,72,"Spare tin stays molten")
+pool={iron=432,nickel=144,gold=576}
+era_playtest.smeltery_alloy(pool)
+eq(pool.electrum,864,"Invar made in the same step mixes into electrum");eq(pool.invar,288,"Spare invar stays");eq(pool.gold,nil,"Gold used up")
+pool={copper=144,iron=144}
+eq(era_playtest.smeltery_alloy(pool),false,"Unrelated metals do not mix")
+pool={copper=8,tin=4}
+eq(era_playtest.smeltery_alloy(pool),false,"Less than one part does not mix")
+-- The controller mixes on its tick, even without fuel.
+meta:set_string("molten","copper=288;tin=144")
+meta:set_float("fuel",0)
+inv:set_stack("melt",3,stack(nil))
+era_playtest.smeltery_tick(controller,1)
+eq(era_playtest.smeltery_molten(meta).bronze,432,"The smeltery mixes bronze")
+print("SMELTERY PASS: structure size/layers/holes/walls, lava fuel, ore doubling, idle fuel kept, capacity respected, alloys")

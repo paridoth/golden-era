@@ -3,7 +3,8 @@
 -- bricks; a ring of seared bricks around an air interior, on a seared floor,
 -- with a controller in the wall forms the smeltery. Lava buckets fuel it and
 -- it melts ores (double), ingots, nuggets and blocks into stored molten metal
--- measured in mB, 144 per ingot. casting.lua pours it back out.
+-- measured in mB, 144 per ingot. Molten metals mix into alloys in the same
+-- ratios as Elepower's alloy furnace. casting.lua pours it back out.
 local INGOT,MAX_SIDE,MAX_LAYERS=144,7,8
 local PER_BLOCK=8*INGOT -- molten capacity per interior block
 local LAVA_SECONDS=150
@@ -24,6 +25,11 @@ for _,m in ipairs({"tin","lead","nickel","zinc","silver"}) do
  metal(m,m:gsub("^%l",string.upper),{[e.."_ingot"]=INGOT,[e.."_lump"]=2*INGOT,[e.."_block"]=9*INGOT})
 end
 metal("silver","Silver",{["moreores:silver_ingot"]=INGOT,["moreores:silver_lump"]=2*INGOT,["moreores:silver_block"]=9*INGOT})
+for _,m in ipairs({"bronze","invar","electrum","steel"}) do
+ local e="elepower_dynamics:"..m
+ metal(m,m:gsub("^%l",string.upper),{[e.."_ingot"]=INGOT,[e.."_block"]=9*INGOT})
+end
+metal("brass","Brass",{["basic_materials:brass_ingot"]=INGOT,["basic_materials:brass_block"]=9*INGOT})
 era_playtest.smeltery_melts=MELTS
 -- Cast products per metal: the first registered ingot and block.
 local PRODUCTS={iron={ingot={"mcl_core:iron_ingot"},block={"mcl_core:ironblock"}},
@@ -32,6 +38,20 @@ local PRODUCTS={iron={ingot={"mcl_core:iron_ingot"},block={"mcl_core:ironblock"}
 for _,m in ipairs({"tin","lead","nickel","zinc","silver"}) do
  PRODUCTS[m]={ingot={"elepower_dynamics:"..m.."_ingot","moreores:"..m.."_ingot"},block={"elepower_dynamics:"..m.."_block","moreores:"..m.."_block"}}
 end
+for _,m in ipairs({"bronze","invar","electrum","steel"}) do
+ PRODUCTS[m]={ingot={"elepower_dynamics:"..m.."_ingot"},block={"elepower_dynamics:"..m.."_block"}}
+end
+PRODUCTS.brass={ingot={"basic_materials:brass_ingot"},block={"basic_materials:brass_block"}}
+-- Alloys in order of priority: parts of each input make out parts of the alloy.
+-- Invar mixes before electrum, which is made from it.
+local ALLOYS={
+ {out="bronze",parts=3,inputs={copper=2,tin=1}},
+ {out="invar",parts=4,inputs={iron=3,nickel=1}},
+ {out="electrum",parts=3,inputs={gold=2,invar=1}},
+ {out="brass",parts=3,inputs={copper=2,silver=1}},
+}
+era_playtest.smeltery_alloys=ALLOYS
+local PART=8 -- mB per alloy part; an ingot is 18 parts
 function era_playtest.smeltery_product(metal_name,shape)
  for _,item in ipairs((PRODUCTS[metal_name] or {})[shape] or {}) do
   if core.registered_items[item] then return item end
@@ -77,6 +97,26 @@ end
 
 local function molten(meta) return core.deserialize(meta:get_string("molten")) or {} end
 local function total(pool) local sum=0 for _,amount in pairs(pool) do sum=sum+amount end return sum end
+-- Mix every alloy whose inputs are all present; returns true when anything mixed.
+function era_playtest.smeltery_alloy(pool)
+ local mixed=false
+ for _,alloy in ipairs(ALLOYS) do
+  local batches
+  for name,parts in pairs(alloy.inputs) do
+   local n=math.floor((pool[name] or 0)/(parts*PART))
+   batches=batches and math.min(batches,n) or n
+  end
+  if batches>0 then
+   for name,parts in pairs(alloy.inputs) do
+    pool[name]=pool[name]-batches*parts*PART
+    if pool[name]==0 then pool[name]=nil end
+   end
+   pool[alloy.out]=(pool[alloy.out] or 0)+batches*alloy.parts*PART
+   mixed=true
+  end
+ end
+ return mixed
+end
 era_playtest.smeltery_molten=molten
 -- The metal a faucet pours: the chosen one while any is left, otherwise the first by name.
 function era_playtest.smeltery_selected(meta)
@@ -187,6 +227,7 @@ function era_playtest.smeltery_tick(pos,dtime)
    end
   end
  end
+ if shape then era_playtest.smeltery_alloy(pool) end
  meta:set_float("fuel",fuel)
  meta:set_string("molten",core.serialize(pool))
  meta:set_string("formspec",formspec(pos,shape,reason,pool,fuel))
