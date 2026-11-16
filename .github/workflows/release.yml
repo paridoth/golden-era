@@ -73,6 +73,10 @@ jobs:
           python3 scripts/package-linux.py 2>&1 | tee tools/release-evidence/linux.log
           python3 tests/linux/run.py dist/golden-era-playtest-$v-linux.tar.gz --farming-smoke 2>&1 | tee tools/release-evidence/linux-test.log
       - name: Windows launcher command check
+        # The progress line is sized from the console width; a runner has no
+        # terminal, so give PowerShell a terminal type as a tester's console would.
+        env:
+          TERM: xterm-256color
         run: python3 tests/windows/run.py --fetch-tool 2>&1 | tee tools/release-evidence/windows-launcher.log
       - name: Installer under repository-local Wine
         continue-on-error: true
