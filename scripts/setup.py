@@ -19,7 +19,14 @@ if '--assemble-only' not in sys.argv:
  for pkg in json.loads(pathlib.Path('build-deps.lock.json').read_text()):
   candidates=[f for f in debs.glob('*.deb') if hashlib.sha256(f.read_bytes()).hexdigest()==pkg['sha256']]
   if not candidates:
-   run(['apt-get','download',pkg['name']+'='+pkg['version']],cwd=debs)
+   if subprocess.run(['apt-get','download',pkg['name']+'='+pkg['version']],cwd=debs).returncode:
+    # A superseded update leaves the apt index and archive pool; Launchpad keeps
+    # every published build. The same exact file is fetched and hash-checked below.
+    filename=pkg['name']+'_'+pkg['version'].split(':',1)[-1]+'_'+pkg['architecture']+'.deb'
+    print('apt-get could not download '+filename+'; trying the Launchpad archive copy',file=sys.stderr)
+    import urllib.request
+    with urllib.request.urlopen('https://launchpad.net/ubuntu/+archive/primary/+files/'+filename,timeout=120) as response:
+     (debs/filename).write_bytes(response.read())
    candidates=[f for f in debs.glob('*.deb') if hashlib.sha256(f.read_bytes()).hexdigest()==pkg['sha256']]
   if len(candidates)!=1: raise SystemExit('Missing or mismatched dependency: '+pkg['name'])
   run(['dpkg-deb','-x',candidates[0],prefix])

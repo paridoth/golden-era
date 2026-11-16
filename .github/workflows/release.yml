@@ -45,6 +45,7 @@ jobs:
       - name: Build engine and run the fast suite
         run: |
           mkdir -p tools/release-evidence
+          sudo apt-get update -qq   # refresh the runner's package index only; nothing is installed
           ./scripts/setup.sh 2>&1 | tee tools/release-evidence/setup.log
           ./scripts/test.sh 2>&1 | tee tools/release-evidence/test.log
       - name: Assemble the playtest game

@@ -102,7 +102,11 @@ def setup_tools(fetch):
         matches = [path for path in cache.glob("*.deb") if path.stat().st_size == entry["size"]
                    and hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"]]
         if not matches and fetch:
-            subprocess.run(["apt-get", "download", entry["name"] + "=" + entry["version"]], cwd=cache, check=True)
+            if subprocess.run(["apt-get", "download", entry["name"] + "=" + entry["version"]], cwd=cache).returncode:
+                # Superseded updates leave the apt index; Launchpad keeps the exact file, hash-checked below.
+                import urllib.request
+                with urllib.request.urlopen("https://launchpad.net/ubuntu/+archive/primary/+files/" + entry["filename"], timeout=120) as response:
+                    (cache / entry["filename"]).write_bytes(response.read())
             matches = [path for path in cache.glob("*.deb") if hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"]]
         if len(matches) != 1:
             raise RuntimeError("Missing/mismatched GUI dependency; use --fetch-tools: " + entry["name"])
