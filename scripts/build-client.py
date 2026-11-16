@@ -29,7 +29,12 @@ for pkg in json.loads((ROOT/'client-build-deps.lock.json').read_text()):
         return [p for p in debs.glob('*.deb') if hashlib.sha256(p.read_bytes()).hexdigest()==pkg['sha256']]
     files=candidates()
     if not files:
-        run(['apt-get','download',pkg['name']+'='+pkg['version']],cwd=debs)
+        if subprocess.run(['apt-get','download',pkg['name']+'='+pkg['version']],cwd=debs).returncode:
+            # Superseded updates leave the apt index; Launchpad keeps the exact file, hash-checked below.
+            import urllib.request
+            filename=pkg['name']+'_'+pkg['version'].split(':',1)[-1]+'_'+pkg['architecture']+'.deb'
+            with urllib.request.urlopen('https://launchpad.net/ubuntu/+archive/primary/+files/'+filename,timeout=120) as response:
+                (debs/filename).write_bytes(response.read())
         files=candidates()
     if len(files)!=1:
         raise SystemExit('Missing or mismatched client dependency: '+pkg['name'])
