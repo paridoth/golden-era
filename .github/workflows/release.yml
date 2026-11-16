@@ -49,7 +49,11 @@ jobs:
           ./scripts/setup.sh 2>&1 | tee tools/release-evidence/setup.log
           ./scripts/test.sh 2>&1 | tee tools/release-evidence/test.log
       - name: Build the graphical client used by the package checks
-        run: python3 scripts/build-client.py 2>&1 | tee tools/release-evidence/client.log
+        run: |
+          # build-client.py uses the host's SDL2/OpenGL/X11 development stack
+          # (docs/graphical-client.md); install it on this disposable runner only.
+          sudo apt-get install -y -qq libsdl2-dev libgl-dev libglx-dev libx11-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev xauth
+          python3 scripts/build-client.py 2>&1 | tee tools/release-evidence/client.log
       - name: Assemble the playtest game
         run: python3 scripts/setup-playtest.py 2>&1 | tee tools/release-evidence/assembly.log
       - name: Build and verify the game ZIP
