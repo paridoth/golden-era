@@ -1,0 +1,53 @@
+{
+  "version": "0.1.12",
+  "source_revision": "6c13dc7b7dee6713fd5e7e0c74c793c23df3d085",
+  "frozen": true,
+  "artifacts": {
+    "windows": {
+      "artifact": "dist/golden-era-playtest-0.1.12-windows.exe",
+      "size_bytes": 68580909,
+      "sha256": "720bbbe14d93108930f0b74431c07272feb90af4e702f2b79f0f57907af2fa72",
+      "installed_files": 12558
+    },
+    "linux": {
+      "artifact": "dist/golden-era-playtest-0.1.12-linux.tar.gz",
+      "size_bytes": 63712358,
+      "sha256": "06a73ac15c9d7a2187537aaa2b81cd80d405fb010c71b6ddf04dc30652cacb8b"
+    },
+    "game_zip": {
+      "artifact": "dist/golden-era-playtest-0.1.12-windows-test.zip",
+      "size_bytes": 72214367,
+      "sha256": "c83843884fdb841b4fb9fbd43626156871ae1d1e7831ffdd65790d4553ff3d58",
+      "files": 12548
+    }
+  },
+  "engine": "Luanti 5.17.0; official verified Win64 download on first launch, installed native/official Flatpak on Linux",
+  "engine_bundled": false,
+  "code_signed": false,
+  "build_host": "GitHub Actions ubuntu-24.04 runner, .github/workflows/release.yml run 43784388854 (first release built in CI rather than on the developer machine)",
+  "distribution": "GitHub releases only",
+  "github_release": "https://github.com/paridoth/golden-era/releases/tag/v0.1.12 (uploaded by the release workflow as a draft; the installer is labelled 'Windows installer (start here)' and linked at the top of the notes; notes in docs/releases/0.1.12-notes.md)",
+  "changes": [
+    "Hammer, excavator and broad axe head casts from a pickaxe, shovel or axe head cast plus four seared bricks (864, 576 and 576 mB)",
+    "Hammer mines a 3x3 square of pickaxe blocks across the view; excavator does the same for shovel blocks; lumber axe fells the leafed logs joined to a chopped log",
+    "Large tools dig at half speed with three times the uses, sneak digs one block, and only harvestable blocks are dug",
+    "Three original CC0 part sprites; START-HERE and the Tools guide page describe the new casts"
+  ],
+  "validation": {
+    "fast_suite": "PASS scripts/test.sh in the release run, including TOOLS PASS",
+    "github_ci": "Build and engine tests workflow runs on each push to main",
+    "packaged_zip": "PASS verify and smoke: full factory through the extracted launcher with a fresh save; build-info reports 6c13dc7 dirty=false",
+    "windows_installer": "PASS installer verify: every extracted file matches the game ZIP",
+    "windows_native_wine": "PASS tests/windows-native/run.py on the release EXE: silent install under WoW64 (12558 files match), shortcuts, saves preserved, old versions kept while the game runs and removed by the next install",
+    "windows_launcher": "PASS tests/windows/run.py (TERM=xterm-256color on the runner so the progress line has a console width)",
+    "linux_archive": "PASS tests/linux/run.py --farming-smoke including the real factory, farm cycle and restart; the --flatpak-runtime variant was not run on the runner",
+    "published_assets": "The three GitHub release assets, downloaded once, match the SHA-256 values above"
+  },
+  "limitations": [
+    "LAN hosting between two machines remains untested",
+    "Native Windows, SmartScreen and hardware graphics remain unverified for this version",
+    "Large tools were exercised by unit tests, not hand-played in a client",
+    "The Linux archive was not run in the real Flatpak runtime for this version"
+  ],
+  "save_compatibility": "Existing 0.1.11 worlds, inventories and settings are kept"
+}

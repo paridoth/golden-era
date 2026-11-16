@@ -13,8 +13,13 @@ one. It has three files:
 - `golden-era-playtest-<version>-linux.tar.gz`; see [Linux setup](linux-release.md).
 
 The current release is
-[0.1.11](https://github.com/paridoth/golden-era/releases/tag/v0.1.11); its
-hashes and executed checks are in [its record](releases/0.1.11.json).
+[0.1.12](https://github.com/paridoth/golden-era/releases/tag/v0.1.12); its
+hashes and executed checks are in [its record](releases/0.1.12.json).
+
+The "Build tester release" workflow (`.github/workflows/release.yml`, run
+manually from the Actions tab) runs the build and checks below on a GitHub
+runner and uploads the three files to a draft release; publishing the draft
+and marking it latest is done on the release page.
 
 ## What testers get
 
