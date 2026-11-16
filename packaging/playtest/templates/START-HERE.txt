@@ -99,6 +99,15 @@ assemble into pickaxes, axes, shovels and swords: the head metal sets mining
 level and speed, the binding and handle add durability. The factory guide has
 Smeltery, Casting and Tools pages.
 
+NEW IN 0.1.12
+
+Large tools. Add four seared bricks to a pickaxe, shovel or axe head cast to
+make a hammer, excavator or broad axe head cast. Assembled like the other
+tools, a hammer mines a 3x3 square of stone, an excavator digs a 3x3 square of
+dirt or sand, and a lumber axe fells a whole tree from one log. They dig more
+slowly but last three times longer; sneak to dig a single block. The Tools
+page of the factory guide explains the casts.
+
 SAVES AND FEEDBACK
 
 Windows saves/logs: %LOCALAPPDATA%\GoldenEraPlaytest

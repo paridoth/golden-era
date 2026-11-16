@@ -1,0 +1,110 @@
+name: Build tester release
+# Builds the Windows installer, Windows ZIP and Linux archive for the version in
+# packaging/playtest/release.json, runs the release guide's checks, and uploads
+# the three files to a DRAFT GitHub release. Publishing the draft is a separate,
+# deliberate step (docs/github-release.md).
+on:
+  workflow_dispatch:
+    inputs:
+      draft_release:
+        description: Upload the built files to a draft GitHub release
+        type: boolean
+        default: true
+permissions:
+  contents: write
+defaults:
+  run:
+    shell: bash
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Cache pinned sources and original Debian packages
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            upstream/
+            tools/debs/
+          key: noble-amd64-${{ hashFiles('upstream.lock.json', 'build-deps.lock.json') }}
+      - name: Read version
+        id: version
+        run: |
+          version=$(python3 -c 'import json;print(json.load(open("packaging/playtest/release.json"))["version"])')
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          test -f "docs/releases/$version-notes.md"
+          if gh release view "v$version" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release v$version already exists; frozen outputs are not rebuilt" >&2; exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build engine and run the fast suite
+        run: |
+          mkdir -p tools/release-evidence
+          ./scripts/setup.sh 2>&1 | tee tools/release-evidence/setup.log
+          ./scripts/test.sh 2>&1 | tee tools/release-evidence/test.log
+      - name: Assemble the playtest game
+        run: python3 scripts/setup-playtest.py 2>&1 | tee tools/release-evidence/assembly.log
+      - name: Build and verify the game ZIP
+        run: |
+          v=${{ steps.version.outputs.version }}
+          python3 scripts/package-playtest.py --fetch-supplements 2>&1 | tee tools/release-evidence/zip.log
+          python3 scripts/package-playtest.py --verify dist/golden-era-playtest-$v-windows-test.zip 2>&1 | tee -a tools/release-evidence/zip.log
+          python3 tests/package/run.py dist/golden-era-playtest-$v-windows-test.zip 2>&1 | tee tools/release-evidence/package-smoke.log
+      - name: Build and verify the Windows installer
+        run: |
+          v=${{ steps.version.outputs.version }}
+          python3 scripts/package-installer.py --fetch-toolchain 2>&1 | tee tools/release-evidence/installer.log
+          python3 scripts/package-installer.py --verify dist/golden-era-playtest-$v-windows.exe 2>&1 | tee -a tools/release-evidence/installer.log
+      - name: Build and check the Linux archive
+        run: |
+          v=${{ steps.version.outputs.version }}
+          python3 scripts/package-linux.py 2>&1 | tee tools/release-evidence/linux.log
+          python3 tests/linux/run.py dist/golden-era-playtest-$v-linux.tar.gz --farming-smoke 2>&1 | tee tools/release-evidence/linux-test.log
+      - name: Windows launcher command check
+        run: python3 tests/windows/run.py --fetch-tool 2>&1 | tee tools/release-evidence/windows-launcher.log
+      - name: Installer under repository-local Wine
+        continue-on-error: true
+        run: |
+          v=${{ steps.version.outputs.version }}
+          python3 - <<'EOF'
+          import importlib.util, pathlib
+          spec = importlib.util.spec_from_file_location("gui", pathlib.Path("tests/playtest/gui.py"))
+          gui = importlib.util.module_from_spec(spec); spec.loader.exec_module(gui)
+          gui.setup_tools(True)
+          EOF
+          python3 tests/windows-native/run.py --fetch-tools --installer dist/golden-era-playtest-$v-windows.exe 2>&1 | tee tools/release-evidence/windows-native.log
+      - name: Hashes
+        run: |
+          cd dist
+          v=${{ steps.version.outputs.version }}
+          sha256sum golden-era-playtest-$v-windows.exe golden-era-playtest-$v-windows-test.zip golden-era-playtest-$v-linux.tar.gz | tee SHA256SUMS
+          ls -l golden-era-playtest-$v-* | tee ../tools/release-evidence/sizes.txt
+          cp SHA256SUMS ../tools/release-evidence/
+      - name: Upload to a draft release
+        if: inputs.draft_release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v=${{ steps.version.outputs.version }}
+          r=${{ steps.version.outputs.revision }}
+          cp docs/releases/$v-notes.md notes.md
+          printf '\nSource revision %s; hashes and checks: docs/releases/%s.json\n' "${r:0:7}" "$v" >> notes.md
+          gh release create "v$v" -R "$GITHUB_REPOSITORY" --draft --target "$r" \
+            --title "Golden Era $v" --notes-file notes.md \
+            "dist/golden-era-playtest-$v-windows.exe#Windows installer (start here)" \
+            "dist/golden-era-playtest-$v-windows-test.zip#Windows ZIP fallback" \
+            "dist/golden-era-playtest-$v-linux.tar.gz#Linux"
+      - name: Preserve release evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-evidence
+          path: |
+            tools/release-evidence/
+            runtime/tests/*.log
+          if-no-files-found: ignore
